@@ -11,34 +11,28 @@ export default rootReducer;
 
 // Store example
 const session = {
-  userName: 'name',
+  user: {
+    groupBlood: 1,
+    nickname: 'name',
+    dailyRate: 3000
+  },
   token: '123'
 };
 
-const data = {
-  products: {
-    data: 'data',
-    items: [
-      {
-        id: '123',
-        title: 'some meal',
-        ccal: 100,
-        weight: 100,
-        groupId: '123'
+const products = {
+  date: 'date',
+  items: [
+    {
+      id: '123',
+      title: 'some meal',
+      ccal: 4000,
+      weight: 960,
+      groupBloodNotAllowed: {
+        '1': true,
+        '2': false,
+        '3': true,
+        '4': false
       }
-    ]
-  },
-  results: {
-    dailyRate: 3000,
-    forbiddenProducts: [
-      {
-        groupId: '123',
-        item: 'Milk'
-      },
-      {
-        groupId: '123',
-        item: 'Milk'
-      }
-    ]
-  }
+    }
+  ]
 };
