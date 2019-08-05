@@ -4,7 +4,10 @@ class Dashboard extends Component {
   state = {};
 
   render() {
-    return <p>Dashboard</p>;
+    return;
+    <div>
+      <p>Dashboard</p>
+    </div>
   }
 }
 
