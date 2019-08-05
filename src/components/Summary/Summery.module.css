@@ -1,0 +1,65 @@
+.summarySection {
+  background-color: #eff1f3;
+}
+
+.listSummery,
+.pSummery {
+  color: #999daa;
+  list-style: none;
+  padding: 0;
+  line-height: 30px;
+  font-size: 15px;
+  font-family: "Verdana";
+}
+
+.listSummery li {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+}
+
+.summarySection h3 {
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-family: "Verdana";
+}
+.summarySection div {
+    width: 275px;
+    padding: 25px 0;
+    margin: auto;
+
+  }
+
+@media(min-width:768px) {
+  .summarySection {
+    background-color: #eff1f3;
+    padding: 50px 25px;
+    display: flex;
+    justify-content: center;
+    background-image: url(../../assets/greenleaves.png), linear-gradient(#eff1f3, #eff1f3); 
+    background-repeat: no-repeat;
+    background-position: right;  
+  }
+
+  .summarySection div {
+    width: 319px;
+    padding: 30px;
+  }
+}
+
+@media(min-width:1024px) {
+  .summarySection div {
+    width: 290px;
+    padding: 30px;
+    margin: auto;
+  }
+
+  .summarySection {
+    background-color: #eff1f3;
+    padding: 50px 25px;
+    display: flex;
+    flex-direction: column;
+
+ }
+}

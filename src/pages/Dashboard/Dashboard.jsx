@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Summery from '../../components/Summary/Summary'
+import Summery from '../../components/Summary/Summary';
+
 
 class Dashboard extends Component {
   state = {};

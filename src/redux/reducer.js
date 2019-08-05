@@ -20,7 +20,7 @@ const session = {
 };
 
 const products = {
-  date: 'date',
+  date: '25.06.2019',
   items: [
     {
       id: '123',
