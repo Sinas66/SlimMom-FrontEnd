@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './Summery.module.css';
 import { connect } from 'react-redux';
+import {getDailyRate, getDate, getProducts, getGroupBlood} from './summerySelectors'
 
 const notAllowedProject = {
     1: "Все зерновые, яйца, молочные продукты, мучные изделия",
@@ -45,10 +46,10 @@ const Summary = ({ products, date, groupBlood,dailyRate }) =>
     </div>
 const mapStateToProps = (state) => (
     {
-        products: state.data.items,
-        date: state.data.date,
-        groupBlood: state.session.user.groupBlood,
-        dailyRate: state.session.user.dailyRate,
+        products: getProducts(state),
+        date: getDate(state),
+        groupBlood: getGroupBlood(state),
+        dailyRate: getDailyRate(state),
     }
 )
 
