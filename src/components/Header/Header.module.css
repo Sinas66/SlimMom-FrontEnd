@@ -1,0 +1,48 @@
+.header {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 320px;
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  border-bottom: 2px solid;
+  border-color: #dddddd;
+}
+
+.logotype {
+  display: flex;
+
+}
+
+.logoText {
+  width: 135px;
+  height: 16px;
+  font-size: 21px;
+  letter-spacing: 2px;
+  color: #212121;
+  font-family: "Gotham Pro";
+  font-weight: 300;
+}
+
+.logoTextSpan {
+  color: #fc842c;
+}
+
+.greyZone {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #dddd;
+}
+
+.burgerBtn {
+  width: 24px;
+}
+
+.cross {
+  width: 24px;
+}
