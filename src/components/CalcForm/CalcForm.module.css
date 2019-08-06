@@ -1,0 +1,45 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.wrapper {
+  width: 100%;
+  font-family: Verdana, Arial, sans-serif;
+}
+
+.container {
+  width: 275px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 17px;
+  line-height: 10px;
+  font-weight: bolder;
+  color: #212121;
+}
+
+.input {
+  width: 100%;
+  font-size: 13px;
+  font-weight: bolder;
+  border: none;
+  border-bottom: 1px solid #999daa;
+  color: #999daa;
+  line-height: 52px;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.radioContainer h3 {
+  color:#999daa;
+}
+
+.radioInputs label {
+  margin-right: 17px;
+}

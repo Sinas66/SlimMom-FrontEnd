@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import App from '../../index';
 
 import css from './CalcForm.module.css';
-
-export default CalcForm;
 
 class CalcForm extends Component {
   state = {
@@ -11,26 +8,98 @@ class CalcForm extends Component {
     age: '',
     currentWeight: '',
     desireWeight: '',
-    bloodGroup: '',
+    groupBlood: '',
     isOpenModal: false
-   }
+  };
 
-   handleChange = e => {
-     this.setState({
-      [e.target.name]: e.target.value,
-      })
-   }
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleToggleModal = () => {
+    this.setState(state => ({
+      isOpenModal: !state.isOpenModal
+    }));
+  };
 
   render() {
-    const { height, age, currentWeight, desireWeight, bloodGroup } = this.state
+    const { height, age, currentWeight, desireWeight, groupBlood } = this.state;
     return (
-      <form>
-        <input type="number" name="height" value={height} onChange={this.handleChange} />
-        <input type="number" name="age" value={age} onChange={this.handleChange} />
-        <input type="number" name="currentWeight" value={currentWeight} onChange={this.handleChange} />
-        <input type="number" name="desireWeight" value={desireWeight} onChange={this.handleChange} />
-        <input type="number" name="bloodGroup" value={bloodGroup} onChange={this.handleChange} />
-      </form>
+      <div className={css.wrapper}>
+        <div className={css.container}>
+          <p className={css.title}>Узнай свою суточную </p>
+          <p className={css.title}>норму калорий</p>
+          <form>
+            <label htmlFor="height">
+              <input
+                className={css.input}
+                id="height"
+                type="number"
+                placeholder="Рост *"
+                name="height"
+                value={height}
+                onChange={this.handleChange}
+              />
+            </label>
+            <label htmlFor="age">
+              <input
+                className={css.input}
+                id="age"
+                type="number"
+                placeholder="Возраст *"
+                name="age"
+                value={age}
+                onChange={this.handleChange}
+              />
+            </label>
+            <label htmlFor="currentWeight">
+              <input
+                className={css.input}
+                id="currentWeight"
+                type="number"
+                placeholder="Текущий вес *"
+                name="currentWeight"
+                value={currentWeight}
+                onChange={this.handleChange}
+              />
+            </label>
+            <label htmlFor="desireWeight">
+              <input
+                className={css.input}
+                id="desireWeight"
+                type="number"
+                placeholder="Желаемый вес *"
+                name="desireWeight"
+                value={desireWeight}
+                onChange={this.handleChange}
+              />
+            </label>
+            <section className={css.radioContainer}>
+              <h3>Группа крови *</h3>
+              <div className={css.radioInputs}>
+                <label htmlFor="groupBlood_1">
+                  1
+                  <input id="groupBlood_1" type="radio" name="groupBlood" value="1" onChange={this.handleChange} />
+                </label>
+                <label htmlFor="groupBlood_2">
+                  2
+                  <input id="groupBlood_2" type="radio" name="groupBlood" value="2" onChange={this.handleChange} />
+                </label>
+                <label htmlFor="groupBlood_3">
+                  3
+                  <input id="groupBlood_3" type="radio" name="groupBlood" value="3" onChange={this.handleChange} />
+                </label>
+                <label htmlFor="groupBlood_4">
+                  4
+                  <input id="groupBlood_3" type="radio" name="groupBlood" value="4" onChange={this.handleChange} />
+                </label>
+              </div>
+            </section>
+          </form>
+        </div>
+      </div>
     );
   }
 }
