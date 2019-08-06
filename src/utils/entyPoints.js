@@ -1,4 +1,4 @@
-const baseUrl = 'https://slim-moms.goit.co.ua/api/v1';
+const baseUrl = 'https://slim-moms.goit.co.ua/api/v1/';
 
 export const url = {
   // example

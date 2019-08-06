@@ -1,12 +1,10 @@
 import { combineReducers } from 'redux';
 import sessionReducer from './reducers/session';
 import productReducer from './reducers/productReducer';
-import resultReduser from './reducers/resultReduser';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  data: productReducer,
-  result: resultReduser
+  data: productReducer
 });
 
 export default rootReducer;
