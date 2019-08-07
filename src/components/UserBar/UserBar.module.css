@@ -12,7 +12,13 @@
   color: #212121;
   font-family: "Gotham Pro", sans-serif;
   font-weight: bold;
-  padding-right: 38px;
+  padding-right: 0;
+}
+
+@media (min-width: 768px) {
+  .container a {
+    padding-right: 38px;
+  }
 }
 
 @media (min-width: 1024px) {
