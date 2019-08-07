@@ -6,8 +6,7 @@
 }
 .container a {
   text-decoration: none;
-  color: black;
-  font-size: 15px;
+  font-size: 13px;
   letter-spacing: 1.5px;
   color: #212121;
   font-family: "Gotham Pro", sans-serif;
@@ -18,13 +17,15 @@
 @media (min-width: 768px) {
   .container a {
     padding-right: 38px;
+    font-size: 15px;
   }
 }
 
 @media (min-width: 1024px) {
   .container {
     padding-right: 0;
-    padding-left: 142px;
+    padding-left: 0;
+    padding-bottom: 11px;
   }
   .spanLine {
     display: none;

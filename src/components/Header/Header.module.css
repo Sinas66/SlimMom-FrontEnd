@@ -2,6 +2,7 @@
   width: 320px;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
 }
 
 .container {
@@ -80,7 +81,9 @@
   padding-right: 18px;
 }
 
+.grayline {
 
+}
 
 
 @media (min-width: 768px) {
@@ -124,6 +127,11 @@
     justify-content: space-between;
     padding-left: 250px;
     padding-top: 6px;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    color: #212121;
+    font-family: "Gotham Pro", sans-serif;
+    font-weight: bold;
   }
 }
 
@@ -137,12 +145,17 @@
 
   .container {
     justify-content: start;
+    border: none;
+  }
+
+  .burger {
+    display: none;
   }
 
   .logoImg {
-    position: absolute;
-    left: 92px;
-    top: 11px;
+    position: relative;
+    left: 89px;
+    top: -33px;
     width: 66px;
     height: 63px;
   }
