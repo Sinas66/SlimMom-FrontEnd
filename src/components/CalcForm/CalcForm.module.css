@@ -37,9 +37,34 @@
 }
 
 .radioContainer h3 {
-  color:#999daa;
+  color:#80838d;
+  font-size: 13px;
 }
 
 .radioInputs label {
   margin-right: 17px;
+}
+
+
+@media (min-width: 768px) {
+  .container {
+    width: 576px;
+  }
+
+  .container form {
+    display: flex;
+    width: 100%;
+  }
+
+  .leftInputs {
+    width: 50%;
+  }
+
+  .rightInputs {
+    width: 50%;
+  }
+
+  .input {
+    width: 235px;
+  }
 }
