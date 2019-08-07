@@ -14,7 +14,7 @@ const setToken = token => ({
 
 export const pushNewData = (token, task) => {
   return axios
-    .post(api.url.newData(), { ...task }, setToken(token))
+    .post(api.url.loginUser(), { ...task }, setToken(token))
     .then(response => {
       return response.json().then(data => dispatch(fetchSuccess(data.session)));
     })
