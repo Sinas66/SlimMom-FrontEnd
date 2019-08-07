@@ -1,15 +1,41 @@
 .calc {
-    color: #fff;
-    background-color: #fc842c;
-    line-height: 15px;
-    border-radius: 20px;
-    display: block;
-    margin: 0 auto;
-    width: 175px;
-    height: 42px;
-    border: none;
+  color: #fff;
+  background-color: #fc842c;
+  line-height: 15px;
+  border-radius: 20px;
+  display: block;
+  margin: 0 auto;
+  width: 175px;
+  height: 42px;
+  border: none;
+}
+
+.homeContainer>* {
+  margin: 30px 0;
+}
+.homeContainer{
+  padding: 0 25px;
+  height: 100vh;
+}
+@media(min-width: 768px){
+  .homeContainer{
+    background-image: url(../../assets/images/home_tablet.png); 
+    background-repeat: no-repeat;
+    background-position: bottom right;
   }
-  .homeWrapper > * {
-    margin-bottom: 40px;
+}
+@media(min-width: 1024px){
+  .homeContainer{
     padding: 0 25px;
+    background-image: url(../../assets/images/home_descktop.png); 
+    background-size: 750px;
   }
+  .homeGroup{
+    width: 70%;
+    margin: left;
+
+  }
+  .homeGroup > *{
+    margin-bottom: 60px;
+  }
+}
