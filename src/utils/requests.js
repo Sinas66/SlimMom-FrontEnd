@@ -12,9 +12,9 @@ const setToken = token => ({
   }
 });
 
-export const pushNewData = (token, task) => {
+export const putNewData = (token, data) => {
   return axios
-    .post(api.url.loginUser(), { ...task }, setToken(token))
+    .put(api.url.dataUser(), { ...data }, setToken(token))
     .then(response => {
       return response.json().then(data => dispatch(fetchSuccess(data.session)));
     })

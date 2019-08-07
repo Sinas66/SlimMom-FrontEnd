@@ -1,7 +1,8 @@
 import React, { Component, createRef } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { addStore } from '../../redux/actions/productActions';
-import { pushNewData } from '../../utils/requests';
+import { putNewData } from '../../utils/requests';
 import styles from './Result.module.css';
 
 class Result extends Component {
@@ -27,12 +28,6 @@ class Result extends Component {
   componentDidMount() {
     this.onHandlePost();
   }
-
-  // componentDidUpdate(prevState) {
-  //   const { dailyRate } = this.state;
-  //   if (prevState.dailyRate === dailyRate) return;
-  //   this.onHandlePost();
-  // }
 
   onHandleCalc = () => {
     const { currentWeight, age, height, desireWeight } = this.props;
@@ -66,7 +61,7 @@ class Result extends Component {
   };
 
   render() {
-    const { onClose, groupBlood } = this.props;
+    const { onClose, groupBlood, session } = this.props;
     const { dailyRate } = this.state;
     let arr = [];
     if (groupBlood == '1') {
@@ -105,9 +100,20 @@ class Result extends Component {
                   </li>
                 ))}
               </ol>
-              <button type="button" className={styles.start}>
+              {/* <button type="button" onClick={this.onHandleClick} className={styles.start}>
                 Начать худеть
-              </button>
+              </button> */}
+              {!session.token && (
+                <Link className={styles.start} to="/login">
+                  Начать худеть
+                </Link>
+              )}
+
+              {session.token && (
+                <button type="button" onClick={this.onClose} className={styles.start}>
+                  Начать худеть
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -122,7 +128,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   add: store => dispatch(addStore(store)),
-  newInfo: (token, data) => dispatch(pushNewData(token, data))
+  newInfo: (token, data) => dispatch(putNewData(token, data))
 });
 
 export default connect(

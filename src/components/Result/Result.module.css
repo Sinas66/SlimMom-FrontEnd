@@ -98,13 +98,15 @@
   .start{
     color: #fff;
     background-color: #fc842c;
-    line-height: 15px;
+    line-height: 42px;
     border-radius: 20px;
     display: block;
     margin: 0 auto;
     width: 175px;
-    height: 42px;
+    /* height: 42px; */
     border: none;
+    text-decoration: none;
+
   }
 
   .arrow{
