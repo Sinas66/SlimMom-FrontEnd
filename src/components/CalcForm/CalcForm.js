@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import css from './CalcForm.module.css';
 
 class CalcForm extends Component {
+  static propTypes = {
+    getData: PropTypes.func.isRequired,
+  }
+
   state = {
     height: '',
     age: '',
     currentWeight: '',
     desireWeight: '',
-    groupBlood: '',
-    isOpenModal: false
+    groupBlood: ''
   };
 
   handleChange = e => {
@@ -18,19 +22,17 @@ class CalcForm extends Component {
     });
   };
 
-  handleToggleModal = () => {
-    this.setState(state => ({
-      isOpenModal: !state.isOpenModal
-    }));
-  };
+  
 
   render() {
     const { height, age, currentWeight, desireWeight, groupBlood } = this.state;
     return (
       <div className={css.wrapper}>
         <div className={css.container}>
-          <p className={css.title}>Узнай свою суточную </p>
-          <p className={css.title}>норму калорий</p>
+          <div className={css.titleContainer}>
+            <p className={css.title}>Узнай свою суточную </p>
+            <p className={css.title}>норму калорий</p>
+          </div>
           <form>
             <div className={css.leftInputs}>
               <label htmlFor="height">
