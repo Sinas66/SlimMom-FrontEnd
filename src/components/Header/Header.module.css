@@ -50,6 +50,7 @@
   justify-content: flex-end;
   background-color: #dddd;
 }
+
 .username {
   padding-right: 32px;
 }
@@ -58,9 +59,10 @@
   display: none;
 }
 
-.logoutText {
+/* .logoutText {
   display: none;
-}
+} */
+
 .logoutButton {
   padding-top: 12px;
   padding-right: 19px;
@@ -81,9 +83,7 @@
   padding-right: 18px;
 }
 
-.grayline {
-
-}
+.grayline {}
 
 
 @media (min-width: 768px) {
