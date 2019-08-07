@@ -11,15 +11,15 @@ grid-template-areas:
 grid-template-columns: 1fr;
 
 }
-    .header {
+    .headerBlock_container {
       grid-area: h;
       background-color: yellow;
     }
-    .calkBlock{
+    .calcDairyBlock_container{
       grid-area: c;
       background-color: orange;
     }
-    .summary {
+    .summaryBlock_container {
       grid-area: s;
       background-color: green;
     }
@@ -29,5 +29,6 @@ grid-template-columns: 1fr;
     "h h"
     "c s";
       grid-template-columns: 8fr 5fr;
+      grid-template-rows: auto;
   }
 }
