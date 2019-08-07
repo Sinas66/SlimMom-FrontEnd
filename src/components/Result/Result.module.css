@@ -71,7 +71,7 @@
 
 
   .main{
-    padding: 0 20px 20px 20px;
+    padding: 0 20px 40px 20px;
   }
 
   .subTitle{
@@ -121,6 +121,15 @@
 }
 
 @media(min-width: 768px){
+
+  .modal{
+    max-width: 625px;
+  }
+
+  .title{
+    font-size: 26px;
+  }
+
   .bgButtonColor{
     background-color: #fff;
 
@@ -156,5 +165,22 @@
     margin: 0 auto;
     text-align: left;
     width: 60%;
+  }
+}
+
+@media(min-width: 1024px){
+  .modal{
+    max-width: 675px;
+  }
+
+  .subTitle{
+    width: 55%;
+  }
+  .menu{
+    width: 55%;
+  }
+
+  .dailyRate::after{
+    width: 55%;
   }
 }

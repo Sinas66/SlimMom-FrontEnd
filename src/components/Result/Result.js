@@ -6,13 +6,7 @@ import styles from './Result.module.css';
 
 class Result extends Component {
   state = {
-    currentWeight: 280,
-    height: 153,
-    age: 39,
-    desireWeight: 60,
-    groupBlood: 1,
-    dailyRate: 0,
-    isOpen: false
+    dailyRate: 0
   };
   backdropRef = createRef();
 
@@ -41,7 +35,7 @@ class Result extends Component {
   // }
 
   onHandleCalc = () => {
-    const { currentWeight, age, height, desireWeight } = this.state;
+    const { currentWeight, age, height, desireWeight } = this.props;
 
     this.setState({
       dailyRate: 10 * Number(currentWeight) + 6.25 * Number(height) - 5 * Number(age) - 161 - 10 * Number(desireWeight)
@@ -49,8 +43,8 @@ class Result extends Component {
   };
 
   onHandlePost = () => {
-    const { add, session, newInfo } = this.props;
-    const { groupBlood, dailyRate } = this.state;
+    const { add, session, newInfo, groupBlood } = this.props;
+    const { dailyRate } = this.state;
     const newData = {
       groupBlood,
       dailyRate
@@ -72,8 +66,8 @@ class Result extends Component {
   };
 
   render() {
-    const { onClose } = this.props;
-    const { dailyRate, groupBlood } = this.state;
+    const { onClose, groupBlood } = this.props;
+    const { dailyRate } = this.state;
     let arr = [];
     if (groupBlood == '1') {
       arr = ['яйца', 'зерновые', 'мучные изделия', 'молочные продукты'];
@@ -94,7 +88,7 @@ class Result extends Component {
                 &crarr;
               </button>
               <button className={styles.cross} onClick={onClose} type="button">
-                &crarr;
+                &#215;
               </button>
             </div>
             <div className={styles.main}>
