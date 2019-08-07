@@ -5,24 +5,28 @@
 }
 
 .container {
-  padding-bottom: 19px;
-  width: 300px;
+  padding-bottom: 15px;
+  width: 320px;
   display: flex;
   justify-content: space-between;
+  border-bottom: 2px solid;
+  border-color: #dddddd;
 }
 
 .logotype {
   display: flex;
-
+  padding-top: 4px;
 }
 
 .logoImg {
   padding-top: 5px;
+  width: 46px;
+  height: 44px;
 }
 
 .logoText {
-  width: 135px;
-  height: 16px;
+  /* width: 135px;
+  height: 16px; */
   font-size: 21px;
   letter-spacing: 2px;
   color: #212121;
@@ -44,11 +48,17 @@
   display: flex;
   justify-content: flex-end;
   background-color: #dddd;
-  border-top: 2px solid;
-  border-color: #dddddd;
 }
 .username {
   padding-right: 32px;
+}
+
+.usernamebox {
+  display: none;
+}
+
+.logoutText {
+  display: none;
 }
 .logoutButton {
   padding-top: 12px;
@@ -60,10 +70,84 @@
 .burger {
   width: 24px;
   padding-top: 9px;
+  padding-right: 20px;
 }
 
 .cross {
-  width: 24px;
+  width: 27px;
   height: 26px;
-  padding-top: 16px;
+  padding-top: 17px;
+  padding-right: 18px;
+}
+
+
+
+
+@media (min-width: 768px) {
+  .header {
+    width: 768px;
+  }
+
+  .container {
+    padding-bottom: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 3px solid;
+    border-color: #dddddd;
+  }
+
+  .logotype {
+    padding-left: 67px;
+  }
+
+  .burger {
+    padding-top: 6px;
+    padding-right: 39px
+  }
+
+  .cross {
+    padding-right: 35px;
+  }
+
+  .greyZone {
+    display: none;
+  }
+
+  .logoutText {
+    display: block;
+  }
+
+  .usernamebox {
+    display: flex;
+    width: 135px;
+    justify-content: space-between;
+    padding-left: 250px;
+    padding-top: 6px;
+  }
+}
+
+
+@media (min-width: 1024px) {
+
+  .header {
+    width: 1024px;
+    margin-top: 40px;
+  }
+
+  .container {
+    justify-content: start;
+  }
+
+  .logoImg {
+    position: absolute;
+    left: 92px;
+    top: 11px;
+    width: 66px;
+    height: 63px;
+  }
+
+  .logoText {
+    padding-left: 81px;
+  }
 }
