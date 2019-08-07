@@ -20,6 +20,10 @@
   color: #212121;
 }
 
+.container form {
+  margin-bottom: 45px;
+}
+
 .input {
   width: 100%;
   font-size: 13px;
@@ -44,7 +48,7 @@
 .radioContainer h3 {
   color:#80838d;
   font-size: 13px;
-  padding-top: 25px;
+  padding-top: 20px;
 }
 
 .radioContainer h3 {
@@ -55,12 +59,19 @@
   margin-right: 17px;
 }
 
+.btn {
+  color: #fff;
+  background-color: #fc842c;
+  line-height: 15px;
+  border-radius: 20px;
+  display: block;
+  margin: 0 auto;
+  width: 175px;
+  height: 42px;
+  border: none;
+}
 
 @media (min-width: 768px) {
-  .wrapper {
-    margin-bottom: 50px;
-  }
-
   .container {
     width: 576px;
   }
@@ -68,6 +79,7 @@
   .container form {
     display: flex;
     width: 100%;
+    margin-bottom: 50px;
   }
 
   .leftInputs {
@@ -90,7 +102,7 @@
 }
 
 @media (min-width: 1024px) {
-  .wrapper {
+  .container form {
     margin-bottom: 70px;
   }
 
