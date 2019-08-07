@@ -1,0 +1,15 @@
+.calc {
+    color: #fff;
+    background-color: #fc842c;
+    line-height: 15px;
+    border-radius: 20px;
+    display: block;
+    margin: 0 auto;
+    width: 175px;
+    height: 42px;
+    border: none;
+  }
+  .homeWrapper > * {
+    margin-bottom: 40px;
+    padding: 0 25px;
+  }
