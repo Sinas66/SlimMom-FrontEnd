@@ -1,49 +1,98 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Modal from './Modal';
-import UserBar from '../UserBar/UserBar'
+import UserBar from '../UserBar/UserBar';
+import windowSize from 'react-window-size';
 import logo from './Logo/logo-png.png';
 import burger from './Logo/burger.svg';
 import cross from './Logo/cross.png';
+import logout from './Logo/logout.png';
 import styles from './Header.module.css';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 
-export default class Header extends Component {
+// const userToken = JSON.parse(localStorage.getItem('userToken'))
+
+class Header extends Component {
+
+    static propTypes = {
+        token: PropTypes.string.isRequired,
+    }
     state = {
         openModal: false,
-        isLogged: true,
+        isLogged: false,
         toogleIcon: false,
-    }
-
-    toogleModal = (e) => {
-        this.setState(state => ({ openModal: !state.openModal, toogleIcon: !state.toogleIcon }))
 
 
-    }
+    };
+
+
+    toogleModal = e => {
+        this.setState(state => ({ openModal: !state.openModal, toogleIcon: !state.toogleIcon }));
+    };
     // Here I have to write a function than will check if the User is LoggedIn or not, and change the state apropriately
 
+    componentDidMount() {
+        const { token } = this.props
+        if (!!token) { this.setState({ isLogged: true }) }
+        localStorage.setItem("userToken", "1234")
+    }
+    logOut = () => {
+        localStorage.removeItem("userToken");
+        this.setState(state => ({ isLogged: !state.isLogged }))
+    }
 
     render() {
-        const { toogleModal } = this;
+        const { toogleModal, logOut } = this;
         const { openModal, isLogged, toogleIcon } = this.state;
+        const { token } = this.props
+
+        console.log('token: ', token)
         return (
             <div className={styles.header}>
                 <div className={styles.container}>
                     <div className={styles.logotype}>
-
-                        <img src={logo} width={46} height={44} alt="LOGO" />
-                        <h1 className={styles.logoText}>Slim <span className={styles.logoTextSpan}>Mom</span> </h1>
-
+                        <img className={styles.logoImg} src={logo} alt="LOGO" />
+                        <h1 className={styles.logoText}>
+                            Slim<span className={styles.logoTextSpan}>Mom</span>
+                        </h1>
                     </div>
                     {/* If user is logged - show the burger button (isLogged && button) */}
-                    {isLogged && !toogleIcon && <button className={styles.burgerBtn} onClick={toogleModal}><img src={burger} alt="burger button" /></button>}
-                    {isLogged && toogleIcon && <button className={styles.burgerBtn} onClick={toogleModal}><img className={styles.cross} src={cross} alt="burger button" /></button>}
-                    {openModal && <Modal />}
+                    {isLogged && (
+                        <div className={styles.usernamebox}>
+                            <p>Username</p>
+                            <p>|</p>
+                            <p className={styles.logoutText}>Выйти</p>
+                        </div>
+                    )}
+                    {isLogged && !toogleIcon && (
+                        // <button className={styles.burgerBtn} onClick={toogleModal}>
+                        <img onClick={toogleModal} className={styles.burger} src={burger} alt="burger button" />
+                        // </button>
+                    )}
+                    {isLogged && toogleIcon && (
+                        // <button className={styles.burgerBtn} onClick={toogleModal}>
+                        <img onClick={toogleModal} className={styles.cross} src={cross} alt="burger button" />
+                        // </button>
+                    )}
+                    {openModal && this.props.windowWidth < 1024 && < Modal />}
                     {!isLogged && <UserBar />}
-
                 </div>
-                {isLogged && <div className={styles.greyZone}><p>Username</p> <button>Log Out</button></div>}
+                <div className={styles.grayLine} />
+                {isLogged && (
+                    <div className={styles.greyZone}>
+                        <p className={styles.username}>Username</p> <img onClick={logOut} className={styles.logoutButton} src={logout} />
+                    </div>
+                )}
             </div>
-        )
+        );
     }
 }
+const mapStateToProps = (state) => ({
 
+})
+const mapDispatchToProps = {
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(windowSize(Header));

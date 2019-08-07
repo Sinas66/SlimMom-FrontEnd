@@ -1,8 +1,33 @@
 .container {
   display: flex;
   align-items: center;
+  padding-top: 7px;
+  padding-right: 5px;
+}
+.container a {
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  color: #212121;
+  font-family: "Gotham Pro", sans-serif;
+  font-weight: bold;
+  padding-right: 0;
 }
 
-.link {
-  text-decoration: none;
+@media (min-width: 768px) {
+  .container a {
+    padding-right: 38px;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 11px;
+  }
+  .spanLine {
+    display: none;
+  }
 }

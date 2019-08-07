@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-
+import Header from '../../components/Header/Header';
 class Dashboard extends Component {
   state = {};
 
   render() {
-    return <p>Dashboard</p>;
+    const { token } = this.props
+    return (<Header token={token} />)
+
   }
 }
 
