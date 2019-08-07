@@ -35,7 +35,7 @@ class Login extends Component {
 
   render() {
     const { location, errorMsg } = this.propsconst;
-    const { from } = location.state || { from: { pathname: '/' } };
+    const { form } = location.state || { from: { pathname: '/' } };
     const { nickname, password, redirectToPreviousRoute } = this.state;
 
     if (redirectToPreviousRoute) {
