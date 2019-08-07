@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { validations } from 'indicative/validator';
+import { validate } from 'indicative/validator';
 
 import css from './CalcForm.module.css';
 
@@ -13,8 +13,14 @@ const rules = {
 };
 
 const messages = {
-  required: 'Поле обязательно для заполнения',
-  integer: 'Введите целое число',
+  'height.required': 'Поле обязательно для заполнения',
+  'age.required': 'Поле обязательно для заполнения',
+  'currentWeight.required': 'Поле обязательно для заполнения',
+  'desireWeight.required': 'Поле обязательно для заполнения',
+  'groupBlood.required': 'Поле обязательно для заполнения',
+  'height.integer': 'Введите целое число',
+  'age.integer': 'Введите целое число',
+  'groupBlood.integer': 'Введите целое число',
   'height.range': 'Введите целое число от 1 до 230',
   'age.range': 'Введите целое число от 1 до 99',
   'currentWeight.range': 'Введите целое число от 1 до 199',
@@ -41,9 +47,19 @@ class CalcForm extends Component {
   handleSubmit = () => {
     const { height, age, currentWeight, desireWeight, groupBlood } = this.state;
 
-    validations({ height, age, currentWeight, desireWeight, groupBlood }, rules, messages)
+    validate(
+      {
+        height,
+        age,
+        currentWeight,
+        desireWeight,
+        groupBlood
+      },
+      rules,
+      messages
+    )
       .then(data => {
-        console.log(data);
+        console.log('data: ', data);
       })
       .catch(errors => {
         console.log(errors);
