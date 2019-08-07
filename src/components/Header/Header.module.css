@@ -5,17 +5,19 @@
 }
 
 .container {
-  width: 320px;
+  padding-bottom: 19px;
+  width: 300px;
   display: flex;
-  justify-content: space-around;
-  align-items: baseline;
-  border-bottom: 2px solid;
-  border-color: #dddddd;
+  justify-content: space-between;
 }
 
 .logotype {
   display: flex;
 
+}
+
+.logoImg {
+  padding-top: 5px;
 }
 
 .logoText {
@@ -24,12 +26,17 @@
   font-size: 21px;
   letter-spacing: 2px;
   color: #212121;
-  font-family: "Gotham Pro";
+  font-family: "Gotham Pro", sans-serif;
   font-weight: 300;
+  padding-left: 6px;
 }
 
 .logoTextSpan {
   color: #fc842c;
+  font-family: "Gotham Pro", sans-serif;
+  font-weight: 300;
+  font-size: 21px;
+  letter-spacing: 2px;
 }
 
 .greyZone {
@@ -37,12 +44,26 @@
   display: flex;
   justify-content: flex-end;
   background-color: #dddd;
+  border-top: 2px solid;
+  border-color: #dddddd;
+}
+.username {
+  padding-right: 32px;
+}
+.logoutButton {
+  padding-top: 12px;
+  padding-right: 19px;
+  width: 22px;
+  height: 26px;
 }
 
-.burgerBtn {
+.burger {
   width: 24px;
+  padding-top: 9px;
 }
 
 .cross {
   width: 24px;
+  height: 26px;
+  padding-top: 16px;
 }
