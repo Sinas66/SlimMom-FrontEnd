@@ -5,7 +5,8 @@
   margin: 0 auto;
 }
 
-.container, .loggedContainer {
+.container,
+.loggedContainer {
   padding-bottom: 15px;
   min-width: 320px;
   display: flex;
@@ -90,7 +91,8 @@
     min-width: 768px;
   }
 
-  .container, .loggedContainer {
+  .container,
+  .loggedContainer {
     padding-bottom: 15px;
     width: 100%;
     display: flex;
@@ -117,7 +119,32 @@
   }
 
   .logoutText {
+    height: 36px;
     display: block;
+    cursor: pointer;
+    transition: .5s;
+    border: none;
+    background: transparent;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    line-height: 1.15;
+    color: #212121;
+    font-family: "Gotham Pro", sans-serif;
+    font-weight: bold;
+    margin: 5px;
+
+    padding: 0;
+  }
+
+  .usernameText {
+    vertical-align: center;
+    margin-right: 6px;
+    height: 36px;
+  }
+
+  .logoutText:hover {
+    color: #fc842c;
+    text-shadow: 0 1px 1px #ffcca8;
   }
 
   .usernamebox {
@@ -142,7 +169,8 @@
     margin-top: 40px;
   }
 
-  .container, .loggedContainer {
+  .container,
+  .loggedContainer {
     justify-content: space-between;
     min-width: 1024px;
     border: none;
@@ -153,7 +181,8 @@
     justify-content: start;
   }
 
-  .logoNavigationBox, .loggedLogoNavigationBox {
+  .logoNavigationBox,
+  .loggedLogoNavigationBox {
     width: 478px;
     display: flex;
     justify-content: space-between;
@@ -205,6 +234,7 @@
   .a {
     background-color: red;
   }
+
   .b {
     background-color: blue
   }
