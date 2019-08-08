@@ -1,12 +1,12 @@
-// import { ReactComponent as Exit } from './exit.svg';
-import { ReactComponent as Arrow_Back } from './arrow-back.png';
-import { ReactComponent as Arrow_Down } from './arrow-down.png';
-import { ReactComponent as Arrow_Up } from './arrow-up.png';
-import { ReactComponent as Calendar } from './calendar.png';
-import { ReactComponent as Close } from './close.png';
-import { ReactComponent as Diary_Logout } from './diary_logout.png';
-import { ReactComponent as Flag_Ru } from './flag_ru.png';
-import { ReactComponent as Flag_Ua } from './flag_ukr.png';
-import { ReactComponent as Menu } from './menu.png';
+import { ReactComponent as Arrow_Back } from './mob-diary_arrow back.svg';
+import { ReactComponent as Calendar } from './mob-diary_icon-calendar.svg';
 
-export { Arrow_Back, Arrow_Down, Arrow_Up, Calendar, Close, Diary_Logout, Flag_Ru, Flag_Ua, Menu };
+import { ReactComponent as Add } from './baseline-add-24px.svg';
+import { ReactComponent as Arrow_Down } from './baseline-keyboard_arrow_down-24px.svg';
+import { ReactComponent as Close } from './baseline-clear-24px.svg';
+import { ReactComponent as Diary_Logout } from './exit.svg';
+import { ReactComponent as Flag_Ru } from './russia.svg';
+import { ReactComponent as Flag_Ua } from './ukraine.svgg';
+import { ReactComponent as Menu } from './baseline-menu-24px.svg';
+
+export { Add, Close, Calendar, Arrow_Down, Arrow_Back, Diary_Logout, Flag_Ru, Flag_Ua, Menu };
