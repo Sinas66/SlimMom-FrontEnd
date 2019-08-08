@@ -60,10 +60,6 @@
   display: none;
 }
 
-/* .logoutText {
-  display: none;
-} */
-
 .logoutButton {
   padding-top: 12px;
   padding-right: 19px;
@@ -118,6 +114,16 @@
 
   .logoutText {
     display: block;
+    background-color: transparent;
+    border: none;
+    height: 47px;
+    padding: 0;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    color: #212121;
+    font-family: "Gotham Pro", sans-serif;
+    font-weight: bold;
+    outline: none;
   }
 
   .usernamebox {
@@ -157,6 +163,19 @@
     width: 478px;
     display: flex;
     justify-content: space-between;
+  }
+
+  .logoutText {
+    background-color: transparent;
+    border: none;
+    height: 47px;
+    padding: 0;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    color: #212121;
+    font-family: "Gotham Pro", sans-serif;
+    font-weight: bold;
+    outline: none;
   }
 
   .loggedLogoNavigationBox {

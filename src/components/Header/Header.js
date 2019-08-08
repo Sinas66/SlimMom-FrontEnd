@@ -72,9 +72,12 @@ class Header extends Component {
             <div className={styles.usernamebox}>
               <p>Username</p>
               <p>|</p>
-              <p onClick={logOut} className={styles.logoutText}>
+              <button onClick={logOut} className={styles.logoutText}>
                 Выйти
-              </p>
+              </button>
+              {/* <button onClick={logOut} className={styles.logoutTextButton}>
+                <p className={styles.logoutText}>Выйти</p>
+              </button> */}
             </div>
           )}
           {isLogged && !toogleIcon && this.props.windowWidth < 1024 && (
