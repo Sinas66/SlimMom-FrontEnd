@@ -1,6 +1,3 @@
-* {
-  outline: 1px solid red;
-}
 
 .grid {
 display: grid;
@@ -9,19 +6,17 @@ grid-template-areas:
         "c"
         "s";
 grid-template-columns: 1fr;
+height: 100vh;
 
 }
     .headerBlock_container {
       grid-area: h;
-      background-color: yellow;
     }
     .calcDairyBlock_container{
       grid-area: c;
-      background-color: orange;
     }
     .summaryBlock_container {
       grid-area: s;
-      background-color: green;
     }
 @media(min-width: 1024px) {
   .grid {

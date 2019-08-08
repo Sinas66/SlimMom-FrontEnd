@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import styles from './Dashboard.module.css';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import windowSize from 'react-window-size';
 
-class Dashboard extends Component {
+export default class Dashboard extends Component {
   state = {
   };
 
@@ -13,14 +13,14 @@ class Dashboard extends Component {
         <>
             <section className={styles.grid}>
              <div className={styles.headerBlock_container}>
-              Header
+              <Header />
                </div>
              <div className={styles.calcDairyBlock_container}>
-                <Route path="/calc/" exact component={calc} />
-                <Route path="/diary/" component={diary} />
+                <Route path="/dashboard/" exact component={} />
+                <Route path="/diary/" component={} />
                </div>
              <div className={styles.summaryBlock_container}>
-              SummaryBlock
+              <SummaryBlock />
                </div>
            </section>
           </>
@@ -29,5 +29,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
 
