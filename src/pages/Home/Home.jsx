@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
+import Icon from '../../components/Icon/Icon';
 
 class Home extends Component {
   state = {};
 
   render() {
-    return <p>Home</p>;
+    return (
+      <>
+        <div>Home</div>
+      </>
+    );
   }
 }
 
