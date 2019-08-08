@@ -90,11 +90,13 @@ class Header extends Component {
           {openModal && this.props.windowWidth < 1024 && <Modal />}
           {!isLogged && <UserBar />}
         </div>
-        <div className={styles.grayLine} />
         {isLogged && this.props.windowWidth < 768 && (
           <div className={styles.greyZone}>
-            <p className={styles.username}>{username}</p>{' '}
-            <img onClick={logOut} className={styles.logoutButton} src={logout} />
+            <button className={styles.closeModal} />
+            <div className={styles.mobileLogoutBox}>
+              <p className={styles.username}>{username}</p>{' '}
+              <img onClick={logOut} className={styles.logoutButton} src={logout} />
+            </div>
           </div>
         )}
       </div>

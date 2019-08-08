@@ -1,5 +1,4 @@
 .header {
-  min-width: 320px;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -8,7 +7,6 @@
 .container,
 .loggedContainer {
   padding-bottom: 15px;
-  min-width: 320px;
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid;
@@ -49,20 +47,29 @@
 .greyZone {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   background-color: #dddd;
 }
 
-.username {
-  padding-right: 32px;
+.closeModal {
+  background: transparent;
+  background-image: url("./Logo/closeModal.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 28px;
+  height: 28px;
+  margin: auto 0;
+  margin-left: 15px;
+  border: none;
 }
 
 .logoutButton {
   padding-top: 12px;
-  padding-right: 19px;
   width: 22px;
   height: 26px;
 }
+
 
 .burger {
   width: 24px;
@@ -77,6 +84,12 @@
   padding-right: 18px;
 }
 
+.mobileLogoutBox {
+  display: flex;
+  justify-content: space-between;
+  width: 68px;
+  margin-right: 9px;
+}
 
 @media (min-width: 768px) {
   .header {
@@ -220,11 +233,4 @@
     justify-content: start;
   }
 
-  .a {
-    background-color: red;
-  }
-
-  .b {
-    background-color: blue
-  }
 }
