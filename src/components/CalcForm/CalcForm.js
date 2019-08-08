@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Result from '../Result/Result'
 import ErrorNotification from './ErrorNotification';
 import css from './CalcForm.module.css';
 
@@ -174,7 +175,8 @@ class CalcForm extends Component {
       errorCurrentWeight,
       errorDesireWeight,
       errorGroupBlood,
-      isValidAll
+      isValidAll,
+      isOpenModal
     } = this.state;
     const { groupBlood, isLogin } = this.props;
 
@@ -274,7 +276,7 @@ class CalcForm extends Component {
                   <label htmlFor="groupBlood_4">
                     4
                     <input
-                      id="groupBlood_3"
+                      id="groupBlood_4"
                       type="radio"
                       name="groupBlood"
                       value="4"
@@ -295,6 +297,7 @@ class CalcForm extends Component {
             {!groupBlood ? 'Начать худеть' : 'Пересчитать'}
           </button>
         </div>
+        {isOpenModal && <Result {...this.state} onClose={this.toggleOpenModal}/>}
       </div>
     );
   }
