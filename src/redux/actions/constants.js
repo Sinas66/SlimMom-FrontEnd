@@ -1,0 +1,1 @@
+export const ADD_FETCH_SUCCESS = 'ADD: FETCH_SUCCESS';

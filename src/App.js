@@ -14,7 +14,6 @@ function App() {
         <ProtectedComponent active={true} exact path="/dashboard" component={Dashboard} />
       </Switch>
     </>
-
   );
 }
 

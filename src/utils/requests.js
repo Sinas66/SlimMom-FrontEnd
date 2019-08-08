@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { } from '../redux/actions/auth';
+import { fetchSuccess } from '../redux/actions/productActions';
 import * as api from './entyPoints';
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -12,8 +12,16 @@ const setToken = token => ({
   }
 });
 
+export const putNewData = (token, data) => {
+  return axios
+    .put(api.url.dataUser(), { ...data }, setToken(token))
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
 // Example
 // export const fetchCompleteTask = (token, task) => {
 //   return axios.post(api.url.updateTask(), { ...task, isDone: true }, setToken(token)).catch(err => console.log(err));
 // };
-
