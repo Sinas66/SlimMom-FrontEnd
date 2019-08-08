@@ -5,7 +5,8 @@
   margin: 0 auto;
 }
 
-.container, .loggedContainer {
+.container,
+.loggedContainer {
   padding-bottom: 15px;
   min-width: 320px;
   display: flex;
@@ -56,10 +57,6 @@
   padding-right: 32px;
 }
 
-.usernamebox {
-  display: none;
-}
-
 .logoutButton {
   padding-top: 12px;
   padding-right: 19px;
@@ -86,7 +83,8 @@
     min-width: 768px;
   }
 
-  .container, .loggedContainer {
+  .container,
+  .loggedContainer {
     padding-bottom: 15px;
     width: 100%;
     display: flex;
@@ -108,13 +106,12 @@
     padding-right: 35px;
   }
 
-  .greyZone {
-    display: none;
-  }
-
   .logoutText {
+    height: 36px;
     display: block;
     background-color: transparent;
+    cursor: pointer;
+    transition: .5s;
     border: none;
     height: 47px;
     padding: 0;
@@ -126,6 +123,10 @@
     outline: none;
   }
 
+  .logoutText:hover {
+    color: #fc842c;
+    text-shadow: 0 1px 1px #ffcca8;
+  }
   .usernamebox {
     display: flex;
     width: 135px;
@@ -148,7 +149,8 @@
     margin-top: 40px;
   }
 
-  .container, .loggedContainer {
+  .container,
+  .loggedContainer {
     justify-content: space-between;
     min-width: 1024px;
     border: none;
@@ -159,7 +161,8 @@
     justify-content: start;
   }
 
-  .logoNavigationBox, .loggedLogoNavigationBox {
+  .logoNavigationBox,
+  .loggedLogoNavigationBox {
     width: 478px;
     display: flex;
     justify-content: space-between;
@@ -195,10 +198,6 @@
     padding-left: 46px;
   }
 
-  .burger {
-    display: none;
-  }
-
   .logotype {
     padding-left: 0;
   }
@@ -224,6 +223,7 @@
   .a {
     background-color: red;
   }
+
   .b {
     background-color: blue
   }

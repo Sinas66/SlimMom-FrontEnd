@@ -43,7 +43,7 @@ class Header extends Component {
   render() {
     const { toogleModal, logOut } = this;
     const { openModal, isLogged, toogleIcon } = this.state;
-    const { token } = this.props;
+    const { token, username } = this.props;
 
     console.log('token: ', token);
     return (
@@ -68,16 +68,13 @@ class Header extends Component {
             )}
           </div>
           {/* If user is logged - show the burger button (isLogged && button) */}
-          {isLogged && (
+          {isLogged && this.props.windowWidth > 768 && (
             <div className={styles.usernamebox}>
-              <p>Username</p>
+              <p className={styles.usernameText}> {username}</p>
               <p>|</p>
               <button onClick={logOut} className={styles.logoutText}>
                 Выйти
               </button>
-              {/* <button onClick={logOut} className={styles.logoutTextButton}>
-                <p className={styles.logoutText}>Выйти</p>
-              </button> */}
             </div>
           )}
           {isLogged && !toogleIcon && this.props.windowWidth < 1024 && (
@@ -94,9 +91,9 @@ class Header extends Component {
           {!isLogged && <UserBar />}
         </div>
         <div className={styles.grayLine} />
-        {isLogged && (
+        {isLogged && this.props.windowWidth < 768 && (
           <div className={styles.greyZone}>
-            <p className={styles.username}>Username</p>{' '}
+            <p className={styles.username}>{username}</p>{' '}
             <img onClick={logOut} className={styles.logoutButton} src={logout} />
           </div>
         )}
@@ -104,7 +101,9 @@ class Header extends Component {
     );
   }
 }
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  username: state.session.user.nickname
+});
 const mapDispatchToProps = {};
 
 export default connect(
