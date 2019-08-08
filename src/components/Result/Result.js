@@ -1,20 +1,15 @@
 import React, { Component, createRef } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addStore } from '../../redux/actions/productActions';
-import { putNewData } from '../../utils/requests';
+import { fetchSuccess, updateData } from '../../redux/actions/productActions';
 import styles from './Result.module.css';
 
 class Result extends Component {
   state = {
-    dailyRate: 0
+    dailyRate: 0,
+    forbiddenProd: []
   };
   backdropRef = createRef();
-
-  componentWillMount() {
-    this.onHandleCalc();
-    window.addEventListener('keydown', this.handleKeyPress);
-  }
 
   handleKeyPress = e => {
     if (e.code !== 'Escape') return;
@@ -26,7 +21,24 @@ class Result extends Component {
     window.removeEventListener('keydown', this.handleKeyPress);
   }
   componentDidMount() {
-    this.onHandlePost();
+    window.addEventListener('keydown', this.handleKeyPress);
+    const { groupBlood } = this.state;
+    this.onHandleCalc();
+
+    let arr = [];
+    if (groupBlood == '1') {
+      arr = ['яйца', 'зерновые', 'мучные изделия', 'молочные продукты'];
+    } else if (groupBlood == '2') {
+      arr = ['красное мясо', 'изделия из пшеничной муки', 'молочные продукты'];
+    } else if (groupBlood == '3') {
+      arr = ['кукуруза', 'гречка', 'арахис', 'чечевица', 'изделия из пшеничной муки'];
+    } else {
+      arr = ['гречка', 'кукуруза', 'красное мясо', 'фасоль', 'мучные изделия', 'орехи'];
+    }
+
+    this.setState({
+      forbiddenProd: arr
+    });
   }
 
   onHandleCalc = () => {
@@ -38,41 +50,38 @@ class Result extends Component {
   };
 
   onHandlePost = () => {
-    const { add, session, newInfo, groupBlood } = this.props;
+    const { add, session, newInfo, groupBlood, onClose, currentWeight, age, height, desireWeight } = this.props;
     const { dailyRate } = this.state;
     const newData = {
       groupBlood,
-      dailyRate
+      dailyRate,
+      currentWeight,
+      age,
+      height,
+      desireWeight
     };
     if (session.token) {
-      return newInfo(session.token, newData);
+      newInfo(session.token, newData);
+      return onClose();
     }
-    return add(newData);
+    add(newData);
+    return onClose();
   };
 
   handleBackdropClick = e => {
     const { current } = this.backdropRef;
+    const { onClose } = this.props;
 
     if (current && e.target !== current) {
       return;
     }
 
-    this.props.onClose();
+    onClose();
   };
 
   render() {
-    const { onClose, groupBlood, session } = this.props;
-    const { dailyRate } = this.state;
-    let arr = [];
-    if (groupBlood == '1') {
-      arr = ['яйца', 'зерновые', 'мучные изделия', 'молочные продукты'];
-    } else if (groupBlood == '2') {
-      arr = ['красное мясо', 'изделия из пшеничной муки', 'молочные продукты'];
-    } else if (groupBlood == '3') {
-      arr = ['кукуруза', 'гречка', 'арахис', 'чечевица', 'изделия из пшеничной муки'];
-    } else {
-      arr = ['гречка', 'кукуруза', 'красное мясо', 'фасоль', 'мучные изделия', 'орехи'];
-    }
+    const { onClose, session } = this.props;
+    const { dailyRate, forbiddenProd } = this.state;
 
     return (
       <>
@@ -94,7 +103,7 @@ class Result extends Component {
               </p>
               <h2 className={styles.subTitle}>Продукты, которые вам не рекомендуется употреблять:</h2>
               <ol className={styles.menu}>
-                {arr.map((el, i) => (
+                {forbiddenProd.map((el, i) => (
                   <li className={styles.listItem} key={i}>
                     {el}
                   </li>
@@ -104,13 +113,13 @@ class Result extends Component {
                 Начать худеть
               </button> */}
               {!session.token && (
-                <Link className={styles.start} to="/login">
+                <Link onClick={this.onHandlePost} className={styles.start} to="/login">
                   Начать худеть
                 </Link>
               )}
 
               {session.token && (
-                <button type="button" onClick={this.onClose} className={styles.start}>
+                <button type="button" onClick={this.onHandlePost} className={styles.start}>
                   Начать худеть
                 </button>
               )}
@@ -127,8 +136,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  add: store => dispatch(addStore(store)),
-  newInfo: (token, data) => dispatch(putNewData(token, data))
+  add: store => dispatch(fetchSuccess(store)),
+  newInfo: (token, data) => dispatch(updateData(token, data))
 });
 
 export default connect(

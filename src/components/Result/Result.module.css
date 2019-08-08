@@ -9,7 +9,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 } */
 
-@media(min-width:320px){
+
   .backdrop {
     font-family: Verdana, Geneva, Tahoma, sans-serif serif;
     position: fixed;
@@ -120,7 +120,7 @@
     display: none;
   }
 
-}
+
 
 @media(min-width: 768px){
 

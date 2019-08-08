@@ -16,7 +16,7 @@ export const putNewData = (token, data) => {
   return axios
     .put(api.url.dataUser(), { ...data }, setToken(token))
     .then(response => {
-      return response.json().then(data => dispatch(fetchSuccess(data.session)));
+      return response.json();
     })
     .catch(err => console.log(err));
 };
