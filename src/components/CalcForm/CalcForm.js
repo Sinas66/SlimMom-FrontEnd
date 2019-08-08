@@ -14,7 +14,7 @@ class CalcForm extends Component {
   };
 
   static defaultProps = {
-    isLogin: false,
+    isLogin: true,
     height: '',
     age: '',
     currentWeight: '',
