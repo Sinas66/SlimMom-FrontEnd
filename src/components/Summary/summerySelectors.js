@@ -1,6 +1,16 @@
-export const getProducts = state => state.data.items;
+import {createSelector} from 'reselect';
 
-export const getDate = state =>  state.data.date;
+const getData = state => state.data;
+
+export const getProducts = createSelector(
+    [getData],
+    (data) => data.items
+);
+
+export const getDate = createSelector(
+    [getData],
+    (data) => data.date
+);
 
 export const getGroupBlood = state => state.session.user.groupBlood;
 
