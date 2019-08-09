@@ -37,11 +37,12 @@
     padding: 50px 25px;
     display: flex;
     justify-content: center;
-    background-image: url(../../assets/greenleaves.png), linear-gradient(#eff1f3, #eff1f3); 
     background-repeat: no-repeat;
-    background-position: right;  
-  }
+    background-position: right bottom;  
+    background-image: url(../../assets/images/greenleaves-tablet.png), linear-gradient(#eff1f3, #eff1f3); 
 
+  }
+  
   .summarySection div {
     width: 319px;
     padding: 30px;
@@ -55,8 +56,9 @@
     padding: 30px;
     margin: auto;
   }
-
+  
   .summarySection {
+    background-image: url(../../assets/images/greenleaves.png), linear-gradient(#eff1f3, #eff1f3); 
     background-color: #eff1f3;
     padding: 50px 25px;
     display: flex;

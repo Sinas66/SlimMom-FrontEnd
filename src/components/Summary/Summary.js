@@ -1,7 +1,10 @@
 import React from 'react';
 import style from './Summery.module.css';
 import { connect } from 'react-redux';
-import {getDailyRate, getDate, getProducts, getGroupBlood} from './summerySelectors'
+import { getDailyRate, getDate, getProducts, getGroupBlood } from './summerySelectors';
+import PropTypes from 'prop-types';
+import moment from 'moment';
+
 
 const notAllowedProject = {
     1: "Все зерновые, яйца, молочные продукты, мучные изделия",
@@ -12,18 +15,18 @@ const notAllowedProject = {
 const getProductsByGroupBlood = (groupBlood) => notAllowedProject[groupBlood]
 const getCcalSumm = (products) => {
     let ccalSumm = 0;
-    products.map(el => ccalSumm += el.ccal)
-    return ccalSumm 
+    products.forEach(el => ccalSumm += el.ccal)
+    return ccalSumm
 }
 
-const Summary = ({ products, date, groupBlood,dailyRate }) =>
+const Summary = ({ products, date, groupBlood, dailyRate }) =>
     <div className={style.summarySection}>
         <div>
-            <h3>Сводка за {date}</h3>
+            <h3>Сводка за {moment(date).format("MM.DD.YYYY")}</h3>
             <ul className={style.listSummery}>
                 <li>
                     <p>Осталось</p>
-                    <p>{dailyRate-getCcalSumm(products)} ккал</p>
+                    <p>{dailyRate - getCcalSumm(products)} ккал</p>
                 </li>
                 <li>
                     <p>Употреблено</p>
@@ -35,7 +38,7 @@ const Summary = ({ products, date, groupBlood,dailyRate }) =>
                 </li>
                 <li>
                     <p>n% от нормы</p>
-                    <p>{(getCcalSumm(products)*(100/dailyRate)).toFixed(0)} %</p>
+                    <p>{(getCcalSumm(products) * (100 / dailyRate)).toFixed(0)} %</p>
                 </li>
             </ul>
         </div>
@@ -52,5 +55,13 @@ const mapStateToProps = (state) => (
         dailyRate: getDailyRate(state),
     }
 )
+Summary.propTypes = {
+    products: PropTypes.arrayOf(PropTypes.shape({
+        ccal: PropTypes.number,
+    })),
+    date: PropTypes.string,
+    groupBlood: PropTypes.number,
+    dailyRate: PropTypes.number,
+}
 
 export default connect(mapStateToProps, null)(Summary);
