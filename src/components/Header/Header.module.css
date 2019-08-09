@@ -6,7 +6,7 @@
 
 .container,
 .loggedContainer {
-  padding-bottom: 15px;
+  padding-bottom: 14px;
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid;
@@ -73,18 +73,24 @@
   height: 26px;
 }
 
+.burgerBtn{
+  background: transparent;
+  border: none;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  padding-top: 18px;
+  padding-right: 44px;
+}
 
 .burger {
   width: 24px;
-  padding-top: 9px;
-  padding-right: 20px;
+  height: 26px;
 }
 
 .cross {
   width: 27px;
   height: 26px;
-  padding-top: 17px;
-  padding-right: 18px;
 }
 
 .mobileLogoutBox {
