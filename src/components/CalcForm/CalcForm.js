@@ -22,8 +22,8 @@ class CalcForm extends Component {
   };
 
   static defaultProps = {
-    isLogin: true,
-    isCounted: true,
+    isLogin: false,
+    isCounted: false,
     height: '',
     age: '',
     currentWeight: '',
@@ -124,7 +124,6 @@ class CalcForm extends Component {
   };
 
   handleChangeGroupBlood = e => {
-    // const { name, value } = e.target;
     this.setState({ groupBlood: e.target.value });
     const val = Number(e.target.value);
 
@@ -133,6 +132,7 @@ class CalcForm extends Component {
         isError: false,
         errorGroupBlood: false
       });
+      e.target.classList.toggle('checked');
       document.querySelector('#submit').disabled = false;
     } else {
       this.setState({

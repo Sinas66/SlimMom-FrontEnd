@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import CalcForm from '../../components/CalcForm/CalcForm';
 
 class Home extends Component {
   state = {};
 
   render() {
-    return <p>Home</p>;
+    return <CalcForm />;
   }
 }
 
