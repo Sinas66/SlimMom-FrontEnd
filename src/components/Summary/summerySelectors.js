@@ -12,7 +12,15 @@ export const getDate = createSelector(
     (data) => data.date
 );
 
-export const getGroupBlood = state => state.session.user.groupBlood;
+export const getUser = state => state.session.user;
 
-export const getDailyRate = state => state.session.user.dailyRate;
+export const getGroupBlood = createSelector(
+    [getUser],
+    (user) => user.groupBlood
+);
+
+export const getDailyRate = createSelector(
+    [getUser],
+    (user) => user.dailyRate
+);
 
