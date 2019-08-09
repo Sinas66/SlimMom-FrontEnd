@@ -174,7 +174,8 @@ class CalcForm extends Component {
       errorCurrentWeight,
       errorDesireWeight,
       errorGroupBlood,
-      isValidAll
+      isValidAll,
+      isOpenModal
     } = this.state;
     const { groupBlood, isLogin } = this.props;
 
@@ -274,7 +275,7 @@ class CalcForm extends Component {
                   <label htmlFor="groupBlood_4">
                     4
                     <input
-                      id="groupBlood_3"
+                      id="groupBlood_4"
                       type="radio"
                       name="groupBlood"
                       value="4"
