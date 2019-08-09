@@ -39,17 +39,17 @@
 }
 
 .input[type='number'] {
-  -moz-appearance:textfield;
+  -moz-appearance: textfield;
 }
 
 .input::-webkit-outer-spin-button,
 .input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .radioContainer h3 {
-  color:#80838d;
+  color: #80838d;
   font-size: 13px;
   padding-top: 20px;
 }
@@ -58,9 +58,74 @@
   margin-bottom: 15px;
 }
 
-.radioInputs label {
-  margin-right: 17px;
+/* ========================================================= */
+
+
+/* .radio {
+  cursor: pointer;
+  position: relative;
+  padding-right: 20px;
+  margin-left: 15px;
 }
+
+.radio input {
+  position: absolute;
+  opacity: 0;
+}
+
+.radio:after {
+  content: "";
+  width: 14px;
+  height: 14px;
+  margin-left: 10px;
+  position: absolute;
+  right: 0;
+  bottom: 1px;
+  background-color: rgb(204, 204, 204);
+  box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+  border-radius: 50%;
+}
+
+.radio input:checked + .radio:after {
+      content: "\2022";
+      color: #f3f3f3;
+      font-size: 30px;
+      text-align: center;
+      line-height: 18px;
+  } */
+
+
+  /* ====================================================================== */
+
+
+  .radio input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+
+    /* border: none; */
+    outline: none;
+    margin-right: 16px;
+    box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+
+    position: relative;
+    top: 3px;
+    right: -3px;
+  }
+
+  .radio input:checked {
+    border: 7px solid rgb(43, 252, 1);
+  }
+
+
+
+
+
+/* ==================================================================== */
 
 .errorForm {
   text-align: center;
@@ -76,6 +141,7 @@
   width: 175px;
   height: 42px;
   border: none;
+  outline: none;
 }
 
 @media (min-width: 768px) {
@@ -105,6 +171,10 @@
   .title {
     font-size: 30px;
     line-height: 37.5px;
+  }
+
+  .radioContainer h3 {
+    font-size: 15px;
   }
 }
 
