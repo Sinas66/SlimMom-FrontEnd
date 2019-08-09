@@ -119,13 +119,14 @@
     padding-left: 67px;
   }
 
-  .burger {
-    padding-top: 6px;
-    padding-right: 39px
+  .usernameBurgerWrapper {
+    display: flex;
+    width: 310px;
+    justify-content: space-between;
   }
 
-  .cross {
-    padding-right: 35px;
+  .burgerBtn {
+    margin-right: 38px;
   }
 
   .logoutText {
@@ -153,7 +154,6 @@
     display: flex;
     width: 135px;
     justify-content: space-between;
-    padding-left: 250px;
     padding-top: 6px;
     font-size: 15px;
     letter-spacing: 1.5px;

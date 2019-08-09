@@ -23,12 +23,11 @@ class Header extends Component {
   };
   state = {
     openModal: false,
-    isLogged: false,
-    toogleIcon: false
+    isLogged: true
   };
 
   toogleModal = e => {
-    this.setState(state => ({ openModal: !state.openModal, toogleIcon: !state.toogleIcon }));
+    this.setState(state => ({ openModal: !state.openModal }));
   };
   // Here I have to write a function than will check if the User is LoggedIn or not, and change the state apropriately
 
@@ -37,7 +36,6 @@ class Header extends Component {
     if (!!token) {
       this.setState({ isLogged: true });
     }
-    localStorage.setItem('userToken', '1234');
   }
   logOut = () => {
     localStorage.removeItem('userToken');
@@ -46,7 +44,7 @@ class Header extends Component {
 
   render() {
     const { toogleModal, logOut } = this;
-    const { openModal, isLogged, toogleIcon } = this.state;
+    const { openModal, isLogged } = this.state;
     const {
       username
       // -------------- props from DiaryBlock: ------------
@@ -63,7 +61,7 @@ class Header extends Component {
                 Slim<span className={styles.logoTextSpan}>Mom</span>
               </h1>
             </div>
-            {isLogged && this.props.windowWidth > 1024 && (
+            {isLogged && this.props.windowWidth > 1023 && (
               <div className={styles.navigationBox}>
                 <NavLink className={styles.navigationLink} exact to="/diary">
                   Дневник
@@ -75,29 +73,31 @@ class Header extends Component {
             )}
           </div>
           {/* If user is logged - show the burger button (isLogged && button) */}
-          {isLogged && this.props.windowWidth > 768 && (
-            <div className={styles.usernamebox}>
-              <p className={styles.usernameText}> {username}</p>
-              <p>|</p>
-              <button onClick={logOut} className={styles.logoutText}>
-                Выйти
+          <div className={styles.usernameBurgerWrapper}>
+            {isLogged && this.props.windowWidth > 767 && (
+              <div className={styles.usernamebox}>
+                <p className={styles.usernameText}> {username}</p>
+                <p>|</p>
+                <button onClick={logOut} className={styles.logoutText}>
+                  Выйти
+                </button>
+              </div>
+            )}
+            {isLogged && !openModal && this.props.windowWidth < 1023 && (
+              <button className={styles.burgerBtn} onClick={toogleModal}>
+                <img className={styles.burger} src={burger} alt="burger button" />
               </button>
-            </div>
-          )}
-          {isLogged && !toogleIcon && this.props.windowWidth < 1024 && (
-            <button className={styles.burgerBtn} onClick={toogleModal}>
-              <img className={styles.burger} src={burger} alt="burger button" />
-            </button>
-          )}
-          {isLogged && toogleIcon && this.props.windowWidth < 1024 && (
-            <button className={styles.burgerBtn} onClick={toogleModal}>
-              <img className={styles.cross} src={cross} alt="burger button" />
-            </button>
-          )}
-          {openModal && this.props.windowWidth < 1024 && <Modal />}
+            )}
+            {isLogged && openModal && this.props.windowWidth < 1023 && (
+              <button className={styles.burgerBtn} onClick={toogleModal}>
+                <img className={styles.cross} src={cross} alt="burger button" />
+              </button>
+            )}
+          </div>
+          {openModal && this.props.windowWidth < 1023 && <Modal />}
           {!isLogged && <UserBar />}
         </div>
-        {isLogged && this.props.windowWidth < 768 && (
+        {isLogged && this.props.windowWidth < 767 && (
           <div
             className={
               // -------------- checking if modal from DiaryBlock opened: ------------
