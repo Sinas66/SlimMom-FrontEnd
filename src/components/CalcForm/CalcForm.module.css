@@ -76,6 +76,7 @@
   width: 175px;
   height: 42px;
   border: none;
+  outline: none;
 }
 
 @media (min-width: 768px) {
@@ -105,6 +106,10 @@
   .title {
     font-size: 30px;
     line-height: 37.5px;
+  }
+  
+  .radioContainer h3 {
+    font-size: 15px;
   }
 }
 

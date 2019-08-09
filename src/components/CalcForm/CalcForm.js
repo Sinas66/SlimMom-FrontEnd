@@ -3,9 +3,17 @@ import PropTypes from 'prop-types';
 import ErrorNotification from './ErrorNotification';
 import css from './CalcForm.module.css';
 
+const GroupBlood = {
+  FIRST_GROUP: '1',
+  SECOND_GROUP: '2',
+  THIRD_GROUP: '3',
+  FOURTH_GROUP: '4'
+}
+
 class CalcForm extends Component {
   static propTypes = {
     isLogin: PropTypes.bool,
+    isCounted: PropTypes.bool,
     height: PropTypes.string,
     age: PropTypes.string,
     currentWeight: PropTypes.string,
@@ -14,12 +22,13 @@ class CalcForm extends Component {
   };
 
   static defaultProps = {
-    isLogin: false,
+    isLogin: true,
+    isCounted: true,
     height: '',
     age: '',
     currentWeight: '',
     desireWeight: '',
-    groupBlood: ''
+    groupBlood: null
   };
 
   state = {
@@ -80,7 +89,7 @@ class CalcForm extends Component {
     this.setState({ currentWeight: e.target.value });
     const val = Number(e.target.value);
 
-    if (val >= 1 && val <= 199 && Number.isInteger(val)) {
+    if (val >= 1 && val <= 199) {
       this.setState({
         isError: false,
         errorCurrentWeight: false
@@ -99,7 +108,7 @@ class CalcForm extends Component {
     this.setState({ desireWeight: e.target.value });
     const val = Number(e.target.value);
 
-    if (val >= 1 && val <= 199 && Number.isInteger(val)) {
+    if (val >= 1 && val <= 199) {
       this.setState({
         isError: false,
         errorDesireWeight: false
@@ -115,10 +124,11 @@ class CalcForm extends Component {
   };
 
   handleChangeGroupBlood = e => {
+    // const { name, value } = e.target;
     this.setState({ groupBlood: e.target.value });
     const val = Number(e.target.value);
 
-    if (val && val >= 1 && val <= 4 && Number.isInteger(val)) {
+    if (val >= 1 && val <= 4 && Number.isInteger(val)) {
       this.setState({
         isError: false,
         errorGroupBlood: false
@@ -175,9 +185,10 @@ class CalcForm extends Component {
       errorDesireWeight,
       errorGroupBlood,
       isValidAll,
+      groupBlood,
       isOpenModal
     } = this.state;
-    const { groupBlood, isLogin } = this.props;
+    const { isLogin, isCounted } = this.props;
 
     return (
       <div className={css.wrapper}>
@@ -192,6 +203,7 @@ class CalcForm extends Component {
                 <input
                   className={css.input}
                   id="height"
+                  max="3"
                   type="number"
                   placeholder="Рост *"
                   name="height"
@@ -223,7 +235,7 @@ class CalcForm extends Component {
                   value={currentWeight}
                   onChange={this.handleChangeCurrentWeight}
                 />
-                {errorCurrentWeight && <ErrorNotification label={'Введите целое число от 1 до 199'} />}
+                {errorCurrentWeight && <ErrorNotification label={'Введите число от 1 до 199'} />}
               </label>
             </div>
             <div className={css.rightInputs}>
@@ -237,7 +249,7 @@ class CalcForm extends Component {
                   value={desireWeight}
                   onChange={this.handleChangeDesireWeight}
                 />
-                {errorDesireWeight && <ErrorNotification label={'Введите целое число от 1 до 199'} />}
+                {errorDesireWeight && <ErrorNotification label={'Введите число от 1 до 199'} />}
               </label>
               <section className={css.radioContainer}>
                 <h3>Группа крови *</h3>
@@ -248,7 +260,8 @@ class CalcForm extends Component {
                       id="groupBlood_1"
                       type="radio"
                       name="groupBlood"
-                      value="1"
+                      value={GroupBlood.FIRST_GROUP}
+                      checked={groupBlood === GroupBlood.FIRST_GROUP}
                       onChange={this.handleChangeGroupBlood}
                     />
                   </label>
@@ -256,9 +269,10 @@ class CalcForm extends Component {
                     2
                     <input
                       id="groupBlood_2"
+                      checked={groupBlood === GroupBlood.SECOND_GROUP}
                       type="radio"
                       name="groupBlood"
-                      value="2"
+                      value={GroupBlood.SECOND_GROUP}
                       onChange={this.handleChangeGroupBlood}
                     />
                   </label>
@@ -266,9 +280,10 @@ class CalcForm extends Component {
                     3
                     <input
                       id="groupBlood_3"
+                      checked={groupBlood === GroupBlood.THIRD_GROUP}
                       type="radio"
                       name="groupBlood"
-                      value="3"
+                      value={GroupBlood.THIRD_GROUP}
                       onChange={this.handleChangeGroupBlood}
                     />
                   </label>
@@ -276,9 +291,10 @@ class CalcForm extends Component {
                     4
                     <input
                       id="groupBlood_4"
+                      checked={groupBlood === GroupBlood.FOURTH_GROUP}
                       type="radio"
                       name="groupBlood"
-                      value="4"
+                      value={GroupBlood.FOURTH_GROUP}
                       onChange={this.handleChangeGroupBlood}
                     />
                   </label>
@@ -293,7 +309,7 @@ class CalcForm extends Component {
             </p>
           )}
           <button type="button" id="submit" className={css.btn} onClick={this.handleSubmit}>
-            {!groupBlood ? 'Начать худеть' : 'Пересчитать'}
+            {!isCounted ? 'Начать худеть' : 'Пересчитать'}
           </button>
         </div>
       </div>
