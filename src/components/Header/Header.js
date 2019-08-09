@@ -9,6 +9,10 @@ import cross from './Logo/cross.png';
 import logout from './Logo/logout.png';
 import styles from './Header.module.css';
 import { connect } from 'react-redux';
+
+// -------------- import from DiaryBlock: ------------
+// import { toogleModalProductsAction } from '../../redux/actions/productActions';
+
 import PropTypes from 'prop-types';
 
 // const userToken = JSON.parse(localStorage.getItem('userToken'))
@@ -43,9 +47,12 @@ class Header extends Component {
   render() {
     const { toogleModal, logOut } = this;
     const { openModal, isLogged, toogleIcon } = this.state;
-    const { token, username } = this.props;
-
-    console.log('token: ', token);
+    const {
+      username
+      // -------------- props from DiaryBlock: ------------
+      // isModalShowed
+      // toogleModalProducts
+    } = this.props;
     return (
       <div className={styles.header}>
         <div className={isLogged ? styles.container : styles.loggedContainer}>
@@ -91,11 +98,18 @@ class Header extends Component {
           {!isLogged && <UserBar />}
         </div>
         {isLogged && this.props.windowWidth < 768 && (
-          <div className={styles.greyZone}>
-            <button className={styles.closeModal} />
+          <div
+            className={
+              // -------------- checking if modal from DiaryBlock opened: ------------
+              // isModalShowed
+              false ? styles.greyZone : styles.greyZoneModalClose
+            }
+          >
+            {/* ---------------------- close button for both modals ----------------------------
+              /* {isModalShowed && <button type="button" onClick={toogleModalProducts} className={styles.closeModal} />} */}
             <div className={styles.mobileLogoutBox}>
               <p className={styles.username}>{username}</p>{' '}
-              <img onClick={logOut} className={styles.logoutButton} src={logout} />
+              <img onClick={logOut} className={styles.logoutButton} src={logout} alt="1" />
             </div>
           </div>
         )}
@@ -105,8 +119,16 @@ class Header extends Component {
 }
 const mapStateToProps = state => ({
   username: state.session.user.nickname
+
+  // -------------- modal flag(boolean) from DiaryBlock: ------------
+  // isModalShowed: state.dailyBlock.isModalProduct
 });
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => ({
+  // -------------- modal flag(boolean) from DiaryBlock: ------------
+  // toogleModalProducts: () => {
+  //   dispatch(toogleModalProductsAction());
+  // }
+});
 
 export default connect(
   mapStateToProps,

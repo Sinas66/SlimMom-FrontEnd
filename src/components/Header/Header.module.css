@@ -13,7 +13,6 @@
   border-color: #dddddd;
 }
 
-
 .logotype {
   display: flex;
   padding-top: 4px;
@@ -44,11 +43,15 @@
   letter-spacing: 2px;
 }
 
-.greyZone {
+.greyZone, .greyZoneModalClose {
   width: 100%;
   display: flex;
   justify-content: space-between;
   background-color: #dddd;
+}
+
+.greyZoneModalClose {
+  justify-content: flex-end;
 }
 
 .closeModal {
