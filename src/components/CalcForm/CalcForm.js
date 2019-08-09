@@ -254,7 +254,7 @@ class CalcForm extends Component {
               <section className={css.radioContainer}>
                 <h3>Группа крови *</h3>
                 <div className={css.radioInputs}>
-                  <label htmlFor="groupBlood_1">
+                  <label htmlFor="groupBlood_1" className={css.radio}>
                     1
                     <input
                       id="groupBlood_1"
@@ -265,7 +265,7 @@ class CalcForm extends Component {
                       onChange={this.handleChangeGroupBlood}
                     />
                   </label>
-                  <label htmlFor="groupBlood_2">
+                  <label htmlFor="groupBlood_2" className={css.radio}>
                     2
                     <input
                       id="groupBlood_2"
@@ -276,7 +276,7 @@ class CalcForm extends Component {
                       onChange={this.handleChangeGroupBlood}
                     />
                   </label>
-                  <label htmlFor="groupBlood_3">
+                  <label htmlFor="groupBlood_3" className={css.radio}>
                     3
                     <input
                       id="groupBlood_3"
@@ -287,7 +287,7 @@ class CalcForm extends Component {
                       onChange={this.handleChangeGroupBlood}
                     />
                   </label>
-                  <label htmlFor="groupBlood_4">
+                  <label htmlFor="groupBlood_4" className={css.radio}>
                     4
                     <input
                       id="groupBlood_4"

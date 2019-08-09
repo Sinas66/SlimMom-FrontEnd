@@ -39,17 +39,17 @@
 }
 
 .input[type='number'] {
-  -moz-appearance:textfield;
+  -moz-appearance: textfield;
 }
 
 .input::-webkit-outer-spin-button,
 .input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .radioContainer h3 {
-  color:#80838d;
+  color: #80838d;
   font-size: 13px;
   padding-top: 20px;
 }
@@ -58,9 +58,53 @@
   margin-bottom: 15px;
 }
 
-.radioInputs label {
+/* .radioInputs label {
   margin-right: 17px;
+} */
+
+
+.radio {
+  cursor: pointer;
+  position: relative;
+  padding-right: 20px;
+  margin-left: 15px;
 }
+
+.radio input {
+  display: none;
+}
+
+.radio:after {
+  content: "";
+  width: 14px;
+  height: 14px;
+  margin-left: 10px;
+  position: absolute;
+  right: 0;
+  bottom: 1px;
+  background-color: #aaa;
+  box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+  border-radius: 50%;
+}
+
+.radio input:checked + .radio:after {
+      content: "\2022";
+      color: #f3f3f3;
+      font-size: 30px;
+      text-align: center;
+      line-height: 18px;
+  }
+
+/* .radio>input:checked+.radio {
+  background-color: rgb(24, 216, 24);
+} */
+
+
+
+
+
+
+/* ==================================================================== */
 
 .errorForm {
   text-align: center;
@@ -107,7 +151,7 @@
     font-size: 30px;
     line-height: 37.5px;
   }
-  
+
   .radioContainer h3 {
     font-size: 15px;
   }
