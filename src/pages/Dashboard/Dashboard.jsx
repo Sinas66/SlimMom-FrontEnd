@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Summery from '../../components/Summary/Summary';
+import Summary from '../../components/Summary/Summary';
 
 
 class Dashboard extends Component {
@@ -8,7 +8,7 @@ class Dashboard extends Component {
   render() {
     return <>
       <p>Dashboard</p>
-      <Summery />
+      <Summary />
     </>;
   }
 }

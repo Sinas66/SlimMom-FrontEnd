@@ -3,6 +3,7 @@ import style from './Summery.module.css';
 import { connect } from 'react-redux';
 import { getDailyRate, getDate, getProducts, getGroupBlood } from './summerySelectors';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 
 const notAllowedProject = {
@@ -21,7 +22,7 @@ const getCcalSumm = (products) => {
 const Summary = ({ products, date, groupBlood, dailyRate }) =>
     <div className={style.summarySection}>
         <div>
-            <h3>Сводка за {date}</h3>
+            <h3>Сводка за {moment(date).format("MM.DD.YYYY")}</h3>
             <ul className={style.listSummery}>
                 <li>
                     <p>Осталось</p>

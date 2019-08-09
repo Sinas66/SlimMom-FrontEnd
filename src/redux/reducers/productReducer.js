@@ -36,10 +36,9 @@ const INITIAL_STATE = {
         '3': true,
         '4': false
       }
-    },
+    }
   ]
-}
-
+};
 
 const productReducer = (state = INITIAL_STATE, { type, payload }) => {
   return state;
