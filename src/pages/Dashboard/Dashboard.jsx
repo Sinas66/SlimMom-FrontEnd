@@ -1,32 +1,32 @@
 import React, { Component } from 'react';
+import { Route } from "react-router-dom";
 import styles from './Dashboard.module.css';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import Header from '../../components/Header/Header';
+import CalcForm from "../../components/CalcForm/CalcForm";
+import Summary from '../../components/Summary/Summary';
+import DiaryBlock from '../../components/DiaryBlock/DiaryBlock';
 import windowSize from 'react-window-size';
 
 export default class Dashboard extends Component {
-  state = {
-  };
+  state = {};
 
   render() {
+    const { token } = this.props;
     return (
-      <Router>
         <>
-            <section className={styles.grid}>
-             <div className={styles.headerBlock_container}>
-              <Header />
-               </div>
-             <div className={styles.calcDairyBlock_container}>
-                <Route path="/dashboard/" exact component={} />
-                <Route path="/diary/" component={} />
-               </div>
-             <div className={styles.summaryBlock_container}>
-              <SummaryBlock />
-               </div>
-           </section>
-          </>
-      </Router>
-      );
+          <section className={styles.grid}>
+            <div className={styles.headerBlock_container}>
+              <Header token={token} />
+            </div>
+            <div className={styles.calcDairyBlock_container}>
+              <Route path="/dashboard" exact component={CalcForm} />
+              <Route path="/dashboard/" component={DiaryBlock} />
+            </div>
+            <div className={styles.summaryBlock_container}>
+              <Summary />
+            </div>
+          </section>
+        </>
+    );
   }
 }
-
-
