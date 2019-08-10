@@ -9,8 +9,8 @@ export const fetchSuccess = data => ({
 export const updateData = (token, data) => dispatch => {
   putNewData(token, data)
     .then(answ => {
-      console.log(answ);
-      // dispatch(fetchSuccess(answ.user));
+      // console.log(answ);
+      dispatch(fetchSuccess(answ.userData));
     })
     .catch(err => {
       console.log('Trouble', err);

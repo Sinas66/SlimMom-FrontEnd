@@ -4,18 +4,14 @@ import Dashboard from './pages/Dashboard/Dashboard.jsx';
 import Login from './pages/Login/Login.jsx';
 import Home from './pages/Home/Home';
 import ProtectedComponent from './hoc/ProtectedComponent';
-import Result from './components/Result/Result';
 
 function App() {
   return (
-    <>
-      <Result />
-      <Switch>
-        <ProtectedComponent active={false} path="/login" component={Login} />
-        <ProtectedComponent active={false} exact path="/" component={Home} />
-        <ProtectedComponent active={true} exact path="/dashboard" component={Dashboard} />
-      </Switch>
-    </>
+    <Switch>
+      <ProtectedComponent active={false} path="/login" component={Login} />
+      <ProtectedComponent active={false} exact path="/" component={Home} />
+      <ProtectedComponent active={true} exact path="/dashboard" component={Dashboard} />
+    </Switch>
   );
 }
 
