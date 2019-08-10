@@ -4,7 +4,7 @@ class Login extends Component {
   state = {};
 
   render() {
-    return <p>Login</p>;
+    return <div>Login</div>;
   }
 }
 
