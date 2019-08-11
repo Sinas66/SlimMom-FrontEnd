@@ -42,15 +42,15 @@ class Result extends Component {
   }
 
   onHandleCalc = () => {
-    const { currentWeight, age, height, desireWeight } = this.props;
+    const { currentWeight, age, height, desiredWeight } = this.props;
 
     this.setState({
-      dailyRate: 10 * Number(currentWeight) + 6.25 * Number(height) - 5 * Number(age) - 161 - 10 * Number(desireWeight)
+      dailyRate: 10 * Number(currentWeight) + 6.25 * Number(height) - 5 * Number(age) - 161 - 10 * Number(desiredWeight)
     });
   };
 
   onHandlePost = () => {
-    const { add, session, newInfo, groupBlood, onClose, currentWeight, age, height, desireWeight } = this.props;
+    const { add, session, newInfo, groupBlood, onClose, currentWeight, age, height, desiredWeight } = this.props;
     const { dailyRate } = this.state;
     const newData = {
       groupBlood,
@@ -58,7 +58,7 @@ class Result extends Component {
       currentWeight,
       age,
       height,
-      desireWeight
+      desiredWeight
     };
     if (session.token) {
       newInfo(session.token, newData);
