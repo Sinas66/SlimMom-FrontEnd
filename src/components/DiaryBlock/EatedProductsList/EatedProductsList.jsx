@@ -15,14 +15,7 @@ const EatedProductsList = ({ productsByDay, isProductsByDayLoader, deleteProduct
       {productsByDay.length === 0 && <h1>Вы ничего не ели! Обязательно перекусите!!!</h1>}
       {isProductsByDayLoader && (
         <div className={styles.fetch_loader}>
-          <Spinner
-            name="pacman"
-            style={{
-              color: 'red',
-              display: 'block',
-              margin: '0 auto'
-            }}
-          />
+          <Spinner />
         </div>
       )}
 
