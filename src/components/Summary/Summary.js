@@ -1,23 +1,10 @@
 import React from 'react';
 import style from './Summery.module.css';
 import { connect } from 'react-redux';
-import { getDailyRate, getDate, getProducts, getGroupBlood } from './summerySelectors';
+import { getDailyRate, getDate, getProducts, getGroupBlood } from './selectors';
+import { getProductsByGroupBlood, getCcalSumm} from './constants';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-
-
-const notAllowedProject = {
-    1: "Все зерновые, яйца, молочные продукты, мучные изделия",
-    2: "Все молочные продукты, изделия из пшеничной муки, красное мясо",
-    3: "Все изделия из пшеничной муки, чечевица, арахис, гречка, кукуруза",
-    4: "Все мучные изделия, красное мясо, орехи, кукуруза, фасоль, гречка",
-}
-const getProductsByGroupBlood = (groupBlood) => notAllowedProject[groupBlood]
-const getCcalSumm = (products) => {
-    let ccalSumm = 0;
-    products.forEach(el => ccalSumm += el.ccal)
-    return ccalSumm
-}
 
 const Summary = ({ products, date, groupBlood, dailyRate }) =>
     <div className={style.summarySection}>
