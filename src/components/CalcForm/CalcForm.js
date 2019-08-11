@@ -29,7 +29,7 @@ class CalcForm extends Component {
     height: '',
     age: '',
     currentWeight: '',
-    desireWeight: '',
+    desiredWeight: '',
     groupBlood: null
   };
 
@@ -37,12 +37,12 @@ class CalcForm extends Component {
     height: this.props.height,
     age: this.props.age,
     currentWeight: this.props.currentWeight,
-    desireWeight: this.props.desireWeight,
+    desiredWeight: this.props.desireWeight,
     groupBlood: this.props.groupBlood,
     errorHeight: false,
     errorAge: false,
     errorCurrentWeight: false,
-    errorDesireWeight: false,
+    errorDesiredWeight: false,
     errorGroupBlood: false,
     isOpenModal: false,
     isError: false,
@@ -106,20 +106,20 @@ class CalcForm extends Component {
     }
   };
 
-  handleChangeDesireWeight = e => {
-    this.setState({ desireWeight: e.target.value });
+  handleChangeDesiredWeight = e => {
+    this.setState({ desiredWeight: e.target.value });
     const val = Number(e.target.value);
 
     if (val >= 1 && val <= 199) {
       this.setState({
         isError: false,
-        errorDesireWeight: false
+        errorDesiredWeight: false
       });
       document.querySelector('#submit').disabled = false;
     } else {
       this.setState({
         isError: true,
-        errorDesireWeight: true
+        errorDesiredWeight: true
       });
       document.querySelector('#submit').disabled = true;
     }
@@ -146,8 +146,8 @@ class CalcForm extends Component {
   };
 
   handleSubmit = () => {
-    const { isError, height, age, currentWeight, desireWeight, groupBlood } = this.state;
-    const validation = height && age && currentWeight && desireWeight;
+    const { isError, height, age, currentWeight, desiredWeight, groupBlood } = this.state;
+    const validation = height && age && currentWeight && desiredWeight;
 
     if (!isError && validation) {
       if (groupBlood) {
@@ -180,11 +180,11 @@ class CalcForm extends Component {
       height,
       age,
       currentWeight,
-      desireWeight,
+      desiredWeight,
       errorHeight,
       errorAge,
       errorCurrentWeight,
-      errorDesireWeight,
+      errorDesiredWeight,
       errorGroupBlood,
       isValidAll,
       groupBlood,
@@ -241,17 +241,17 @@ class CalcForm extends Component {
               </label>
             </div>
             <div className={css.rightInputs}>
-              <label htmlFor="desireWeight">
+              <label htmlFor="desiredWeight">
                 <input
                   className={css.input}
-                  id="desireWeight"
+                  id="desiredWeight"
                   type="number"
                   placeholder="Желаемый вес *"
-                  name="desireWeight"
-                  value={desireWeight}
-                  onChange={this.handleChangeDesireWeight}
+                  name="desiredWeight"
+                  value={desiredWeight}
+                  onChange={this.handleChangeDesiredWeight}
                 />
-                {errorDesireWeight && <ErrorNotification label={'Введите число от 1 до 199'} />}
+                {errorDesiredWeight && <ErrorNotification label={'Введите число от 1 до 199'} />}
               </label>
               <section className={css.radioContainer}>
                 <h3>Группа крови *</h3>
