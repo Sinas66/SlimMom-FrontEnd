@@ -8,7 +8,7 @@ const GroupBlood = {
   SECOND_GROUP: '2',
   THIRD_GROUP: '3',
   FOURTH_GROUP: '4'
-}
+};
 
 class CalcForm extends Component {
   static propTypes = {
@@ -17,7 +17,7 @@ class CalcForm extends Component {
     height: PropTypes.string,
     age: PropTypes.string,
     currentWeight: PropTypes.string,
-    desireWeight: PropTypes.string,
+    desiredWeight: PropTypes.string,
     groupBlood: PropTypes.string
   };
 
@@ -35,7 +35,7 @@ class CalcForm extends Component {
     height: this.props.height,
     age: this.props.age,
     currentWeight: this.props.currentWeight,
-    desiredWeight: this.props.desireWeight,
+    desiredWeight: this.props.desiredWeight,
     groupBlood: this.props.groupBlood,
     errorHeight: false,
     errorAge: false,
@@ -86,8 +86,9 @@ class CalcForm extends Component {
   };
 
   handleChangeCurrentWeight = e => {
-    this.setState({ currentWeight: e.target.value });
+    this.setState({ currentWeight: e.target.value.replace(/,/g, '.') });
     const val = Number(e.target.value);
+    console.log(e.target.value);
 
     if (val >= 1 && val <= 199) {
       this.setState({
@@ -105,7 +106,7 @@ class CalcForm extends Component {
   };
 
   handleChangeDesiredWeight = e => {
-    this.setState({ desiredWeight: e.target.value });
+    this.setState({ desiredWeight: e.target.value.replace(/,/g, '.') });
     const val = Number(e.target.value);
 
     if (val >= 1 && val <= 199) {
@@ -149,12 +150,13 @@ class CalcForm extends Component {
 
     if (!isError && validation) {
       if (groupBlood) {
-        this.toggleOpenModal();
         this.setState({
           isError: false,
           errorGroupBlood: false,
           isValidAll: false
         });
+        this.toggleOpenModal();
+        this.reset();
       } else {
         this.setState({
           isError: true,
@@ -171,6 +173,16 @@ class CalcForm extends Component {
 
   toggleOpenModal = () => {
     this.setState(state => ({ isOpenModal: !state.isOpenModal }));
+  };
+
+  reset = () => {
+    this.setState({
+      height: '',
+      age: '',
+      currentWeight: '',
+      desiredWeight: '',
+      groupBlood: ''
+    });
   };
 
   render() {
@@ -203,9 +215,8 @@ class CalcForm extends Component {
                 <input
                   className={css.input}
                   id="height"
-                  max="3"
                   type="number"
-                  placeholder="Рост *"
+                  placeholder="Рост, см *"
                   name="height"
                   value={height}
                   required
@@ -230,7 +241,7 @@ class CalcForm extends Component {
                   className={css.input}
                   id="currentWeight"
                   type="number"
-                  placeholder="Текущий вес *"
+                  placeholder="Текущий вес, кг *"
                   name="currentWeight"
                   value={currentWeight}
                   onChange={this.handleChangeCurrentWeight}
@@ -244,7 +255,7 @@ class CalcForm extends Component {
                   className={css.input}
                   id="desiredWeight"
                   type="number"
-                  placeholder="Желаемый вес *"
+                  placeholder="Желаемый вес, кг *"
                   name="desiredWeight"
                   value={desiredWeight}
                   onChange={this.handleChangeDesiredWeight}
