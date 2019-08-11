@@ -152,13 +152,12 @@ class CalcForm extends Component {
 
     if (!isError && validation) {
       if (groupBlood) {
+        this.toggleOpenModal();
         this.setState({
           isError: false,
           errorGroupBlood: false,
           isValidAll: false
-        });
-        this.toggleOpenModal();
-        this.reset();
+        }, this.reset);
       } else {
         this.setState({
           isError: true,
