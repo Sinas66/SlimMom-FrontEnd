@@ -59,34 +59,29 @@
 }
 
 
-  .radio input {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+.radio input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 
-    border-radius: 50%;
-    width: 15px;
-    height: 15px;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
 
+  outline: none;
+  margin-right: 16px;
+  box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+  cursor: pointer;
+  position: relative;
+  top: 3px;
+  right: -3px;
+  transition: .2s;
+}
 
-    outline: none;
-    margin-right: 16px;
-    box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
-
-    position: relative;
-    top: 3px;
-    right: -3px;
-  }
-
-  .radio input:checked {
-    background-color: rgb(255, 174, 0);
-  }
-
-
-
-
-
-/* ==================================================================== */
+.radio input:checked {
+  background-color: var(--button-color);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.5);
+}
 
 .errorForm {
   text-align: center;
@@ -94,7 +89,7 @@
 
 .btn {
   color: #fff;
-  background-color: #fc842c;
+  background-color: var(--button-color);
   line-height: 15px;
   border-radius: 20px;
   display: block;
@@ -116,11 +111,7 @@
     margin-bottom: 50px;
   }
 
-  .leftInputs {
-    width: 50%;
-  }
-
-  .rightInputs {
+  .leftInputs, .rightInputs {
     width: 50%;
   }
 
