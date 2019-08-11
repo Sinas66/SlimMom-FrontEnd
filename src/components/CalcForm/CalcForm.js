@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import ErrorNotification from './ErrorNotification';
 import css from './CalcForm.module.css';
 
@@ -12,7 +13,6 @@ const GroupBlood = {
 
 class CalcForm extends Component {
   static propTypes = {
-    isLogin: PropTypes.bool,
     isCounted: PropTypes.bool,
     height: PropTypes.string,
     age: PropTypes.string,
@@ -22,7 +22,6 @@ class CalcForm extends Component {
   };
 
   static defaultProps = {
-    isLogin: false,
     isCounted: false,
     height: '',
     age: '',
@@ -88,7 +87,6 @@ class CalcForm extends Component {
   handleChangeCurrentWeight = e => {
     this.setState({ currentWeight: e.target.value.replace(/,/g, '.') });
     const val = Number(e.target.value);
-    console.log(e.target.value);
 
     if (val >= 1 && val <= 199) {
       this.setState({
@@ -199,14 +197,14 @@ class CalcForm extends Component {
       groupBlood,
       isOpenModal
     } = this.state;
-    const { isLogin, isCounted } = this.props;
+    const { session, isCounted } = this.props;
 
     return (
       <div className={css.wrapper}>
         <div className={css.container}>
           <div className={css.titleContainer}>
             <p className={css.title}>Узнай свою суточную </p>
-            <p className={css.title}>норму калорий{isLogin && 'прямо сейчас'}</p>
+            <p className={css.title}>норму калорий {!session.token && 'прямо сейчас'}</p>
           </div>
           <form>
             <div className={css.leftInputs}>
@@ -322,9 +320,14 @@ class CalcForm extends Component {
             {!isCounted ? 'Начать худеть' : 'Пересчитать'}
           </button>
         </div>
+        {isOpenModal && <Result {...this.state} onClose={this.toggleOpenModal} />}
       </div>
     );
   }
 }
 
-export default CalcForm;
+const mapStateToProps = state => ({
+  session: state.session
+});
+
+export default connect(mapStateToProps)(CalcForm);
