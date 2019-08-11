@@ -10,7 +10,7 @@ function App() {
     <Switch>
       <ProtectedComponent active={false} path="/login" component={Login} />
       <ProtectedComponent active={false} exact path="/" component={Home} />
-      <ProtectedComponent active={false} exact path="/dashboard" component={Dashboard} />
+      <ProtectedComponent active={true} exact path="/dashboard" component={Dashboard} />
     </Switch>
   );
 }
