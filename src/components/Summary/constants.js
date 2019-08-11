@@ -10,3 +10,4 @@ const getProductsByGroupBlood = (groupBlood) => notAllowedProject[groupBlood];
 const getCcalSumm = (products) => products.reduce((accumulator, currentValue) => accumulator + currentValue.ccal, 0)
 
 export { getProductsByGroupBlood, getCcalSumm};
+
