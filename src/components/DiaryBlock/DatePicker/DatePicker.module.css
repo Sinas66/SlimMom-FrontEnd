@@ -1,0 +1,12 @@
+.datePicker_wrapper {
+  position: relative;
+}
+
+.datePicker_icon {
+  /* background: url('../../../assets//icons/calendar.png'); */
+  width: 14px;
+  height: 16px;
+  position: absolute;
+  top: 4px;
+  left: 125px;
+}

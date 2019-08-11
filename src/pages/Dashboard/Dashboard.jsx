@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import DiaryBlock from '../../components/DiaryBlock/DiaryBlock';
 
 class Dashboard extends Component {
+  static propTypes = {
+    token: PropTypes.string.isRequired
+  };
+
   state = {};
 
   render() {
-    return <p>Dashboard</p>;
+    const { token } = this.props;
+    return (
+      <>
+        <DiaryBlock token={token} />
+      </>
+    );
   }
 }
 
