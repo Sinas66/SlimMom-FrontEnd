@@ -100,7 +100,7 @@ class Header extends Component {
                             false ? styles.greyZone : styles.greyZoneModalClose
                         }
                     >
-                        {/* ---------------------- close button for both modals ----------------------------
+                        {/* ---------------------- close button for both modals ((!)you have to uncomment css background img too) ----------------------------
               /* {isModalShowed && <button type="button" onClick={toogleModalProducts} className={styles.closeModal} />} */}
                         <div className={styles.mobileLogoutBox}>
                             <p className={styles.username}>{username}</p>{' '}
@@ -113,7 +113,7 @@ class Header extends Component {
     }
 }
 const mapStateToProps = state => ({
-    username: state.session.user.nickname
+    username: state.session.nickname
 
     // -------------- modal flag(boolean) from DiaryBlock: ------------
     // isModalShowed: state.dailyBlock.isModalProduct
