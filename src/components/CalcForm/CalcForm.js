@@ -52,7 +52,7 @@ class CalcForm extends Component {
     this.setState({ height: e.target.value });
     const val = Number(e.target.value);
 
-    if (val >= 1 && val <= 230 && Number.isInteger(val)) {
+    if (val >= 50 && val <= 230 && Number.isInteger(val)) {
       this.setState({
         isError: false,
         errorHeight: false
@@ -90,7 +90,7 @@ class CalcForm extends Component {
     this.setState({ currentWeight: e.target.value.replace(/,/g, '.') });
     const val = Number(e.target.value);
 
-    if (val >= 1 && val <= 199) {
+    if (val >= 30 && val <= 199) {
       this.setState({
         isError: false,
         errorCurrentWeight: false
@@ -109,7 +109,7 @@ class CalcForm extends Component {
     this.setState({ desiredWeight: e.target.value.replace(/,/g, '.') });
     const val = Number(e.target.value);
 
-    if (val >= 1 && val <= 199) {
+    if (val >= 30 && val <= 199) {
       this.setState({
         isError: false,
         errorDesiredWeight: false
@@ -126,22 +126,21 @@ class CalcForm extends Component {
 
   handleChangeGroupBlood = e => {
     this.setState({ groupBlood: e.target.value });
-    document.querySelector('#submit').disabled = false;
-    // const val = Number(e.target.value);
+    const val = Number(e.target.value);
 
-    // if (val >= 1 && val <= 4 && Number.isInteger(val)) {
-    //   this.setState({
-    //     isError: false,
-    //     errorGroupBlood: false
-    //   });
-    //   document.querySelector('#submit').disabled = false;
-    // } else {
-    //   this.setState({
-    //     isError: true,
-    //     errorGroupBlood: true
-    //   });
-    //   document.querySelector('#submit').disabled = true;
-    // }
+    if (val >= 1 && val <= 4 && Number.isInteger(val)) {
+      this.setState({
+        isError: false,
+        errorGroupBlood: false
+      });
+      document.querySelector('#submit').disabled = false;
+    } else {
+      this.setState({
+        isError: true,
+        errorGroupBlood: true
+      });
+      document.querySelector('#submit').disabled = true;
+    }
   };
 
   handleSubmit = () => {
@@ -151,7 +150,6 @@ class CalcForm extends Component {
     if (!isError && validation) {
       if (groupBlood) {
         this.toggleOpenModal();
-
         this.setState({
           isError: false,
           errorGroupBlood: false,
@@ -162,7 +160,6 @@ class CalcForm extends Component {
           isError: true,
           errorGroupBlood: true
         });
-        document.querySelector('#submit').disabled = true;
       }
     } else {
       this.setState({
