@@ -9,7 +9,7 @@ import styles from './Header.module.css';
 import { connect } from 'react-redux';
 
 // -------------- import from DiaryBlock: ------------
-// import { toogleModalProductsAction } from '../../redux/actions/productActions';
+// import { closeModalProductsAction } from '../../redux/actions/productActions';
 
 import PropTypes from 'prop-types';
 
@@ -121,7 +121,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     // -------------- modal flag(boolean) from DiaryBlock: ------------
     // toogleModalProducts: () => {
-    //   dispatch(toogleModalProductsAction());
+    //   dispatch(closeModalProductsAction());
     // }
 });
 
