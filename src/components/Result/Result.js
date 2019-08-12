@@ -22,7 +22,7 @@ class Result extends Component {
   }
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyPress);
-    const { groupBlood } = this.state;
+    const { groupBlood } = this.props;
     this.onHandleCalc();
 
     let arr = [];
