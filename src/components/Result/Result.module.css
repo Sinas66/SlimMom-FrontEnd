@@ -7,9 +7,7 @@
 
 
 
-/* body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-} */
+
 
 
   .backdrop {
@@ -27,7 +25,6 @@
   }
 
   .modal {
-    /* padding: 0 0 16px 0; */
     max-width: 450px;
     width: 100%;
     background-color:var(--bg-color-white);
@@ -53,7 +50,6 @@
     background-color: var(--bg-color-blue);
     display: block;
     margin: 45px auto 21px;
-    /* margin-top: 45px; */
   }
 
   .title{
@@ -105,7 +101,6 @@
     display: block;
     margin: 0 auto;
     width: 175px;
-    /* height: 42px; */
     border: none;
     text-decoration: none;
 
