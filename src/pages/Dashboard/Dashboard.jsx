@@ -5,7 +5,8 @@ import Header from '../../components/Header/Header';
 import CalcForm from '../../components/CalcForm/CalcForm';
 import Summary from '../../components/Summary/Summary';
 import DiaryBlock from '../../components/DiaryBlock/DiaryBlock';
-import windowSize from 'react-window-size';
+import { getProductsByDayAction } from '../../redux/actions/productActions';
+import { connect } from 'react-redux';
 
 class Dashboard extends Component {
   state = {};
