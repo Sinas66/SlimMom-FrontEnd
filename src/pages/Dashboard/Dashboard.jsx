@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import styles from './Dashboard.module.css';
-import { getProductsByDayAction } from '../../redux/actions/productActions';
+import { getUserData } from '../../redux/actions/auth';
 import { connect } from 'react-redux';
 import windowSize from 'react-window-size';
 
@@ -9,8 +9,10 @@ class Dashboard extends Component {
   state = {};
   componentDidMount = () => {
     const token = localStorage.getItem('userToken');
-    const date = new Date().getTime();
-    // setProductByDay(token, date);
+
+    if (!!token) {
+      this.props.userData(token);
+    }
   };
 
   render() {
@@ -35,11 +37,10 @@ class Dashboard extends Component {
   }
 }
 
-const mapDispatchToProps = dis => ({
-  setProductsByDay(tok, date) {
-    dis(getProductsByDayAction(tok, date));
-  }
-});
+const mapDispatchToProps = {
+  userData: getUserData
+};
+
 export default connect(
   null,
   mapDispatchToProps

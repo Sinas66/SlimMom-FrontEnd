@@ -20,11 +20,30 @@ const setToken = token => ({
 export const requestRegister = cred =>
   axios
     .post(api.url.registerUser(), cred)
+    // TODO Add error handlers
+
     .then(data => data)
     .catch(({ error }) => console.log(error));
 
 export const requestLogin = cred =>
   axios
     .post(api.url.loginUser(), cred)
+    // TODO Add error handlers
+
+    .then(data => data)
+    .catch(({ error }) => console.log(error));
+
+export const requestProductByDate = (date, token) =>
+  axios
+    .get(api.url.productsByDate(date), setToken(token))
+    // TODO Add error handlers
+    .then(data => data)
+    .catch(({ error }) => console.log(error));
+
+export const requestUserData = token =>
+  axios
+    .get(api.url.userData(), setToken(token))
+    // TODO Add error handlers
+
     .then(data => data)
     .catch(({ error }) => console.log(error));
