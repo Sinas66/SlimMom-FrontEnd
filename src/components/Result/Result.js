@@ -47,7 +47,12 @@ class Result extends Component {
     const { currentWeight, age, height, desiredWeight } = this.props;
 
     this.setState({
-      dailyRate: 10 * Number(currentWeight) + 6.25 * Number(height) - 5 * Number(age) - 161 - 10 * Number(desiredWeight)
+      dailyRate:
+        10 * Number(currentWeight) +
+        6.25 * Number(height) -
+        5 * Number(age) -
+        161 -
+        10 * (Number(currentWeight) - Number(desiredWeight))
     });
   };
 
