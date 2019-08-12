@@ -51,7 +51,7 @@ class CalcForm extends Component {
     this.setState({ height: e.target.value });
     const val = Number(e.target.value);
 
-    if (val >= 1 && val <= 230 && Number.isInteger(val)) {
+    if (val >= 50 && val <= 230 && Number.isInteger(val)) {
       this.setState({
         isError: false,
         errorHeight: false
@@ -89,7 +89,7 @@ class CalcForm extends Component {
     this.setState({ currentWeight: e.target.value.replace(/,/g, '.') });
     const val = Number(e.target.value);
 
-    if (val >= 1 && val <= 199) {
+    if (val >= 30 && val <= 199) {
       this.setState({
         isError: false,
         errorCurrentWeight: false
@@ -108,7 +108,7 @@ class CalcForm extends Component {
     this.setState({ desiredWeight: e.target.value.replace(/,/g, '.') });
     const val = Number(e.target.value);
 
-    if (val >= 1 && val <= 199) {
+    if (val >= 30 && val <= 199) {
       this.setState({
         isError: false,
         errorDesiredWeight: false
@@ -220,7 +220,7 @@ class CalcForm extends Component {
                   required
                   onChange={e => this.handleChangeHeight(e)}
                 />
-                {errorHeight && <ErrorNotification label={'Введите целое число от 1 до 230'} />}
+                {errorHeight && <ErrorNotification label={'Введите целое число от 50 до 230'} />}
               </label>
               <label htmlFor="age">
                 <input
@@ -244,7 +244,7 @@ class CalcForm extends Component {
                   value={currentWeight}
                   onChange={this.handleChangeCurrentWeight}
                 />
-                {errorCurrentWeight && <ErrorNotification label={'Введите число от 1 до 199'} />}
+                {errorCurrentWeight && <ErrorNotification label={'Введите число от 30 до 199'} />}
               </label>
             </div>
             <div className={css.rightInputs}>
@@ -258,7 +258,7 @@ class CalcForm extends Component {
                   value={desiredWeight}
                   onChange={this.handleChangeDesiredWeight}
                 />
-                {errorDesiredWeight && <ErrorNotification label={'Введите число от 1 до 199'} />}
+                {errorDesiredWeight && <ErrorNotification label={'Введите число от 30 до 199'} />}
               </label>
               <section className={css.radioContainer}>
                 <h3>Группа крови *</h3>
