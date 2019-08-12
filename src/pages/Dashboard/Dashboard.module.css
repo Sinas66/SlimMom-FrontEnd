@@ -1,28 +1,27 @@
-
 .grid {
 display: grid;
 grid-template-areas:
-        "h"
-        "c"
-        "s";
+        "header"
+        "dashboard"
+        "summary";
 grid-template-columns: 1fr;
-height: 100vh;
-
+grid-template-rows: repeat(3, auto);
 }
     .headerBlock_container {
-      grid-area: h;
+      grid-area: header;
     }
     .calcDairyBlock_container{
-      grid-area: c;
+      grid-area: dashboard;
     }
     .summaryBlock_container {
-      grid-area: s;
+      grid-area: summary;
     }
+
 @media(min-width: 1024px) {
   .grid {
     grid-template-areas:
-    "h h"
-    "c s";
+    "header header"
+    "dashboard summary";
       grid-template-columns: 8fr 5fr;
       grid-template-rows: auto;
   }
