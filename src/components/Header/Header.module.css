@@ -25,25 +25,24 @@
 }
 
 .logoText {
-  /* width: 135px;
-  height: 16px; */
   font-size: 21px;
   letter-spacing: 2px;
   color: #212121;
-  font-family: "Gotham Pro", sans-serif;
+  font-family: "GothamProLight", sans-serif;
   font-weight: 300;
   padding-left: 6px;
 }
 
 .logoTextSpan {
   color: #fc842c;
-  font-family: "Gotham Pro", sans-serif;
+  font-family: "GothamProLight", sans-serif;
   font-weight: 300;
   font-size: 21px;
   letter-spacing: 2px;
 }
 
-.greyZone, .greyZoneModalClose {
+.greyZone,
+.greyZoneModalClose {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -73,7 +72,7 @@
   height: 26px;
 }
 
-.burgerBtn{
+.burgerBtn {
   background: transparent;
   border: none;
   width: 26px;
@@ -141,7 +140,7 @@
     font-size: 15px;
     letter-spacing: 1.5px;
     color: #212121;
-    font-family: "Gotham Pro", sans-serif;
+    font-family: "GothamProBold", sans-serif;
     font-weight: bold;
     outline: none;
   }
@@ -150,6 +149,7 @@
     color: #fc842c;
     text-shadow: 0 1px 1px #ffcca8;
   }
+
   .usernamebox {
     display: flex;
     width: 135px;
@@ -158,7 +158,7 @@
     font-size: 15px;
     letter-spacing: 1.5px;
     color: #212121;
-    font-family: "Gotham Pro", sans-serif;
+    font-family: "GothamProBold", sans-serif;
     font-weight: bold;
   }
 }
@@ -198,7 +198,7 @@
     font-size: 15px;
     letter-spacing: 1.5px;
     color: #212121;
-    font-family: "Gotham Pro", sans-serif;
+    font-family: "GothamProBold", sans-serif;
     font-weight: bold;
     outline: none;
   }
@@ -212,16 +212,26 @@
   }
 
   .navigationBox a {
-    color: #212121;
     text-decoration: none;
   }
 
   .navigationLink {
+    font-family: "GothamProBold";
+    font-weight: bold;
+    color: #999daa;
+    font-size: 15px;
+    letter-spacing: 1px;
     padding-left: 46px;
+    transition: .5s;
+  }
+
+  .navigationLink:hover {
+    color: #2b2b2b;
   }
 
   .logotype {
     padding-left: 0;
+    font-size: 21px;
   }
 
   .logoImg {

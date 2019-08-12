@@ -7,17 +7,19 @@
   left: 0;
   top: 75px;
   z-index: 10;
-  /* top: 124px; */
+
 }
 
 .linkBox a {
   text-decoration: none;
-  color: rgb(255, 255, 255);
+  font-family: "GothamProBold";
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 21px;
   color: #9a9eaa;
+  padding-top: 70px;
+  margin: 5px;
 }
 
 .linkBox a:hover {
