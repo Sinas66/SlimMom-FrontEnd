@@ -7,8 +7,12 @@ import Summary from '../../components/Summary/Summary';
 import DiaryBlock from '../../components/DiaryBlock/DiaryBlock';
 import windowSize from 'react-window-size';
 
-export default class Dashboard extends Component {
+class Dashboard extends Component {
   state = {};
+  componentDidMount = () => {
+    const { token, setProductByDay} = this.props;
+    const date = new Date().getTime();
+    setProductByDay(token, date);
 
   render() {
     const { token } = this.props;
@@ -30,3 +34,13 @@ export default class Dashboard extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dis => ({
+  setProductsByDay(tok,date) {
+    dis(getProductsByDayAction(tok,date));
+  }
+});
+export default connect(
+  null,
+  mapDispatchToProps
+)(Dashboard);
