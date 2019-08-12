@@ -7,7 +7,8 @@ import styles from './Result.module.css';
 class Result extends Component {
   state = {
     dailyRate: 0,
-    forbiddenProd: []
+    forbiddenProd: [],
+    groupBlood: 0
   };
   backdropRef = createRef();
 
@@ -37,7 +38,8 @@ class Result extends Component {
     }
 
     this.setState({
-      forbiddenProd: arr
+      forbiddenProd: arr,
+      groupBlood: Number(groupBlood)
     });
   }
 
@@ -50,8 +52,9 @@ class Result extends Component {
   };
 
   onHandlePost = () => {
-    const { add, session, newInfo, groupBlood, onClose, currentWeight, age, height, desiredWeight } = this.props;
-    const { dailyRate } = this.state;
+    const { add, session, newInfo, onClose, currentWeight, age, height, desiredWeight } = this.props;
+    const { dailyRate, groupBlood } = this.state;
+
     const newData = {
       groupBlood,
       dailyRate,

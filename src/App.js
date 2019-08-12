@@ -4,7 +4,7 @@ import Dashboard from './pages/Dashboard/Dashboard.jsx';
 import Login from './pages/Login/Login.jsx';
 import Home from './pages/Home/Home';
 import ProtectedComponent from './hoc/ProtectedComponent';
-import Result from './components/Result/Result';
+
 function App() {
   return (
     <>
