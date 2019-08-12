@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { fetchSuccess } from '../redux/actions/productActions';
 import * as api from './entyPoints';
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -20,8 +19,3 @@ export const putNewData = (token, data) => {
     })
     .catch(err => console.log(err));
 };
-
-// Example
-// export const fetchCompleteTask = (token, task) => {
-//   return axios.post(api.url.updateTask(), { ...task, isDone: true }, setToken(token)).catch(err => console.log(err));
-// };

@@ -109,16 +109,12 @@ class Result extends Component {
                   </li>
                 ))}
               </ol>
-              {/* <button type="button" onClick={this.onHandleClick} className={styles.start}>
-                Начать худеть
-              </button> */}
-              {!session.token && (
+
+              {session.token ? (
                 <Link onClick={this.onHandlePost} className={styles.start} to="/login">
                   Начать худеть
                 </Link>
-              )}
-
-              {session.token && (
+              ) : (
                 <button type="button" onClick={this.onHandlePost} className={styles.start}>
                   Начать худеть
                 </button>
