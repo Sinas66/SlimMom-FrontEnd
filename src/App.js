@@ -8,7 +8,6 @@ import Result from './components/Result/Result';
 function App() {
   return (
     <>
-      <Result />
       <Switch>
         <ProtectedComponent active={false} path="/login" component={Login} />
         <ProtectedComponent active={false} exact path="/" component={Home} />
