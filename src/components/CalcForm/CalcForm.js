@@ -51,7 +51,7 @@ class CalcForm extends Component {
     this.setState({ height: e.target.value });
     const val = Number(e.target.value);
 
-    if (val >= 1 && val <= 230 && Number.isInteger(val)) {
+    if (val >= 50 && val <= 230 && Number.isInteger(val)) {
       this.setState({
         isError: false,
         errorHeight: false
@@ -89,7 +89,7 @@ class CalcForm extends Component {
     this.setState({ currentWeight: e.target.value.replace(/,/g, '.') });
     const val = Number(e.target.value);
 
-    if (val >= 1 && val <= 199) {
+    if (val >= 30 && val <= 199) {
       this.setState({
         isError: false,
         errorCurrentWeight: false
@@ -108,7 +108,7 @@ class CalcForm extends Component {
     this.setState({ desiredWeight: e.target.value.replace(/,/g, '.') });
     const val = Number(e.target.value);
 
-    if (val >= 1 && val <= 199) {
+    if (val >= 30 && val <= 199) {
       this.setState({
         isError: false,
         errorDesiredWeight: false
