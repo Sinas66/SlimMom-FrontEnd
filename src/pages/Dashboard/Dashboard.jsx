@@ -11,10 +11,11 @@ import { connect } from 'react-redux';
 class Dashboard extends Component {
   state = {};
   componentDidMount = () => {
-    const { token, setProductByDay} = this.props;
-    const date = new Date().getTime();
+    const token = localStorage.getItem('userToken')
+    const date = new Date().getTime()
     setProductByDay(token, date);
-
+  }
+  
   render() {
     const { token } = this.props;
     return (
