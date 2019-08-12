@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import React from 'react';
 import CalcForm from '../../components/CalcForm/CalcForm';
 import style from './Home.module.css';
