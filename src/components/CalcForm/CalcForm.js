@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Result from '../Result/Result';
 import ErrorNotification from './ErrorNotification';
+// import Result from '../Result/Result';
 import css from './CalcForm.module.css';
 
 const GroupBlood = {
@@ -125,22 +126,22 @@ class CalcForm extends Component {
 
   handleChangeGroupBlood = e => {
     this.setState({ groupBlood: e.target.value });
-    const val = Number(e.target.value);
+    document.querySelector('#submit').disabled = false;
+    // const val = Number(e.target.value);
 
-    if (val >= 1 && val <= 4 && Number.isInteger(val)) {
-      this.setState({
-        isError: false,
-        errorGroupBlood: false
-      });
-      e.target.classList.toggle('checked');
-      document.querySelector('#submit').disabled = false;
-    } else {
-      this.setState({
-        isError: true,
-        errorGroupBlood: true
-      });
-      document.querySelector('#submit').disabled = true;
-    }
+    // if (val >= 1 && val <= 4 && Number.isInteger(val)) {
+    //   this.setState({
+    //     isError: false,
+    //     errorGroupBlood: false
+    //   });
+    //   document.querySelector('#submit').disabled = false;
+    // } else {
+    //   this.setState({
+    //     isError: true,
+    //     errorGroupBlood: true
+    //   });
+    //   document.querySelector('#submit').disabled = true;
+    // }
   };
 
   handleSubmit = () => {
@@ -150,19 +151,18 @@ class CalcForm extends Component {
     if (!isError && validation) {
       if (groupBlood) {
         this.toggleOpenModal();
-        this.setState(
-          {
-            isError: false,
-            errorGroupBlood: false,
-            isValidAll: false
-          },
-          this.reset
-        );
+
+        this.setState({
+          isError: false,
+          errorGroupBlood: false,
+          isValidAll: false
+        }, this.reset);
       } else {
         this.setState({
           isError: true,
           errorGroupBlood: true
         });
+        document.querySelector('#submit').disabled = true;
       }
     } else {
       this.setState({
