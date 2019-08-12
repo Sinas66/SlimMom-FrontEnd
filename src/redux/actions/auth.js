@@ -10,7 +10,7 @@ export const sendRegisterData = data => dispatch =>
   requestRegister(data)
     .then(({ data }) => {
       dispatch(userRegister(data));
-      return true;
+      return data.user;
     })
     .catch(({ error }) => console.log(error));
 
@@ -18,7 +18,7 @@ export const sendLoginData = data => dispatch =>
   requestLogin(data)
     .then(({ data }) => {
       dispatch(userLogin(data));
-      return true;
+      return data.user;
     })
     .catch(({ error }) => console.log(error));
 
