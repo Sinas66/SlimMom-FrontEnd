@@ -326,7 +326,7 @@ class CalcForm extends Component {
             </p>
           )}
           <button type="button" id="submit" className={css.btn} onClick={this.handleSubmit}>
-            {!data.groupBlood ? 'Посчитать' : 'Пересчитать'}
+            {!data.groupBlood ? 'Похудеть' : 'Пересчитать'}
           </button>
         </div>
         {isOpenModal && <Result {...this.state} onClose={this.toggleOpenModal} />}
