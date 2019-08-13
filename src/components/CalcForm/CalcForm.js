@@ -140,7 +140,6 @@ class CalcForm extends Component {
         isError: false,
         errorGroupBlood: false
       });
-      e.target.classList.toggle('checked');
       document.querySelector('#submit').disabled = false;
     } else {
       this.setState({
