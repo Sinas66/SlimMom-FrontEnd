@@ -225,7 +225,7 @@ class CalcForm extends Component {
                   name="height"
                   value={height}
                   required
-                  onChange={e => this.handleChangeHeight(e)}
+                  onChange={this.handleChangeHeight}
                 />
                 {errorHeight && <ErrorNotification label={'Введите целое число от 50 до 230'} />}
               </label>
