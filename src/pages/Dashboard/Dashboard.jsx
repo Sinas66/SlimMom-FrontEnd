@@ -24,7 +24,16 @@ class Dashboard extends Component {
         <div className={styles.headerBlock_container}>Header</div>
 
         <div className={styles.calcDairyBlock_container}>
-          <Route path="/dashboard" exact render={() => <div> <CalcForm /> </div>} />
+          <Route
+            path="/dashboard"
+            exact
+            render={() => (
+              <div>
+                {' '}
+                <CalcForm />{' '}
+              </div>
+            )}
+          />
           <Route path="/dashboard/diary" render={() => <div> Dairy </div>} />
         </div>
 
