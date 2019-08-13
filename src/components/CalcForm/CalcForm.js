@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ErrorNotification from './ErrorNotification';
-// import Result from '../Result/Result';
+import Result from '../Result/Result';
 import css from './CalcForm.module.css';
 
 const GroupBlood = {
@@ -31,7 +31,6 @@ class CalcForm extends Component {
   handleChangeHeight = e => {
     this.setState({ height: e.target.value });
     const val = Number(e.target.value);
-    console.log(this.state.height);
 
     if (val >= 50 && val <= 230 && Number.isInteger(val)) {
       this.setState({
