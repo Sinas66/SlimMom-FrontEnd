@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {} from '../redux/actions/auth';
+import { } from '../redux/actions/auth';
 import * as api from './entyPoints';
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -24,6 +24,16 @@ export const fetchLogOut = token => {
     .catch(error => console.log(error));
 };
 
+export const putNewData = (token, data) => {
+  return axios
+    .put(api.url.userData(), { ...data }, setToken(token))
+    .then(response => {
+      if (response.status === 200) {
+        return response;
+      }
+    })
+    .catch(err => console.log(err));
+};
 // Example
 // export const fetchCompleteTask = (token, task) => {
 //   return axios.post(api.url.updateTask(), { ...task, isDone: true }, setToken(token)).catch(err => console.log(err));
