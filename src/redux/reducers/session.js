@@ -1,15 +1,28 @@
-const INITIAL_STATE = {
-  user: {
-    groupBlood: 1,
-    nickname: 'name',
-    dailyRate: 3000
-  },
-  token: '123'
-};;
+import { actionTypes } from '../actions/constants';
 
-export const sessionReducer = (state = INITIAL_STATE, { type, payload }) => {
-  return state;
+const INITIAL_STATE = {
+  nickname: '',
+  token: '',
+  userData: {
+    groupBlood: 0,
+    height: 0,
+    desiredWeight: 0,
+    currentWeight: 0,
+    age: 0
+  }
 };
 
-export default sessionReducer;
+export const sessionReducer = (state = INITIAL_STATE, { type, payload }) => {
+  switch (type) {
+    case actionTypes.ADD_FETCH_SUCCESS:
+      return { ...state, user: { ...state.user, dailyRate: payload.dailyRate, groupBlood: payload.groupBlood } };
+    case actionTypes.USER_REGISTER:
+    case actionTypes.USER_DATA:
+    case actionTypes.USER_LOGIN:
+      return { ...payload };
 
+    default:
+      return state;
+  }
+};
+export default sessionReducer;

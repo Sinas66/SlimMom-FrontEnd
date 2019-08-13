@@ -11,12 +11,16 @@ export default rootReducer;
 
 // Store example
 const session = {
-  user: {
+  nickname: 'name',
+  token: '123',
+  userData: {
+    dailyRate: 0,
     groupBlood: 1,
-    nickname: 'name',
-    dailyRate: 3000
-  },
-  token: '123'
+    height: 0,
+    desiredWeight: 0,
+    currentWeight: 0,
+    age: 0
+  }
 };
 
 const products = {
