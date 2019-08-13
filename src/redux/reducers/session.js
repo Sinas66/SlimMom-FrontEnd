@@ -2,21 +2,20 @@ import { actionTypes } from '../actions/constants';
 
 const INITIAL_STATE = {
   nickname: 'name',
-  token: '123'
-  // userData: {
-  //   calloriesPerDay: 100,
-  //   groupBlood: 100,
-  //   height: 100,
-  //   desiredWeight: 100,
-  //   currentWeight: 100,
-  //   age: 44
-  // }
+  token: '123',
+  userData: {
+    groupBlood: '',
+    height: '',
+    desiredWeight: '',
+    currentWeight: '',
+    age: ''
+  }
 };
 
 export const sessionReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case actionTypes.USER_DATA:
-      return { ...payload };
+      return { ...state, ...payload };
 
     default:
       return state;

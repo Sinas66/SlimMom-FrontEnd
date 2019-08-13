@@ -4,6 +4,7 @@ import styles from './Dashboard.module.css';
 import { getUserData } from '../../redux/actions/auth';
 import { connect } from 'react-redux';
 import windowSize from 'react-window-size';
+import CalcForm from '../../components/CalcForm/CalcForm';
 
 class Dashboard extends Component {
   state = {};
@@ -23,7 +24,7 @@ class Dashboard extends Component {
         <div className={styles.headerBlock_container}>Header</div>
 
         <div className={styles.calcDairyBlock_container}>
-          <Route path="/dashboard" exact render={() => <div> Dashbard </div>} />
+          <Route path="/dashboard" exact render={() => <div> <CalcForm /> </div>} />
           <Route path="/dashboard/diary" render={() => <div> Dairy </div>} />
         </div>
 
