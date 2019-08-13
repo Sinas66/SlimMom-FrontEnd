@@ -1,17 +1,30 @@
-import { ADD_FETCH_SUCCESS } from './constants';
-import { putNewData } from '../../utils/requests';
+import { createAction } from '../../utils/utils';
+import { actionTypes } from './constants';
+import { requestProductByDate, putNewData } from '../../utils/requests';
 
-export const fetchSuccess = data => ({
-  type: ADD_FETCH_SUCCESS,
-  payload: data
-});
+const addProductByDate = createAction(actionTypes.ADD_PRODUCT_BY_DATE);
+export const addNewDate = createAction(actionTypes.ADD_FETCH_SUCCESS);
+
+// export const fetchSuccess = data => ({
+//   type: actionTypes.ADD_FETCH_SUCCESS,
+//   payload: data
+// });
 
 export const updateData = (token, data) => dispatch => {
   putNewData(token, data)
     .then(answ => {
-      dispatch(fetchSuccess(answ.userData));
+      dispatch(addNewDate(answ.userData));
+      return true;
     })
     .catch(err => {
       console.log('Trouble', err);
     });
 };
+
+export const getProductByDate = (date, token) => dispatch =>
+  requestProductByDate(date, token)
+    .then(({ data }) => {
+      dispatch(addProductByDate(data.products));
+      return true;
+    })
+    .catch(({ error }) => error);

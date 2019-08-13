@@ -140,7 +140,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  add: store => dispatch(fetchSuccess(store)),
+  add: store => dispatch(addNewDate(store)),
   newInfo: (token, data) => dispatch(updateData(token, data))
 });
 
