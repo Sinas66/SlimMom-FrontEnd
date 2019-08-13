@@ -1,1 +1,4 @@
-// Тут пишем функции хелперы, это файл для экспорта тут ничего не должно исполняться
+export const createAction = type => payload => ({
+  type,
+  payload
+});
