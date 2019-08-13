@@ -1,6 +1,8 @@
-const baseUrl = ' https://task-manager.goit.co.ua/api/';
+const baseUrl = 'https://slim-moms.goit.co.ua/api/v1/';
+// const baseUrl = 'http://localhost:8081/api/v1/';
 
 export const url = {
-  // example
-  // loginUser: () => `${baseUrl}auth`,
+  products: () => `${baseUrl}products/`,
+  productsByDay: () => `${baseUrl}user/eats/`,
+  logOut: () => `${baseUrl}logout`
 };

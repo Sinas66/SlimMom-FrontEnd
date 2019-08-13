@@ -8,6 +8,7 @@ import burger from './Logo/burger.svg';
 import cross from './Logo/cross.png';
 import logout from './Logo/logout.png';
 import styles from './Header.module.css';
+import { fetchLogOut } from '../../utils/requests';
 import { connect } from 'react-redux';
 
 // -------------- import from DiaryBlock: ------------
@@ -15,36 +16,38 @@ import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
 
-// const userToken = JSON.parse(localStorage.getItem('userToken'))
-
 class Header extends Component {
   static propTypes = {
     token: PropTypes.string.isRequired
   };
   state = {
     openModal: false,
-    isLogged: true
+    isLogged: true,
+    token: JSON.parse(localStorage.getItem('userToken'))
   };
 
-  toogleModal = e => {
+  toogleModal = () => {
     this.setState(state => ({ openModal: !state.openModal }));
   };
-  // Here I have to write a function than will check if the User is LoggedIn or not, and change the state apropriately
 
   componentDidMount() {
-    const { token } = this.props;
+    const { token } = this.state;
     if (!!token) {
       this.setState({ isLogged: true });
     }
   }
-  logOut = () => {
-    localStorage.removeItem('userToken');
-    this.setState(state => ({ isLogged: !state.isLogged }));
+  logOut = token => {
+    console.log('click');
+    fetchLogOut(token).then(() => {
+      console.log('ok');
+      // localStorage.removeItem('userToken');
+      // this.setState(state => ({ isLogged: !state.isLogged }));
+    });
   };
 
   render() {
     const { toogleModal, logOut } = this;
-    const { openModal, isLogged } = this.state;
+    const { openModal, isLogged, token } = this.state;
     const {
       username
       // -------------- props from DiaryBlock: ------------
@@ -109,7 +112,7 @@ class Header extends Component {
               /* {isModalShowed && <button type="button" onClick={toogleModalProducts} className={styles.closeModal} />} */}
             <div className={styles.mobileLogoutBox}>
               <p className={styles.username}>{username}</p>{' '}
-              <img onClick={logOut} className={styles.logoutButton} src={logout} alt="1" />
+              <img onClick={() => logOut(token)} className={styles.logoutButton} src={logout} alt="1" />
             </div>
           </div>
         )}
