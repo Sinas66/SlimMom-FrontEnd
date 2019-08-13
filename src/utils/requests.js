@@ -14,7 +14,7 @@ const setToken = token => ({
 
 export const putNewData = (token, data) => {
   return axios
-    .put(api.url.dataUser(), { ...data }, setToken(token))
+    .put(api.url.userData(), { ...data }, setToken(token))
     .then(response => {
       return response.json();
     })

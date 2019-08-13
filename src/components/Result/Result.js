@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchSuccess, updateData } from '../../redux/actions/productActions';
+import { addNewDate, updateData } from '../../redux/actions/productActions';
 import styles from './Result.module.css';
 
 class Result extends Component {
@@ -118,7 +118,7 @@ class Result extends Component {
                 ))}
               </ol>
 
-              {session.token ? (
+              {!session.token ? (
                 <Link onClick={this.onHandlePost} className={styles.start} to="/login">
                   Начать худеть
                 </Link>
