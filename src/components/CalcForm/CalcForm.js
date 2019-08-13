@@ -13,32 +13,6 @@ const GroupBlood = {
 };
 
 class CalcForm extends Component {
-  static propTypes = {
-    data: PropTypes.shape({
-      height: PropTypes.string,
-      age: PropTypes.string,
-      currentWeight: PropTypes.string,
-      desiredWeight: PropTypes.string,
-      groupBlood: PropTypes.string
-    }),
-    session: PropTypes.shape({
-      token: PropTypes.string,
-    }),
-  };
-
-  static defaultProps = {
-    data: {
-      height: '',
-      age: '',
-      currentWeight: '',
-      desiredWeight: '',
-      groupBlood: null
-    },
-    session: {
-      token: ''
-    }
-  };
-
   state = {
     height: this.props.data.height,
     age: this.props.data.age,
@@ -58,6 +32,7 @@ class CalcForm extends Component {
   handleChangeHeight = e => {
     this.setState({ height: e.target.value });
     const val = Number(e.target.value);
+    console.log(this.state.height);
 
     if (val >= 50 && val <= 230 && Number.isInteger(val)) {
       this.setState({
@@ -157,11 +132,14 @@ class CalcForm extends Component {
     if (!isError && validation) {
       if (groupBlood) {
         this.toggleOpenModal();
-        this.setState({
-          isError: false,
-          errorGroupBlood: false,
-          isValidAll: false
-        }, this.reset);
+        this.setState(
+          {
+            isError: false,
+            errorGroupBlood: false,
+            isValidAll: false
+          },
+          this.reset
+        );
       } else {
         this.setState({
           isError: true,
@@ -225,7 +203,7 @@ class CalcForm extends Component {
                   name="height"
                   value={height}
                   required
-                  onChange={e => this.handleChangeHeight(e)}
+                  onChange={this.handleChangeHeight}
                 />
                 {errorHeight && <ErrorNotification label={'Введите целое число от 50 до 230'} />}
               </label>
