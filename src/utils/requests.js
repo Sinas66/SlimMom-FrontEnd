@@ -15,9 +15,7 @@ const setToken = token => ({
 export const putNewData = (token, data) => {
   return axios
     .put(api.url.userData(), { ...data }, setToken(token))
-    .then(response => {
-      return response.json();
-    })
+    .then(response => response)
     .catch(err => console.log(err));
 };
 // Example
