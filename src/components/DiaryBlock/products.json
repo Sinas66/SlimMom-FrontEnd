@@ -124,6 +124,167 @@
         "__v": 0,
         "createdAt": "2019-08-04T18:33:01.163Z",
         "updatedAt": "2019-08-04T18:33:01.163Z"
+      },
+      {
+        "title": {
+          "ru": "Яичница глазунья",
+          "ua": "Яєчня глазунья"
+        },
+        "categories": [
+          "яйца"
+        ],
+        "weight": 100,
+        "_id": "5d4724dcac81f92de0fd4238",
+        "calories": 215,
+        "groupBloodNotAllowed": {
+          "1": true,
+          "2": false,
+          "3": false,
+          "4": false
+        },
+        "__v": 0,
+        "createdAt": "2019-08-04T18:33:01.163Z",
+        "updatedAt": "2019-08-04T18:33:01.163Z"
+      }, {
+        "title": {
+          "ru": "Яичница глазунья",
+          "ua": "Яєчня глазунья"
+        },
+        "categories": [
+          "яйца"
+        ],
+        "weight": 100,
+        "_id": "5d4724dcac81f92de0fd4238",
+        "calories": 215,
+        "groupBloodNotAllowed": {
+          "1": true,
+          "2": false,
+          "3": false,
+          "4": false
+        },
+        "__v": 0,
+        "createdAt": "2019-08-04T18:33:01.163Z",
+        "updatedAt": "2019-08-04T18:33:01.163Z"
+      }, {
+        "title": {
+          "ru": "Яичница глазунья",
+          "ua": "Яєчня глазунья"
+        },
+        "categories": [
+          "яйца"
+        ],
+        "weight": 100,
+        "_id": "5d4724dcac81f92de0fd4238",
+        "calories": 215,
+        "groupBloodNotAllowed": {
+          "1": true,
+          "2": false,
+          "3": false,
+          "4": false
+        },
+        "__v": 0,
+        "createdAt": "2019-08-04T18:33:01.163Z",
+        "updatedAt": "2019-08-04T18:33:01.163Z"
+      }, {
+        "title": {
+          "ru": "Яичница глазунья",
+          "ua": "Яєчня глазунья"
+        },
+        "categories": [
+          "яйца"
+        ],
+        "weight": 100,
+        "_id": "5d4724dcac81f92de0fd4238",
+        "calories": 215,
+        "groupBloodNotAllowed": {
+          "1": true,
+          "2": false,
+          "3": false,
+          "4": false
+        },
+        "__v": 0,
+        "createdAt": "2019-08-04T18:33:01.163Z",
+        "updatedAt": "2019-08-04T18:33:01.163Z"
+      }, {
+        "title": {
+          "ru": "Яичница глазунья",
+          "ua": "Яєчня глазунья"
+        },
+        "categories": [
+          "яйца"
+        ],
+        "weight": 100,
+        "_id": "5d4724dcac81f92de0fd4238",
+        "calories": 215,
+        "groupBloodNotAllowed": {
+          "1": true,
+          "2": false,
+          "3": false,
+          "4": false
+        },
+        "__v": 0,
+        "createdAt": "2019-08-04T18:33:01.163Z",
+        "updatedAt": "2019-08-04T18:33:01.163Z"
+      }, {
+        "title": {
+          "ru": "Яичница глазунья",
+          "ua": "Яєчня глазунья"
+        },
+        "categories": [
+          "яйца"
+        ],
+        "weight": 100,
+        "_id": "5d4724dcac81f92de0fd4238",
+        "calories": 215,
+        "groupBloodNotAllowed": {
+          "1": true,
+          "2": false,
+          "3": false,
+          "4": false
+        },
+        "__v": 0,
+        "createdAt": "2019-08-04T18:33:01.163Z",
+        "updatedAt": "2019-08-04T18:33:01.163Z"
+      }, {
+        "title": {
+          "ru": "Яичница глазунья",
+          "ua": "Яєчня глазунья"
+        },
+        "categories": [
+          "яйца"
+        ],
+        "weight": 100,
+        "_id": "5d4724dcac81f92de0fd4238",
+        "calories": 215,
+        "groupBloodNotAllowed": {
+          "1": true,
+          "2": false,
+          "3": false,
+          "4": false
+        },
+        "__v": 0,
+        "createdAt": "2019-08-04T18:33:01.163Z",
+        "updatedAt": "2019-08-04T18:33:01.163Z"
+      }, {
+        "title": {
+          "ru": "Яичница глазунья",
+          "ua": "Яєчня глазунья"
+        },
+        "categories": [
+          "яйца"
+        ],
+        "weight": 100,
+        "_id": "5d4724dcac81f92de0fd4238",
+        "calories": 215,
+        "groupBloodNotAllowed": {
+          "1": true,
+          "2": false,
+          "3": false,
+          "4": false
+        },
+        "__v": 0,
+        "createdAt": "2019-08-04T18:33:01.163Z",
+        "updatedAt": "2019-08-04T18:33:01.163Z"
       }
     ]
   }

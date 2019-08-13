@@ -15,18 +15,28 @@ const EatedProductsList = ({ productsByDay, isProductsByDayLoader, deleteProduct
       {productsByDay.length === 0 && <h1>Вы ничего не ели! Обязательно перекусите!!!</h1>}
       {isProductsByDayLoader && (
         <div className={styles.fetch_loader}>
-          <Spinner />
+          <Spinner
+            name="pacman"
+            style={{
+              color: 'red',
+              display: 'block',
+              margin: '0 auto',
+              transform: 'translate(50%, 50%)'
+            }}
+          />
         </div>
       )}
 
       {!isProductsByDayLoader && (
-        <Table className={styles.firstBlock}>
-          <Tbody>
-            {productsByDay.map(el => {
-              return <EatedProductItem productItem={el} key={el._id} deleteProduct={deleteProduct} />;
-            })}
-          </Tbody>
-        </Table>
+        <div className={styles.tBodyTable}>
+          <Table className={styles.firstBlock}>
+            <Tbody>
+              {productsByDay.map(el => {
+                return <EatedProductItem productItem={el} key={el._id} deleteProduct={deleteProduct} />;
+              })}
+            </Tbody>
+          </Table>
+        </div>
       )}
     </>
   );

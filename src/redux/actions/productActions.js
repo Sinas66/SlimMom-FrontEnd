@@ -14,7 +14,7 @@ export const deleteProductFromProductListFunc = (token, id) => {
         dispatch(deleteProductFromProductListAC(id));
       } else {
         console.log('ERROR');
-        // dispatch(deleteProductFromProductListAC(id));
+        dispatch(deleteProductFromProductListAC(id));
         /*раскоментиоровать если сервер не отвечает
         - для проверки удаления из списка */
       }

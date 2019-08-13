@@ -2,4 +2,12 @@
   width: 100%;
   border-spacing: 16px 0px;
   margin-left: -16px;
+  /* height: 300px;
+  overflow: hidden */
+}
+
+.tBodyTable {
+  height: 300px;
+  /* overflow: hidden, */
+  overflow: auto
 }

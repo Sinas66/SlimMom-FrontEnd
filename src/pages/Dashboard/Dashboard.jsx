@@ -13,7 +13,6 @@ class Dashboard extends Component {
     const { token } = this.props;
     return (
       <>
-        <h1>dashboard</h1>
         <DiaryBlock token={token} />
       </>
     );
