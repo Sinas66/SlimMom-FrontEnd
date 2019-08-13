@@ -8,7 +8,11 @@ class Result extends Component {
   state = {
     dailyRate: 0,
     forbiddenProd: [],
-    groupBlood: 0
+    groupBlood: 0,
+    currentWeight: 0,
+    age: 0,
+    height: 0,
+    desiredWeight: 0
   };
   backdropRef = createRef();
 
@@ -39,7 +43,11 @@ class Result extends Component {
 
     this.setState({
       forbiddenProd: arr,
-      groupBlood: Number(groupBlood)
+      groupBlood: Number(groupBlood),
+      currentWeight: Number(currentWeight),
+      age: Number(age),
+      height: Number(height),
+      desiredWeight: Number(desiredWeight)
     });
   }
 
@@ -57,8 +65,8 @@ class Result extends Component {
   };
 
   onHandlePost = () => {
-    const { add, session, newInfo, onClose, currentWeight, age, height, desiredWeight } = this.props;
-    const { dailyRate, groupBlood } = this.state;
+    const { add, session, newInfo, onClose } = this.props;
+    const { dailyRate, groupBlood, currentWeight, age, height, desiredWeight } = this.state;
 
     const newData = {
       groupBlood,

@@ -5,15 +5,10 @@ import { requestProductByDate, putNewData } from '../../utils/requests';
 const addProductByDate = createAction(actionTypes.ADD_PRODUCT_BY_DATE);
 export const addNewDate = createAction(actionTypes.ADD_FETCH_SUCCESS);
 
-// export const fetchSuccess = data => ({
-//   type: actionTypes.ADD_FETCH_SUCCESS,
-//   payload: data
-// });
-
 export const updateData = (token, data) => dispatch => {
   putNewData(token, data)
     .then(answ => {
-      dispatch(addNewDate(answ.userData));
+      dispatch(addNewDate(answ.data.userData));
       return true;
     })
     .catch(err => {
