@@ -8,19 +8,32 @@ const userData = createAction(actionTypes.USER_DATA);
 
 export const sendRegisterData = data => dispatch =>
   requestRegister(data)
-    .then(({ data }) => {
-      dispatch(userRegister(data));
-      return data.user;
+    .then(response => {
+      if (response.status === 200) {
+        dispatch(userRegister(response.data.user));
+        return response;
+      }
+      if (response.status >= 400) {
+        return response;
+      }
     })
-    .catch(({ error }) => console.log(error));
+    .catch(error => console.log(error));
 
 export const sendLoginData = data => dispatch =>
   requestLogin(data)
-    .then(({ data }) => {
-      dispatch(userLogin(data));
-      return data.user;
+    .then(response => {
+      console.log(response);
+
+      if (response.status === 200) {
+        dispatch(userLogin(response.data.user));
+        return response;
+      }
+
+      if (response.status >= 400) {
+        return response;
+      }
     })
-    .catch(({ error }) => console.log(error));
+    .catch(error => console.log(error));
 
 export const getUserData = token => dispatch =>
   requestUserData(token)
