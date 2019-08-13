@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ErrorNotification from './ErrorNotification';
 // import Result from '../Result/Result';
@@ -314,7 +313,7 @@ class CalcForm extends Component {
 
 const mapStateToProps = state => ({
   session: state.session,
-  data: state.data
+  data: state.session.userData
 });
 
 export default connect(mapStateToProps)(CalcForm);
