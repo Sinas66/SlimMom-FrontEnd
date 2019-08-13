@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addNewDate, updateData } from '../../redux/actions/productActions';
+import { addAllData, updateData } from '../../redux/actions/productActions';
 import styles from './Result.module.css';
 
 class Result extends Component {
@@ -27,7 +27,7 @@ class Result extends Component {
   }
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyPress);
-    const { groupBlood } = this.props;
+    const { groupBlood, currentWeight, age, height, desiredWeight } = this.props;
     this.onHandleCalc();
 
     let arr = [];
@@ -148,7 +148,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  add: store => dispatch(addNewDate(store)),
+  add: store => dispatch(addAllData(store)),
   newInfo: (token, data) => dispatch(updateData(token, data))
 });
 

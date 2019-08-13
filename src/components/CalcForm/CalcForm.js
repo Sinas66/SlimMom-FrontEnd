@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ErrorNotification from './ErrorNotification';
-// import Result from '../Result/Result';
+import Result from '../Result/Result';
 import css from './CalcForm.module.css';
 
 const GroupBlood = {

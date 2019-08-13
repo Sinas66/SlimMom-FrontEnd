@@ -3,12 +3,13 @@ import { actionTypes } from './constants';
 import { requestProductByDate, putNewData } from '../../utils/requests';
 
 const addProductByDate = createAction(actionTypes.ADD_PRODUCT_BY_DATE);
-export const addNewDate = createAction(actionTypes.ADD_FETCH_SUCCESS);
+const addNewData = createAction(actionTypes.ADD_FETCH_SUCCESS);
+export const addAllData = createAction(actionTypes.ADD_ALL_DATA);
 
 export const updateData = (token, data) => dispatch => {
   putNewData(token, data)
     .then(answ => {
-      dispatch(addNewDate(answ.data.userData));
+      dispatch(addNewData(answ.data.userData));
       return true;
     })
     .catch(err => {
