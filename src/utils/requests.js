@@ -12,6 +12,16 @@ const setToken = token => ({
   }
 });
 
+export const putNewData = (token, data) => {
+  return axios
+    .put(api.url.userData(), { ...data }, setToken(token))
+    .then(response => {
+      if (response.status === 200) {
+        return response;
+      }
+    })
+    .catch(err => console.log(err));
+};
 // Example
 // export const fetchCompleteTask = (token, task) => {
 //   return axios.post(api.url.updateTask(), { ...task, isDone: true }, setToken(token)).catch(err => console.log(err));
