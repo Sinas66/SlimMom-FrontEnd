@@ -1,8 +1,8 @@
 import { actionTypes } from '../actions/constants';
 
 const INITIAL_STATE = {
-  nickname: 'name',
-  token: '123'
+  // nickname: 'name',
+  // token: '123'
   // userData: {
   //   calloriesPerDay: 100,
   //   groupBlood: 100,

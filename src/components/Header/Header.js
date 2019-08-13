@@ -28,21 +28,30 @@ class Header extends Component {
   };
 
   componentDidMount() {
-    const { token } = this.props;
-    if (!!token) {
-      this.setState({ isLogged: true });
-    }
+    setTimeout(() => {
+      const { token } = this.props;
+      if (token) {
+        this.setState({ isLogged: true });
+      } else if (!token) {
+        this.setState({ isLogged: false });
+      }
+    }, 2000);
   }
-  logOut = () => {
-    localStorage.removeItem('userToken');
-    this.setState(state => ({ isLogged: !state.isLogged }));
+
+  logOut = token => {
+    fetchLogOut(token).then(() => {
+      localStorage.removeItem('userToken');
+      this.setState(state => ({ isLogged: !state.isLogged }));
+    });
   };
 
   render() {
     const { toogleModal, logOut } = this;
     const { openModal, isLogged } = this.state;
     const {
-      username
+      username,
+      token
+
       // -------------- props from DiaryBlock: ------------
       // isModalShowed
       // toogleModalProducts
@@ -116,7 +125,8 @@ class Header extends Component {
   }
 }
 const mapStateToProps = state => ({
-  username: state.session.nickname
+  username: state.session.nickname,
+  token: state.session.token
 
   // -------------- modal flag(boolean) from DiaryBlock: ------------
   // isModalShowed: state.dailyBlock.isModalProduct
