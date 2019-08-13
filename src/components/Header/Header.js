@@ -20,7 +20,7 @@ class Header extends Component {
   };
   state = {
     openModal: false,
-    isLogged: true
+    isLogged: false
   };
 
   toogleModal = e => {
