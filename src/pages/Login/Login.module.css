@@ -1,0 +1,45 @@
+* {
+  /* outline: 1px solid red; */
+  margin: 0;
+  padding: 0;
+}
+
+.loginWrapper {
+  width: 100%;
+  text-align: center;
+  /* margin: 0 auto; */
+  /* height: 50px; */
+}
+
+.entry {
+  font-size: 13px;
+  margin-top: 55px;
+  padding-bottom: 35px;
+  color: grey;
+}
+
+.input {
+  height: 50px;
+  width: 270px;
+  text-align: center;
+  vertical-align: bottom;
+  border: none;
+  border-bottom: 1px solid grey;
+  margin-top: 20px;
+}
+
+.button {
+  margin-top: 20px;
+  height: 40px;
+  width: 175px;
+  border-radius: 20px;
+  color: white;
+  background: rgb(252, 132, 44);
+  font-size: 14px;
+  box-shadow: 0 8px 40px rgb(252, 132, 44);
+  border: none;
+}
+
+.butModule {
+  margin-top: 45px;
+}
