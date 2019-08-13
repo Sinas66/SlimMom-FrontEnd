@@ -14,29 +14,37 @@ const GroupBlood = {
 
 class CalcForm extends Component {
   static propTypes = {
-    isCounted: PropTypes.bool,
-    height: PropTypes.string,
-    age: PropTypes.string,
-    currentWeight: PropTypes.string,
-    desiredWeight: PropTypes.string,
-    groupBlood: PropTypes.string
+    data: PropTypes.shape({
+      height: PropTypes.string,
+      age: PropTypes.string,
+      currentWeight: PropTypes.string,
+      desiredWeight: PropTypes.string,
+      groupBlood: PropTypes.string
+    }),
+    session: PropTypes.shape({
+      token: PropTypes.string,
+    }),
   };
 
   static defaultProps = {
-    isCounted: false,
-    height: '',
-    age: '',
-    currentWeight: '',
-    desiredWeight: '',
-    groupBlood: null
+    data: {
+      height: '',
+      age: '',
+      currentWeight: '',
+      desiredWeight: '',
+      groupBlood: null
+    },
+    session: {
+      token: ''
+    }
   };
 
   state = {
-    height: this.props.height,
-    age: this.props.age,
-    currentWeight: this.props.currentWeight,
-    desiredWeight: this.props.desiredWeight,
-    groupBlood: this.props.groupBlood,
+    height: this.props.data.height,
+    age: this.props.data.age,
+    currentWeight: this.props.data.currentWeight,
+    desiredWeight: this.props.data.desiredWeight,
+    groupBlood: this.props.data.groupBlood,
     errorHeight: false,
     errorAge: false,
     errorCurrentWeight: false,
@@ -198,7 +206,7 @@ class CalcForm extends Component {
       groupBlood,
       isOpenModal
     } = this.state;
-    const { session, isCounted } = this.props;
+    const { session, data } = this.props;
 
     return (
       <div className={css.wrapper}>
@@ -318,7 +326,7 @@ class CalcForm extends Component {
             </p>
           )}
           <button type="button" id="submit" className={css.btn} onClick={this.handleSubmit}>
-            {!isCounted ? 'Начать худеть' : 'Пересчитать'}
+            {!data.groupBlood ? 'Посчитать' : 'Пересчитать'}
           </button>
         </div>
         {isOpenModal && <Result {...this.state} onClose={this.toggleOpenModal} />}
@@ -328,7 +336,8 @@ class CalcForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  session: state.session
+  session: state.session,
+  data: state.data
 });
 
 export default connect(mapStateToProps)(CalcForm);
