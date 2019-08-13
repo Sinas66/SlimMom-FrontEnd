@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '../../components/Header/Header';
 import CalcForm from '../../components/CalcForm/CalcForm';
+import Header from '../../components/Header/Header';
 import style from './Home.module.css';
 
 const Home = () => (
