@@ -31,7 +31,6 @@ class CalcForm extends Component {
   handleChangeHeight = e => {
     this.setState({ height: e.target.value });
     const val = Number(e.target.value);
-    console.log(this.state.height);
 
     if (val >= 50 && val <= 230 && Number.isInteger(val)) {
       this.setState({

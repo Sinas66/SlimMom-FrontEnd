@@ -1,7 +1,7 @@
 import { actionTypes } from '../actions/constants';
 
 const INITIAL_STATE = {
-  nickname: 'name',
+  nickname: '',
   token: '',
   userData: {
     groupBlood: '',
