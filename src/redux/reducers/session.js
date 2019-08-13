@@ -1,6 +1,8 @@
+import { actionTypes } from '../actions/constants';
+
 const INITIAL_STATE = {
   nickname: 'name',
-  token: '123',
+  token: '123'
   // userData: {
   //   calloriesPerDay: 100,
   //   groupBlood: 100,
@@ -12,7 +14,13 @@ const INITIAL_STATE = {
 };
 
 export const sessionReducer = (state = INITIAL_STATE, { type, payload }) => {
-  return state;
+  switch (type) {
+    case actionTypes.USER_DATA:
+      return { ...payload };
+
+    default:
+      return state;
+  }
 };
 
 export default sessionReducer;

@@ -1,0 +1,28 @@
+.grid {
+display: grid;
+grid-template-areas:
+        "header"
+        "dashboard"
+        "summary";
+grid-template-columns: 1fr;
+grid-template-rows: repeat(3, auto);
+}
+    .headerBlock_container {
+      grid-area: header;
+    }
+    .calcDairyBlock_container{
+      grid-area: dashboard;
+    }
+    .summaryBlock_container {
+      grid-area: summary;
+    }
+
+@media(min-width: 1024px) {
+  .grid {
+    grid-template-areas:
+    "header header"
+    "dashboard summary";
+      grid-template-columns: 8fr 5fr;
+      grid-template-rows: auto;
+  }
+}

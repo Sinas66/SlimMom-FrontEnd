@@ -6,5 +6,7 @@ export const url = {
   productsByDay: () => `${baseUrl}user/eats/`,
   logOut: () => `${baseUrl}logout`,
   loginUser: () => `${baseUrl}login`,
-  registerUser: () => `${baseUrl}register`
+  registerUser: () => `${baseUrl}register`,
+  productsByDate: date => `${baseUrl}user/eats/${date}`,
+  userData: () => `${baseUrl}user`
 };

@@ -18,6 +18,16 @@ class Login extends Component {
     });
   };
 
+  redirectUser = data => {
+    localStorage.setItem('userToken', data.token);
+
+    if (!data.userData) {
+      this.props.history.push('/dashboard');
+    } else {
+      this.props.history.push('/dashboard/diary');
+    }
+  };
+
   handleLogin = e => {
     e.preventDefault();
 
@@ -28,7 +38,7 @@ class Login extends Component {
       password: password
     };
 
-    this.props.loginUser(JSON.stringify(dataToLogin)).then(data => console.log(data));
+    this.props.loginUser(JSON.stringify(dataToLogin)).then(data => this.redirectUser(data));
   };
 
   handleRegister = e => {
@@ -48,7 +58,7 @@ class Login extends Component {
       };
     }
 
-    this.props.registerUser(JSON.stringify(dataToRegister)).then(data => console.log(data));
+    this.props.registerUser(JSON.stringify(dataToRegister)).then(data => this.redirectUser(data));
   };
 
   render() {
