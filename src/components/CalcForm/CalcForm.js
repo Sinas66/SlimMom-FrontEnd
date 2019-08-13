@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Result from '../Result/Result';
 import ErrorNotification from './ErrorNotification';
-// import Result from '../Result/Result';
 import css from './CalcForm.module.css';
 
 const GroupBlood = {
