@@ -5,6 +5,7 @@ import { getUserData } from '../../redux/actions/auth';
 import { connect } from 'react-redux';
 import windowSize from 'react-window-size';
 import CalcForm from '../../components/CalcForm/CalcForm';
+import DiaryBlock from "../../components/DiaryBlock/DiaryBlock";
 
 class Dashboard extends Component {
   state = {};
@@ -34,14 +35,14 @@ class Dashboard extends Component {
               </div>
             )}
           />
-          <Route path="/dashboard/diary" render={() => <div> Dairy </div>} />
+          <Route path="/dashboard/diary" component={DiaryBlock} />
         </div>
 
         {location.pathname === '/dashboard/diary' ? (
           windowWidth > 767 && <div className={styles.summaryBlock_container}>Summary</div>
         ) : (
-          <div className={styles.summaryBlock_container}>Summary</div>
-        )}
+            <div className={styles.summaryBlock_container}>Summary</div>
+          )}
       </section>
     );
   }

@@ -43,10 +43,42 @@ export const requestProductByDate = (date, token) =>
   axios
     .get(api.url.productsByDate(date), setToken(token))
     .then(data => data)
-    .catch(({ error }) => console.log(error));
+    .catch(({ error }) => error);
 
 export const requestUserData = token =>
   axios
     .get(api.url.userData(), setToken(token))
     .then(data => data)
-    .catch(({ error }) => console.log(error));
+    .catch(({ error }) => error);
+
+export const fetchAllProducts = (token, input) => {
+  return axios
+    .get(api.url.products(input), setToken(token))
+    .then(resp => {
+      const { productsOptions } = resp.data;
+      return productsOptions;
+    })
+    .catch(({ error }) => error);
+};
+
+export const fetchProductsByDay = (token, date) => {
+  return axios
+    .get(`${api.url.userEats()}/${date}`, setToken(token))
+    .then(resp => {
+      const { products } = resp.data;
+      return products;
+    })
+    .catch(({ error }) => error);
+};
+
+export const fetchUserEated = (token, productId, weight) => {
+  return axios
+    .post(`${api.url.userEats()}/${productId}`, { weight }, setToken(token))
+    .then(resp => {
+      if (resp.data.status !== 'success') {
+        throw new Error(resp.data);
+      }
+      return resp.data.products;
+    })
+    .catch(({ error }) => error);
+};
