@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Header from '../../components/Header/Header';
-class Home extends Component {
-  state = {};
+import style from './Home.module.css';
 
-  render() {
-    return (<>
-      <Header />
-    </>
-    )
-  }
-}
+const Home = () => (
+  <div className={style.homeContainer}>
+    <div className={style.homeGroup}>
+      <div className={style.homeHeader}><Header /></div>
+      <div>calcform</div>
+    </div>
+  </div>
+);
 
 export default Home;

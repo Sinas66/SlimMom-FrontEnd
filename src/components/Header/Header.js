@@ -4,15 +4,13 @@ import Modal from './Modal';
 import UserBar from '../UserBar/UserBar';
 import windowSize from 'react-window-size';
 import logo from './Logo/logo-png.png';
-import burger from './Logo/burger.svg';
-import cross from './Logo/cross.png';
-import logout from './Logo/logout.png';
+import Icon from '../../components/Icon/Icon';
 import styles from './Header.module.css';
 import { fetchLogOut } from '../../utils/requests';
 import { connect } from 'react-redux';
 
 // -------------- import from DiaryBlock: ------------
-// import { toogleModalProductsAction } from '../../redux/actions/productActions';
+// import { closeModalProductsAction } from '../../redux/actions/productActions';
 
 import PropTypes from 'prop-types';
 
@@ -22,32 +20,27 @@ class Header extends Component {
   };
   state = {
     openModal: false,
-    isLogged: true,
-    token: JSON.parse(localStorage.getItem('userToken'))
+    isLogged: true
   };
 
-  toogleModal = () => {
+  toogleModal = e => {
     this.setState(state => ({ openModal: !state.openModal }));
   };
 
   componentDidMount() {
-    const { token } = this.state;
+    const { token } = this.props;
     if (!!token) {
       this.setState({ isLogged: true });
     }
   }
-  logOut = token => {
-    console.log('click');
-    fetchLogOut(token).then(() => {
-      console.log('ok');
-      // localStorage.removeItem('userToken');
-      // this.setState(state => ({ isLogged: !state.isLogged }));
-    });
+  logOut = () => {
+    localStorage.removeItem('userToken');
+    this.setState(state => ({ isLogged: !state.isLogged }));
   };
 
   render() {
     const { toogleModal, logOut } = this;
-    const { openModal, isLogged, token } = this.state;
+    const { openModal, isLogged } = this.state;
     const {
       username
       // -------------- props from DiaryBlock: ------------
@@ -66,37 +59,39 @@ class Header extends Component {
             </div>
             {isLogged && this.props.windowWidth > 1023 && (
               <div className={styles.navigationBox}>
-                <NavLink className={styles.navigationLink} exact to="/diary">
-                  Дневник
+                <NavLink className={styles.navigationLink} exact to="/dashboard/diary">
+                  ДНЕВНИК
                 </NavLink>
-                <NavLink className={styles.navigationLink} exact to="/calc">
-                  Калькулятор
+                <NavLink className={styles.navigationLink} exact to="/dashboard">
+                  КАЛЬКУЛЯТОР
                 </NavLink>
               </div>
             )}
           </div>
-          {/* If user is logged - show the burger button (isLogged && button) */}
-          <div className={styles.usernameBurgerWrapper}>
-            {isLogged && this.props.windowWidth > 767 && (
-              <div className={styles.usernamebox}>
-                <p className={styles.usernameText}> {username}</p>
-                <p>|</p>
-                <button onClick={logOut} className={styles.logoutText}>
-                  Выйти
+
+          {isLogged && (
+            <div className={styles.usernameBurgerWrapper}>
+              {isLogged && this.props.windowWidth > 767 && (
+                <div className={styles.usernamebox}>
+                  <p className={styles.usernameText}> {username}</p>
+                  <p>|</p>
+                  <button onClick={logOut} className={styles.logoutText}>
+                    Выйти
+                  </button>
+                </div>
+              )}
+              {isLogged && !openModal && this.props.windowWidth < 1023 && (
+                <button className={styles.burgerBtn} onClick={toogleModal}>
+                  <Icon className={styles.burger} icon="Menu" />
                 </button>
-              </div>
-            )}
-            {isLogged && !openModal && this.props.windowWidth < 1023 && (
-              <button className={styles.burgerBtn} onClick={toogleModal}>
-                <img className={styles.burger} src={burger} alt="burger button" />
-              </button>
-            )}
-            {isLogged && openModal && this.props.windowWidth < 1023 && (
-              <button className={styles.burgerBtn} onClick={toogleModal}>
-                <img className={styles.cross} src={cross} alt="burger button" />
-              </button>
-            )}
-          </div>
+              )}
+              {isLogged && openModal && this.props.windowWidth < 1023 && (
+                <button className={styles.burgerBtn} onClick={toogleModal}>
+                  <Icon className={styles.cross} icon="Close" />
+                </button>
+              )}
+            </div>
+          )}
           {openModal && this.props.windowWidth < 1023 && <Modal />}
           {!isLogged && <UserBar />}
         </div>
@@ -108,11 +103,11 @@ class Header extends Component {
               false ? styles.greyZone : styles.greyZoneModalClose
             }
           >
-            {/* ---------------------- close button for both modals ----------------------------
+            {/* ---------------------- close button for both modals ((!)you have to uncomment css background img too) ----------------------------
               /* {isModalShowed && <button type="button" onClick={toogleModalProducts} className={styles.closeModal} />} */}
             <div className={styles.mobileLogoutBox}>
               <p className={styles.username}>{username}</p>{' '}
-              <img onClick={() => logOut(token)} className={styles.logoutButton} src={logout} alt="1" />
+              <Icon onClick={logOut} className={styles.logoutButton} icon="Logout" />
             </div>
           </div>
         )}
@@ -121,7 +116,7 @@ class Header extends Component {
   }
 }
 const mapStateToProps = state => ({
-  username: state.session.user.nickname
+  username: state.session.nickname
 
   // -------------- modal flag(boolean) from DiaryBlock: ------------
   // isModalShowed: state.dailyBlock.isModalProduct
@@ -129,7 +124,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   // -------------- modal flag(boolean) from DiaryBlock: ------------
   // toogleModalProducts: () => {
-  //   dispatch(toogleModalProductsAction());
+  //   dispatch(closeModalProductsAction());
   // }
 });
 
