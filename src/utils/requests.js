@@ -12,6 +12,16 @@ const setToken = token => ({
   }
 });
 
+export const putNewData = (token, data) => {
+  return axios
+    .put(api.url.userData(), { ...data }, setToken(token))
+    .then(response => {
+      if (response.status === 200) {
+        return response;
+      }
+    })
+    .catch(err => console.log(err));
+};
 // Example
 // export const fetchCompleteTask = (token, task) => {
 //   return axios.post(api.url.updateTask(), { ...task, isDone: true }, setToken(token)).catch(err => console.log(err));
@@ -20,30 +30,23 @@ const setToken = token => ({
 export const requestRegister = cred =>
   axios
     .post(api.url.registerUser(), cred)
-    // TODO Add error handlers
-
     .then(data => data)
-    .catch(({ error }) => console.log(error));
+    .catch(({ response }) => response);
 
 export const requestLogin = cred =>
   axios
     .post(api.url.loginUser(), cred)
-    // TODO Add error handlers
-
     .then(data => data)
-    .catch(({ error }) => console.log(error));
+    .catch(({ response }) => response);
 
 export const requestProductByDate = (date, token) =>
   axios
     .get(api.url.productsByDate(date), setToken(token))
-    // TODO Add error handlers
     .then(data => data)
     .catch(({ error }) => console.log(error));
 
 export const requestUserData = token =>
   axios
     .get(api.url.userData(), setToken(token))
-    // TODO Add error handlers
-
     .then(data => data)
     .catch(({ error }) => console.log(error));
