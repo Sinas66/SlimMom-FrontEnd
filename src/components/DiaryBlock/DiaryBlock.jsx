@@ -30,7 +30,7 @@ const DiaryBlock = () => {
 
       {(width > 767 || isLandscape) && <AddNewProduct />}
 
-      {(!isModalShowed || width > 767 || isLandscape) && <div> <EatedProductsList /> </div>}
+      {(!isModalShowed || width > 767 || isLandscape) && <EatedProductsList />}
 
       {isModalShowed && width < 767 && !isLandscape && (
         <AddNewProductModal>
