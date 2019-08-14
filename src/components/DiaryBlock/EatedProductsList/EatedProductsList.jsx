@@ -1,27 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Table, Tbody } from 'react-super-responsive-table';
 import Spinner from 'react-spinkit';
 import styles from './EatedProductsList.module.css';
-import { deleteProductFromProductListFunc, getProductsByDayAction } from '../../../redux/actions/productActions';
+import { deleteProductFromProductListFunc } from '../../../redux/actions/productActions';
 import EatedProductItem from './EatedProductItem/EatedProductItem';
 
 const EatedProductsList = () => {
   const dispatch = useDispatch();
-  const getProductsByDay = (token, date) => dispatch(getProductsByDayAction(token, date));
   const deleteProduct = (token, id) => dispatch(deleteProductFromProductListFunc(token, id));
   const productsByDay = useSelector(state => state.dailyBlock.productsByDay);
   const isProductsByDayLoader = useSelector(state => state.dailyBlock.isProductsByDayLoader);
 
-  useEffect(() => {
-    const token = localStorage.getItem('userToken');
-    const date = new Date().toISOString();
-    getProductsByDay(token, date);
-  }, []);
-
   return (
     <>
-      {productsByDay.length === 0 && <p>Здесь будет отображаться Ваш рацион</p>}
+      {productsByDay.length === 0 && <p className={styles.noProducts_p}>Здесь будет отображаться Ваш рацион</p>}
       {/* {isProductsByDayLoader && (
         <div className={styles.fetch_loader}>
           <Spinner
