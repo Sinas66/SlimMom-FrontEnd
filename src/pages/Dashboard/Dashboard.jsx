@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header/Header';
+import PropTypes from 'prop-types';
+import DiaryBlock from '../../components/DiaryBlock/DiaryBlock';
 import { Route } from 'react-router-dom';
 import styles from './Dashboard.module.css';
 import { getUserData } from '../../redux/actions/auth';
@@ -8,6 +10,10 @@ import windowSize from 'react-window-size';
 import CalcForm from '../../components/CalcForm/CalcForm';
 
 class Dashboard extends Component {
+  static propTypes = {
+    token: PropTypes.string.isRequired
+  };
+
   state = {};
   componentDidMount = () => {
     const token = localStorage.getItem('userToken');
@@ -37,7 +43,7 @@ class Dashboard extends Component {
               </div>
             )}
           />
-          <Route path="/dashboard/diary" render={() => <div> Dairy </div>} />
+          <Route path="/dashboard/diary" component={DiaryBlock} />
         </div>
 
         {location.pathname === '/dashboard/diary' ? (
