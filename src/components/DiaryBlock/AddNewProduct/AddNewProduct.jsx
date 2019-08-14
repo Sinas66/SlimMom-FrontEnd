@@ -17,7 +17,9 @@ const AddNewProduct = () => {
   const dispatch = useDispatch();
 
   const handlerInputWeight = value => {
-    setProductWeight(value);
+    if (/^[1-9]\d*(?:\.\d+)?(?:[kmbt])?$/g.test(value) || value === "") {
+      setProductWeight(value);
+    }
   };
 
   const handlerProductSelect = e => {
@@ -48,27 +50,19 @@ const AddNewProduct = () => {
         productLabel={productLabel}
         setProductLabel={setProductLabel}
       />
-      {/* <hr
-          className={styles.afterSelector_hr}
-          align="left"
-          noshade="true"
-          color="#e5e5e5"
-          size="1"
-          width={selecorHrWidth}
-        /> */}
+
       <input
         id="gramms"
-        type="number"
+        // type="number"
         placeholder="Граммы"
         step={10}
         className={styles.inputProduct_weight}
         value={productWeight}
         onChange={e => handlerInputWeight(e.target.value)}
       />
-      <label for="gramms" className={styles.hidden}>Граммы</label>
+      <label htmlFor="gramms" className={styles.hidden}>Граммы</label>
 
 
-      {/* <hr className={styles.afterWeight_hr} align="left" noshade="true" color="#e5e5e5" size="1" width="100%" /> */}
 
       <button onClick={handlerAddButton} type="button" className={styles.add_btn}>
         {width < 767 && !isLandscape ? 'Добавить' : <Add className={styles.addBtn_icon} />}
