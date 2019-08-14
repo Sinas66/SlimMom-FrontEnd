@@ -1,18 +1,22 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Table, Tbody } from 'react-super-responsive-table';
 import Spinner from 'react-spinkit';
 import styles from './EatedProductsList.module.css';
 import { deleteProductFromProductListFunc, getProductsByDayAction } from '../../../redux/actions/productActions';
 import EatedProductItem from './EatedProductItem/EatedProductItem';
 
-const EatedProductsList = ({ productsByDay, isProductsByDayLoader, deleteProduct, getProdByDay }) => {
+const EatedProductsList = () => {
+  const dispatch = useDispatch();
+  const getProductsByDay = (token, date) => dispatch(getProductsByDayAction(token, date));
+  const deleteProduct = (token, id) => dispatch(deleteProductFromProductListFunc(token, id));
+  const productsByDay = useSelector(state => state.dailyBlock.productsByDay);
+  const isProductsByDayLoader = useSelector(state => state.dailyBlock.isProductsByDayLoader);
 
   useEffect(() => {
     const token = localStorage.getItem('userToken');
     const date = new Date().toISOString();
-    getProdByDay(token, date);
+    getProductsByDay(token, date);
   }, []);
 
   return (
@@ -32,7 +36,7 @@ const EatedProductsList = ({ productsByDay, isProductsByDayLoader, deleteProduct
         </div>
       )} */}
 
-      {productsByDay && (
+      {productsByDay.length > 0 && (
         <div className={styles.tBodyTable}>
           <Table className={styles.firstBlock}>
             <Tbody>
@@ -47,29 +51,5 @@ const EatedProductsList = ({ productsByDay, isProductsByDayLoader, deleteProduct
   );
 };
 
-EatedProductsList.propTypes = {
-  productsByDay: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
-  isProductsByDayLoader: PropTypes.bool.isRequired,
-  deleteProduct: PropTypes.func.isRequired,
-  getProdByDay: PropTypes.func.isRequired
-};
-
-const mapStateToProps = state => ({
-  isProductsByDayLoader: state.dailyBlock.isProductsByDayLoader,
-  productsByDay: state.dailyBlock.productsByDay
-});
-
-const mapDispatchToProps = dispatch => ({
-  deleteProduct: (token, id) => {
-    dispatch(deleteProductFromProductListFunc(token, id))
-  },
-  getProdByDay: (token, date) => {
-    dispatch(getProductsByDayAction(token, date))
-  }
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EatedProductsList);
+export default EatedProductsList;
 
