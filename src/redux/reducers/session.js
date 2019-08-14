@@ -4,11 +4,11 @@ const INITIAL_STATE = {
   nickname: '',
   token: '',
   userData: {
-    groupBlood: 0,
-    height: 0,
-    desiredWeight: 0,
-    currentWeight: 0,
-    age: 0
+    groupBlood: 3,
+    height: 50,
+    desiredWeight: 50,
+    currentWeight: 50,
+    age: 50
   }
 };
 
