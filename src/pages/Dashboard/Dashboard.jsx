@@ -39,9 +39,9 @@ class Dashboard extends Component {
         </div>
 
         {location.pathname === '/dashboard/diary' ? (
-          windowWidth > 767 && <div className={styles.summaryBlock_container}>{Summary}</div>
+          windowWidth > 767 && <div className={styles.summaryBlock_container}><Summary/></div>
         ) : (
-          <div className={styles.summaryBlock_container}>{Summary}</div>
+          <div className={styles.summaryBlock_container}><Summary/></div>
         )}
       </section>
     );

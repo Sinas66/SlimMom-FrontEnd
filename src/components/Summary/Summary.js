@@ -12,7 +12,7 @@ function Summary({ products, date, groupBlood, dailyRate }) {
     const [productsList, setProductsList] = useState([]);
 
     useEffect(() => {
-        setCсalSumm(getCcalSumm(products));
+       if(products)setCсalSumm(getCcalSumm(products));
         setProductsList(getProductsByGroupBlood(groupBlood));
     });
 
