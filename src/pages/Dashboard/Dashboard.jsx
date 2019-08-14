@@ -6,6 +6,7 @@ import styles from './Dashboard.module.css';
 import { getUserData } from '../../redux/actions/auth';
 import { connect } from 'react-redux';
 import windowSize from 'react-window-size';
+import CalcForm from '../../components/CalcForm/CalcForm';
 
 class Dashboard extends Component {
   static propTypes = {
@@ -34,11 +35,20 @@ class Dashboard extends Component {
             exact
             render={() => (
               <div>
-                <DiaryBlock />
+                {' '}
+                <CalcForm />{' '}
               </div>
             )}
           />
-          <Route path="/dashboard/diary" render={() => <div> Dairy </div>} />
+          <Route
+            path="/dashboard/diary"
+            render={() => (
+              <div>
+                {' '}
+                <DiaryBlock />{' '}
+              </div>
+            )}
+          />
         </div>
 
         {location.pathname === '/dashboard/diary' ? (

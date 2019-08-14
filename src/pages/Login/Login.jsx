@@ -7,7 +7,8 @@ import { sendRegisterData, sendLoginData } from '../../redux/actions/auth';
 class Login extends Component {
   state = {
     login: '',
-    password: ''
+    password: '',
+    error: ''
   };
 
   handleInputs = e => {
@@ -28,6 +29,28 @@ class Login extends Component {
     }
   };
 
+  handleErrorLogin = (data, status) => {
+    if (status === 200) {
+      this.redirectUser(data.user);
+    }
+    if (status >= 400) {
+      this.setState({
+        error: data.err
+      });
+    }
+  };
+
+  handleErrorRegister = (data, status) => {
+    if (status === 200) {
+      this.redirectUser(data.user);
+    }
+    if (status >= 400) {
+      this.setState({
+        error: data.message
+      });
+    }
+  };
+
   handleLogin = e => {
     e.preventDefault();
 
@@ -38,7 +61,7 @@ class Login extends Component {
       password: password
     };
 
-    this.props.loginUser(JSON.stringify(dataToLogin)).then(data => this.redirectUser(data));
+    this.props.loginUser(JSON.stringify(dataToLogin)).then(({ data, status }) => this.handleErrorLogin(data, status));
   };
 
   handleRegister = e => {
@@ -58,7 +81,9 @@ class Login extends Component {
       };
     }
 
-    this.props.registerUser(JSON.stringify(dataToRegister)).then(data => this.redirectUser(data));
+    this.props.registerUser(JSON.stringify(dataToRegister)).then(({ data, status }) => {
+      this.handleErrorRegister(data, status);
+    });
   };
 
   render() {
@@ -73,6 +98,7 @@ class Login extends Component {
 
           <button onClick={this.handleLogin}>Login</button>
           <button onClick={this.handleRegister}>Register</button>
+          <p>{this.state.error}</p>
         </form>
       </>
     );
