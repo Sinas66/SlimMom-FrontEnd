@@ -7,8 +7,6 @@
 .loginWrapper {
   width: 100%;
   text-align: center;
-  /* margin: 0 auto; */
-  /* height: 50px; */
 }
 
 .entry {
@@ -16,9 +14,12 @@
   margin-top: 55px;
   padding-bottom: 35px;
   color: grey;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
 }
 
 .input {
+  font-size: 15px;
   height: 50px;
   width: 270px;
   text-align: center;
@@ -26,6 +27,8 @@
   border: none;
   border-bottom: 1px solid grey;
   margin-top: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
 }
 
 .button {
@@ -38,8 +41,80 @@
   font-size: 14px;
   box-shadow: 0 5px 10px rgb(252, 132, 44);
   border: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
 }
 
 .butModule {
   margin-top: 45px;
+}
+
+@media(min-width: 767px) {
+  .input {
+    font-size: 15px;
+    height: 50px;
+    width: 345px;
+    text-align: start;
+    vertical-align: bottom;
+    border: none;
+    border-bottom: 1px solid grey;
+    margin-top: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+  }
+
+  .butModule {
+    margin-top: 45px;
+    text-align: start;
+  }
+
+  .loginWrapper {
+    width: 345px;
+    text-align: center;
+  }
+
+  .entry {
+    font-size: 13px;
+    margin-top: 165px;
+    padding-bottom: 35px;
+    color: grey;
+    text-align: start;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+}
+
+@media(min-width: 1023px) {
+  .input {
+    font-size: 15px;
+    height: 50px;
+    width: 345px;
+    text-align: start;
+    vertical-align: bottom;
+    border: none;
+    border-bottom: 1px solid grey;
+    margin-top: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+  }
+
+  .butModule {
+    margin-top: 45px;
+    text-align: start;
+  }
+
+  .loginWrapper {
+    width: 345px;
+    text-align: center;
+  }
+
+  .entry {
+    font-size: 13px;
+    margin-top: 210px;
+    padding-bottom: 35px;
+    color: grey;
+    text-align: start;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+  }
 }

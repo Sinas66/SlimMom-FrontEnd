@@ -75,7 +75,7 @@ class Login extends Component {
                 name="login"
                 id="login"
                 onChange={this.handleInputs}
-                placeholder="Логин*"
+                placeholder="Логин *"
                 className={style.input}
               />
             </div>
@@ -86,19 +86,19 @@ class Login extends Component {
                 name="password"
                 id="password"
                 onChange={this.handleInputs}
-                placeholder="Пароль*"
+                placeholder="Пароль *"
                 className={style.input}
               />
             </div>
             <div className={style.butModule}>
               <div>
                 <button onClick={this.handleLogin} className={style.button}>
-                  Login
+                  Вход
                 </button>
               </div>
               <div>
                 <button onClick={this.handleRegister} className={style.button}>
-                  Register
+                  Регистрация
                 </button>
               </div>
             </div>
