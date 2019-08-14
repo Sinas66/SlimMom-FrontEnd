@@ -40,7 +40,6 @@ const AddNewProduct = () => {
     }
   };
 
-  const selecorHrWidth = width < 767 && !isLandscape ? '100%' : '231px';
   return (
     <div className={styles.addProduct_wrapper}>
 

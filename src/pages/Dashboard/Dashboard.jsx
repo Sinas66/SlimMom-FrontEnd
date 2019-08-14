@@ -26,7 +26,7 @@ class Dashboard extends Component {
 
   render() {
     const { windowWidth, location, token, user } = this.props;
-    console.log(this.props.user);
+    // console.log(this.props.user);
     return (
       <section className={styles.grid}>
         <div className={styles.headerBlock_container}>
@@ -44,13 +44,13 @@ class Dashboard extends Component {
               </div>
             )
           ) : (
-            <div className={styles.summaryBlock_container}>
-              <Summary />
-            </div>
-          )
+              <div className={styles.summaryBlock_container}>
+                <Summary />
+              </div>
+            )
         ) : (
-          ''
-        )}
+            ''
+          )}
       </section>
     );
   }
