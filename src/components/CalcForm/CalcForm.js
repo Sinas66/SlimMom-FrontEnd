@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import ErrorNotification from './ErrorNotification';
 import Result from '../Result/Result';
 import css from './CalcForm.module.css';
@@ -12,6 +13,44 @@ const GroupBlood = {
 };
 
 class CalcForm extends Component {
+  static propTypes = {
+    data: PropTypes.shape({
+        height: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.number
+        ]),
+        age: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.number
+        ]),
+        currentWeight: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.number
+        ]),
+        desiredWeight: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.number
+        ]),
+        groupBlood: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.number
+        ]),
+    }),
+    session: PropTypes.shape({
+      token: PropTypes.string,
+    })
+  }
+
+  static defaultProps = {
+    data: {
+      height: '',
+      age: '',
+      currentWeight: '',
+      desiredWeight: '',
+      groupBlood: '',
+    }
+  }
+
   state = {
     height: this.props.data.height,
     age: this.props.data.age,
@@ -135,8 +174,7 @@ class CalcForm extends Component {
             isError: false,
             errorGroupBlood: false,
             isValidAll: false
-          },
-          this.reset
+          }
         );
       } else {
         this.setState({
