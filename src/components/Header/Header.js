@@ -101,7 +101,7 @@ class Header extends Component {
               )}
             </div>
           )}
-          {openModal && this.props.windowWidth < 1023 && <Modal />}
+          {openModal && this.props.windowWidth < 1023 && <Modal toogleModal={toogleModal} />}
           {!isLogged && <UserBar />}
         </div>
         {isLogged && this.props.windowWidth < 767 && (

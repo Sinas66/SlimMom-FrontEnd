@@ -68,7 +68,6 @@
 }
 
 .logoutButton {
-  padding-top: 12px;
   width: 22px;
   height: 26px;
 }
@@ -96,7 +95,7 @@
 .mobileLogoutBox {
   display: flex;
   justify-content: space-between;
-  width: 68px;
+  width: 105px;
   margin-right: 9px;
 }
 
@@ -153,8 +152,9 @@
 
   .usernamebox {
     display: flex;
-    width: 135px;
+    width: 165px;
     justify-content: space-between;
+    align-items: baseline;
     padding-top: 6px;
     font-size: 15px;
     letter-spacing: 1.5px;
