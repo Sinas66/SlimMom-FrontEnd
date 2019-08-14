@@ -98,7 +98,7 @@ class Login extends Component {
             <form>
               <div className={style.inputModule}>
                 <div>
-                  {/* <label htmlFor="login">Login</label> */}
+                  <label htmlFor="login">Login</label>
                   <input
                     type="text"
                     name="login"
@@ -109,7 +109,7 @@ class Login extends Component {
                   />
                 </div>
                 <div>
-                  {/* <label htmlFor="password">Password</label> */}
+                  <label htmlFor="password">Password</label>
                   <input
                     type="password"
                     name="password"
@@ -132,6 +132,7 @@ class Login extends Component {
                   </button>
                 </div>
               </div>
+              <p>{this.state.error}</p>
             </form>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import Modal from './Modal';
 import UserBar from '../UserBar/UserBar';
 import windowSize from 'react-window-size';
@@ -61,10 +61,12 @@ class Header extends Component {
         <div className={isLogged ? styles.container : styles.loggedContainer}>
           <div className={isLogged ? styles.logoNavigationBox : styles.loggedLogoNavigationBox}>
             <div className={styles.logotype}>
-              <img className={styles.logoImg} src={logo} alt="LOGO" />
-              <h1 className={styles.logoText}>
-                Slim<span className={styles.logoTextSpan}>Mom</span>
-              </h1>
+              <Link to="/">
+                <img className={styles.logoImg} src={logo} alt="LOGO" />
+                <span className={styles.logoText}>
+                  Slim<span className={styles.logoTextSpan}>Mom</span>
+                </span>
+              </Link>
             </div>
             {isLogged && this.props.windowWidth > 1023 && (
               <div className={styles.navigationBox}>
