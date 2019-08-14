@@ -1,0 +1,255 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.container,
+.loggedContainer {
+  padding-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid;
+  border-color: #dddddd;
+}
+
+.logotype {
+  display: flex;
+  padding-top: 4px;
+}
+
+.logoImg {
+  padding-top: 5px;
+  width: 46px;
+  height: 44px;
+}
+
+.logoText {
+  font-size: 21px;
+  letter-spacing: 2px;
+  color: #212121;
+  font-family: "GothamProLight", sans-serif;
+  font-weight: 300;
+  padding-left: 6px;
+}
+
+.logoTextSpan {
+  color: #fc842c;
+  font-family: "GothamProLight", sans-serif;
+  font-weight: 300;
+  font-size: 21px;
+  letter-spacing: 2px;
+}
+
+.greyZone,
+.greyZoneModalClose {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #dddd;
+}
+
+.greyZoneModalClose {
+  justify-content: flex-end;
+}
+
+.closeModal {
+  background: transparent;
+  /* --------------(UNCOMMENT WHEN MODAL WINDOWS WILL BE ACTIVE)------------ */
+  /* background-image: url("./Logo/closeModal.png"); */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 28px;
+  height: 28px;
+  margin: auto 0;
+  margin-left: 15px;
+  border: none;
+}
+
+.logoutButton {
+  padding-top: 12px;
+  width: 22px;
+  height: 26px;
+}
+
+.burgerBtn {
+  background: transparent;
+  border: none;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  margin-top: 18px;
+  margin-right: 19px;
+}
+
+.burger {
+  width: 24px;
+  height: 26px;
+}
+
+.cross {
+  width: 27px;
+  height: 26px;
+}
+
+.mobileLogoutBox {
+  display: flex;
+  justify-content: space-between;
+  width: 68px;
+  margin-right: 9px;
+}
+
+@media (min-width: 768px) {
+  .header {
+    min-width: 768px;
+  }
+
+  .container,
+  .loggedContainer {
+    padding-bottom: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 3px solid;
+    border-color: #dddddd;
+  }
+
+  .logotype {
+    padding-left: 67px;
+  }
+
+  .usernameBurgerWrapper {
+    display: flex;
+    width: 310px;
+    justify-content: space-between;
+  }
+
+  .burgerBtn {
+    margin-right: 38px;
+  }
+
+  .logoutText {
+    height: 36px;
+    display: block;
+    background-color: transparent;
+    cursor: pointer;
+    transition: .5s;
+    border: none;
+    height: 47px;
+    padding: 0;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    color: #212121;
+    font-family: "GothamProBold", sans-serif;
+    font-weight: bold;
+    outline: none;
+  }
+
+  .logoutText:hover {
+    color: #fc842c;
+    text-shadow: 0 1px 1px #ffcca8;
+  }
+
+  .usernamebox {
+    display: flex;
+    width: 135px;
+    justify-content: space-between;
+    padding-top: 6px;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    color: #212121;
+    font-family: "GothamProBold", sans-serif;
+    font-weight: bold;
+  }
+}
+
+
+@media (min-width: 1024px) {
+
+  .header {
+    min-width: 1024px;
+  }
+
+  .container,
+  .loggedContainer {
+    justify-content: space-between;
+    min-width: 1024px;
+    border: none;
+    margin-top: 66px;
+  }
+
+  .loggedContainer {
+    justify-content: start;
+  }
+
+  .logoNavigationBox,
+  .loggedLogoNavigationBox {
+    width: 478px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .logoutText {
+    background-color: transparent;
+    border: none;
+    height: 47px;
+    padding: 0;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    color: #212121;
+    font-family: "GothamProBold", sans-serif;
+    font-weight: bold;
+    outline: none;
+  }
+
+  .loggedLogoNavigationBox {
+    width: 383px;
+  }
+
+  .navigationBox {
+    padding-top: 22px;
+  }
+
+  .navigationBox a {
+    text-decoration: none;
+  }
+
+  .navigationLink {
+    font-family: "GothamProBold";
+    font-weight: bold;
+    color: #999daa;
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding-left: 46px;
+    transition: .5s;
+  }
+
+  .navigationLink:hover {
+    color: #2b2b2b;
+  }
+
+  .logotype {
+    padding-left: 0;
+    font-size: 21px;
+  }
+
+  .logoImg {
+    position: relative;
+    left: 83px;
+    top: -32px;
+    width: 66px;
+    height: 63px;
+  }
+
+  .logoText {
+    padding-left: 74px;
+  }
+
+  .usernamebox {
+    padding-left: 0;
+    width: 299px;
+    justify-content: start;
+  }
+
+}

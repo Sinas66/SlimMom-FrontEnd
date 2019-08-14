@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from '../../components/Header/Header';
 import { Route } from 'react-router-dom';
 import styles from './Dashboard.module.css';
 import { getUserData } from '../../redux/actions/auth';
@@ -17,11 +18,13 @@ class Dashboard extends Component {
   };
 
   render() {
-    const { windowWidth, location } = this.props;
+    const { windowWidth, location, token } = this.props;
 
     return (
       <section className={styles.grid}>
-        <div className={styles.headerBlock_container}>Header</div>
+        <div className={styles.headerBlock_container}>
+          <Header token={token} />
+        </div>
 
         <div className={styles.calcDairyBlock_container}>
           <Route

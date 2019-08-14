@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {} from '../redux/actions/auth';
+import { } from '../redux/actions/auth';
 import * as api from './entyPoints';
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -11,6 +11,18 @@ const setToken = token => ({
     Authorization: `Bearer ${token}`
   }
 });
+
+export const fetchLogOut = token => {
+  return axios
+    .get(api.url.logOut(), setToken(token))
+    .then(resp => {
+      console.log(data);
+      if (resp.data.status !== 'success') {
+        throw new Error('albfkjabflasflk');
+      }
+    })
+    .catch(error => console.log(error));
+};
 
 export const putNewData = (token, data) => {
   return axios
