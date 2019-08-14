@@ -8,6 +8,7 @@ import { getUserData } from '../../redux/actions/auth';
 import { connect } from 'react-redux';
 import windowSize from 'react-window-size';
 import CalcForm from '../../components/CalcForm/CalcForm';
+import Summary from '../../components/Summary/Summary';
 
 class Dashboard extends Component {
   static propTypes = {
@@ -47,9 +48,9 @@ class Dashboard extends Component {
         </div>
 
         {location.pathname === '/dashboard/diary' ? (
-          windowWidth > 767 && <div className={styles.summaryBlock_container}>Summary</div>
+          windowWidth > 767 && <div className={styles.summaryBlock_container}><Summary/></div>
         ) : (
-          <div className={styles.summaryBlock_container}>Summary</div>
+          <div className={styles.summaryBlock_container}><Summary/></div>
         )}
       </section>
     );
