@@ -65,44 +65,49 @@ class Login extends Component {
   render() {
     return (
       <>
-        <div className={style.loginWrapper}>
-          <div className={style.entry}>ВХОД / РЕГИСТРАЦИЯ</div>
-          <form>
-            <div>
-              {/* <label htmlFor="login">Login</label> */}
-              <input
-                type="text"
-                name="login"
-                id="login"
-                onChange={this.handleInputs}
-                placeholder="Логин *"
-                className={style.input}
-              />
-            </div>
-            <div>
-              {/* <label htmlFor="password">Password</label> */}
-              <input
-                type="password"
-                name="password"
-                id="password"
-                onChange={this.handleInputs}
-                placeholder="Пароль *"
-                className={style.input}
-              />
-            </div>
-            <div className={style.butModule}>
-              <div>
-                <button onClick={this.handleLogin} className={style.button}>
-                  Вход
-                </button>
+        <div className={style.pageWrapper}>
+          <h1>HEADER</h1>
+          <div className={style.loginWrapper}>
+            <div className={style.entry}>ВХОД / РЕГИСТРАЦИЯ</div>
+            <form>
+              <div className={style.inputModule}>
+                <div>
+                  {/* <label htmlFor="login">Login</label> */}
+                  <input
+                    type="text"
+                    name="login"
+                    id="login"
+                    onChange={this.handleInputs}
+                    placeholder="Логин *"
+                    className={style.input}
+                  />
+                </div>
+                <div>
+                  {/* <label htmlFor="password">Password</label> */}
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    onChange={this.handleInputs}
+                    placeholder="Пароль *"
+                    className={style.input}
+                  />
+                </div>
               </div>
-              <div>
-                <button onClick={this.handleRegister} className={style.button}>
-                  Регистрация
-                </button>
+              <div className={style.butModule}>
+                <div>
+                  <button onClick={this.handleLogin} className={style.button}>
+                    Вход
+                  </button>
+                </div>
+                <div>
+                  <button onClick={this.handleRegister} className={style.button}>
+                    Регистрация
+                  </button>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </>
     );
