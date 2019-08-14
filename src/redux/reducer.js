@@ -4,7 +4,7 @@ import productReducer from './reducers/productReducer';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  data: productReducer
+  dailyBlock: productReducer
 });
 
 export default rootReducer;
