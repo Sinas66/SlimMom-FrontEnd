@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useWindowSize } from '../../../utils/hooks'
 import { useDispatch } from 'react-redux';
 import Selector from './ProductSelector/ProductSelector';
@@ -15,10 +15,14 @@ const AddNewProduct = () => {
   const [productLabel, setProductLabel] = useState('');
 
   const dispatch = useDispatch();
+  const [inputWeightClasses, setInputWeightClasses] = useState([styles.inputWeight_label]);
 
   const handlerInputWeight = value => {
     if (/^[1-9]\d*(?:\.\d+)?(?:[kmbt])?$/g.test(value) || value === "") {
+      setInputWeightClasses([styles.inputWeight_label, styles.inputHasValue])
       setProductWeight(value);
+    } if (value === "") {
+      setInputWeightClasses([styles.inputWeight_label])
     }
   };
 
@@ -48,18 +52,20 @@ const AddNewProduct = () => {
         handlerProductSelect={handlerProductSelect}
         productLabel={productLabel}
         setProductLabel={setProductLabel}
+        productWeight={productWeight}
       />
-
-      <input
-        id="gramms"
-        // type="number"
-        placeholder="Граммы"
-        step={10}
-        className={styles.inputProduct_weight}
-        value={productWeight}
-        onChange={e => handlerInputWeight(e.target.value)}
-      />
-      <label htmlFor="gramms" className={styles.hidden}>Граммы</label>
+      <div className={styles.inputWeight_wrapper}>
+        <label htmlFor="gramms" className={inputWeightClasses.join(' ')}>Граммы</label>
+        <input
+          id="gramms"
+          // type="number"
+          // placeholder="Граммы"
+          step={10}
+          className={styles.inputProduct_weight}
+          value={productWeight}
+          onChange={e => handlerInputWeight(e.target.value)}
+        />
+      </div>
 
 
 

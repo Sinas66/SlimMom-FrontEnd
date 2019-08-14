@@ -82,7 +82,8 @@ const SelectWrapper = ({
   handlerInputWeight,
   handlerProductSelect,
   productLabel,
-  setProductLabel
+  setProductLabel,
+  productWeight
 }) => {
   const token = localStorage.getItem('userToken');
   const { width, height } = useWindowSize();
@@ -104,14 +105,19 @@ const SelectWrapper = ({
     return [];
   };
 
+  const handlerSelectChange = e => {
+    handlerProductSelect(e);
+    setProductLabel({ label: e.label });
+    if (productWeight === "") {
+      handlerInputWeight("100");
+    }
+  }
+
+
   return (
     <AsyncSelect
       placeholder="Введите название продукта"
-      onChange={e => {
-        handlerProductSelect(e);
-        handlerInputWeight(100);
-        setProductLabel({ label: e.label });
-      }}
+      onChange={handlerSelectChange}
       cacheOptions
       value={productLabel}
       defaultOptions
@@ -128,7 +134,8 @@ SelectWrapper.propTypes = {
   handlerInputWeight: PropTypes.func.isRequired,
   handlerProductSelect: PropTypes.func.isRequired,
   productLabel: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.string]),
-  setProductLabel: PropTypes.func.isRequired
+  setProductLabel: PropTypes.func.isRequired,
+  productWeight: PropTypes.string.isRequired
 };
 
 SelectWrapper.defaultProps = {
