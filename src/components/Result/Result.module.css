@@ -14,18 +14,12 @@
     background-color: rgba(0, 0, 0, 0.2);
     z-index: 999;
     position: fixed;
- display: flex;
+    display: flex;
     justify-content: center;
   }
 
 
-  .modal{
-    position: absolute;
-    top:5%;
-  }
-
   .modalContent {
-    max-width: 450px;
     width: 100%;
     background-color:var(--bg-color-white);
     font-family: var(--bold-fonts);
@@ -120,6 +114,10 @@
 
 
 @media(min-width: 768px){
+  .modal{
+    position: absolute;
+    top:5%;
+  }
 
   .modalContent{
     max-width: 625px;
