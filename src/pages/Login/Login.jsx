@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { memorizedUserData } from './selectors';
+import style from './Login.module.css';
 
 import { sendRegisterData, sendLoginData } from '../../redux/actions/auth';
 
