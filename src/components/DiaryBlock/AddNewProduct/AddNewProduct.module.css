@@ -1,11 +1,11 @@
 .addProduct_wrapper{
   display: flex;
-  flex-flow: column wrap
+  flex-flow: column wrap;
+  padding: 66px 0 0;
 }
-
-/* .product_selector{
-  margin-bottom: 20px;
-} */
+.hidden{
+  visibility:hidden;
+}
 
 .inputProduct_weight::-webkit-outer-spin-button,
 .inputProduct_weight::-webkit-inner-spin-button {
@@ -20,10 +20,10 @@
   color: var(---text-color-black);
   font-weight: 700;
   line-height: 1.2;
-  height: 20px;
   width: 100%;
-  padding: 0 0 0px 5px;
-  margin-bottom: 11px;
+  padding: 0 0 12px 5px;
+  margin-bottom: 113px;
+  border-bottom: 1px solid var(--input-line-color);
 }
 .inputProduct_weight::placeholder{
   color: var(--text-color-grey);
@@ -81,7 +81,8 @@ screen and (orientation: landscape){
   .addProduct_wrapper{
     display: flex;
     flex-flow: row;
-    margin-bottom: 66px;
+    margin-bottom: 40px;
+    padding: 0;
   }
   .selectorWrapper{
     margin:0;
@@ -95,10 +96,9 @@ screen and (orientation: landscape){
     margin: 0 0 0 -8px;
   }
   .inputProduct_weight{
-  width: 73px;
-  margin: 0 0 7px;
-  padding: 0 0 0 30px;
-  height: 38px;
+  width: 95px;
+  margin: 0 24px 7px 0;
+  padding: 0 0 9px 30px;
   }
 .add_btn{
   width: 50px;

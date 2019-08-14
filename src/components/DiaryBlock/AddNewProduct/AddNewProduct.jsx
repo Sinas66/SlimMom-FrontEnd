@@ -41,38 +41,39 @@ const AddNewProduct = () => {
   const selecorHrWidth = width < 767 && !isLandscape ? '100%' : '231px';
   return (
     <div className={styles.addProduct_wrapper}>
-      <div className={styles.selectorWrapper}>
-        <Selector
-          handlerInputWeight={handlerInputWeight}
-          handlerProductSelect={handlerProductSelect}
-          productLabel={productLabel}
-          setProductLabel={setProductLabel}
-        />
-        <hr
+
+      <Selector
+        handlerInputWeight={handlerInputWeight}
+        handlerProductSelect={handlerProductSelect}
+        productLabel={productLabel}
+        setProductLabel={setProductLabel}
+      />
+      {/* <hr
           className={styles.afterSelector_hr}
           align="left"
           noshade="true"
           color="#e5e5e5"
           size="1"
           width={selecorHrWidth}
-        />
-      </div>
-      <div className={styles.inputWrapper}>
-        <input
-          type="number"
-          placeholder="Граммы"
-          step={10}
-          className={styles.inputProduct_weight}
-          value={productWeight}
-          onChange={e => handlerInputWeight(e.target.value)}
-        />
-        <hr className={styles.afterWeight_hr} align="left" noshade="true" color="#e5e5e5" size="1" width="100%" />
-      </div>
+        /> */}
+      <input
+        id="gramms"
+        type="number"
+        placeholder="Граммы"
+        step={10}
+        className={styles.inputProduct_weight}
+        value={productWeight}
+        onChange={e => handlerInputWeight(e.target.value)}
+      />
+      <label for="gramms" className={styles.hidden}>Граммы</label>
+
+
+      {/* <hr className={styles.afterWeight_hr} align="left" noshade="true" color="#e5e5e5" size="1" width="100%" /> */}
 
       <button onClick={handlerAddButton} type="button" className={styles.add_btn}>
         {width < 767 && !isLandscape ? 'Добавить' : <Add className={styles.addBtn_icon} />}
       </button>
-    </div>
+    </div >
   );
 };
 

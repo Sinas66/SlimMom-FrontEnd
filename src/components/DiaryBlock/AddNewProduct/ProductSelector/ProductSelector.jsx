@@ -11,8 +11,10 @@ const colourStyles = (width, height) => {
   return {
     container: styles => ({
       ...styles,
-      margin: width < 768 && !isLandscape ? '0 0 2px' : '0 0 7px',
+      margin: width < 768 && !isLandscape ? '0 0 24px' : '0 7px 7px 0',
       width: width < 768 && !isLandscape ? '100%' : '260px',
+      borderBottom: "1px solid var(--input-line-color)",
+      paddingBottom: width < 768 && !isLandscape ? '1px' : '8px',
       ':focus': {
         outline: 'none'
       }
