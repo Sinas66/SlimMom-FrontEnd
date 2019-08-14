@@ -91,10 +91,10 @@ class Login extends Component {
       <>
         <form>
           <label htmlFor="login">Login</label>
-          <input type="text" name="login" id="login" onChange={this.handleInputs} />
+          <input type="text" name="login" id="login" onChange={this.handleInputs} placeholder="Логин*" />
 
           <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password" onChange={this.handleInputs} />
+          <input type="password" name="password" id="password" onChange={this.handleInputs} placeholder="Пароль*" />
 
           <button onClick={this.handleLogin}>Login</button>
           <button onClick={this.handleRegister}>Register</button>

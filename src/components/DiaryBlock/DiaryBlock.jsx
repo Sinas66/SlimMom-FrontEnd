@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useWindowSize } from '../../utils/hooks'
 import AddNewProduct from './AddNewProduct/AddNewProduct';
 import DatePicker from './DatePicker/DatePicker';
+import EatedProductsList from './EatedProductsList/EatedProductsList'
 import AddNewProductModal from './AddNewProductModal/AddNewProductModal';
 import ShowModalButton from './ShowModalButton/ShowModalButton';
 import styles from './DiaryBlock.module.css';
@@ -19,7 +20,7 @@ const DiaryBlock = () => {
 
       {(width > 767 || isLandscape) && <AddNewProduct />}
 
-      {(!isModalShowed || width > 767 || isLandscape) && <div> Products List </div>}
+      {(!isModalShowed || width > 767 || isLandscape) && <div> <EatedProductsList /> </div>}
 
       {isModalShowed && width < 767 && !isLandscape && (
         <AddNewProductModal>

@@ -77,4 +77,3 @@ const AddNewProduct = () => {
 };
 
 export default AddNewProduct;
-

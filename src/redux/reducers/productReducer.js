@@ -22,6 +22,10 @@ const productReducer = (state = INITIAL_STATE, { type, payload }) => {
       return { ...state, allProducts: [...state.allProducts, ...payload] };
     case actionTypes.GET_PRODUCTS_PER_DAY:
       return { ...state, productsByDay: [...payload] };
+    case actionTypes.DELETE_PRODUCT_FROM_PRODUCTLIST: {
+      const newProduct = state.productsByDay.filter(prod => prod._id !== payload);
+      return { ...state, productsByDay: newProduct };
+    }
     case actionTypes.FETCH_ERROR:
       return { ...state };
     default:

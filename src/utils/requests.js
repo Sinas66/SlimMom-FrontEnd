@@ -6,7 +6,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.get['Content-Type'] = 'application/json';
 axios.defaults.headers.put['Content-Type'] = 'application/json';
 
-const setToken = token => ({
+export const setToken = token => ({
   headers: {
     Authorization: `Bearer ${token}`
   }
@@ -23,10 +23,27 @@ export const putNewData = (token, data) => {
     .catch(err => console.log(err));
 };
 // Example
-// export const fetchCompleteTask = (token, task) => {
-//   return axios.post(api.url.updateTask(), { ...task, isDone: true }, setToken(token)).catch(err => console.log(err));
-// };
+export const fetchCompleteTask = (token, task) => {
+  return axios.post(api.url.updateTask(), { ...task, isDone: true }, setToken(token)).catch(err => console.log(err));
+};
 
+export const deleteProdByDay = (token, id) => {
+  return axios
+    .delete(api.url.deleteProductsByDay() + id, setToken(token))
+    .then(resp => {
+      console.log({ resp });
+      if (resp.data.status !== 'success') {
+        throw new Error('sdasDDDDDDda');
+      }
+      return resp.data;
+    })
+    .catch(err => {
+      console.log('ANSWER ERROR');
+      console.log(err);
+      console.log(err.message);
+      return err;
+    });
+};
 export const requestRegister = cred =>
   axios
     .post(api.url.registerUser(), cred)

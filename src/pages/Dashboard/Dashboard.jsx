@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import DiaryBlock from '../../components/DiaryBlock/DiaryBlock';
 import { Route } from 'react-router-dom';
 import styles from './Dashboard.module.css';
 import { getUserData } from '../../redux/actions/auth';
 import { connect } from 'react-redux';
 import windowSize from 'react-window-size';
 import CalcForm from '../../components/CalcForm/CalcForm';
-import DiaryBlock from "../../components/DiaryBlock/DiaryBlock";
 
 class Dashboard extends Component {
+  static propTypes = {
+    token: PropTypes.string.isRequired
+  };
+
   state = {};
   componentDidMount = () => {
     const token = localStorage.getItem('userToken');

@@ -1,8 +1,13 @@
 import { createAction } from '../../utils/utils';
 import { actionTypes } from './constants';
-import { requestProductByDate, putNewData } from '../../utils/requests';
-
-import { fetchAllProducts, fetchProductsByDay, fetchUserEated } from '../../utils/requests';
+import {
+  fetchAllProducts,
+  fetchProductsByDay,
+  fetchUserEated,
+  requestProductByDate,
+  putNewData,
+  deleteProdByDay
+} from '../../utils/requests';
 
 const addProductByDate = createAction(actionTypes.ADD_PRODUCT_BY_DATE);
 const addNewData = createAction(actionTypes.ADD_FETCH_SUCCESS);
@@ -81,6 +86,27 @@ export const addProductByDayAction = (token, productId, weight) => dispatch => {
         type: actionTypes.ADD_PRODUCT_BY_DAY,
         payload: products
       });
+    })
+    .catch(err => {
+      dispatch({
+        type: actionTypes.FETCH_ERROR,
+        payload: err
+      });
+    });
+};
+
+export const deleteProductFromProductListAC = id => ({
+  type: actionTypes.DELETE_PRODUCT_FROM_PRODUCTLIST,
+  payload: id
+});
+
+export const deleteProductFromProductListFunc = (token, id) => dispatch => {
+  deleteProdByDay(token, id)
+    .then(data => {
+      if (data.status !== 'success') {
+        throw new Error(resp.data);
+      }
+      dispatch(deleteProductFromProductListAC(id));
     })
     .catch(err => {
       dispatch({
