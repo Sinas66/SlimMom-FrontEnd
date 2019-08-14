@@ -120,6 +120,7 @@ class Login extends Component {
                   />
                 </div>
               </div>
+              <p style={{ color: 'red', fontSize: 18, lineHeight: '20px' }}>{this.state.error}</p>
               <div className={style.butModule}>
                 <div>
                   <button onClick={this.handleLogin} className={style.button}>
@@ -132,7 +133,6 @@ class Login extends Component {
                   </button>
                 </div>
               </div>
-              <p>{this.state.error}</p>
             </form>
           </div>
         </div>

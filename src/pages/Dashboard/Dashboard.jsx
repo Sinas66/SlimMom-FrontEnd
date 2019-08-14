@@ -25,7 +25,7 @@ class Dashboard extends Component {
   };
 
   render() {
-    const { windowWidth, location, token } = this.props;
+    const { windowWidth, location, token, user } = this.props;
     console.log(this.props.user);
     return (
       <section className={styles.grid}>
@@ -36,7 +36,7 @@ class Dashboard extends Component {
           <Route path="/dashboard" exact component={CalcForm} />
           <Route path="/dashboard/diary" component={DiaryBlock} />
         </div>
-        {this.props.user.userData ? (
+        {user.userData ? (
           location.pathname === '/dashboard/diary' ? (
             windowWidth > 767 && (
               <div className={styles.summaryBlock_container}>
@@ -51,7 +51,6 @@ class Dashboard extends Component {
         ) : (
           ''
         )}
-        }
       </section>
     );
   }
