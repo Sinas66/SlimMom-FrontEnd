@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { memorizedUserData } from './selectors';
+import Header from '../../components/Header/Header';
 import style from './Login.module.css';
 
 import { sendRegisterData, sendLoginData } from '../../redux/actions/auth';
@@ -91,7 +92,7 @@ class Login extends Component {
     return (
       <>
         <div className={style.pageWrapper}>
-          <h1>HEADER</h1>
+          <Header />
           <div className={style.loginWrapper}>
             <div className={style.entry}>ВХОД / РЕГИСТРАЦИЯ</div>
             <form>
