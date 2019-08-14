@@ -1,26 +1,25 @@
-import {createSelector} from 'reselect';
+import { createSelector } from 'reselect';
 
-const getData = state => state.data;
+const getData = state => state.dailyBlock;
 
 export const getProducts = createSelector(
-    [getData],
-    (data) => data.items
+  [getData],
+  dailyBlock => dailyBlock.items
 );
 
 export const getDate = createSelector(
-    [getData],
-    (data) => data.date
+  [getData],
+  dailyBlock => dailyBlock.date
 );
 
 export const getUser = state => state.session.userData;
 
 export const getGroupBlood = createSelector(
-    [getUser],
-    (user) => user.groupBlood
+  [getUser],
+  user => user.groupBlood
 );
 
 export const getDailyRate = createSelector(
-    [getUser],
-    (user) => user.dailyRate
+  [getUser],
+  user => user.dailyRate
 );
-

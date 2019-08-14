@@ -224,6 +224,9 @@ class CalcForm extends Component {
                   id="height"
                   type="number"
                   placeholder="Рост, см *"
+                  min="0"
+                  inputmode="numeric"
+                  pattern="[0-9]"
                   name="height"
                   value={height}
                   required

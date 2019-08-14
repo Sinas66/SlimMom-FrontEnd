@@ -26,42 +26,46 @@ class Dashboard extends Component {
 
   render() {
     const { windowWidth, location, token } = this.props;
-
+    console.log(this.props.user);
     return (
       <section className={styles.grid}>
         <div className={styles.headerBlock_container}>
           <Header token={token} />
         </div>
-
         <div className={styles.calcDairyBlock_container}>
-          <Route
-            path="/dashboard"
-            exact
-            render={() => (
-              <div>
-                {' '}
-                <CalcForm />{' '}
-              </div>
-            )}
-          />
+          <Route path="/dashboard" exact component={CalcForm} />
           <Route path="/dashboard/diary" component={DiaryBlock} />
         </div>
-
-        {location.pathname === '/dashboard/diary' ? (
-          windowWidth > 767 && <div className={styles.summaryBlock_container}><Summary/></div>
+        {this.props.user.userData ? (
+          location.pathname === '/dashboard/diary' ? (
+            windowWidth > 767 && (
+              <div className={styles.summaryBlock_container}>
+                <Summary />
+              </div>
+            )
+          ) : (
+            <div className={styles.summaryBlock_container}>
+              <Summary />
+            </div>
+          )
         ) : (
-          <div className={styles.summaryBlock_container}><Summary/></div>
+          ''
         )}
+        }
       </section>
     );
   }
 }
+
+const mapStateToProp = state => ({
+  user: state.session
+});
 
 const mapDispatchToProps = {
   userData: getUserData
 };
 
 export default connect(
-  null,
+  mapStateToProp,
   mapDispatchToProps
 )(windowSize(Dashboard));
