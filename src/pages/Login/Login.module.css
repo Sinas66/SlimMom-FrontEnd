@@ -4,6 +4,13 @@
   padding: 0;
 }
 
+.pageWrapper {
+  width: 100%;
+  text-align: center;
+  background: white;
+  height: 100vh;
+}
+
 .loginWrapper {
   width: 100%;
   text-align: center;
@@ -29,6 +36,7 @@
   margin-top: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
+  background: none;
 }
 
 .button {
@@ -50,6 +58,27 @@
 }
 
 @media(min-width: 767px) {
+  .pageWrapper {
+    width: 100%;
+    text-align: center;
+    background-image: url(../../assets/images/tablet-bg-register.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    height: 100vh;
+  }
+
+  .loginWrapper {
+    width: 100%;
+    text-align: center;
+    padding-left: 90px;
+    width: 345px;
+  }
+
+  .inputModule {
+    text-align: start;
+
+  }
+
   .input {
     font-size: 15px;
     height: 50px;
@@ -61,6 +90,7 @@
     margin-top: 20px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
+    background: none;
   }
 
   .butModule {
@@ -68,10 +98,6 @@
     text-align: start;
   }
 
-  .loginWrapper {
-    width: 345px;
-    text-align: center;
-  }
 
   .entry {
     font-size: 13px;
@@ -85,6 +111,17 @@
 }
 
 @media(min-width: 1023px) {
+
+  .pageWrapper {
+    width: 100%;
+    text-align: center;
+    background-image: url(../../assets/images/desktop-bg-REGISTER.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    height: 847px;
+    height: 100vh;
+  }
+
   .input {
     font-size: 15px;
     height: 50px;
@@ -96,6 +133,13 @@
     margin-top: 20px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
+    background: none;
+  }
+
+  .loginWrapper {
+    width: 345px;
+    text-align: center;
+    padding-left: 115px;
   }
 
   .butModule {
@@ -103,10 +147,6 @@
     text-align: start;
   }
 
-  .loginWrapper {
-    width: 345px;
-    text-align: center;
-  }
 
   .entry {
     font-size: 13px;
