@@ -33,6 +33,9 @@ class CalcForm extends Component {
       currentWeight: '',
       desiredWeight: '',
       groupBlood: ''
+    },
+    session: {
+      token: ''
     }
   };
 
