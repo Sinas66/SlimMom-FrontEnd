@@ -19,10 +19,13 @@ const AddNewProduct = () => {
 
   const handlerInputWeight = value => {
     if (/^[1-9]\d*(?:\.\d+)?(?:[kmbt])?$/g.test(value) || value === "") {
-      setInputWeightClasses([styles.inputWeight_label, styles.inputHasValue])
+      // setInputWeightClasses([styles.inputWeight_label, styles.inputHasValue])
       setProductWeight(value);
-    } if (value === "") {
+    }
+    if (value === "") {
       setInputWeightClasses([styles.inputWeight_label])
+    } else {
+      setInputWeightClasses([styles.inputWeight_label, styles.inputHasValue])
     }
   };
 
