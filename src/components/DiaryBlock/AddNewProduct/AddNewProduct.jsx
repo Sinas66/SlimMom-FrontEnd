@@ -76,7 +76,7 @@ const AddNewProduct = () => {
       }
       const token = localStorage.getItem('userToken');
       addUserEatedProduct(token, productId, eatedProd);
-      setProductWeight('');
+      handlerInputWeight('');
       setProductId('');
       setProductLabel('');
       closeModal();
