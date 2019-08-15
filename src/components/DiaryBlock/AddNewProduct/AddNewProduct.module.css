@@ -2,13 +2,13 @@
   display: flex;
   flex-flow: column wrap;
   padding: 66px 0 0;
+  /* position: relative; */
 }
 
 .inputWeight_wrapper{
   position: relative;
   margin-bottom: 130px;
 }
-
 
 .inputWeight_label{
   position: absolute;
@@ -77,7 +77,23 @@
   outline: none;
 }
 
+.notAllowed_Wrapper{
+  position: relative;
+  bottom: 20px;
+}
 
+.notAllowed{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  left: 50%;
+  top: 50%;
+  font-family: Verdana, sans-serif;
+  color: var(--text-color-orange);
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.857;
+}
 
 @media (min-width:768px),
 screen and (orientation: landscape){
@@ -129,4 +145,17 @@ screen and (orientation: landscape){
 .container{
   width:231px
 }
+
+.notAllowed_Wrapper{
+  bottom: 50px;
+  right: -30px;
+}
+
+.notAllowed{
+  width: 120px;
+  color: var(--text-color-orange);
+  font-size: 10px;
+  line-height: 1.2;
+}
+
 }

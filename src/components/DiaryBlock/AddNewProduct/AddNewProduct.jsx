@@ -12,11 +12,14 @@ const AddNewProduct = () => {
   const [productWeight, setProductWeight] = useState('');
   const [productId, setProductId] = useState('');
   const [productLabel, setProductLabel] = useState('');
+  const [isNotAllowedAddProd, setIsNotAllowedAddProd] = useState(false);
+
 
   const dispatch = useDispatch();
   const [inputWeightClasses, setInputWeightClasses] = useState([styles.inputWeight_label]);
   const date = useSelector(state => state.datePicker.date)
-
+  const countProductsByDay = useSelector(state => state.dailyBlock.productsByDay.length)
+  console.log({ countProductsByDay });
 
   const handlerInputWeight = value => {
     if ((/^[1-9]\d*(?:\.\d+)?(?:[kmbt])?$/g.test(value) || value === "") && Number(value) <= 1000) {
@@ -34,10 +37,17 @@ const AddNewProduct = () => {
   };
 
   const handlerAddButton = () => {
+    if (countProductsByDay >= 30) {
+      setIsNotAllowedAddProd(true)
+      setTimeout(() => {
+        setIsNotAllowedAddProd(false)
+      }, 1500);
+      return
+    }
+
     if (productWeight !== '' && productId !== '') {
       const addUserEatedProduct = (token, id, weight) => dispatch(addProductByDayAction(token, id, weight));
       const closeModal = () => dispatch(closeModalProductsAction());
-      // const weight = Number(productWeight);
       const eatedProd = {
         date: date.toISOString(),
         weight: Number(productWeight)
@@ -72,6 +82,10 @@ const AddNewProduct = () => {
           onChange={e => handlerInputWeight(e.target.value)}
         />
       </div>
+
+      {isNotAllowedAddProd && (<div className={styles.notAllowed_Wrapper}>
+        <p className={styles.notAllowed}>Нельзя добавить более 30 продуктов</p>
+      </div>)}
 
       <button onClick={handlerAddButton} type="button" className={styles.add_btn}>
         {width < 767 && !isLandscape ? 'Добавить' : <Icon icon="Add" className={styles.addBtn_icon} />}
