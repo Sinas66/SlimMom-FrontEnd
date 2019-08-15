@@ -129,13 +129,12 @@
   }
 
   .logoutText {
-    height: 36px;
     display: block;
     background-color: transparent;
+    text-decoration: none;
     cursor: pointer;
     transition: .5s;
     border: none;
-    height: 47px;
     padding: 0;
     font-size: 15px;
     letter-spacing: 1.5px;
@@ -150,12 +149,16 @@
     text-shadow: 0 1px 1px #ffcca8;
   }
 
+  .logoutLink {
+    text-decoration: none;
+  }
+
   .usernamebox {
     display: flex;
     width: 165px;
     justify-content: space-between;
-    align-items: baseline;
-    padding-top: 6px;
+    align-items: center;
+    padding-top: 8px;
     font-size: 15px;
     letter-spacing: 1.5px;
     color: #212121;
@@ -185,15 +188,15 @@
 
   .logoNavigationBox,
   .loggedLogoNavigationBox {
-    width: 478px;
+    width: 558px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   .logoutText {
     background-color: transparent;
     border: none;
-    height: 47px;
     padding: 0;
     font-size: 15px;
     letter-spacing: 1.5px;
@@ -208,7 +211,7 @@
   }
 
   .navigationBox {
-    padding-top: 22px;
+    padding-top: 8px;
   }
 
   .navigationBox a {
@@ -237,7 +240,7 @@
   .logoImg {
     position: relative;
     left: 83px;
-    top: -32px;
+    top: -24px;
     width: 66px;
     height: 63px;
   }
