@@ -23,7 +23,7 @@ class Header extends Component {
 
   toogleModal = e => {
     this.setState(state => ({ openModal: !state.openModal }));
-  };h
+  };
 
   componentDidMount() {
     const { token } = this.props;
