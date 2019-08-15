@@ -20,7 +20,7 @@ const DiaryBlock = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('userToken');
-    const date = new Date().toISOString();
+    const date = new Date();
     getProductsByDay(token, date);
   }, []);
 

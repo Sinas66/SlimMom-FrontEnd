@@ -40,7 +40,7 @@ const AddNewProduct = () => {
       const closeModal = () => dispatch(closeModalProductsAction());
       // const weight = Number(productWeight);
       const eatedProd = {
-        date: date,
+        date: date.toISOString(),
         weight: Number(productWeight)
       }
       const token = localStorage.getItem('userToken');
@@ -67,8 +67,7 @@ const AddNewProduct = () => {
         <label htmlFor="gramms" className={inputWeightClasses.join(' ')}>Граммы</label>
         <input
           id="gramms"
-          // type="number"
-          // placeholder="Граммы"
+          type="text"
           step={10}
           className={styles.inputProduct_weight}
           value={productWeight}
