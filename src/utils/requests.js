@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { } from '../redux/actions/auth';
+import {} from '../redux/actions/auth';
 import * as api from './entyPoints';
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -56,6 +56,7 @@ export const deleteProdByDay = (token, id) => {
       return err;
     });
 };
+
 export const requestRegister = cred =>
   axios
     .post(api.url.registerUser(), cred)
@@ -100,9 +101,9 @@ export const fetchProductsByDay = (token, date) => {
     .catch(({ error }) => error);
 };
 
-export const fetchUserEated = (token, productId, weight) => {
+export const fetchUserEated = (token, productId, eatedProduct) => {
   return axios
-    .post(`${api.url.userEats()}/${productId}`, { weight }, setToken(token))
+    .post(`${api.url.userEats()}/${productId}`, eatedProduct, setToken(token))
     .then(resp => {
       if (resp.data.status !== 'success') {
         throw new Error(resp.data);
