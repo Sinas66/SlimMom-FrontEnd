@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import Modal from './Modal';
-import UserBar from '../UserBar/UserBar';
-import windowSize from 'react-window-size';
-import logo from './Logo/logo-png.png';
-import Icon from '../../components/Icon/Icon';
-import styles from './Header.module.css';
-import { fetchLogOut } from '../../utils/requests';
+import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
-// -------------- import from DiaryBlock: ------------
-// import { closeModalProductsAction } from '../../redux/actions/productActions';
+import windowSize from 'react-window-size';
+import { fetchLogOut } from '../../utils/requests';
+import { closeModalProductsAction } from '../../redux/actions/productActions';
+import UserBar from '../UserBar/UserBar';
+import Modal from './Modal';
+import Icon from '../Icon/Icon';
+import logo from './Logo/logo-png.png';
+import styles from './Header.module.css';
 
 import PropTypes from 'prop-types';
 
@@ -48,23 +46,18 @@ class Header extends Component {
   render() {
     const { toogleModal, logOut } = this;
     const { openModal, isLogged } = this.state;
-    const {
-      username,
-      token
-
-      // -------------- props from DiaryBlock: ------------
-      // isModalShowed
-      // toogleModalProducts
-    } = this.props;
+    const { username, token, isModalShowed, toogleModalProducts } = this.props;
     return (
       <div className={styles.header}>
         <div className={isLogged ? styles.container : styles.loggedContainer}>
           <div className={isLogged ? styles.logoNavigationBox : styles.loggedLogoNavigationBox}>
             <div className={styles.logotype}>
-              <img className={styles.logoImg} src={logo} alt="LOGO" />
-              <h1 className={styles.logoText}>
-                Slim<span className={styles.logoTextSpan}>Mom</span>
-              </h1>
+              <Link to="/">
+                <img className={styles.logoImg} src={logo} alt="LOGO" />
+                <span className={styles.logoText}>
+                  Slim<span className={styles.logoTextSpan}>Mom</span>
+                </span>
+              </Link>
             </div>
             {isLogged && this.props.windowWidth > 1023 && (
               <div className={styles.navigationBox}>
@@ -105,17 +98,14 @@ class Header extends Component {
           {!isLogged && <UserBar />}
         </div>
         {isLogged && this.props.windowWidth < 767 && (
-          <div
-            className={
-              // -------------- checking if modal from DiaryBlock opened: ------------
-              // isModalShowed
-              false ? styles.greyZone : styles.greyZoneModalClose
-            }
-          >
-            {/* ---------------------- close button for both modals ((!)you have to uncomment css background img too) ----------------------------
-              /* {isModalShowed && <button type="button" onClick={toogleModalProducts} className={styles.closeModal} />} */}
+          <div className={isModalShowed ? styles.greyZone : styles.greyZoneModalClose}>
+            {isModalShowed && (
+              <button type="button" onClick={toogleModalProducts} className={styles.closeModal}>
+                <Icon icon="Arrow_Back" />
+              </button>
+            )}
             <div className={styles.mobileLogoutBox}>
-              <p className={styles.username}>{username}</p>{' '}
+              <p className={styles.username}>{username}</p>
               <Icon onClick={logOut} className={styles.logoutButton} icon="Logout" />
             </div>
           </div>
@@ -126,16 +116,13 @@ class Header extends Component {
 }
 const mapStateToProps = state => ({
   username: state.session.nickname,
-  token: state.session.token
-
-  // -------------- modal flag(boolean) from DiaryBlock: ------------
-  // isModalShowed: state.dailyBlock.isModalProduct
+  token: state.session.token,
+  isModalShowed: state.dailyBlock.isModalProductShowed
 });
 const mapDispatchToProps = dispatch => ({
-  // -------------- modal flag(boolean) from DiaryBlock: ------------
-  // toogleModalProducts: () => {
-  //   dispatch(closeModalProductsAction());
-  // }
+  toogleModalProducts: () => {
+    dispatch(closeModalProductsAction());
+  }
 });
 
 export default connect(

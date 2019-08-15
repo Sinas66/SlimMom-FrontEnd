@@ -1,0 +1,122 @@
+.addProduct_wrapper{
+  display: flex;
+  flex-flow: column wrap
+}
+
+/* .product_selector{
+  margin-bottom: 20px;
+} */
+
+.inputProduct_weight::-webkit-outer-spin-button,
+.inputProduct_weight::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.inputProduct_weight{
+  border: none;
+  font-size: 13px;
+  font-family: "Verdana";
+  color: var(---text-color-black);
+  font-weight: 700;
+  line-height: 1.2;
+  height: 20px;
+  width: 100%;
+  padding: 0 0 0px 5px;
+  margin-bottom: 11px;
+}
+.inputProduct_weight::placeholder{
+  color: var(--text-color-grey);
+}
+.inputProduct_weight:focus,
+.inputProduct_weight:active{
+  outline: none;
+}
+
+
+.selectorWrapper{
+  margin: 0 0 20px
+}
+.afterSelector_hr{
+  margin: 0;
+}
+
+.inputWrapper{
+  margin: 0 0 131px
+}
+
+.afterWeight_hr{
+  margin: 0;
+}
+
+.add_btn{
+  width: 175px;
+  height: 42px;
+  background-color: var(--button-color);
+  box-shadow: 0px 6px 10px 0px rgba(252, 132, 44, 0.33);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  font-family: Verdana, sans-serif;
+  color: var(--text-color-white);
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.857;
+  display: block;
+  margin: 0 auto;
+}
+.add_btn:hover,
+.add_btn:focus {
+  background-color: var(--button-color-hover)
+}
+.add_btn:focus{
+  outline: none;
+}
+
+
+
+@media (min-width:768px),
+screen and (orientation: landscape){
+  .addProduct_wrapper{
+    display: flex;
+    flex-flow: row;
+    margin-bottom: 66px;
+  }
+  .selectorWrapper{
+    margin:0;
+  }
+
+  .inputWrapper{
+    margin: 0 76px 0 0;
+  }
+
+  .afterWeight_hr{
+    margin: 0 0 0 -8px;
+  }
+  .inputProduct_weight{
+  width: 73px;
+  margin: 0 0 7px;
+  padding: 0 0 0 30px;
+  height: 38px;
+  }
+.add_btn{
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  font-family: none;
+  font-size: 0;
+  line-height: 1;
+  margin: 0;
+}
+.addBtn_icon {
+  fill: var(--button-icon-color);
+}
+.addBtn_icon:hover {
+  fill: var(--button-icon-color-hover)
+}
+
+.container{
+  width:231px
+}
+}

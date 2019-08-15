@@ -12,7 +12,7 @@ const INITIAL_STATE = {
   }
 };
 
-export const sessionReducer = (state = INITIAL_STATE, { type, payload }) => {
+export const sessionReducer = (state = {}, { type, payload }) => {
   switch (type) {
     case actionTypes.ADD_FETCH_SUCCESS:
       return {

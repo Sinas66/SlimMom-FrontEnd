@@ -55,7 +55,6 @@
 
 .closeModal {
   background: transparent;
-  /* --------------(UNCOMMENT WHEN MODAL WINDOWS WILL BE ACTIVE)------------ */
   /* background-image: url("./Logo/closeModal.png"); */
   background-size: contain;
   background-repeat: no-repeat;

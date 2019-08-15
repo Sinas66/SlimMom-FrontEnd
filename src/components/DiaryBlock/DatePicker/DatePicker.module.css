@@ -1,0 +1,38 @@
+.datePicker_wrapper{
+  position: relative;
+}
+
+.datePicker_icon{
+  background: url('../../../assets//icons/date_range_black_24px.svg');
+  width: 14px;
+  height: 16px;
+  fill: #999daa;
+  position: absolute;
+  top: 5px;
+  left: 125px;
+  background-size: cover;
+  transition: all .2s linear;
+}
+.datePicker_icon:hover{
+  fill: #838a9a;
+}
+
+
+
+@media (min-width:768px),
+screen and (orientation: landscape) {
+  .datePicker_wrapper{
+margin-bottom: 58px ;
+  }
+
+  .datePicker_icon{
+    top: 15px;
+    left: 245px;
+  }
+  .datePicker_icon{
+    width: 18px;
+    height: 20px;
+    fill: #999daa;
+  }
+
+}
