@@ -26,14 +26,12 @@ class Header extends Component {
   };
 
   componentDidMount() {
-    setTimeout(() => {
-      const { token } = this.props;
-      if (token) {
-        this.setState({ isLogged: true });
-      } else if (!token) {
-        this.setState({ isLogged: false });
-      }
-    }, 2000);
+    const { token } = this.props;
+    if (token) {
+      this.setState({ isLogged: true });
+    } else if (!token) {
+      this.setState({ isLogged: false });
+    }
   }
 
   logOut = token => {
@@ -51,14 +49,13 @@ class Header extends Component {
       <div className={styles.header}>
         <div className={isLogged ? styles.container : styles.loggedContainer}>
           <div className={isLogged ? styles.logoNavigationBox : styles.loggedLogoNavigationBox}>
-            <div className={styles.logotype}>
-              <Link to="/">
-                <img className={styles.logoImg} src={logo} alt="LOGO" />
-                <span className={styles.logoText}>
-                  Slim<span className={styles.logoTextSpan}>Mom</span>
-                </span>
-              </Link>
-            </div>
+            <Link className={styles.logotype} to={isLogged ? '/dashboard' : '/home'}>
+              <img className={styles.logoImg} src={logo} alt="LOGO" />
+              <span className={styles.logoText}>
+                Slim<span className={styles.logoTextSpan}>Mom</span>
+              </span>
+            </Link>
+
             {isLogged && this.props.windowWidth > 1023 && (
               <div className={styles.navigationBox}>
                 <NavLink className={styles.navigationLink} exact to="/dashboard/diary">
