@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useWindowSize } from '../../../utils/hooks'
 import { useDispatch, useSelector } from 'react-redux';
 import Selector from './ProductSelector/ProductSelector';
@@ -14,14 +14,35 @@ const AddNewProduct = () => {
   const [productLabel, setProductLabel] = useState('');
   const [isNotAllowedAddProd, setIsNotAllowedAddProd] = useState(false);
 
-
   const dispatch = useDispatch();
   const [inputWeightClasses, setInputWeightClasses] = useState([styles.inputWeight_label]);
   const date = useSelector(state => state.datePicker.date)
   const countProductsByDay = useSelector(state => state.dailyBlock.productsByDay.length)
 
+
+  const validateInputWeight = (e) => {
+    const invalidChars = [
+      "-",
+      "+",
+      "e",
+      "E"
+    ];
+
+    if (invalidChars.includes(e.key)) {
+      e.preventDefault();
+    }
+  }
+
+  useEffect(() => {
+    const inputWeight = document.getElementById("gramms");
+    inputWeight.addEventListener("keydown", validateInputWeight);
+    return () => {
+      inputWeight.removeEventListener("keydown", validateInputWeight);
+    };
+  }, [productWeight])
+
   const handlerInputWeight = value => {
-    if ((/^[1-9]\d*(?:\.\d+)?(?:[kmbt])?$/g.test(value) || value === "") && Number(value) <= 1000) {
+    if (Number(value <= 1000)) {
       setProductWeight(value);
     }
     if (value === "") {
@@ -75,7 +96,9 @@ const AddNewProduct = () => {
         <label htmlFor="gramms" className={inputWeightClasses.join(' ')}>Граммы</label>
         <input
           id="gramms"
-          type="text"
+          type="number"
+          step="10"
+          min="10"
           className={styles.inputProduct_weight}
           value={productWeight}
           onChange={e => handlerInputWeight(e.target.value)}
