@@ -19,7 +19,6 @@ const AddNewProduct = () => {
   const [inputWeightClasses, setInputWeightClasses] = useState([styles.inputWeight_label]);
   const date = useSelector(state => state.datePicker.date)
   const countProductsByDay = useSelector(state => state.dailyBlock.productsByDay.length)
-  console.log({ countProductsByDay });
 
   const handlerInputWeight = value => {
     if ((/^[1-9]\d*(?:\.\d+)?(?:[kmbt])?$/g.test(value) || value === "") && Number(value) <= 1000) {
