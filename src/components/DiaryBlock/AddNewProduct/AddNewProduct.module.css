@@ -44,6 +44,7 @@
   padding: 0 0 10px 5px;
   background: transparent;
   border-bottom: 1px solid var(--input-line-color);
+  border-radius: 0;
 }
 
 .inputProduct_weight:focus,

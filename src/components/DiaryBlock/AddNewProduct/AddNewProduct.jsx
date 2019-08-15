@@ -19,8 +19,7 @@ const AddNewProduct = () => {
 
 
   const handlerInputWeight = value => {
-    if (/^[1-9]\d*(?:\.\d+)?(?:[kmbt])?$/g.test(value) || value === "") {
-      // setInputWeightClasses([styles.inputWeight_label, styles.inputHasValue])
+    if ((/^[1-9]\d*(?:\.\d+)?(?:[kmbt])?$/g.test(value) || value === "") && Number(value) <= 1000) {
       setProductWeight(value);
     }
     if (value === "") {
@@ -68,7 +67,6 @@ const AddNewProduct = () => {
         <input
           id="gramms"
           type="text"
-          step={10}
           className={styles.inputProduct_weight}
           value={productWeight}
           onChange={e => handlerInputWeight(e.target.value)}
