@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addNewDate, updateData } from '../../redux/actions/productActions';
+import { addAllData, updateData } from '../../redux/actions/productActions';
 import styles from './Result.module.css';
 
 class Result extends Component {
@@ -27,7 +27,7 @@ class Result extends Component {
   }
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyPress);
-    const { groupBlood } = this.props;
+    const { groupBlood, currentWeight, age, height, desiredWeight } = this.props;
     this.onHandleCalc();
 
     let arr = [];
@@ -103,38 +103,40 @@ class Result extends Component {
       <>
         <div className={styles.backdrop} ref={this.backdropRef} onClick={this.handleBackdropClick}>
           <div className={styles.modal}>
-            <div className={styles.bgButtonColor}>
-              <button className={styles.arrow} onClick={onClose} type="button">
-                &crarr;
-              </button>
-              <button className={styles.cross} onClick={onClose} type="button">
-                &#215;
-              </button>
-            </div>
-            <div className={styles.main}>
-              <h2 className={styles.title}>Ваша рекомендуемая суточная норма калорий составляет:</h2>
-              <p className={styles.dailyRate}>
-                {dailyRate.toFixed()}
-                <span className={styles.ccal}>ккал</span>
-              </p>
-              <h2 className={styles.subTitle}>Продукты, которые вам не рекомендуется употреблять:</h2>
-              <ol className={styles.menu}>
-                {forbiddenProd.map((el, i) => (
-                  <li className={styles.listItem} key={i}>
-                    {el}
-                  </li>
-                ))}
-              </ol>
-
-              {!session.token ? (
-                <Link onClick={this.onHandlePost} className={styles.start} to="/login">
-                  Начать худеть
-                </Link>
-              ) : (
-                <button type="button" onClick={this.onHandlePost} className={styles.start}>
-                  Начать худеть
+            <div className={styles.modalContent}>
+              <div className={styles.bgButtonColor}>
+                <button className={styles.arrow} onClick={onClose} type="button">
+                  &crarr;
                 </button>
-              )}
+                <button className={styles.cross} onClick={onClose} type="button">
+                  &#215;
+                </button>
+              </div>
+              <div className={styles.main}>
+                <h2 className={styles.title}>Ваша рекомендуемая суточная норма калорий составляет:</h2>
+                <p className={styles.dailyRate}>
+                  {dailyRate.toFixed()}
+                  <span className={styles.ccal}>ккал</span>
+                </p>
+                <h2 className={styles.subTitle}>Продукты, которые вам не рекомендуется употреблять:</h2>
+                <ol className={styles.menu}>
+                  {forbiddenProd.map((el, i) => (
+                    <li className={styles.listItem} key={i}>
+                      {el}
+                    </li>
+                  ))}
+                </ol>
+
+                {!session.token ? (
+                  <Link onClick={this.onHandlePost} className={styles.start} to="/login">
+                    Начать худеть
+                  </Link>
+                ) : (
+                  <button type="button" onClick={this.onHandlePost} className={styles.start}>
+                    Начать худеть
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -148,7 +150,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  add: store => dispatch(addNewDate(store)),
+  add: store => dispatch(addAllData(store)),
   newInfo: (token, data) => dispatch(updateData(token, data))
 });
 

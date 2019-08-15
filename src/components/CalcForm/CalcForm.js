@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Result from '../Result/Result';
+import PropTypes from 'prop-types';
 import ErrorNotification from './ErrorNotification';
+import Result from '../Result/Result';
 import css from './CalcForm.module.css';
 
 const GroupBlood = {
@@ -13,6 +13,32 @@ const GroupBlood = {
 };
 
 class CalcForm extends Component {
+  static propTypes = {
+    data: PropTypes.shape({
+      height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      age: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      currentWeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      desiredWeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      groupBlood: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    }),
+    session: PropTypes.shape({
+      token: PropTypes.string
+    })
+  };
+
+  static defaultProps = {
+    data: {
+      height: '',
+      age: '',
+      currentWeight: '',
+      desiredWeight: '',
+      groupBlood: ''
+    },
+    session: {
+      token: ''
+    }
+  };
+
   state = {
     height: this.props.data.height,
     age: this.props.data.age,
@@ -29,10 +55,21 @@ class CalcForm extends Component {
     isValidAll: false
   };
 
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      this.setState({
+        height: this.props.data.height,
+        age: this.props.data.age,
+        currentWeight: this.props.data.currentWeight,
+        desiredWeight: this.props.data.desiredWeight,
+        groupBlood: this.props.data.groupBlood
+      });
+    }
+  }
+
   handleChangeHeight = e => {
     this.setState({ height: e.target.value });
     const val = Number(e.target.value);
-    console.log(this.state.height);
 
     if (val >= 50 && val <= 230 && Number.isInteger(val)) {
       this.setState({
@@ -132,14 +169,11 @@ class CalcForm extends Component {
     if (!isError && validation) {
       if (groupBlood) {
         this.toggleOpenModal();
-        this.setState(
-          {
-            isError: false,
-            errorGroupBlood: false,
-            isValidAll: false
-          },
-          this.reset
-        );
+        this.setState({
+          isError: false,
+          errorGroupBlood: false,
+          isValidAll: false
+        });
       } else {
         this.setState({
           isError: true,
@@ -156,16 +190,6 @@ class CalcForm extends Component {
 
   toggleOpenModal = () => {
     this.setState(state => ({ isOpenModal: !state.isOpenModal }));
-  };
-
-  reset = () => {
-    this.setState({
-      height: '',
-      age: '',
-      currentWeight: '',
-      desiredWeight: '',
-      groupBlood: ''
-    });
   };
 
   render() {
@@ -200,6 +224,9 @@ class CalcForm extends Component {
                   id="height"
                   type="number"
                   placeholder="Рост, см *"
+                  min="0"
+                  inputmode="numeric"
+                  pattern="[0-9]"
                   name="height"
                   value={height}
                   required
@@ -255,7 +282,7 @@ class CalcForm extends Component {
                       type="radio"
                       name="groupBlood"
                       value={GroupBlood.FIRST_GROUP}
-                      checked={groupBlood === GroupBlood.FIRST_GROUP}
+                      checked={groupBlood == GroupBlood.FIRST_GROUP}
                       onChange={this.handleChangeGroupBlood}
                     />
                   </label>
@@ -263,7 +290,7 @@ class CalcForm extends Component {
                     2
                     <input
                       id="groupBlood_2"
-                      checked={groupBlood === GroupBlood.SECOND_GROUP}
+                      checked={groupBlood == GroupBlood.SECOND_GROUP}
                       type="radio"
                       name="groupBlood"
                       value={GroupBlood.SECOND_GROUP}
@@ -274,7 +301,7 @@ class CalcForm extends Component {
                     3
                     <input
                       id="groupBlood_3"
-                      checked={groupBlood === GroupBlood.THIRD_GROUP}
+                      checked={groupBlood == GroupBlood.THIRD_GROUP}
                       type="radio"
                       name="groupBlood"
                       value={GroupBlood.THIRD_GROUP}
@@ -285,7 +312,7 @@ class CalcForm extends Component {
                     4
                     <input
                       id="groupBlood_4"
-                      checked={groupBlood === GroupBlood.FOURTH_GROUP}
+                      checked={groupBlood == GroupBlood.FOURTH_GROUP}
                       type="radio"
                       name="groupBlood"
                       value={GroupBlood.FOURTH_GROUP}
@@ -314,7 +341,7 @@ class CalcForm extends Component {
 
 const mapStateToProps = state => ({
   session: state.session,
-  data: state.data
+  data: state.session.userData
 });
 
 export default connect(mapStateToProps)(CalcForm);
