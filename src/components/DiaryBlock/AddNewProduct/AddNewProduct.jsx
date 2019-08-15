@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useWindowSize } from '../../../utils/hooks'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Selector from './ProductSelector/ProductSelector';
 import styles from './AddNewProduct.module.css';
-import { Add } from '../../../assets/icons';
+import Icon from '../../Icon/Icon';
 import { addProductByDayAction, closeModalProductsAction } from '../../../redux/actions/productActions';
 
 const AddNewProduct = () => {
@@ -11,11 +11,12 @@ const AddNewProduct = () => {
   const isLandscape = width > height;
   const [productWeight, setProductWeight] = useState('');
   const [productId, setProductId] = useState('');
-
   const [productLabel, setProductLabel] = useState('');
 
   const dispatch = useDispatch();
   const [inputWeightClasses, setInputWeightClasses] = useState([styles.inputWeight_label]);
+  const date = useSelector(state => state.datePicker.date)
+
 
   const handlerInputWeight = value => {
     if (/^[1-9]\d*(?:\.\d+)?(?:[kmbt])?$/g.test(value) || value === "") {
@@ -37,9 +38,13 @@ const AddNewProduct = () => {
     if (productWeight !== '' && productId !== '') {
       const addUserEatedProduct = (token, id, weight) => dispatch(addProductByDayAction(token, id, weight));
       const closeModal = () => dispatch(closeModalProductsAction());
-      const weight = Number(productWeight);
+      // const weight = Number(productWeight);
+      const eatedProd = {
+        date: date,
+        weight: Number(productWeight)
+      }
       const token = localStorage.getItem('userToken');
-      addUserEatedProduct(token, productId, weight);
+      addUserEatedProduct(token, productId, eatedProd);
       setProductWeight('');
       setProductId('');
       setProductLabel('');
@@ -48,7 +53,7 @@ const AddNewProduct = () => {
   };
 
   return (
-    <div className={styles.addProduct_wrapper}>
+    <form className={styles.addProduct_wrapper}>
 
       <Selector
         handlerInputWeight={handlerInputWeight}
@@ -57,6 +62,7 @@ const AddNewProduct = () => {
         setProductLabel={setProductLabel}
         productWeight={productWeight}
       />
+
       <div className={styles.inputWeight_wrapper}>
         <label htmlFor="gramms" className={inputWeightClasses.join(' ')}>Граммы</label>
         <input
@@ -70,12 +76,10 @@ const AddNewProduct = () => {
         />
       </div>
 
-
-
       <button onClick={handlerAddButton} type="button" className={styles.add_btn}>
-        {width < 767 && !isLandscape ? 'Добавить' : <Add className={styles.addBtn_icon} />}
+        {width < 767 && !isLandscape ? 'Добавить' : <Icon icon="Add" className={styles.addBtn_icon} />}
       </button>
-    </div >
+    </form >
   );
 };
 
