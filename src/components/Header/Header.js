@@ -17,34 +17,23 @@ class Header extends Component {
     token: PropTypes.string.isRequired
   };
   state = {
-    openModal: false,
-    isLogged: false
+    openModal: false
   };
 
-  toogleModal = e => {
+  toogleModal = () => {
     this.setState(state => ({ openModal: !state.openModal }));
   };
 
-  componentDidMount() {
-    const { token } = this.props;
-    if (token) {
-      this.setState({ isLogged: true });
-    } else if (!token) {
-      this.setState({ isLogged: false });
-    }
-  }
-
   logOut = token => {
     fetchLogOut(token).then(() => {
-      // localStorage.removeItem('userToken');
-      localStorage.clear();
+      localStorage.removeItem('userToken');
     });
   };
 
   render() {
-    const { toogleModal, logOut } = this;
-    const { openModal, isLogged } = this.state;
-    const { username, token, isModalShowed, toogleModalProducts, session } = this.props;
+    const { toogleModal, logOut, navigationToogle } = this;
+    const { openModal } = this.state;
+    const { username, isModalShowed, toogleModalProducts, session } = this.props;
     return (
       <div className={styles.header}>
         <div className={session.token ? styles.container : styles.loggedContainer}>
@@ -58,10 +47,10 @@ class Header extends Component {
 
             {session.token && this.props.windowWidth > 1023 && (
               <div className={styles.navigationBox}>
-                <NavLink className={styles.navigationLink} exact to="/dashboard/diary">
+                <NavLink onClick={navigationToogle} className={styles.navigationLink} exact to="/dashboard/diary">
                   ДНЕВНИК
                 </NavLink>
-                <NavLink className={styles.navigationLink} exact to="/dashboard">
+                <NavLink onClick={navigationToogle} className={styles.navigationLink} exact to="/dashboard">
                   КАЛЬКУЛЯТОР
                 </NavLink>
               </div>
