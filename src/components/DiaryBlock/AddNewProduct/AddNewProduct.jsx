@@ -25,7 +25,9 @@ const AddNewProduct = () => {
       "-",
       "+",
       "e",
-      "E"
+      "E",
+      ",",
+      "."
     ];
 
     if (invalidChars.includes(e.key)) {
