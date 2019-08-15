@@ -27,15 +27,14 @@ class Header extends Component {
     this.setState(state => ({ openModal: !state.openModal }));
   };
 
-  componentDidMount() {
-    setTimeout(() => {
-      const { token } = this.props;
-      if (token) {
-        this.setState({ isLogged: true });
-      } else if (!token) {
-        this.setState({ isLogged: false });
-      }
-    }, 2000);
+  componentWillMount() {
+    const { token } = this.props;
+    console.log(token);
+    if (token) {
+      this.setState({ isLogged: true });
+    } else if (!token) {
+      this.setState({ isLogged: false });
+    }
   }
 
   logOut = token => {
