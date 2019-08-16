@@ -2,6 +2,11 @@
   background-color: #eff1f3;
 }
 
+.colorOverCcal{
+  color: #a21919;
+  font-weight: bold;
+}
+
 .listSummery,
 .pSummery {
   color: #999daa;
