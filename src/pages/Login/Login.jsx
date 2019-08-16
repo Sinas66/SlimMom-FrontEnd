@@ -11,7 +11,9 @@ class Login extends Component {
   state = {
     login: '',
     password: '',
-    error: ''
+    error: '',
+    errorLog: '',
+    errorPass: ''
   };
 
   handleInputs = e => {
@@ -20,7 +22,63 @@ class Login extends Component {
     this.setState({
       [name]: value
     });
+
+    setTimeout(() => {
+      if ((this.state.login.length > 0) & (this.state.login.length < 5)) {
+        this.setState({
+          error: 'Логин должен состоять минимум из 5 знаков'
+        });
+      } else if ((this.state.password.length > 0) & (this.state.password.length < 5)) {
+        this.setState({
+          error: 'Пароль должен состоять минимум из 5 знаков'
+        });
+      } else {
+        this.setState({
+          error: ''
+        });
+      }
+      console.log(this.state);
+    }, 10);
   };
+  // handleInputs = e => {
+  //   const { name, value } = e.target;
+
+  //   const log = () => {
+  //     console.log('ASYNC', this.state);
+  //   };
+
+  //   this.setState({
+  //     [name]: value
+  //   });
+  //   if ((this.state.login.length > 0) & (this.state.login.length < 6)) {
+  //     this.setState(
+  //       {
+  //         errorLog: 'Логин должен состоять минимум из 5 знаков'
+  //       },
+  //       log()
+  //     );
+  //   } else {
+  //     this.setState(
+  //       {
+  //         errorLog: ''
+  //       },
+  //       log()
+  //     );
+  //   }
+  //   if ((this.state.password.length > 0) & (this.state.password.length < 6)) {
+  //     this.setState({
+  //       errorPass: 'Пароль должен состоять минимум из 5 знаков'
+  //     });
+  //   } else {
+  //     this.setState({
+  //       errorPass: ''
+  //     });
+  //   }
+  //   console.log('STATE', this.state);
+  //   setTimeout(() => {
+  //     console.log('TIMOUTE', this.state);
+  //   }, 10);
+  // };
 
   redirectUser = data => {
     localStorage.setItem('userToken', data.token);
@@ -37,9 +95,12 @@ class Login extends Component {
       this.redirectUser(data.user);
     }
     if (status >= 400) {
+      let errorResponse = data.err === 'User doesnt exist' && 'Неправильный пароль или логин';
+      errorResponse = data.err === 'Password is invalid' && 'Неправильный пароль или логин';
       this.setState({
-        error: data.err
+        error: errorResponse
       });
+      console.log('STATE-fetch,', this.state);
     }
   };
 
@@ -47,10 +108,13 @@ class Login extends Component {
     if (status === 200) {
       this.redirectUser(data.user);
     }
+
     if (status >= 400) {
+      let errorResponse = data.message === 'nickname already exist' && 'Логин уже занят';
       this.setState({
-        error: data.message
+        error: errorResponse
       });
+      console.log('STATE-fetch,', this.state);
     }
   };
 
@@ -129,21 +193,7 @@ class Login extends Component {
                 />
               </div>
               <div className={style.error}>
-                <p>
-                  {this.state.error === 'User doesnt exist' ? 'Пользователь не существует' : null}
-                  {this.state.error === 'Password is invalid' ? 'Неправильный пароль или логин' : null}
-                  {this.state.error === 'nickname already exist' ? 'Логин уже занят' : null}
-                </p>
-                <p>
-                  {(this.state.login.length > 0) & (this.state.login.length < 6)
-                    ? 'Логин должен состоять минимум из 6 знаков'
-                    : null}
-                </p>
-                <p>
-                  {(this.state.password.length > 0) & (this.state.password.length < 6)
-                    ? 'Пароль должен состоять минимум из 6 знаков'
-                    : null}
-                </p>
+                <p>{this.state.error}</p>
               </div>
               <div className={style.butModule}>
                 <button onClick={this.handleLogin} className={style.button}>
