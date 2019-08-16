@@ -20,7 +20,7 @@ class Dashboard extends Component {
 
   componentDidMount = () => {
     const token = localStorage.getItem('userToken');
-    const date = new Date();
+    const { date } = this.props;
     this.props.getProductsByDay(token, date);
     if (!!token) {
       this.props.userData(token);
@@ -60,12 +60,9 @@ class Dashboard extends Component {
 }
 
 const mapStateToProp = state => ({
-  user: state.session
+  user: state.session,
+  date: state.datePicker.date
 });
-
-// const mapDispatchToProps = {
-//   userData: getUserData
-// };
 
 const mapDispatchToProps = dispatch => ({
   userData: token => dispatch(getUserData(token)),
