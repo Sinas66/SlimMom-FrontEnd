@@ -73,7 +73,7 @@ class CalcForm extends Component {
     this.setState(
       {
         [name]:
-          name === 'currentWeight' || name === 'desiredWeightValid'
+          name === 'currentWeight' || name === 'desiredWeight'
             ? value.replace(/[^.\d]+/g, '').replace(/^([^\.]*\.)|\./g, '$1')
             : name !== 'groupBlood'
             ? value.replace(/[^\d]+/g, '')
@@ -113,13 +113,16 @@ class CalcForm extends Component {
         break;
     }
 
-    this.setState({
-      heightValid: heightValid,
-      ageValid: ageValid,
-      currentWeightValid: currentWeightValid,
-      desiredWeightValid: desiredWeightValid,
-      groupBloodValid: groupBloodValid
-    }, this.validateForm)
+    this.setState(
+      {
+        heightValid: heightValid,
+        ageValid: ageValid,
+        currentWeightValid: currentWeightValid,
+        desiredWeightValid: desiredWeightValid,
+        groupBloodValid: groupBloodValid
+      },
+      this.validateForm
+    );
   };
 
   validateForm = () => {
@@ -131,16 +134,16 @@ class CalcForm extends Component {
   };
 
   openResult = () => {
-    const { height, age, currentWeight, desiredWeight, groupBlood } = this.state;
+    const { height, age, currentWeight, desiredWeight, groupBlood, isValidForm } = this.state;
 
-    if (height && age && currentWeight && desiredWeight && groupBlood) {
+    if (height && age && currentWeight && desiredWeight && groupBlood && isValidForm) {
       this.toggleOpenModal();
     } else {
       this.setState({ isEmptyInput: true });
     }
-  }
+  };
 
- toggleOpenModal = () => {
+  toggleOpenModal = () => {
     this.setState(state => ({ isOpenModal: !state.isOpenModal }));
   };
 
@@ -171,60 +174,68 @@ class CalcForm extends Component {
           </div>
           <form>
             <div className={css.leftInputs}>
-              <label htmlFor="height">
+              <div className={css.input_wrapper}>
+                <label htmlFor="height" className={`${css.input_label} ${height && css.inputHasValue}`}>
+                  Рост, см *
+                </label>
                 <input
                   className={css.input}
                   id="height"
                   type="text"
-                  placeholder="Рост, см *"
                   name="height"
                   maxLength="3"
                   value={height}
                   onChange={this.handleChange}
                 />
                 {!heightValid && <ErrorNotification label={'Введите целое число от 50 до 230'} />}
-              </label>
-              <label htmlFor="age">
+              </div>
+              <div className={css.input_wrapper}>
+                <label htmlFor="age" className={`${css.input_label} ${age && css.inputHasValue}`}>
+                  Возраст *
+                </label>
                 <input
                   className={css.input}
                   id="age"
                   type="text"
-                  placeholder="Возраст *"
                   name="age"
                   maxLength="3"
                   value={age}
                   onChange={this.handleChange}
                 />
                 {!ageValid && <ErrorNotification label={'Введите целое число от 1 до 99'} />}
-              </label>
-              <label htmlFor="currentWeight">
+              </div>
+              <div className={css.input_wrapper}>
+                <label htmlFor="currentWeight" className={`${css.input_label} ${currentWeight && css.inputHasValue}`}>
+                  Текущий вес, кг *
+                </label>
                 <input
                   className={css.input}
                   id="currentWeight"
                   type="text"
-                  placeholder="Текущий вес, кг *"
                   name="currentWeight"
                   maxLength="6"
                   value={currentWeight}
                   onChange={this.handleChange}
                 />
                 {!currentWeightValid && <ErrorNotification label={'Введите число от 30 до 199'} />}
-              </label>
+              </div>
             </div>
             <div className={css.rightInputs}>
-              <label htmlFor="desiredWeight">
+              <div className={css.input_wrapper}>
+                <label htmlFor="desiredWeight" className={`${css.input_label} ${desiredWeight && css.inputHasValue}`}>
+                  Желаемый вес, кг *
+                </label>
                 <input
                   className={css.input}
                   id="desiredWeight"
                   type="text"
-                  placeholder="Желаемый вес, кг *"
                   name="desiredWeight"
                   maxLength="6"
                   value={desiredWeight}
                   onChange={this.handleChange}
                 />
                 {!desiredWeightValid && <ErrorNotification label={'Введите число от 30 до 199'} />}
-              </label>
+              </div>
               <section className={css.radioContainer}>
                 <h3>Группа крови *</h3>
                 <div className={css.radioInputs}>
@@ -277,20 +288,14 @@ class CalcForm extends Component {
               </section>
             </div>
           </form>
-            {isEmptyInput && (
-              <p className={css.errorForm}>
-                <ErrorNotification label={'Заполните все поля калькулятора'} />
-              </p>
-            )}
-            <button
-              type="button"
-              id="submit"
-              className={css.btn}
-              disabled={!isValidForm}
-              onClick={this.openResult}
-            >
-              {!data.groupBlood ? 'Похудеть' : 'Пересчитать'}
-            </button>
+          {isEmptyInput && (
+            <p className={css.errorForm}>
+              <ErrorNotification label={'Заполните все поля калькулятора'} />
+            </p>
+          )}
+          <button type="button" id="submit" className={css.btn} onClick={this.openResult}>
+            {!data.groupBlood ? 'Похудеть' : 'Пересчитать'}
+          </button>
         </div>
         {isOpenModal && <Result {...this.state} onClose={this.toggleOpenModal} />}
       </div>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { NavLink, Link, Route } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import windowSize from 'react-window-size';
 import { fetchLogOut } from '../../utils/requests';
-import { closeModalProductsAction, clearSession } from '../../redux/actions/productActions';
+import { closeModalProductsAction, clearSessionAction } from '../../redux/actions/productActions';
 import UserBar from '../UserBar/UserBar';
 import Modal from './Modal';
 import Icon from '../../assets/icons/Icon/Icon';
@@ -18,7 +18,10 @@ const activeStyles = {
 
 class Header extends Component {
   static propTypes = {
-    token: PropTypes.string.isRequired
+    token: PropTypes.string
+  };
+  static defaultProps = {
+    token: ''
   };
 
   state = {
@@ -30,18 +33,18 @@ class Header extends Component {
   };
 
   logOut = token => {
-    const { _clearSession } = this.props;
+    const { clearSession } = this.props;
     fetchLogOut(token).then(() => {
       localStorage.removeItem('userToken');
-      _clearSession();
-      window.location.href = '/';
+      clearSession();
+      this.props.history.push('/');
     });
   };
 
   render() {
     const { toogleModal, logOut, navigationToogle } = this;
     const { openModal } = this.state;
-    const { username, isModalShowed, toogleModalProducts, session, token } = this.props;
+    const { username, isModalShowed, toogleModalProducts, session, token, location } = this.props;
     return (
       <div className={styles.header}>
         <div className={session.token ? styles.container : styles.loggedContainer}>
@@ -104,7 +107,7 @@ class Header extends Component {
             </div>
           )}
           {openModal && this.props.windowWidth < 1023 && <Modal toogleModal={toogleModal} />}
-          {<Route path="/" exact component={session.token ? null : UserBar} />}
+          {location.pathname === '/' && !session.token && <UserBar />}
         </div>
         {session.token && this.props.windowWidth < 767 && (
           <div className={isModalShowed ? styles.greyZone : styles.greyZoneModalClose}>
@@ -133,8 +136,8 @@ const mapDispatchToProps = dispatch => ({
   toogleModalProducts: () => {
     dispatch(closeModalProductsAction());
   },
-  _clearSession: () => {
-    dispatch(clearSession());
+  clearSession: () => {
+    dispatch(clearSessionAction());
   }
 });
 

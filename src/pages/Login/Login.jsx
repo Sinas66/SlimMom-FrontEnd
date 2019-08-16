@@ -10,7 +10,9 @@ class Login extends Component {
   state = {
     login: '',
     password: '',
-    error: ''
+    error: '',
+    errorLog: '',
+    errorPass: ''
   };
 
   handleInputs = e => {
@@ -19,6 +21,23 @@ class Login extends Component {
     this.setState({
       [name]: value
     });
+
+    setTimeout(() => {
+      if ((this.state.login.length > 0) & (this.state.login.length < 5)) {
+        this.setState({
+          error: 'Логин должен состоять минимум из 5 знаков'
+        });
+      } else if ((this.state.password.length > 0) & (this.state.password.length < 5)) {
+        this.setState({
+          error: 'Пароль должен состоять минимум из 5 знаков'
+        });
+      } else {
+        this.setState({
+          error: ''
+        });
+      }
+      console.log(this.state);
+    }, 10);
   };
 
   redirectUser = data => {
@@ -36,9 +55,12 @@ class Login extends Component {
       this.redirectUser(data.user);
     }
     if (status >= 400) {
+      let errorResponse = data.err === 'User doesnt exist' && 'Неправильный пароль или логин';
+      errorResponse = data.err === 'Password is invalid' && 'Неправильный пароль или логин';
       this.setState({
-        error: data.err
+        error: errorResponse
       });
+      console.log('STATE-fetch,', this.state);
     }
   };
 
@@ -46,17 +68,23 @@ class Login extends Component {
     if (status === 200) {
       this.redirectUser(data.user);
     }
+
     if (status >= 400) {
+      let errorResponse = data.message === 'nickname already exist' && 'Логин уже занят';
       this.setState({
-        error: data.message
+        error: errorResponse
       });
+      console.log('STATE-fetch,', this.state);
     }
   };
 
   handleLogin = e => {
     e.preventDefault();
-
     const { login, password } = this.state;
+
+    if (login.length < 5 || password < 5) {
+      return;
+    }
 
     const dataToLogin = {
       nickname: login,
@@ -70,6 +98,10 @@ class Login extends Component {
     e.preventDefault();
 
     const { login, password } = this.state;
+
+    if (login.length < 5 || password < 5) {
+      return;
+    }
 
     let dataToRegister = {
       nickname: login,
@@ -92,46 +124,44 @@ class Login extends Component {
     return (
       <>
         <div className={style.pageWrapper}>
-          <Header />
+          <Header {...this.props} />
           <div className={style.loginWrapper}>
             <div className={style.entry}>ВХОД / РЕГИСТРАЦИЯ</div>
             <form>
               <div className={style.inputModule}>
-                <div>
-                  <label htmlFor="login">Login</label>
-                  <input
-                    type="text"
-                    name="login"
-                    id="login"
-                    onChange={this.handleInputs}
-                    placeholder="Логин *"
-                    className={style.input}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="password">Password</label>
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    onChange={this.handleInputs}
-                    placeholder="Пароль *"
-                    className={style.input}
-                  />
-                </div>
+                <label htmlFor="login" className={style.invisible}>
+                  Login
+                </label>
+                <input
+                  type="text"
+                  name="login"
+                  id="login"
+                  onChange={this.handleInputs}
+                  placeholder="Логин *"
+                  className={style.input}
+                />
+                <label htmlFor="password" className={style.invisible}>
+                  Password
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  onChange={this.handleInputs}
+                  placeholder="Пароль *"
+                  className={style.input}
+                />
               </div>
-              <p style={{ color: 'red', fontSize: 18, lineHeight: '20px' }}>{this.state.error}</p>
+              <div className={style.error}>
+                <p>{this.state.error}</p>
+              </div>
               <div className={style.butModule}>
-                <div>
-                  <button onClick={this.handleLogin} className={style.button}>
-                    Вход
-                  </button>
-                </div>
-                <div>
-                  <button onClick={this.handleRegister} className={style.button}>
-                    Регистрация
-                  </button>
-                </div>
+                <button onClick={this.handleLogin} className={style.button}>
+                  Вход
+                </button>
+                <button onClick={this.handleRegister} className={style.button}>
+                  Регистрация
+                </button>
               </div>
             </form>
           </div>

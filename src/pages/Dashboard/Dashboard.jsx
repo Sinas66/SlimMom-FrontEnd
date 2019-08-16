@@ -30,27 +30,27 @@ class Dashboard extends Component {
     return (
       <section className={styles.grid}>
         <div className={styles.headerBlock_container}>
-          <Header token={token} />
+          <Header {...this.props} />
         </div>
         <div className={styles.calcDairyBlock_container}>
           <Route path="/dashboard" exact component={CalcForm} />
           <Route path="/dashboard/diary" component={DiaryBlock} />
         </div>
-        {user.userData ? (
-          location.pathname === '/dashboard/diary' ? (
+        {token ? (
+          location.pathname === '/dashboard' ? (
             windowWidth > 767 && (
               <div className={styles.summaryBlock_container}>
                 <Summary />
               </div>
             )
           ) : (
-              <div className={styles.summaryBlock_container}>
-                <Summary />
-              </div>
-            )
+            <div className={styles.summaryBlock_container}>
+              <Summary />
+            </div>
+          )
         ) : (
-            ''
-          )}
+          ''
+        )}
       </section>
     );
   }
