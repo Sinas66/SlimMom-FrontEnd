@@ -12,10 +12,15 @@ import styles from './Header.module.css';
 
 import PropTypes from 'prop-types';
 
+const activeStyles = {
+  color: 'black'
+};
+
 class Header extends Component {
   static propTypes = {
     token: PropTypes.string.isRequired
   };
+
   state = {
     openModal: false
   };
@@ -25,7 +30,6 @@ class Header extends Component {
   };
 
   logOut = token => {
-    // console.log('token: ', token);
     const { _clearSession } = this.props;
     fetchLogOut(token).then(() => {
       localStorage.removeItem('userToken');
@@ -42,7 +46,10 @@ class Header extends Component {
       <div className={styles.header}>
         <div className={session.token ? styles.container : styles.loggedContainer}>
           <div className={session.token ? styles.logoNavigationBox : styles.loggedLogoNavigationBox}>
-            <Link className={styles.logotype} to={session.token ? '/dashboard' : '/home'}>
+            <Link
+              className={styles.logotype}
+              to={(!session.token && !session.userData) || !session.userData ? '/dashboard' : '/dashboard/diary'}
+            >
               <img className={styles.logoImg} src={logo} alt="LOGO" />
               <span className={styles.logoText}>
                 Slim<span className={styles.logoTextSpan}>Mom</span>
@@ -51,10 +58,22 @@ class Header extends Component {
 
             {session.token && this.props.windowWidth > 1023 && (
               <div className={styles.navigationBox}>
-                <NavLink onClick={navigationToogle} className={styles.navigationLink} exact to="/dashboard/diary">
+                <NavLink
+                  activeStyle={activeStyles}
+                  onClick={navigationToogle}
+                  className={styles.navigationLink}
+                  exact
+                  to="/dashboard/diary"
+                >
                   ДНЕВНИК
                 </NavLink>
-                <NavLink onClick={navigationToogle} className={styles.navigationLink} exact to="/dashboard">
+                <NavLink
+                  activeStyle={activeStyles}
+                  onClick={navigationToogle}
+                  className={styles.navigationLink}
+                  exact
+                  to="/dashboard"
+                >
                   КАЛЬКУЛЯТОР
                 </NavLink>
               </div>
