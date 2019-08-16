@@ -118,7 +118,7 @@
 
 @media (min-width: 768px) {
   .container {
-    width: 70%;
+    width: 100%;
   }
 
   .container form {
@@ -131,9 +131,17 @@
     width: 50%;
   }
 
+  .input_label {
+    font-size: 15px;
+  }
+
+  .inputHasValue {
+    font-size: 13px;
+  }
+
   .input {
     width: 80%;
-    font-size: 15px;
+    /* font-size: 15px; */
   }
 
   .title {
@@ -147,12 +155,12 @@
 }
 
 @media (min-width: 1024px) {
-  .container form {
-    margin-bottom: 70px;
+  .container {
+    width: 100%;
   }
 
-  .container {
-    width: 80%;
+  .container form {
+    margin-bottom: 70px;
   }
 
   .title {

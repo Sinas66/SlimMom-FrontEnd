@@ -182,7 +182,6 @@ class CalcForm extends Component {
                   className={css.input}
                   id="height"
                   type="text"
-                  // placeholder="Рост, см *"
                   name="height"
                   maxLength="3"
                   value={height}
@@ -198,7 +197,6 @@ class CalcForm extends Component {
                   className={css.input}
                   id="age"
                   type="text"
-                  // placeholder="Возраст *"
                   name="age"
                   maxLength="3"
                   value={age}
@@ -214,7 +212,6 @@ class CalcForm extends Component {
                   className={css.input}
                   id="currentWeight"
                   type="text"
-                  // placeholder="Текущий вес, кг *"
                   name="currentWeight"
                   maxLength="6"
                   value={currentWeight}
@@ -232,7 +229,6 @@ class CalcForm extends Component {
                   className={css.input}
                   id="desiredWeight"
                   type="text"
-                  // placeholder="Желаемый вес, кг *"
                   name="desiredWeight"
                   maxLength="6"
                   value={desiredWeight}
