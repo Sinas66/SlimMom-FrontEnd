@@ -6,7 +6,6 @@
 
 .container,
 .loggedContainer {
-  padding-bottom: 14px;
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid;
@@ -107,7 +106,6 @@
 
   .container,
   .loggedContainer {
-    padding-bottom: 15px;
     width: 100%;
     display: flex;
     justify-content: space-between;
