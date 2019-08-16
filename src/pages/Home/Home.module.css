@@ -21,7 +21,7 @@
 }
 @media(min-width: 1024px){
   .homeContainer {
-    max-width: 1830px;
+    max-width: 2200px;
   }
   .homeContainer{
     padding: 0 25px;
@@ -30,6 +30,7 @@
   }
     .calcForm {
       padding: 150px 115px 110px;
+      max-width: 1100px;
      }
   .homeGroup{
     width: 70%;
