@@ -4,7 +4,7 @@ const getData = state => state.dailyBlock;
 
 export const getProducts = createSelector(
   [getData],
-  dailyBlock => dailyBlock.items
+  dailyBlock => dailyBlock.productsByDay
 );
 
 export const getDate = createSelector(
