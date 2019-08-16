@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 
 const getData = state => state.dailyBlock;
+const getDateNow = state => state.datePicker;
 
 export const getProducts = createSelector(
   [getData],
@@ -8,8 +9,8 @@ export const getProducts = createSelector(
 );
 
 export const getDate = createSelector(
-  [getData],
-  dailyBlock => dailyBlock.date
+  [getDateNow],
+  datePicker => datePicker.date
 );
 
 export const getUser = state => state.session.userData;

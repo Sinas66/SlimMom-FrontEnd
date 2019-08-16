@@ -9,7 +9,7 @@ import moment from 'moment';
 function Summary({ products, date, groupBlood, dailyRate }) {
   const [ссalSumm, setCсalSumm] = useState(0);
   const [productsList, setProductsList] = useState([]);
-  console.log(products);
+  console.log(date);
 
   useEffect(() => {
     if (products) setCсalSumm(getCcalSumm(products));
