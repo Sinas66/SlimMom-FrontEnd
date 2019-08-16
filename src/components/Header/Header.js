@@ -29,14 +29,14 @@ class Header extends Component {
     this.setState(state => ({ openModal: !state.openModal }));
   };
 
-  logOut = token => {
-    const { clearSession } = this.props;
-    fetchLogOut(token).then(() => {
-      localStorage.removeItem('userToken');
-      clearSession();
-      window.location.href = '/';
-    });
-  };
+  // logOut = token => {
+  //   const { clearSession } = this.props;
+  //   fetchLogOut(token).then(() => {
+  //     localStorage.removeItem('userToken');
+  //     clearSession();
+  //     window.location.href = '/';
+  //   });
+  // };
 
   render() {
     const { toogleModal, logOut, navigationToogle } = this;
@@ -104,7 +104,7 @@ class Header extends Component {
             </div>
           )}
           {openModal && this.props.windowWidth < 1023 && <Modal toogleModal={toogleModal} />}
-          {window.location.href === '/' && session.token && <UserBar />}
+          {window.location.href === 'http://localhost:3000/' && !session.token && <UserBar />}
         </div>
         {session.token && this.props.windowWidth < 767 && (
           <div className={isModalShowed ? styles.greyZone : styles.greyZoneModalClose}>
