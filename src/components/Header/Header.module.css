@@ -6,7 +6,6 @@
 
 .container,
 .loggedContainer {
-  padding-bottom: 14px;
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid;
@@ -70,6 +69,7 @@
 .logoutButton {
   width: 22px;
   height: 26px;
+  margin-left: 12px;
 }
 
 .burgerBtn {
@@ -94,8 +94,8 @@
 
 .mobileLogoutBox {
   display: flex;
-  justify-content: space-between;
-  width: 105px;
+  justify-content: flex-end;
+  align-items: center;
   margin-right: 9px;
 }
 
@@ -106,7 +106,6 @@
 
   .container,
   .loggedContainer {
-    padding-bottom: 15px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -228,7 +227,7 @@
     transition: .5s;
   }
 
-  .navigationLink:hover {
+  .navigationLink:focus {
     color: #2b2b2b;
   }
 
@@ -249,10 +248,13 @@
     padding-left: 74px;
   }
 
+  .usernameBurgerWrapper {
+    width: 219px;
+  }
+
   .usernamebox {
     padding-left: 0;
-    width: 299px;
-    justify-content: start;
+    justify-content: flex-end;
   }
 
   .navigationText {
