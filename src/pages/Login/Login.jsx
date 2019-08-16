@@ -5,7 +5,6 @@ import Header from '../../components/Header/Header';
 import style from './Login.module.css';
 
 import { sendRegisterData, sendLoginData } from '../../redux/actions/auth';
-import { ERROR } from 'jest-validate/build/utils';
 
 class Login extends Component {
   state = {
@@ -125,7 +124,7 @@ class Login extends Component {
     return (
       <>
         <div className={style.pageWrapper}>
-          <Header />
+          <Header {...this.props} />
           <div className={style.loginWrapper}>
             <div className={style.entry}>ВХОД / РЕГИСТРАЦИЯ</div>
             <form>

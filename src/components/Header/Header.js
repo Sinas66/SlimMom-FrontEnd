@@ -18,7 +18,10 @@ const activeStyles = {
 
 class Header extends Component {
   static propTypes = {
-    token: PropTypes.string.isRequired
+    token: PropTypes.string
+  };
+  static defaultProps = {
+    token: ''
   };
 
   state = {
@@ -34,14 +37,14 @@ class Header extends Component {
     fetchLogOut(token).then(() => {
       localStorage.removeItem('userToken');
       clearSession();
-      window.location.href = '/';
+      this.props.history.push('/');
     });
   };
 
   render() {
     const { toogleModal, logOut, navigationToogle } = this;
     const { openModal } = this.state;
-    const { username, isModalShowed, toogleModalProducts, session, token } = this.props;
+    const { username, isModalShowed, toogleModalProducts, session, token, location } = this.props;
     return (
       <div className={styles.header}>
         <div className={session.token ? styles.container : styles.loggedContainer}>
@@ -104,7 +107,7 @@ class Header extends Component {
             </div>
           )}
           {openModal && this.props.windowWidth < 1023 && <Modal toogleModal={toogleModal} />}
-          {window.location.href === '/' && session.token && <UserBar />}
+          {location.pathname === '/' && !session.token && <UserBar />}
         </div>
         {session.token && this.props.windowWidth < 767 && (
           <div className={isModalShowed ? styles.greyZone : styles.greyZoneModalClose}>
