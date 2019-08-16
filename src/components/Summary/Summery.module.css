@@ -1,5 +1,6 @@
 .summarySection {
   background-color: #eff1f3;
+  height: 100vh;
 }
 
 .listSummery,
@@ -40,7 +41,7 @@
     background-repeat: no-repeat;
     background-position: right bottom;
     background-image: url(../../assets/images/greenleaves-tablet.png), linear-gradient(#eff1f3, #eff1f3);
-
+    height: 100vh;
   }
 
   .summarySection div {

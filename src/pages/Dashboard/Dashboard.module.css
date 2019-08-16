@@ -28,7 +28,7 @@
       "dashboard summary";
     grid-template-columns: 8fr 5fr;
     grid-template-rows: auto;
-    height: 100vh;
+    height: 100%;
   }
 
   .headerBlock_container {
