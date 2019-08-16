@@ -96,9 +96,7 @@ class Header extends Component {
             )}
             <div className={styles.mobileLogoutBox}>
               <p className={styles.username}>{username}</p>
-              <Link to={'/'}>
-                <Icon onClick={() => logOut} className={styles.logoutButton} icon="Logout" />
-              </Link>
+              <Icon onClick={() => logOut(token)} className={styles.logoutButton} icon="Logout" />
             </div>
           </div>
         )}
