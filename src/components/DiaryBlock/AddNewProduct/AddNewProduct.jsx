@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useWindowSize } from '../../../utils/hooks'
+import { useWindowSize } from '../../../utils/hooks';
 import { useDispatch, useSelector } from 'react-redux';
 import Selector from './ProductSelector/ProductSelector';
 import styles from './AddNewProduct.module.css';
-import Icon from '../../Icon/Icon';
+import Icon from '../../../assets/icons/Icon/Icon';
 import { addProductByDayAction, closeModalProductsAction } from '../../../redux/actions/productActions';
 
 const AddNewProduct = () => {
@@ -16,8 +16,8 @@ const AddNewProduct = () => {
 
   const dispatch = useDispatch();
   const [inputWeightClasses, setInputWeightClasses] = useState([styles.inputWeight_label]);
-  const date = useSelector(state => state.datePicker.date)
-  const countProductsByDay = useSelector(state => state.dailyBlock.productsByDay.length)
+  const date = useSelector(state => state.datePicker.date);
+  const countProductsByDay = useSelector(state => state.dailyBlock.productsByDay.length);
 
 
   const validateInputWeight = (e) => {
@@ -33,24 +33,24 @@ const AddNewProduct = () => {
     if (invalidChars.includes(e.key)) {
       e.preventDefault();
     }
-  }
+  };
 
   useEffect(() => {
-    const inputWeight = document.getElementById("gramms");
-    inputWeight.addEventListener("keydown", validateInputWeight);
+    const inputWeight = document.getElementById('gramms');
+    inputWeight.addEventListener('keydown', validateInputWeight);
     return () => {
-      inputWeight.removeEventListener("keydown", validateInputWeight);
+      inputWeight.removeEventListener('keydown', validateInputWeight);
     };
-  }, [productWeight])
+  }, [productWeight]);
 
   const handlerInputWeight = value => {
     if (Number(value <= 1000)) {
       setProductWeight(value);
     }
-    if (value === "") {
-      setInputWeightClasses([styles.inputWeight_label])
+    if (value === '') {
+      setInputWeightClasses([styles.inputWeight_label]);
     } else {
-      setInputWeightClasses([styles.inputWeight_label, styles.inputHasValue])
+      setInputWeightClasses([styles.inputWeight_label, styles.inputHasValue]);
     }
   };
 
@@ -60,11 +60,11 @@ const AddNewProduct = () => {
 
   const handlerAddButton = () => {
     if (countProductsByDay >= 30) {
-      setIsNotAllowedAddProd(true)
+      setIsNotAllowedAddProd(true);
       setTimeout(() => {
-        setIsNotAllowedAddProd(false)
+        setIsNotAllowedAddProd(false);
       }, 1500);
-      return
+      return;
     }
 
     if (productWeight !== '' && productId !== '') {
@@ -73,7 +73,7 @@ const AddNewProduct = () => {
       const eatedProd = {
         date: date.toISOString(),
         weight: Number(productWeight)
-      }
+      };
       const token = localStorage.getItem('userToken');
       addUserEatedProduct(token, productId, eatedProd);
       handlerInputWeight('');
@@ -85,7 +85,6 @@ const AddNewProduct = () => {
 
   return (
     <form className={styles.addProduct_wrapper}>
-
       <Selector
         handlerInputWeight={handlerInputWeight}
         handlerProductSelect={handlerProductSelect}
@@ -95,7 +94,9 @@ const AddNewProduct = () => {
       />
 
       <div className={styles.inputWeight_wrapper}>
-        <label htmlFor="gramms" className={inputWeightClasses.join(' ')}>Граммы</label>
+        <label htmlFor="gramms" className={inputWeightClasses.join(' ')}>
+          Граммы
+        </label>
         <input
           id="gramms"
           type="number"
@@ -107,14 +108,16 @@ const AddNewProduct = () => {
         />
       </div>
 
-      {isNotAllowedAddProd && (<div className={styles.notAllowed_Wrapper}>
-        <p className={styles.notAllowed}>Нельзя добавить более 30 продуктов</p>
-      </div>)}
+      {isNotAllowedAddProd && (
+        <div className={styles.notAllowed_Wrapper}>
+          <p className={styles.notAllowed}>Нельзя добавить более 30 продуктов</p>
+        </div>
+      )}
 
       <button onClick={handlerAddButton} type="button" className={styles.add_btn}>
         {width < 767 && !isLandscape ? 'Добавить' : <Icon icon="Add" className={styles.addBtn_icon} />}
       </button>
-    </form >
+    </form>
   );
 };
 
