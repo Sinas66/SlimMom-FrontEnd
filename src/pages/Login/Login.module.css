@@ -1,0 +1,160 @@
+* {
+  /* outline: 1px solid red; */
+  margin: 0;
+  padding: 0;
+}
+
+.pageWrapper {
+  width: 100%;
+  text-align: center;
+  background: white;
+  height: 100vh;
+}
+
+.loginWrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.entry {
+  font-size: 13px;
+  margin-top: 55px;
+  padding-bottom: 35px;
+  color: grey;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}
+
+.input {
+  font-size: 15px;
+  height: 50px;
+  width: 270px;
+  text-align: center;
+  vertical-align: bottom;
+  border: none;
+  border-bottom: 1px solid grey;
+  margin-top: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  background: none;
+}
+
+.button {
+  margin-top: 20px;
+  height: 40px;
+  width: 175px;
+  border-radius: 20px;
+  color: white;
+  background: rgb(252, 132, 44);
+  font-size: 14px;
+  box-shadow: 0 5px 10px rgb(252, 132, 44);
+  border: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}
+
+.butModule {
+  margin-top: 45px;
+}
+
+@media(min-width: 767px) {
+  .pageWrapper {
+    width: 100%;
+    text-align: center;
+    background-image: url(../../assets/images/tablet-bg-register.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    height: 100vh;
+  }
+
+  .loginWrapper {
+    width: 100%;
+    text-align: center;
+    padding-left: 90px;
+    width: 345px;
+  }
+
+  .inputModule {
+    text-align: start;
+
+  }
+
+  .input {
+    font-size: 15px;
+    height: 50px;
+    width: 345px;
+    text-align: start;
+    vertical-align: bottom;
+    border: none;
+    border-bottom: 1px solid grey;
+    margin-top: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    background: none;
+  }
+
+  .butModule {
+    margin-top: 45px;
+    text-align: start;
+  }
+
+
+  .entry {
+    font-size: 13px;
+    margin-top: 165px;
+    padding-bottom: 35px;
+    color: grey;
+    text-align: start;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+}
+
+@media(min-width: 1023px) {
+
+  .pageWrapper {
+    width: 100%;
+    text-align: center;
+    background-image: url(../../assets/images/desktop-bg-REGISTER.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    height: 847px;
+    height: 100vh;
+  }
+
+  .input {
+    font-size: 15px;
+    height: 50px;
+    width: 345px;
+    text-align: start;
+    vertical-align: bottom;
+    border: none;
+    border-bottom: 1px solid grey;
+    margin-top: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    background: none;
+  }
+
+  .loginWrapper {
+    width: 345px;
+    text-align: center;
+    padding-left: 115px;
+  }
+
+  .butModule {
+    margin-top: 45px;
+    text-align: start;
+  }
+
+
+  .entry {
+    font-size: 13px;
+    margin-top: 210px;
+    padding-bottom: 35px;
+    color: grey;
+    text-align: start;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+  }
+}

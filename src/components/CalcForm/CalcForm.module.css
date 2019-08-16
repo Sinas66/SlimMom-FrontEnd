@@ -4,7 +4,7 @@
 }
 
 .container {
-  width: 275px;
+  width: 90%;
   margin: 0 auto;
   padding: 40px 0;
 }
@@ -102,7 +102,7 @@
 
 @media (min-width: 768px) {
   .container {
-    width: 576px;
+    width: 70%;
   }
 
   .container form {
@@ -116,7 +116,7 @@
   }
 
   .input {
-    width: 235px;
+    width: 80%;
     font-size: 15px;
   }
 
@@ -136,7 +136,7 @@
   }
 
   .container {
-    width: 564px;
+    width: 80%;
   }
 
   .title {
