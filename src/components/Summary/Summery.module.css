@@ -25,12 +25,13 @@
   letter-spacing: 1px;
   font-family: "Verdana";
 }
-.summarySection div {
-    width: 275px;
-    padding: 25px 0;
-    margin: auto;
 
-  }
+.summarySection div {
+  width: 275px;
+  padding: 25px 0;
+  margin: auto;
+
+}
 
 @media(min-width:768px) {
   .summarySection {
@@ -65,5 +66,5 @@
     display: flex;
     flex-direction: column;
 
- }
+  }
 }
