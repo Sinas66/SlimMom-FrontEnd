@@ -30,7 +30,7 @@ class Dashboard extends Component {
     return (
       <section className={styles.grid}>
         <div className={styles.headerBlock_container}>
-          <Header token={token} />
+          <Header {...this.props} />
         </div>
         <div className={styles.calcDairyBlock_container}>
           <Route path="/dashboard" exact component={CalcForm} />
