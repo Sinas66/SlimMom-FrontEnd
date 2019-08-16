@@ -51,7 +51,7 @@ class CalcForm extends Component {
     desiredWeightValid: true,
     groupBloodValid: true,
     isOpenModal: false,
-    isValidForm: false,
+    isValidForm: true,
     isEmptyInput: false
   };
 
