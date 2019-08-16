@@ -9,7 +9,7 @@ const Home = () => (
       <div className={style.homeHeader}>
         <Header />
       </div>
-      <div>
+      <div className={style.calcForm}>
         <CalcForm />
       </div>
     </div>

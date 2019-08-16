@@ -19,8 +19,16 @@ const AddNewProduct = () => {
   const date = useSelector(state => state.datePicker.date);
   const countProductsByDay = useSelector(state => state.dailyBlock.productsByDay.length);
 
-  const validateInputWeight = e => {
-    const invalidChars = ['-', '+', 'e', 'E'];
+
+  const validateInputWeight = (e) => {
+    const invalidChars = [
+      "-",
+      "+",
+      "e",
+      "E",
+      ",",
+      "."
+    ];
 
     if (invalidChars.includes(e.key)) {
       e.preventDefault();
@@ -68,7 +76,7 @@ const AddNewProduct = () => {
       };
       const token = localStorage.getItem('userToken');
       addUserEatedProduct(token, productId, eatedProd);
-      setProductWeight('');
+      handlerInputWeight('');
       setProductId('');
       setProductLabel('');
       closeModal();
