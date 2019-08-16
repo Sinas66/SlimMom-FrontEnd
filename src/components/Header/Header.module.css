@@ -70,6 +70,7 @@
 .logoutButton {
   width: 22px;
   height: 26px;
+  margin-left: 12px;
 }
 
 .burgerBtn {
@@ -94,8 +95,8 @@
 
 .mobileLogoutBox {
   display: flex;
-  justify-content: space-between;
-  width: 105px;
+  justify-content: flex-end;
+  align-items: center;
   margin-right: 9px;
 }
 
@@ -251,8 +252,7 @@
 
   .usernamebox {
     padding-left: 0;
-    width: 299px;
-    justify-content: start;
+    justify-content: flex-end;
   }
 
   .navigationText {

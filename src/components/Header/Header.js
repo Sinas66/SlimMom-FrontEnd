@@ -26,7 +26,9 @@ class Header extends Component {
 
   logOut = token => {
     fetchLogOut(token).then(() => {
-      localStorage.removeItem('userToken');
+      setTimeout(() => {
+        localStorage.removeItem('userToken');
+      }, 2000);
     });
   };
 
