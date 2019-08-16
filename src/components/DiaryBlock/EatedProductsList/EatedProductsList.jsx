@@ -1,33 +1,35 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Table, Tbody } from 'react-super-responsive-table';
 import Spinner from 'react-spinkit';
 import styles from './EatedProductsList.module.css';
 import { deleteProductFromProductListFunc } from '../../../redux/actions/productActions';
 import EatedProductItem from './EatedProductItem/EatedProductItem';
 
-const EatedProductsList = ({ productsByDay, isProductsByDayLoader, deleteProduct }) => {
-  useEffect(() => {});
+const EatedProductsList = () => {
+  const dispatch = useDispatch();
+  const deleteProduct = (token, id) => dispatch(deleteProductFromProductListFunc(token, id));
+  const productsByDay = useSelector(state => state.dailyBlock.productsByDay);
+  const isProductsByDayLoader = useSelector(state => state.dailyBlock.isProductsByDayLoader);
 
   return (
     <>
-      {productsByDay.length === 0 && <h1>Вы ничего не ели! Обязательно перекусите!!!</h1>}
-      {isProductsByDayLoader && (
+      {productsByDay.length === 0 && <p className={styles.noProducts_p}>Здесь будет отображаться Ваш рацион</p>}
+      {/* {isProductsByDayLoader && (
         <div className={styles.fetch_loader}>
           <Spinner
             name="pacman"
             style={{
-              color: 'red',
+              color: '#f47929',
               display: 'block',
               margin: '0 auto',
               transform: 'translate(50%, 50%)'
             }}
           />
         </div>
-      )}
+      )} */}
 
-      {!isProductsByDayLoader && (
+      {productsByDay.length > 0 && (
         <div className={styles.tBodyTable}>
           <Table className={styles.firstBlock}>
             <Tbody>
@@ -42,17 +44,5 @@ const EatedProductsList = ({ productsByDay, isProductsByDayLoader, deleteProduct
   );
 };
 
-const mapStateToProps = state => ({
-  isProductsByDayLoader: state.dailyBlock.isProductsByDayLoader,
-  productsByDay: state.dailyBlock.productsByDay
-});
-export default connect(
-  mapStateToProps,
-  { deleteProduct: deleteProductFromProductListFunc }
-)(EatedProductsList);
+export default EatedProductsList;
 
-EatedProductsList.propTypes = {
-  productsByDay: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
-  isProductsByDayLoader: PropTypes.bool.isRequired,
-  deleteProduct: PropTypes.func.isRequired
-};

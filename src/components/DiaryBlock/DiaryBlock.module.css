@@ -1,7 +1,10 @@
-.diaryBlock_wrapper {
-  padding: 0 23px
+.diaryBlock_wrapper{
+  padding: 23px 23px 0;
 }
 
-/* * {
-  outline: 1px solid green
-} */
+@media (min-width:768px),
+screen and (orientation: landscape) {
+  .diaryBlock_wrapper{
+    padding: 0 23px 0;
+  }
+  }

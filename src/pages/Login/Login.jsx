@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { memorizedUserData } from './selectors';
+import Header from '../../components/Header/Header';
+import style from './Login.module.css';
 
 import { sendRegisterData, sendLoginData } from '../../redux/actions/auth';
 
@@ -89,17 +91,51 @@ class Login extends Component {
   render() {
     return (
       <>
-        <form>
-          <label htmlFor="login">Login</label>
-          <input type="text" name="login" id="login" onChange={this.handleInputs} placeholder="Логин*" />
-
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password" onChange={this.handleInputs} placeholder="Пароль*" />
-
-          <button onClick={this.handleLogin}>Login</button>
-          <button onClick={this.handleRegister}>Register</button>
-          <p>{this.state.error}</p>
-        </form>
+        <div className={style.pageWrapper}>
+          <Header />
+          <div className={style.loginWrapper}>
+            <div className={style.entry}>ВХОД / РЕГИСТРАЦИЯ</div>
+            <form>
+              <div className={style.inputModule}>
+                <div>
+                  <label htmlFor="login">Login</label>
+                  <input
+                    type="text"
+                    name="login"
+                    id="login"
+                    onChange={this.handleInputs}
+                    placeholder="Логин *"
+                    className={style.input}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="password">Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    onChange={this.handleInputs}
+                    placeholder="Пароль *"
+                    className={style.input}
+                  />
+                </div>
+              </div>
+              <p style={{ color: 'red', fontSize: 18, lineHeight: '20px' }}>{this.state.error}</p>
+              <div className={style.butModule}>
+                <div>
+                  <button onClick={this.handleLogin} className={style.button}>
+                    Вход
+                  </button>
+                </div>
+                <div>
+                  <button onClick={this.handleRegister} className={style.button}>
+                    Регистрация
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
       </>
     );
   }

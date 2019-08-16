@@ -1,19 +1,24 @@
 /*!
  * https://github.com/YouCanBookMe/react-datetime
  */
+@import '../vars.css';
 
-.form-control{
-  font-size: 17px;
-  border: none;
-  font-weight: bold;
-  line-height: 26px;
-  width: 120px;
-}
+
+@media (min-width:768px),
+(orientation: landscape){
+  .form-control{
+    font-size: 35px;
+    line-height: 1.071;
+    width: 235px;
+  }
+  }
 
 
  .rdt {
-  position: relative;
+  position: absolute;
+  z-index: 1;
 }
+
 .rdtPicker {
   display: none;
   position: absolute;

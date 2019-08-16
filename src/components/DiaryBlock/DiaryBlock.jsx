@@ -1,44 +1,46 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import windowSize from 'react-window-size';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useWindowSize } from '../../utils/hooks'
 import AddNewProduct from './AddNewProduct/AddNewProduct';
 import DatePicker from './DatePicker/DatePicker';
-import EatedProductsList from './EatedProductsList/EatedProductsList';
+import EatedProductsList from './EatedProductsList/EatedProductsList'
 import AddNewProductModal from './AddNewProductModal/AddNewProductModal';
-import ToogleModalButton from './ToogleModalButton/ToogleModalButton';
+import ShowModalButton from './ShowModalButton/ShowModalButton';
+import { getProductsByDayAction } from '../../redux/actions/productActions';
+
 import styles from './DiaryBlock.module.css';
 
-const DiaryBlock = ({ windowWidth, isModalShowed }) => {
-  useEffect(() => {}, []);
+const DiaryBlock = () => {
+  const isModalShowed = useSelector(state => state.dailyBlock.isModalProductShowed);
+  const { width, height } = useWindowSize();
+  const isLandscape = width > height;
+
+  const dispatch = useDispatch();
+  const getProductsByDay = (token, date) => dispatch(getProductsByDayAction(token, date));
+
+  useEffect(() => {
+    const token = localStorage.getItem('userToken');
+    const date = new Date();
+    getProductsByDay(token, date);
+  }, []);
 
   return (
     <div className={styles.diaryBlock_wrapper}>
-      <DatePicker />
-      {windowWidth > 767 && <AddNewProduct />}
-      <EatedProductsList />
+      {(!isModalShowed || width > 767 || isLandscape) && <DatePicker />}
 
-      {isModalShowed && windowWidth < 767 && (
+      {(width > 767 || isLandscape) && <AddNewProduct />}
+
+      {(!isModalShowed || width > 767 || isLandscape) && <EatedProductsList />}
+
+      {isModalShowed && width < 767 && !isLandscape && (
         <AddNewProductModal>
           <AddNewProduct />
         </AddNewProductModal>
       )}
 
-      {!isModalShowed && windowWidth < 767 && <ToogleModalButton />}
+      {!isModalShowed && (width < 767 && !isLandscape) && <ShowModalButton />}
     </div>
   );
 };
 
-const mapStateToProps = state => ({});
-
-const mapDispatchToProps = dis => ({});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(windowSize(DiaryBlock));
-
-DiaryBlock.propTypes = {
-  windowWidth: PropTypes.number.isRequired,
-  isModalShowed: PropTypes.bool.isRequired
-};
+export default DiaryBlock;
