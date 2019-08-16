@@ -229,7 +229,7 @@
     transition: .5s;
   }
 
-  .navigationLink:hover {
+  .navigationLink:focus {
     color: #2b2b2b;
   }
 
@@ -248,6 +248,10 @@
 
   .logoText {
     padding-left: 74px;
+  }
+
+  .usernameBurgerWrapper {
+    width: 219px;
   }
 
   .usernamebox {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import windowSize from 'react-window-size';
 import { fetchLogOut } from '../../utils/requests';
@@ -26,9 +26,7 @@ class Header extends Component {
 
   logOut = token => {
     fetchLogOut(token).then(() => {
-      setTimeout(() => {
-        localStorage.removeItem('userToken');
-      }, 2000);
+      localStorage.removeItem('userToken');
     });
   };
 
@@ -83,7 +81,7 @@ class Header extends Component {
             </div>
           )}
           {openModal && this.props.windowWidth < 1023 && <Modal toogleModal={toogleModal} />}
-          {!session.token && <UserBar />}
+          {<Route path="/" exact component={session.token ? null : UserBar} />}
         </div>
         {session.token && this.props.windowWidth < 767 && (
           <div className={isModalShowed ? styles.greyZone : styles.greyZoneModalClose}>
