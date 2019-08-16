@@ -1,12 +1,11 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useWindowSize } from '../../utils/hooks';
 import AddNewProduct from './AddNewProduct/AddNewProduct';
 import DatePicker from './DatePicker/DatePicker';
 import EatedProductsList from './EatedProductsList/EatedProductsList';
 import AddNewProductModal from './AddNewProductModal/AddNewProductModal';
 import ShowModalButton from './ShowModalButton/ShowModalButton';
-// import { getProductsByDayAction } from '../../redux/actions/productActions';
 
 import styles from './DiaryBlock.module.css';
 
