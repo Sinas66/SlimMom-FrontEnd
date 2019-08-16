@@ -55,8 +55,11 @@ class Login extends Component {
 
   handleLogin = e => {
     e.preventDefault();
-
     const { login, password } = this.state;
+
+    if (login.length < 6 || password < 6) {
+      return;
+    }
 
     const dataToLogin = {
       nickname: login,
@@ -70,6 +73,10 @@ class Login extends Component {
     e.preventDefault();
 
     const { login, password } = this.state;
+
+    if (login.length < 6 || password < 6) {
+      return;
+    }
 
     let dataToRegister = {
       nickname: login,
@@ -97,41 +104,49 @@ class Login extends Component {
             <div className={style.entry}>ВХОД / РЕГИСТРАЦИЯ</div>
             <form>
               <div className={style.inputModule}>
-                <div>
-                  <label htmlFor="login">Login</label>
-                  <input
-                    type="text"
-                    name="login"
-                    id="login"
-                    onChange={this.handleInputs}
-                    placeholder="Логин *"
-                    className={style.input}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="password">Password</label>
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    onChange={this.handleInputs}
-                    placeholder="Пароль *"
-                    className={style.input}
-                  />
-                </div>
+                <label htmlFor="login" className={style.invisible}>
+                  Login
+                </label>
+                <input
+                  type="text"
+                  name="login"
+                  id="login"
+                  onChange={this.handleInputs}
+                  placeholder="Логин *"
+                  className={style.input}
+                />
+                <label htmlFor="password" className={style.invisible}>
+                  Password
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  onChange={this.handleInputs}
+                  placeholder="Пароль *"
+                  className={style.input}
+                />
               </div>
-              <p style={{ color: 'red', fontSize: 18, lineHeight: '20px' }}>{this.state.error}</p>
+              <div className={style.error}>
+                <p>{this.state.error}</p>
+                <p>
+                  {(this.state.login.length > 0) & (this.state.login.length < 6)
+                    ? 'Логин должен быть больше 5ти символов'
+                    : null}
+                </p>
+                <p>
+                  {(this.state.password.length > 0) & (this.state.password.length < 6)
+                    ? 'Пароль должен быть больше 5ти символов'
+                    : null}
+                </p>
+              </div>
               <div className={style.butModule}>
-                <div>
-                  <button onClick={this.handleLogin} className={style.button}>
-                    Вход
-                  </button>
-                </div>
-                <div>
-                  <button onClick={this.handleRegister} className={style.button}>
-                    Регистрация
-                  </button>
-                </div>
+                <button onClick={this.handleLogin} className={style.button}>
+                  Вход
+                </button>
+                <button onClick={this.handleRegister} className={style.button}>
+                  Регистрация
+                </button>
               </div>
             </form>
           </div>
