@@ -22,8 +22,12 @@ function Summary({ products, date, groupBlood, dailyRate }) {
         <h3>Сводка за {moment(date).format('MM.DD.Y')}</h3>
         <ul className={style.listSummery}>
           <li>
-            {dailyRate - ссalSumm > 0 ? <p>Осталось</p> : <p>Переел</p>}
-            <p>{(dailyRate - ссalSumm).toFixed(0)} ккал</p>
+            {dailyRate - ссalSumm > 0 ? <p>Осталось</p> : <p>Перебор</p>}
+            {dailyRate - ссalSumm > 0 ? (
+              <p>{(dailyRate - ссalSumm).toFixed(0)} ккал</p>
+            ) : (
+              <p className={style.colorOverCcal}>{Math.abs((dailyRate - ссalSumm).toFixed(0))} ккал</p>
+            )}
           </li>
           <li>
             <p>Употреблено</p>
