@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import style from './Summery.module.css';
 import { connect } from 'react-redux';
 import { getDailyRate, getDate, getProducts, getGroupBlood } from './selectors';
@@ -9,7 +10,6 @@ import moment from 'moment';
 function Summary({ products, date, groupBlood, dailyRate }) {
   const [ссalSumm, setCсalSumm] = useState(0);
   const [productsList, setProductsList] = useState([]);
-  console.log(date);
 
   useEffect(() => {
     if (products) setCсalSumm(getCcalSumm(products));
@@ -22,11 +22,17 @@ function Summary({ products, date, groupBlood, dailyRate }) {
         <h3>Сводка за {moment(date).format('MM.DD.Y')}</h3>
         <ul className={style.listSummery}>
           <li>
-            {dailyRate - ссalSumm >= 0 ? <p>Осталось</p> : <p>Перебор</p>}
-            {dailyRate - ссalSumm >= 0 ? (
-              <p>{(dailyRate - ссalSumm).toFixed(0)} ккал</p>
+            {dailyRate ? dailyRate - ссalSumm >= 0 ? <p>Осталось</p> : <p>Перебор</p> : <p>Осталось</p>}
+            {dailyRate ? (
+              dailyRate - ссalSumm >= 0 ? (
+                <p>{(dailyRate - ссalSumm).toFixed(0)} ккал</p>
+              ) : (
+                <p className={style.colorOverCcal}>{Math.abs((dailyRate - ссalSumm).toFixed(0))} ккал</p>
+              )
             ) : (
-              <p className={style.colorOverCcal}>{Math.abs((dailyRate - ссalSumm).toFixed(0))} ккал</p>
+              <Link className={style.start} to="/dashboard">
+                Посчитать
+              </Link>
             )}
           </li>
           <li>
@@ -43,6 +49,7 @@ function Summary({ products, date, groupBlood, dailyRate }) {
           </li>
         </ul>
       </div>
+
       <div>
         <h3>Продукты, которые вам не рекомендуется употреблять:</h3>
         <p className={style.pSummery}>{productsList}</p>
@@ -64,7 +71,9 @@ Summary.propTypes = {
       ccal: PropTypes.number
     })
   ),
-  date: PropTypes.string,
+  date: PropTypes.shape({
+    date: PropTypes.string
+  }),
   groupBlood: PropTypes.number,
   dailyRate: PropTypes.number
 };
