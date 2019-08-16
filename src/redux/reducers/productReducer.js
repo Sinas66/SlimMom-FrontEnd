@@ -13,7 +13,7 @@ const productReducer = (state = INITIAL_STATE, { type, payload }) => {
     case actionTypes.TOOGLE_FETCH_PROD_BY_DAY_LOADER:
       return { ...state, isProductsByDayLoader: !state.isProductsByDayLoader };
     case actionTypes.ADD_PRODUCT_BY_DAY:
-      return { ...state, productsByDay: [...state.productsByDay, payload] };
+      return { ...state, productsByDay: [payload, ...state.productsByDay] };
     case actionTypes.SHOW_MODAL_PRODUCTS:
       return { ...state, isModalProductShowed: true };
     case actionTypes.CLOSE_MODAL_PRODUCTS:
