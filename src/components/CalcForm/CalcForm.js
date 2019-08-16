@@ -134,9 +134,9 @@ class CalcForm extends Component {
   };
 
   openResult = () => {
-    const { height, age, currentWeight, desiredWeight, groupBlood } = this.state;
+    const { height, age, currentWeight, desiredWeight, groupBlood, isValidForm } = this.state;
 
-    if (height && age && currentWeight && desiredWeight && groupBlood) {
+    if (height && age && currentWeight && desiredWeight && groupBlood && isValidForm) {
       this.toggleOpenModal();
     } else {
       this.setState({ isEmptyInput: true });
