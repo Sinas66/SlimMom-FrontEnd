@@ -41,6 +41,7 @@
 
 .inputHasValue{
   top: 0;
+  left: -5px;
   font-size: 10px;
 }
 
@@ -130,7 +131,7 @@
     width: 50%;
   }
 
-  .input_label {
+  .input_label, .input{
     font-size: 15px;
   }
 

@@ -1,38 +1,36 @@
-.homeContainer{
-  height: 100vh;
+.homeContainer {
+  max-width: 700px;
+  margin: 0 auto;
 }
-.homeHeader{
-  margin-bottom: 45px;
-  }
-
 .calcForm {
-  padding: 0 25px;
+  padding: 45px 25px 50px;
 }
 
 @media(min-width: 768px){
-  .homeContainer{
+  .homeContainer {
+    max-width: 1000px;
+  }
+  .homeContainer {
     background-image: url(../../assets/images/home_tablet.png);
     background-repeat: no-repeat;
     background-position: bottom right;
   }
-  .homeHeader{
-   margin-bottom: 110px;
-   }
    .calcForm {
-    padding: 0 90px;
+    padding: 115px 90px 430px;
    }
 }
 @media(min-width: 1024px){
+  .homeContainer {
+    max-width: 2200px;
+  }
   .homeContainer{
     padding: 0 25px;
     background-image: url(../../assets/images/home_descktop.png);
-    background-size: 750px;
+    background-size: contain;
   }
-    .homeHeader{
-    margin-bottom: 150px;
-    }
     .calcForm {
-      padding: 0 115px;
+      padding: 150px 115px 110px;
+      max-width: 1100px;
      }
   .homeGroup{
     width: 70%;
