@@ -22,7 +22,7 @@ function Summary({ products, date, groupBlood, dailyRate }) {
         <h3>Сводка за {moment(date).format('MM.DD.Y')}</h3>
         <ul className={style.listSummery}>
           <li>
-            <p>Осталось</p>
+            {dailyRate - ссalSumm > 0 ? <p>Осталось</p> : <p>Переел</p>}
             <p>{(dailyRate - ссalSumm).toFixed(0)} ккал</p>
           </li>
           <li>
