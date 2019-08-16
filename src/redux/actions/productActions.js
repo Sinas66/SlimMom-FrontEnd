@@ -12,6 +12,7 @@ import {
 const addProductByDate = createAction(actionTypes.ADD_PRODUCT_BY_DATE);
 const addNewData = createAction(actionTypes.ADD_FETCH_SUCCESS);
 export const addAllData = createAction(actionTypes.ADD_ALL_DATA);
+export const clearSession = createAction(actionTypes.CLEAR_SESSION);
 
 export const updateData = (token, data) => dispatch => {
   putNewData(token, data)

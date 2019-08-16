@@ -3,7 +3,7 @@ import { NavLink, Link, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import windowSize from 'react-window-size';
 import { fetchLogOut } from '../../utils/requests';
-import { closeModalProductsAction } from '../../redux/actions/productActions';
+import { closeModalProductsAction, clearSession } from '../../redux/actions/productActions';
 import UserBar from '../UserBar/UserBar';
 import Modal from './Modal';
 import Icon from '../../assets/icons/Icon/Icon';
@@ -25,15 +25,19 @@ class Header extends Component {
   };
 
   logOut = token => {
+    // console.log('token: ', token);
+    const { _clearSession } = this.props;
     fetchLogOut(token).then(() => {
       localStorage.removeItem('userToken');
+      _clearSession();
+      window.location.href = '/';
     });
   };
 
   render() {
     const { toogleModal, logOut, navigationToogle } = this;
     const { openModal } = this.state;
-    const { username, isModalShowed, toogleModalProducts, session } = this.props;
+    const { username, isModalShowed, toogleModalProducts, session, token } = this.props;
     return (
       <div className={styles.header}>
         <div className={session.token ? styles.container : styles.loggedContainer}>
@@ -63,9 +67,9 @@ class Header extends Component {
                 <div className={styles.usernamebox}>
                   <p className={styles.usernameText}> {username}</p>
                   <p>|</p>
-                  <Link onClick={logOut} className={styles.logoutText} to={'/'}>
+                  <p onClick={() => logOut(token)} className={styles.logoutText}>
                     Выйти
-                  </Link>
+                  </p>
                 </div>
               )}
               {session.token && !openModal && this.props.windowWidth < 1023 && (
@@ -93,7 +97,7 @@ class Header extends Component {
             <div className={styles.mobileLogoutBox}>
               <p className={styles.username}>{username}</p>
               <Link to={'/'}>
-                <Icon onClick={logOut} className={styles.logoutButton} icon="Logout" />
+                <Icon onClick={() => logOut} className={styles.logoutButton} icon="Logout" />
               </Link>
             </div>
           </div>
@@ -111,6 +115,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   toogleModalProducts: () => {
     dispatch(closeModalProductsAction());
+  },
+  _clearSession: () => {
+    dispatch(clearSession());
   }
 });
 

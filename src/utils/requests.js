@@ -14,9 +14,9 @@ export const setToken = token => ({
 
 export const fetchLogOut = token => {
   return axios
-    .get(api.url.logOut(), setToken(token))
+    .post(api.url.logOut(), {}, setToken(token))
     .then(resp => {
-      console.log(data);
+      console.log(resp);
       if (resp.data.status !== 'success') {
         throw new Error('albfkjabflasflk');
       }
