@@ -4,11 +4,11 @@ const INITIAL_STATE = {
   nickname: '',
   token: '',
   userData: {
-    groupBlood: 0,
-    height: 0,
-    desiredWeight: 0,
-    currentWeight: 0,
-    age: 0
+    groupBlood: 3,
+    height: 50,
+    desiredWeight: 50,
+    currentWeight: 50,
+    age: 50
   }
 };
 
@@ -17,7 +17,7 @@ export const sessionReducer = (state = {}, { type, payload }) => {
     case actionTypes.ADD_FETCH_SUCCESS:
       return {
         ...state,
-        userData: { ...state.userData, dailyRate: payload.dailyRate, groupBlood: payload.groupBlood }
+        userData: { ...state.userData, ...payload }
       };
     case actionTypes.ADD_ALL_DATA:
       return { ...state, userData: { ...payload } };
