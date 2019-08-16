@@ -13,14 +13,14 @@ export const getDate = createSelector(
   datePicker => datePicker.date
 );
 
-export const getUser = state => state.session.userData;
+export const getUser = state => (state.session.userData ? state.session.userData : 0);
 
 export const getGroupBlood = createSelector(
   [getUser],
-  user => user.groupBlood
+  user => (user.groupBlood ? user.groupBlood : 0)
 );
 
 export const getDailyRate = createSelector(
   [getUser],
-  user => user.dailyRate
+  user => (user.dailyRate ? user.dailyRate : 0)
 );
