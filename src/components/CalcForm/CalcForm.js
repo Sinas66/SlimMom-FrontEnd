@@ -293,7 +293,7 @@ class CalcForm extends Component {
               <ErrorNotification label={'Заполните все поля калькулятора'} />
             </p>
           )}
-          <button type="button" id="submit" className={css.btn} disabled={!isValidForm} onClick={this.openResult}>
+          <button type="button" id="submit" className={css.btn} onClick={this.openResult}>
             {!data.groupBlood ? 'Похудеть' : 'Пересчитать'}
           </button>
         </div>
