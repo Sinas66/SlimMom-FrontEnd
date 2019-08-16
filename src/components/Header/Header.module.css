@@ -2,11 +2,17 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  height: 80px;
+  /* =========check it=========== */
+  margin-bottom: 90px;
+
 }
 
 .container,
 .loggedContainer {
   display: flex;
+
+  height: 80px;
   justify-content: space-between;
   border-bottom: 2px solid;
   border-color: #dddddd;
@@ -16,7 +22,12 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding-top: 4px;
+  /* padding-top: 4px; */
+  height: 80px;
+}
+
+.logoNavigationBox {
+  height: 80px;
 }
 
 .logoImg {
@@ -39,6 +50,10 @@
   font-weight: 300;
   font-size: 21px;
   letter-spacing: 2px;
+}
+
+.usernameBurgerWrapper {
+  height: 80px;
 }
 
 .greyZone,
@@ -78,8 +93,9 @@
   width: 26px;
   height: 26px;
   padding: 0;
-  margin-top: 18px;
+  margin-top: 25px;
   margin-right: 19px;
+
 }
 
 .burger {
@@ -97,6 +113,7 @@
   justify-content: flex-end;
   align-items: center;
   margin-right: 9px;
+  height: 45px;
 }
 
 @media (min-width: 768px) {
@@ -124,7 +141,8 @@
   }
 
   .burgerBtn {
-    margin-right: 38px;
+    /* margin-right: 38px; */
+    transform: translate(-30px, 2px);
   }
 
   .logoutText {
@@ -157,7 +175,7 @@
     width: 165px;
     justify-content: space-between;
     align-items: center;
-    padding-top: 8px;
+    /* padding-top: 8px; */
     font-size: 15px;
     letter-spacing: 1.5px;
     color: #212121;
@@ -171,6 +189,8 @@
 
   .header {
     min-width: 1024px;
+    height: 140px;
+
   }
 
   .container,
@@ -178,22 +198,26 @@
     justify-content: space-between;
     min-width: 1024px;
     border: none;
-    padding-top: 66px;
+    height: 140px;
+    /* padding-top: 66px; */
   }
 
   .loggedContainer {
     justify-content: start;
+    height: 140px;
   }
 
   .logoNavigationBox,
   .loggedLogoNavigationBox {
     width: 558px;
+    height: 140px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
   .logoutText {
+
     background-color: transparent;
     border: none;
     padding: 0;
@@ -207,6 +231,7 @@
 
   .loggedLogoNavigationBox {
     width: 383px;
+    height: 140px;
   }
 
   .navigationBox {
@@ -250,6 +275,7 @@
 
   .usernameBurgerWrapper {
     width: 219px;
+    height: 140px;
   }
 
   .usernamebox {
@@ -261,4 +287,3 @@
     color: #2b2b2b;
   }
 }
-
