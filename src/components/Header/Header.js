@@ -6,7 +6,7 @@ import { fetchLogOut } from '../../utils/requests';
 import { closeModalProductsAction } from '../../redux/actions/productActions';
 import UserBar from '../UserBar/UserBar';
 import Modal from './Modal';
-import Icon from '../Icon/Icon';
+import Icon from '../../assets/icons/Icon/Icon';
 import logo from './Logo/logo-png.png';
 import styles from './Header.module.css';
 
@@ -17,87 +17,73 @@ class Header extends Component {
     token: PropTypes.string.isRequired
   };
   state = {
-    openModal: false,
-    isLogged: false
+    openModal: false
   };
 
-  toogleModal = e => {
+  toogleModal = () => {
     this.setState(state => ({ openModal: !state.openModal }));
   };
-
-  componentDidMount() {
-    setTimeout(() => {
-      const { token } = this.props;
-      if (token) {
-        this.setState({ isLogged: true });
-      } else if (!token) {
-        this.setState({ isLogged: false });
-      }
-    }, 2000);
-  }
 
   logOut = token => {
     fetchLogOut(token).then(() => {
       localStorage.removeItem('userToken');
-      this.setState(state => ({ isLogged: !state.isLogged }));
     });
   };
 
   render() {
-    const { toogleModal, logOut } = this;
-    const { openModal, isLogged } = this.state;
-    const { username, token, isModalShowed, toogleModalProducts } = this.props;
+    const { toogleModal, logOut, navigationToogle } = this;
+    const { openModal } = this.state;
+    const { username, isModalShowed, toogleModalProducts, session } = this.props;
     return (
       <div className={styles.header}>
-        <div className={isLogged ? styles.container : styles.loggedContainer}>
-          <div className={isLogged ? styles.logoNavigationBox : styles.loggedLogoNavigationBox}>
-            <div className={styles.logotype}>
-              <Link to="/">
-                <img className={styles.logoImg} src={logo} alt="LOGO" />
-                <span className={styles.logoText}>
-                  Slim<span className={styles.logoTextSpan}>Mom</span>
-                </span>
-              </Link>
-            </div>
-            {isLogged && this.props.windowWidth > 1023 && (
+        <div className={session.token ? styles.container : styles.loggedContainer}>
+          <div className={session.token ? styles.logoNavigationBox : styles.loggedLogoNavigationBox}>
+            <Link className={styles.logotype} to={session.token ? '/dashboard' : '/home'}>
+              <img className={styles.logoImg} src={logo} alt="LOGO" />
+              <span className={styles.logoText}>
+                Slim<span className={styles.logoTextSpan}>Mom</span>
+              </span>
+            </Link>
+
+            {session.token && this.props.windowWidth > 1023 && (
               <div className={styles.navigationBox}>
-                <NavLink className={styles.navigationLink} exact to="/dashboard/diary">
+                <NavLink onClick={navigationToogle} className={styles.navigationLink} exact to="/dashboard/diary">
                   ДНЕВНИК
                 </NavLink>
-                <NavLink className={styles.navigationLink} exact to="/dashboard">
+                <NavLink onClick={navigationToogle} className={styles.navigationLink} exact to="/dashboard">
                   КАЛЬКУЛЯТОР
                 </NavLink>
               </div>
             )}
           </div>
 
-          {isLogged && (
+          {session.token && (
             <div className={styles.usernameBurgerWrapper}>
-              {isLogged && this.props.windowWidth > 767 && (
+              {session.token && this.props.windowWidth > 767 && (
                 <div className={styles.usernamebox}>
                   <p className={styles.usernameText}> {username}</p>
                   <p>|</p>
-                  <button onClick={logOut} className={styles.logoutText}>
+                  <Link onClick={logOut} className={styles.logoutText} to={'/'}>
                     Выйти
-                  </button>
+                  </Link>
                 </div>
               )}
-              {isLogged && !openModal && this.props.windowWidth < 1023 && (
+              {session.token && !openModal && this.props.windowWidth < 1023 && (
                 <button className={styles.burgerBtn} onClick={toogleModal}>
                   <Icon className={styles.burger} icon="Menu" />
                 </button>
               )}
-              {isLogged && openModal && this.props.windowWidth < 1023 && (
+              {session.token && openModal && this.props.windowWidth < 1023 && (
                 <button className={styles.burgerBtn} onClick={toogleModal}>
                   <Icon className={styles.cross} icon="Close" />
                 </button>
               )}
             </div>
           )}
-          {openModal && this.props.windowWidth < 1023 && <Modal />}
-          {!isLogged && <UserBar />}
+          {openModal && this.props.windowWidth < 1023 && <Modal toogleModal={toogleModal} />}
+          {!session.token && <UserBar />}
         </div>
-        {isLogged && this.props.windowWidth < 767 && (
+        {session.token && this.props.windowWidth < 767 && (
           <div className={isModalShowed ? styles.greyZone : styles.greyZoneModalClose}>
             {isModalShowed && (
               <button type="button" onClick={toogleModalProducts} className={styles.closeModal}>
@@ -106,7 +92,9 @@ class Header extends Component {
             )}
             <div className={styles.mobileLogoutBox}>
               <p className={styles.username}>{username}</p>
-              <Icon onClick={logOut} className={styles.logoutButton} icon="Logout" />
+              <Link to={'/'}>
+                <Icon onClick={logOut} className={styles.logoutButton} icon="Logout" />
+              </Link>
             </div>
           </div>
         )}
@@ -115,6 +103,7 @@ class Header extends Component {
   }
 }
 const mapStateToProps = state => ({
+  session: state.session,
   username: state.session.nickname,
   token: state.session.token,
   isModalShowed: state.dailyBlock.isModalProductShowed

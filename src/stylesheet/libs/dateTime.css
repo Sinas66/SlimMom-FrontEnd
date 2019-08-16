@@ -4,22 +4,6 @@
 @import '../vars.css';
 
 
-.form-control{
-  font-size: 17px;
-  border: none;
-  font-weight: bold;
-  line-height: 1.529;
-  width: 120px;
-  color: var( --text-color-black);
-  font-family: Verdana, sans-serif;
-  letter-spacing: 0.02em;
-  transition: all .2s linear;
-}
-
-.form-control:focus{
-  outline: none;
-}
-
 @media (min-width:768px),
 (orientation: landscape){
   .form-control{
@@ -31,8 +15,10 @@
 
 
  .rdt {
-  position: relative;
+  position: absolute;
+  z-index: 1;
 }
+
 .rdtPicker {
   display: none;
   position: absolute;
