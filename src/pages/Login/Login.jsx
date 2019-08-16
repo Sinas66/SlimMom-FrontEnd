@@ -5,6 +5,7 @@ import Header from '../../components/Header/Header';
 import style from './Login.module.css';
 
 import { sendRegisterData, sendLoginData } from '../../redux/actions/auth';
+import { ERROR } from 'jest-validate/build/utils';
 
 class Login extends Component {
   state = {
@@ -128,7 +129,11 @@ class Login extends Component {
                 />
               </div>
               <div className={style.error}>
-                <p>{this.state.error}</p>
+                <p>
+                  {this.state.error === 'User doesnt exist' ? 'Пользователь не существует' : null}
+                  {this.state.error === 'Password is invalid' ? 'Неправильный пароль или логин' : null}
+                  {this.state.error === 'nickname already exist' ? 'Логин уже занят' : null}
+                </p>
                 <p>
                   {(this.state.login.length > 0) & (this.state.login.length < 6)
                     ? 'Логин должен состоять минимум из 6 знаков'
