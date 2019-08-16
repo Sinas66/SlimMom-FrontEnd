@@ -4,9 +4,8 @@
 }
 
 .container {
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
-  padding: 40px 0;
 }
 
 .titleContainer {
@@ -42,6 +41,7 @@
 
 .inputHasValue{
   top: 0;
+  left: -7px;
   font-size: 10px;
 }
 
@@ -131,7 +131,7 @@
     width: 50%;
   }
 
-  .input_label {
+  .input_label, .input{
     font-size: 15px;
   }
 
