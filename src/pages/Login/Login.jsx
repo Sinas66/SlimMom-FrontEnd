@@ -40,45 +40,6 @@ class Login extends Component {
       console.log(this.state);
     }, 10);
   };
-  // handleInputs = e => {
-  //   const { name, value } = e.target;
-
-  //   const log = () => {
-  //     console.log('ASYNC', this.state);
-  //   };
-
-  //   this.setState({
-  //     [name]: value
-  //   });
-  //   if ((this.state.login.length > 0) & (this.state.login.length < 6)) {
-  //     this.setState(
-  //       {
-  //         errorLog: 'Логин должен состоять минимум из 5 знаков'
-  //       },
-  //       log()
-  //     );
-  //   } else {
-  //     this.setState(
-  //       {
-  //         errorLog: ''
-  //       },
-  //       log()
-  //     );
-  //   }
-  //   if ((this.state.password.length > 0) & (this.state.password.length < 6)) {
-  //     this.setState({
-  //       errorPass: 'Пароль должен состоять минимум из 5 знаков'
-  //     });
-  //   } else {
-  //     this.setState({
-  //       errorPass: ''
-  //     });
-  //   }
-  //   console.log('STATE', this.state);
-  //   setTimeout(() => {
-  //     console.log('TIMOUTE', this.state);
-  //   }, 10);
-  // };
 
   redirectUser = data => {
     localStorage.setItem('userToken', data.token);
@@ -122,7 +83,7 @@ class Login extends Component {
     e.preventDefault();
     const { login, password } = this.state;
 
-    if (login.length < 6 || password < 6) {
+    if (login.length < 5 || password < 5) {
       return;
     }
 
@@ -139,7 +100,7 @@ class Login extends Component {
 
     const { login, password } = this.state;
 
-    if (login.length < 6 || password < 6) {
+    if (login.length < 5 || password < 5) {
       return;
     }
 

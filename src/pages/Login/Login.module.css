@@ -82,6 +82,11 @@
   border: none;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
+  cursor: pointer;
+}
+
+.button:focus {
+  outline: none;
 }
 
 .butModule {
