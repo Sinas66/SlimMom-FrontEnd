@@ -1,6 +1,6 @@
 .summarySection {
   background-color: #eff1f3;
-  height: 100vh;
+  height: 100%;
 }
 
 .listSummery,
@@ -56,15 +56,15 @@
   .summarySection div {
     width: 100%;
     padding: 30px;
-    margin: auto;
+    margin: 0 auto;
   }
 
   .summarySection {
     background-image: url(../../assets/images/greenleaves.png), linear-gradient(#eff1f3, #eff1f3);
     background-color: #eff1f3;
-    padding: 200px 25px 103px;
+    padding: 200px 25px;
     display: flex;
     flex-direction: column;
-
+    justify-content: flex-start;
   }
 }
