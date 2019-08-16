@@ -131,12 +131,12 @@ class Login extends Component {
                 <p>{this.state.error}</p>
                 <p>
                   {(this.state.login.length > 0) & (this.state.login.length < 6)
-                    ? 'Логин должен быть больше 5ти символов'
+                    ? 'Логин должен состоять минимум из 6 знаков'
                     : null}
                 </p>
                 <p>
                   {(this.state.password.length > 0) & (this.state.password.length < 6)
-                    ? 'Пароль должен быть больше 5ти символов'
+                    ? 'Пароль должен состоять минимум из 6 знаков'
                     : null}
                 </p>
               </div>

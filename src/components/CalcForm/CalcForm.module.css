@@ -32,14 +32,11 @@
   border-bottom: 1px solid #999daa;
   color: #999daa;
   line-height: 56px;
+  background-color: transparent;
 }
 
 .input:focus {
   outline: none;
-}
-
-.input[type='number'] {
-  -moz-appearance: textfield;
 }
 
 .input::-webkit-outer-spin-button,
