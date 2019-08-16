@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { NavLink, Link, Route } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import windowSize from 'react-window-size';
 import { fetchLogOut } from '../../utils/requests';
-import { closeModalProductsAction, clearSession } from '../../redux/actions/productActions';
+import { closeModalProductsAction, clearSessionAction } from '../../redux/actions/productActions';
 import UserBar from '../UserBar/UserBar';
 import Modal from './Modal';
 import Icon from '../../assets/icons/Icon/Icon';
@@ -30,10 +30,10 @@ class Header extends Component {
   };
 
   logOut = token => {
-    const { _clearSession } = this.props;
+    const { clearSession } = this.props;
     fetchLogOut(token).then(() => {
       localStorage.removeItem('userToken');
-      _clearSession();
+      clearSession();
       window.location.href = '/';
     });
   };
@@ -133,8 +133,8 @@ const mapDispatchToProps = dispatch => ({
   toogleModalProducts: () => {
     dispatch(closeModalProductsAction());
   },
-  _clearSession: () => {
-    dispatch(clearSession());
+  clearSession: () => {
+    dispatch(clearSessionAction());
   }
 });
 
