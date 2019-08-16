@@ -17,7 +17,7 @@ export const sessionReducer = (state = {}, { type, payload }) => {
     case actionTypes.ADD_FETCH_SUCCESS:
       return {
         ...state,
-        userData: { ...state.userData, dailyRate: payload.dailyRate, groupBlood: payload.groupBlood }
+        userData: { ...state.userData, ...payload }
       };
     case actionTypes.ADD_ALL_DATA:
       return { ...state, userData: { ...payload } };
