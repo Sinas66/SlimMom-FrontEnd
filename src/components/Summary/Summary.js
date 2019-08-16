@@ -39,7 +39,7 @@ function Summary({ products, date, groupBlood, dailyRate }) {
           </li>
           <li>
             <p>n% от нормы</p>
-            <p>{(ссalSumm * (100 / dailyRate)).toFixed(0)} %</p>
+            {dailyRate ? <p>{(ссalSumm * (100 / dailyRate)).toFixed(0)} %</p> : <p>0%</p>}
           </li>
         </ul>
       </div>
