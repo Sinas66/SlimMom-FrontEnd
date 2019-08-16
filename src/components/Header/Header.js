@@ -104,7 +104,7 @@ class Header extends Component {
             </div>
           )}
           {openModal && this.props.windowWidth < 1023 && <Modal toogleModal={toogleModal} />}
-          {<Route path="/" exact component={session.token ? null : UserBar} />}
+          {window.location.href === '/' && session.token && <UserBar />}
         </div>
         {session.token && this.props.windowWidth < 767 && (
           <div className={isModalShowed ? styles.greyZone : styles.greyZoneModalClose}>
