@@ -158,12 +158,11 @@ const mapDispatchToProps = dispatch => ({
 Result.propTypes = {
   add: PropTypes.func,
   newInfo: PropTypes.func,
-  groupBlood: PropTypes.number,
-  dailyRate: PropTypes.number,
-  currentWeight: PropTypes.number,
-  age: PropTypes.number,
-  height: PropTypes.string,
-  desiredWeight: PropTypes.number,
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  age: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  currentWeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  desiredWeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  groupBlood: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   session: PropTypes.shape({
     token: PropTypes.string,
     name: PropTypes.string,

@@ -15,7 +15,7 @@
 
 .calcDairyBlock_container {
   grid-area: dashboard;
-  padding: 40px 25px 50px;
+  padding: 70px 25px 50px;
 }
 
 .summaryBlock_container {
@@ -24,19 +24,18 @@
 
 @media(min-width: 767px) {
   .calcDairyBlock_container {
-    padding: 90px 90px 100px;
+    padding: 70px 90px 100px;
   }
 }
 
 @media(min-width: 1024px) {
   .grid {
-    max-width: 1440px;
+    max-width: 1740px;
     grid-template-areas:
       "header header"
       "dashboard summary";
     grid-template-columns: 8fr 5fr;
     grid-template-rows: auto;
-    height: 100%;
     margin: 0 auto;
   }
 
@@ -47,7 +46,8 @@
   }
 
   .calcDairyBlock_container {
-    padding: 115px 20px 0 115px;
+    padding: 90px 20px 0 115px;
+    height: 100vh;
   }
 
   .summaryBlock_container {

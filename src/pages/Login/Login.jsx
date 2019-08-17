@@ -23,7 +23,19 @@ class Login extends Component {
     });
 
     setTimeout(() => {
-      if ((this.state.login.length > 0) & (this.state.login.length < 5)) {
+      const regLatin = new RegExp('^[a-zA-Z0-9]+$');
+      const regFirstNum = new RegExp(`^[0-9]`);
+      if (regFirstNum.test(this.state.login || this.state.login.length > 0)) {
+        this.setState({
+          error: 'Логин не может начинаться с цифры'
+        });
+      }
+      else if (!regLatin.test(this.state.login || this.state.login.length > 0)) {
+        this.setState({
+          error: 'Логин не может содержать кириллицу и спец символы'
+        });
+      }
+      else if ((this.state.login.length > 0) & (this.state.login.length < 5)) {
         this.setState({
           error: 'Логин должен состоять минимум из 5 знаков'
         });
@@ -31,12 +43,21 @@ class Login extends Component {
         this.setState({
           error: 'Пароль должен состоять минимум из 5 знаков'
         });
+      } else if ((this.state.login.length > 0) & (this.state.login.length > 16)) {
+        this.setState({
+          error: 'Логин должен состоять максимум из 16 символов'
+        })
+      }
+      else if ((this.state.password.length > 0) & (this.state.password.length > 16)) {
+        this.setState({
+          error: 'Пароль должен состоять максимум из 16 символов'
+        });
       } else {
         this.setState({
           error: ''
         });
       }
-      console.log(this.state);
+      // console.log(this.state);
     }, 10);
   };
 
@@ -97,9 +118,9 @@ class Login extends Component {
   handleRegister = e => {
     e.preventDefault();
 
-    const { login, password } = this.state;
+    const { error, login, password } = this.state;
 
-    if (login.length < 5 || password < 5) {
+    if (error !== "") {
       return;
     }
 
