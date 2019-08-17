@@ -48,10 +48,12 @@
 
   .calcDairyBlock_container {
     padding: 90px 20px 0 115px;
+    height: 100vh;
   }
 
   .summaryBlock_container {
     grid-row: 2/1;
     position: absolute;
+    height: 100vh;
   }
 }
