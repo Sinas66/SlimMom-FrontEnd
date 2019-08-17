@@ -15,7 +15,7 @@
 
 .calcDairyBlock_container {
   grid-area: dashboard;
-  padding: 40px 25px 50px;
+  padding: 70px 25px 50px;
 }
 
 .summaryBlock_container {
@@ -36,7 +36,6 @@
       "dashboard summary";
     grid-template-columns: 8fr 5fr;
     grid-template-rows: auto;
-    height: 100%;
     margin: 0 auto;
   }
 
@@ -48,6 +47,7 @@
 
   .calcDairyBlock_container {
     padding: 90px 20px 0 115px;
+    height: 100vh;
   }
 
   .summaryBlock_container {
