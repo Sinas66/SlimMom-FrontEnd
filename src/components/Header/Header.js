@@ -89,7 +89,7 @@ class Header extends Component {
                 <div className={styles.usernamebox}>
                   <p className={styles.usernameText}> {username}</p>
                   <p>|</p>
-                  <p onClick={() => logOut(token)} className={styles.logoutText}>
+                  <p className={styles.slash} onClick={() => logOut(token)} className={styles.logoutText}>
                     Выйти
                   </p>
                 </div>
