@@ -17,15 +17,16 @@ export const sessionReducer = (state = {}, { type, payload }) => {
     case actionTypes.ADD_FETCH_SUCCESS:
       return {
         ...state,
-        userData: { ...state.userData, dailyRate: payload.dailyRate, groupBlood: payload.groupBlood }
+        userData: { ...state.userData, ...payload }
       };
     case actionTypes.ADD_ALL_DATA:
       return { ...state, userData: { ...payload } };
     case actionTypes.USER_REGISTER:
     case actionTypes.USER_DATA:
     case actionTypes.USER_LOGIN:
-      return { ...payload };
-
+      return { ...state, ...payload };
+    case actionTypes.CLEAR_SESSION:
+      return {};
     default:
       return state;
   }

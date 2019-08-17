@@ -6,7 +6,6 @@
 
 .container,
 .loggedContainer {
-  padding-bottom: 14px;
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid;
@@ -15,11 +14,12 @@
 
 .logotype {
   display: flex;
+  align-items: center;
+  text-decoration: none;
   padding-top: 4px;
 }
 
 .logoImg {
-  padding-top: 5px;
   width: 46px;
   height: 44px;
 }
@@ -69,6 +69,7 @@
 .logoutButton {
   width: 22px;
   height: 26px;
+  margin-left: 12px;
 }
 
 .burgerBtn {
@@ -93,8 +94,8 @@
 
 .mobileLogoutBox {
   display: flex;
-  justify-content: space-between;
-  width: 105px;
+  justify-content: flex-end;
+  align-items: center;
   margin-right: 9px;
 }
 
@@ -105,7 +106,6 @@
 
   .container,
   .loggedContainer {
-    padding-bottom: 15px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -128,13 +128,12 @@
   }
 
   .logoutText {
-    height: 36px;
     display: block;
     background-color: transparent;
+    text-decoration: none;
     cursor: pointer;
     transition: .5s;
     border: none;
-    height: 47px;
     padding: 0;
     font-size: 15px;
     letter-spacing: 1.5px;
@@ -149,12 +148,16 @@
     text-shadow: 0 1px 1px #ffcca8;
   }
 
+  .logoutLink {
+    text-decoration: none;
+  }
+
   .usernamebox {
     display: flex;
     width: 165px;
     justify-content: space-between;
-    align-items: baseline;
-    padding-top: 6px;
+    align-items: center;
+    padding-top: 8px;
     font-size: 15px;
     letter-spacing: 1.5px;
     color: #212121;
@@ -175,7 +178,7 @@
     justify-content: space-between;
     min-width: 1024px;
     border: none;
-    margin-top: 66px;
+    padding-top: 66px;
   }
 
   .loggedContainer {
@@ -184,15 +187,15 @@
 
   .logoNavigationBox,
   .loggedLogoNavigationBox {
-    width: 478px;
+    width: 558px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   .logoutText {
     background-color: transparent;
     border: none;
-    height: 47px;
     padding: 0;
     font-size: 15px;
     letter-spacing: 1.5px;
@@ -207,7 +210,7 @@
   }
 
   .navigationBox {
-    padding-top: 22px;
+    padding-top: 8px;
   }
 
   .navigationBox a {
@@ -224,7 +227,7 @@
     transition: .5s;
   }
 
-  .navigationLink:hover {
+  .navigationLink:focus {
     color: #2b2b2b;
   }
 
@@ -236,7 +239,7 @@
   .logoImg {
     position: relative;
     left: 83px;
-    top: -32px;
+    top: -24px;
     width: 66px;
     height: 63px;
   }
@@ -245,10 +248,17 @@
     padding-left: 74px;
   }
 
-  .usernamebox {
-    padding-left: 0;
-    width: 299px;
-    justify-content: start;
+  .usernameBurgerWrapper {
+    width: 219px;
   }
 
+  .usernamebox {
+    padding-left: 0;
+    justify-content: flex-end;
+  }
+
+  .navigationText {
+    color: #2b2b2b;
+  }
 }
+

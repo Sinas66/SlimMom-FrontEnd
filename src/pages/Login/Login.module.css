@@ -4,16 +4,28 @@
   padding: 0;
 }
 
+.invisible {
+  opacity: 0;
+}
+
 .pageWrapper {
   width: 100%;
   text-align: center;
   background: white;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .loginWrapper {
   width: 100%;
   text-align: center;
+}
+
+.loginWrapper input {
+  outline: none;
+  padding-left: 5px;
 }
 
 .entry {
@@ -23,6 +35,15 @@
   color: grey;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
+}
+
+.inputModule {
+  text-align: start;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+
 }
 
 .input {
@@ -39,6 +60,16 @@
   background: none;
 }
 
+.error {
+  padding-top: 10px;
+  color: red;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: '20px';
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
 .button {
   margin-top: 20px;
   height: 40px;
@@ -51,31 +82,49 @@
   border: none;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
+  cursor: pointer;
+}
+
+.button:focus {
+  outline: none;
 }
 
 .butModule {
   margin-top: 45px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 @media(min-width: 767px) {
   .pageWrapper {
     width: 100%;
     text-align: center;
-    background-image: url(../../assets/images/tablet-bg-register.jpg);
     background-repeat: no-repeat;
     background-position: bottom right;
     height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
   }
 
   .loginWrapper {
     width: 100%;
-    text-align: center;
+    text-align: start;
+    display: flex;
+    flex-direction: column;
     padding-left: 90px;
-    width: 345px;
+    background-image: url(../../assets/images/tablet-bg-register.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    height: 100vh
   }
 
   .inputModule {
     text-align: start;
+    display: flex;
+    align-items: flex-start;
 
   }
 
@@ -91,11 +140,15 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
     background: none;
+    align-items: flex-start;
   }
 
   .butModule {
     margin-top: 45px;
-    text-align: start;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
   }
 
 
@@ -137,9 +190,9 @@
   }
 
   .loginWrapper {
-    width: 345px;
-    text-align: center;
+    text-align: start;
     padding-left: 115px;
+    background-image: none;
   }
 
   .butModule {

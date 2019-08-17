@@ -10,11 +10,9 @@
   margin-bottom: 30px;
 }
 
-
 .fetch_loader {
   margin-bottom: 50px;
 }
-
 
 /* width */
 ::-webkit-scrollbar {
@@ -23,14 +21,15 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: var(--bg-color-grey)
+  background: var(--bg-color-grey);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--scroll-thumb)
+  background: var(--scroll-thumb);
 }
 
 .noProducts_p{
   margin-bottom: 30px;
 }
+

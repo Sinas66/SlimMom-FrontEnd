@@ -45,14 +45,14 @@ class CalcForm extends Component {
     currentWeight: this.props.data.currentWeight,
     desiredWeight: this.props.data.desiredWeight,
     groupBlood: this.props.data.groupBlood,
-    errorHeight: false,
-    errorAge: false,
-    errorCurrentWeight: false,
-    errorDesiredWeight: false,
-    errorGroupBlood: false,
+    heightValid: true,
+    ageValid: true,
+    currentWeightValid: true,
+    desiredWeightValid: true,
+    groupBloodValid: true,
     isOpenModal: false,
-    isError: false,
-    isValidAll: false
+    isValidForm: true,
+    isEmptyInput: false
   };
 
   componentDidUpdate(prevProps) {
@@ -67,124 +67,79 @@ class CalcForm extends Component {
     }
   }
 
-  handleChangeHeight = e => {
-    this.setState({ height: e.target.value });
-    const val = Number(e.target.value);
-
-    if (val >= 50 && val <= 230 && Number.isInteger(val)) {
-      this.setState({
-        isError: false,
-        errorHeight: false
-      });
-      document.querySelector('#submit').disabled = false;
-    } else {
-      this.setState({
-        isError: true,
-        errorHeight: true
-      });
-      document.querySelector('#submit').disabled = true;
-    }
-  };
-
-  handleChangeAge = e => {
-    this.setState({ age: e.target.value });
-    const val = Number(e.target.value);
-
-    if (val >= 1 && val <= 99 && Number.isInteger(val)) {
-      this.setState({
-        isError: false,
-        errorAge: false
-      });
-      document.querySelector('#submit').disabled = false;
-    } else {
-      this.setState({
-        isError: true,
-        errorAge: true
-      });
-      document.querySelector('#submit').disabled = true;
-    }
-  };
-
-  handleChangeCurrentWeight = e => {
-    this.setState({ currentWeight: e.target.value.replace(/,/g, '.') });
-    const val = Number(e.target.value);
-
-    if (val >= 30 && val <= 199) {
-      this.setState({
-        isError: false,
-        errorCurrentWeight: false
-      });
-      document.querySelector('#submit').disabled = false;
-    } else {
-      this.setState({
-        isError: true,
-        errorCurrentWeight: true
-      });
-      document.querySelector('#submit').disabled = true;
-    }
-  };
-
-  handleChangeDesiredWeight = e => {
-    this.setState({ desiredWeight: e.target.value.replace(/,/g, '.') });
-    const val = Number(e.target.value);
-
-    if (val >= 30 && val <= 199) {
-      this.setState({
-        isError: false,
-        errorDesiredWeight: false
-      });
-      document.querySelector('#submit').disabled = false;
-    } else {
-      this.setState({
-        isError: true,
-        errorDesiredWeight: true
-      });
-      document.querySelector('#submit').disabled = true;
-    }
-  };
-
-  handleChangeGroupBlood = e => {
-    this.setState({ groupBlood: e.target.value });
-    const val = Number(e.target.value);
-
-    if (val >= 1 && val <= 4 && Number.isInteger(val)) {
-      this.setState({
-        isError: false,
-        errorGroupBlood: false
-      });
-      document.querySelector('#submit').disabled = false;
-    } else {
-      this.setState({
-        isError: true,
-        errorGroupBlood: true
-      });
-      document.querySelector('#submit').disabled = true;
-    }
-  };
-
-  handleSubmit = () => {
-    const { isError, height, age, currentWeight, desiredWeight, groupBlood } = this.state;
-    const validation = height && age && currentWeight && desiredWeight;
-
-    if (!isError && validation) {
-      if (groupBlood) {
-        this.toggleOpenModal();
-        this.setState({
-          isError: false,
-          errorGroupBlood: false,
-          isValidAll: false
-        });
-      } else {
-        this.setState({
-          isError: true,
-          errorGroupBlood: true
-        });
+  handleChange = e => {
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState(
+      {
+        [name]:
+          name === 'currentWeight' || name === 'desiredWeight'
+            ? value.replace(/[^.\d]+/g, '').replace(/^([^\.]*\.)|\./g, '$1')
+            : name !== 'groupBlood'
+            ? value.replace(/[^\d]+/g, '')
+            : value
+      },
+      () => {
+        this.validateInput(name, value);
       }
+    );
+  };
+
+  validateInput = (inputName, value) => {
+    const val = Number(value);
+    let heightValid = this.state.heightValid,
+      ageValid = this.state.ageValid,
+      currentWeightValid = this.state.currentWeightValid,
+      desiredWeightValid = this.state.desiredWeightValid,
+      groupBloodValid = this.state.groupBloodValid;
+
+    switch (inputName) {
+      case 'height':
+        heightValid = val >= 50 && val <= 230;
+        break;
+      case 'age':
+        ageValid = val >= 1 && val <= 99;
+        break;
+      case 'currentWeight':
+        currentWeightValid = val >= 30 && val <= 199;
+        break;
+      case 'desiredWeight':
+        desiredWeightValid = val >= 30 && val <= 199;
+        break;
+      case 'groupBlood':
+        groupBloodValid = val >= 1 && val <= 4;
+        break;
+      default:
+        break;
+    }
+
+    this.setState(
+      {
+        heightValid: heightValid,
+        ageValid: ageValid,
+        currentWeightValid: currentWeightValid,
+        desiredWeightValid: desiredWeightValid,
+        groupBloodValid: groupBloodValid
+      },
+      this.validateForm
+    );
+  };
+
+  validateForm = () => {
+    const { heightValid, ageValid, currentWeightValid, desiredWeightValid, groupBloodValid } = this.state;
+    this.setState({
+      isValidForm: heightValid && ageValid && currentWeightValid && desiredWeightValid && groupBloodValid,
+      isEmptyInput: false
+    });
+  };
+
+  openResult = () => {
+    const { height, age, currentWeight, desiredWeight, groupBlood, isValidForm } = this.state;
+
+    if (height && age && currentWeight && desiredWeight && groupBlood && isValidForm) {
+      this.toggleOpenModal();
     } else {
-      this.setState({
-        isError: true,
-        isValidAll: true
-      });
+      this.setState({ isEmptyInput: true });
     }
   };
 
@@ -198,14 +153,15 @@ class CalcForm extends Component {
       age,
       currentWeight,
       desiredWeight,
-      errorHeight,
-      errorAge,
-      errorCurrentWeight,
-      errorDesiredWeight,
-      errorGroupBlood,
-      isValidAll,
       groupBlood,
-      isOpenModal
+      heightValid,
+      ageValid,
+      currentWeightValid,
+      desiredWeightValid,
+      groupBloodValid,
+      isValidForm,
+      isOpenModal,
+      isEmptyInput
     } = this.state;
     const { session, data } = this.props;
 
@@ -218,60 +174,68 @@ class CalcForm extends Component {
           </div>
           <form>
             <div className={css.leftInputs}>
-              <label htmlFor="height">
+              <div className={css.input_wrapper}>
+                <label htmlFor="height" className={`${css.input_label} ${height && css.inputHasValue}`}>
+                  Рост, см *
+                </label>
                 <input
                   className={css.input}
                   id="height"
-                  type="number"
-                  placeholder="Рост, см *"
-                  min="0"
-                  inputmode="numeric"
-                  pattern="[0-9]"
+                  type="text"
                   name="height"
+                  maxLength="3"
                   value={height}
-                  required
-                  onChange={this.handleChangeHeight}
+                  onChange={this.handleChange}
                 />
-                {errorHeight && <ErrorNotification label={'Введите целое число от 50 до 230'} />}
-              </label>
-              <label htmlFor="age">
+                {!heightValid && <ErrorNotification label={'Введите целое число от 50 до 230'} />}
+              </div>
+              <div className={css.input_wrapper}>
+                <label htmlFor="age" className={`${css.input_label} ${age && css.inputHasValue}`}>
+                  Возраст *
+                </label>
                 <input
                   className={css.input}
                   id="age"
-                  type="number"
-                  placeholder="Возраст *"
+                  type="text"
                   name="age"
+                  maxLength="3"
                   value={age}
-                  onChange={this.handleChangeAge}
+                  onChange={this.handleChange}
                 />
-                {errorAge && <ErrorNotification label={'Введите целое число от 1 до 99'} />}
-              </label>
-              <label htmlFor="currentWeight">
+                {!ageValid && <ErrorNotification label={'Введите целое число от 1 до 99'} />}
+              </div>
+              <div className={css.input_wrapper}>
+                <label htmlFor="currentWeight" className={`${css.input_label} ${currentWeight && css.inputHasValue}`}>
+                  Текущий вес, кг *
+                </label>
                 <input
                   className={css.input}
                   id="currentWeight"
-                  type="number"
-                  placeholder="Текущий вес, кг *"
+                  type="text"
                   name="currentWeight"
+                  maxLength="6"
                   value={currentWeight}
-                  onChange={this.handleChangeCurrentWeight}
+                  onChange={this.handleChange}
                 />
-                {errorCurrentWeight && <ErrorNotification label={'Введите число от 30 до 199'} />}
-              </label>
+                {!currentWeightValid && <ErrorNotification label={'Введите число от 30 до 199'} />}
+              </div>
             </div>
             <div className={css.rightInputs}>
-              <label htmlFor="desiredWeight">
+              <div className={css.input_wrapper}>
+                <label htmlFor="desiredWeight" className={`${css.input_label} ${desiredWeight && css.inputHasValue}`}>
+                  Желаемый вес, кг *
+                </label>
                 <input
                   className={css.input}
                   id="desiredWeight"
-                  type="number"
-                  placeholder="Желаемый вес, кг *"
+                  type="text"
                   name="desiredWeight"
+                  maxLength="6"
                   value={desiredWeight}
-                  onChange={this.handleChangeDesiredWeight}
+                  onChange={this.handleChange}
                 />
-                {errorDesiredWeight && <ErrorNotification label={'Введите число от 30 до 199'} />}
-              </label>
+                {!desiredWeightValid && <ErrorNotification label={'Введите число от 30 до 199'} />}
+              </div>
               <section className={css.radioContainer}>
                 <h3>Группа крови *</h3>
                 <div className={css.radioInputs}>
@@ -283,7 +247,7 @@ class CalcForm extends Component {
                       name="groupBlood"
                       value={GroupBlood.FIRST_GROUP}
                       checked={groupBlood == GroupBlood.FIRST_GROUP}
-                      onChange={this.handleChangeGroupBlood}
+                      onChange={this.handleChange}
                     />
                   </label>
                   <label htmlFor="groupBlood_2" className={css.radio}>
@@ -294,7 +258,7 @@ class CalcForm extends Component {
                       type="radio"
                       name="groupBlood"
                       value={GroupBlood.SECOND_GROUP}
-                      onChange={this.handleChangeGroupBlood}
+                      onChange={this.handleChange}
                     />
                   </label>
                   <label htmlFor="groupBlood_3" className={css.radio}>
@@ -305,7 +269,7 @@ class CalcForm extends Component {
                       type="radio"
                       name="groupBlood"
                       value={GroupBlood.THIRD_GROUP}
-                      onChange={this.handleChangeGroupBlood}
+                      onChange={this.handleChange}
                     />
                   </label>
                   <label htmlFor="groupBlood_4" className={css.radio}>
@@ -316,20 +280,20 @@ class CalcForm extends Component {
                       type="radio"
                       name="groupBlood"
                       value={GroupBlood.FOURTH_GROUP}
-                      onChange={this.handleChangeGroupBlood}
+                      onChange={this.handleChange}
                     />
                   </label>
-                  {errorGroupBlood && <ErrorNotification label={'Укажите группу крови'} />}
+                  {!groupBloodValid && <ErrorNotification label={'Укажите группу крови'} />}
                 </div>
               </section>
             </div>
           </form>
-          {isValidAll && (
+          {isEmptyInput && (
             <p className={css.errorForm}>
               <ErrorNotification label={'Заполните все поля калькулятора'} />
             </p>
           )}
-          <button type="button" id="submit" className={css.btn} onClick={this.handleSubmit}>
+          <button type="button" id="submit" className={css.btn} onClick={this.openResult}>
             {!data.groupBlood ? 'Похудеть' : 'Пересчитать'}
           </button>
         </div>
