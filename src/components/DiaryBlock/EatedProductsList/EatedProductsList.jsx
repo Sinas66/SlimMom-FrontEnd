@@ -2,9 +2,10 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Table, Tbody } from 'react-super-responsive-table';
 import Spinner from 'react-spinkit';
-import styles from './EatedProductsList.module.css';
+import { useWindowSize } from '../../../utils/hooks';
 import { deleteProductFromProductListFunc } from '../../../redux/actions/productActions';
 import EatedProductItem from './EatedProductItem/EatedProductItem';
+import styles from './EatedProductsList.module.css';
 
 const EatedProductsList = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ const EatedProductsList = () => {
   const productsByDay = useSelector(state => state.dailyBlock.productsByDay);
   const isProductsByDayLoader = useSelector(state => state.dailyBlock.isProductsByDayLoader);
 
+  const { height } = useWindowSize()
   return (
     <>
       {productsByDay.length === 0 && <p className={styles.noProducts_p}>Здесь будет отображаться Ваш рацион</p>}
@@ -30,7 +32,7 @@ const EatedProductsList = () => {
       )} */}
 
       {productsByDay.length > 0 && (
-        <div className={styles.tBodyTable}>
+        <div className={styles.tBodyTable} >
           <Table className={styles.firstBlock}>
             <Tbody>
               {productsByDay.map(el => {
@@ -39,7 +41,8 @@ const EatedProductsList = () => {
             </Tbody>
           </Table>
         </div>
-      )}
+      )
+      }
     </>
   );
 };

@@ -5,9 +5,15 @@
 }
 
 .tBodyTable {
-  max-height: 300px;
+  max-height: 150px;
   overflow: auto;
   margin-bottom: 30px;
+}
+
+@media (min-height:500px) {
+  .tBodyTable{
+    max-height: 300px;
+  }
 }
 
 .fetch_loader {
