@@ -118,7 +118,7 @@ class Login extends Component {
   handleRegister = e => {
     e.preventDefault();
 
-    const { error } = this.state;
+    const { error, login, password } = this.state;
 
     if (error !== "") {
       return;
