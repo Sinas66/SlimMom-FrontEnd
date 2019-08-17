@@ -51,7 +51,7 @@ class CalcForm extends Component {
     desiredWeightValid: true,
     groupBloodValid: true,
     isOpenModal: false,
-    isValidForm: false,
+    isValidForm: true,
     isEmptyInput: false
   };
 
@@ -73,7 +73,7 @@ class CalcForm extends Component {
     this.setState(
       {
         [name]:
-          name === 'currentWeight' || name === 'desiredWeightValid'
+          name === 'currentWeight' || name === 'desiredWeight'
             ? value.replace(/[^.\d]+/g, '').replace(/^([^\.]*\.)|\./g, '$1')
             : name !== 'groupBlood'
             ? value.replace(/[^\d]+/g, '')

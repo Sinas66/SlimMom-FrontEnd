@@ -3,11 +3,11 @@ import CalcForm from '../../components/CalcForm/CalcForm';
 import Header from '../../components/Header/Header';
 import style from './Home.module.css';
 
-const Home = () => (
+const Home = props => (
   <div className={style.homeContainer}>
     <div className={style.homeGroup}>
       <div className={style.homeHeader}>
-        <Header />
+        <Header {...props} />
       </div>
       <div className={style.calcForm}>
         <CalcForm />

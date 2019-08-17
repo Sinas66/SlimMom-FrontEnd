@@ -14,9 +14,9 @@ export const setToken = token => ({
 
 export const fetchLogOut = token => {
   return axios
-    .get(api.url.logOut(), setToken(token))
+    .post(api.url.logOut(), {}, setToken(token))
     .then(resp => {
-      console.log(data);
+      console.log(resp);
       if (resp.data.status !== 'success') {
         throw new Error('albfkjabflasflk');
       }
@@ -93,7 +93,7 @@ export const fetchAllProducts = (token, input) => {
 
 export const fetchProductsByDay = (token, date) => {
   return axios
-    .get(`${api.url.userEats()}/${date}`, setToken(token))
+    .get(`${api.url.userEats()}/${date.toISOString()}`, setToken(token))
     .then(resp => {
       const { products } = resp.data;
       return products;

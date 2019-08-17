@@ -24,8 +24,9 @@ export const sessionReducer = (state = {}, { type, payload }) => {
     case actionTypes.USER_REGISTER:
     case actionTypes.USER_DATA:
     case actionTypes.USER_LOGIN:
-      return { ...payload };
-
+      return { ...state, ...payload };
+    case actionTypes.CLEAR_SESSION:
+      return {};
     default:
       return state;
   }
