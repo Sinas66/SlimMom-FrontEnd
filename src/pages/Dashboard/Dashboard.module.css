@@ -24,13 +24,13 @@
 
 @media(min-width: 767px) {
   .calcDairyBlock_container {
-    padding: 90px 90px 100px;
+    padding: 70px 90px 100px;
   }
 }
 
 @media(min-width: 1024px) {
   .grid {
-    max-width: 1440px;
+    max-width: 1740px;
     grid-template-areas:
       "header header"
       "dashboard summary";
@@ -47,7 +47,7 @@
   }
 
   .calcDairyBlock_container {
-    padding: 115px 20px 0 115px;
+    padding: 90px 20px 0 115px;
   }
 
   .summaryBlock_container {
