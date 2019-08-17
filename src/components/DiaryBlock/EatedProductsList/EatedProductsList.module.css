@@ -10,7 +10,7 @@
   margin-bottom: 30px;
 }
 
-@media (min-height:500px) {
+@media (min-height:565px) {
   .tBodyTable{
     max-height: 300px;
   }
