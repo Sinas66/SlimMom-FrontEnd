@@ -248,8 +248,8 @@ class CalcForm extends Component {
                   value={desiredWeight}
                   onChange={this.handleChange}
                 />
-                {isWeightEqual && <ErrorNotification label={'Желаемый вес должен быть меньше текущего'} />}
-                {!desiredWeightValid && <ErrorNotification label={'Введите число от 30 до 199'} />}
+                {(!desiredWeightValid && <ErrorNotification label={'Введите число от 30 до 199'} />) ||
+                  (isWeightEqual && <ErrorNotification label={'Желаемый вес должен быть меньше текущего'} />)}
               </div>
               <section className={css.radioContainer}>
                 <h3>Группа крови *</h3>
