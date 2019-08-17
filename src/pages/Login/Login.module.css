@@ -1,5 +1,4 @@
 * {
-  /* outline: 1px solid red; */
   margin: 0;
   padding: 0;
 }
@@ -21,6 +20,7 @@
 .loginWrapper {
   width: 100%;
   text-align: center;
+  padding-top: 55px;
 }
 
 .loginWrapper input {
@@ -30,7 +30,6 @@
 
 .entry {
   font-size: 13px;
-  margin-top: 55px;
   color: grey;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
@@ -42,7 +41,6 @@
   align-items: center;
   flex-direction: column;
   margin-bottom: 35px;
-
 }
 
 .input {
