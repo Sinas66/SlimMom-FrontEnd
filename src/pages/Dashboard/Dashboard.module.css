@@ -37,6 +37,7 @@
     grid-template-columns: 8fr 5fr;
     grid-template-rows: auto;
     margin: 0 auto;
+    height: 100vh;
   }
 
   .headerBlock_container {
@@ -47,7 +48,7 @@
 
   .calcDairyBlock_container {
     padding: 90px 20px 0 115px;
-    height: 100vh;
+
   }
 
   .summaryBlock_container {

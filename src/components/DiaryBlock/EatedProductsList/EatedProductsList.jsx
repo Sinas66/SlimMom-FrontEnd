@@ -2,9 +2,9 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Table, Tbody } from 'react-super-responsive-table';
 import Spinner from 'react-spinkit';
-import styles from './EatedProductsList.module.css';
 import { deleteProductFromProductListFunc } from '../../../redux/actions/productActions';
 import EatedProductItem from './EatedProductItem/EatedProductItem';
+import styles from './EatedProductsList.module.css';
 
 const EatedProductsList = () => {
   const dispatch = useDispatch();
