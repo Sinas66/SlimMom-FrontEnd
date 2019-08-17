@@ -3,8 +3,7 @@
   flex-direction: column;
   margin: 0 auto;
   height: 80px;
-  /* =========check it=========== */
-  margin-bottom: 90px;
+
 
 }
 
@@ -106,13 +105,19 @@
 .cross {
   width: 27px;
   height: 26px;
+
+  /* ----------- */
+  /* position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  fill: #dddddd; */
 }
 
 .mobileLogoutBox {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-right: 9px;
+  margin-right: 19px;
   height: 45px;
 }
 
@@ -134,15 +139,21 @@
     padding-left: 67px;
   }
 
+
   .usernameBurgerWrapper {
     display: flex;
     width: 310px;
     justify-content: space-between;
   }
 
+
+
   .burgerBtn {
     /* margin-right: 38px; */
     transform: translate(-30px, 2px);
+    /* position: absolute; */
+
+
   }
 
   .logoutText {
@@ -203,7 +214,7 @@
   }
 
   .loggedContainer {
-    justify-content: start;
+    justify-content: space-between;
     height: 140px;
   }
 
@@ -216,11 +227,18 @@
     align-items: center;
   }
 
+  .usernameText {
+    padding-right: 5px;
+  }
+
+
+
   .logoutText {
 
     background-color: transparent;
     border: none;
     padding: 0;
+    padding-left: 5px;
     font-size: 15px;
     letter-spacing: 1.5px;
     color: #212121;
@@ -250,6 +268,7 @@
     letter-spacing: 1px;
     padding-left: 46px;
     transition: .5s;
+    padding: 5px 10px 5px 10px;
   }
 
   .navigationLink:focus {
@@ -280,6 +299,7 @@
 
   .usernamebox {
     padding-left: 0;
+    padding-top: 5px;
     justify-content: flex-end;
   }
 
