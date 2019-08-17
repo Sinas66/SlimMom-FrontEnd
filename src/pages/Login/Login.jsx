@@ -118,7 +118,7 @@ class Login extends Component {
   handleRegister = e => {
     e.preventDefault();
 
-    const { error } = this.state;
+    const { error, login, password } = this.state;
 
     if (error !== "") {
       return;
@@ -135,7 +135,7 @@ class Login extends Component {
         userData: this.props.userData
       };
     }
-
+    console.log({ dataToRegister })
     this.props.registerUser(JSON.stringify(dataToRegister)).then(({ data, status }) => {
       this.handleErrorRegister(data, status);
     });
