@@ -2,7 +2,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Table, Tbody } from 'react-super-responsive-table';
 import Spinner from 'react-spinkit';
-import { useWindowSize } from '../../../utils/hooks';
 import { deleteProductFromProductListFunc } from '../../../redux/actions/productActions';
 import EatedProductItem from './EatedProductItem/EatedProductItem';
 import styles from './EatedProductsList.module.css';
@@ -13,7 +12,6 @@ const EatedProductsList = () => {
   const productsByDay = useSelector(state => state.dailyBlock.productsByDay);
   const isProductsByDayLoader = useSelector(state => state.dailyBlock.isProductsByDayLoader);
 
-  const { height } = useWindowSize()
   return (
     <>
       {productsByDay.length === 0 && <p className={styles.noProducts_p}>Здесь будет отображаться Ваш рацион</p>}
