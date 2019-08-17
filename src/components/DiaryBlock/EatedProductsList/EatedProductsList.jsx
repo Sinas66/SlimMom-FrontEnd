@@ -30,7 +30,7 @@ const EatedProductsList = () => {
       )} */}
 
       {productsByDay.length > 0 && (
-        <div className={styles.tBodyTable} >
+        <div className={styles.tBodyTable}>
           <Table className={styles.firstBlock}>
             <Tbody>
               {productsByDay.map(el => {
@@ -39,8 +39,7 @@ const EatedProductsList = () => {
             </Tbody>
           </Table>
         </div>
-      )
-      }
+      )}
     </>
   );
 };
