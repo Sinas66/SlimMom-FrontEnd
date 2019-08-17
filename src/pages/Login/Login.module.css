@@ -31,7 +31,6 @@
 .entry {
   font-size: 13px;
   margin-top: 55px;
-  padding-bottom: 35px;
   color: grey;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
@@ -42,7 +41,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-
+  margin-bottom: 35px;
 
 }
 
@@ -90,7 +89,6 @@
 }
 
 .butModule {
-  margin-top: 45px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -115,6 +113,7 @@
     display: flex;
     flex-direction: column;
     padding-left: 90px;
+    padding-top: 60px;
     background-image: url(../../assets/images/tablet-bg-register.jpg);
     background-repeat: no-repeat;
     background-position: bottom right;
@@ -154,7 +153,6 @@
 
   .entry {
     font-size: 13px;
-    margin-top: 165px;
     padding-bottom: 35px;
     color: grey;
     text-align: start;
@@ -163,7 +161,7 @@
   }
 }
 
-@media(min-width: 1023px) {
+@media(min-width: 1024px) {
 
   .pageWrapper {
     width: 100%;
@@ -171,6 +169,7 @@
     background-image: url(../../assets/images/desktop-bg-REGISTER.jpg);
     background-repeat: no-repeat;
     background-position: bottom right;
+    background-size: cover;
     height: 847px;
     height: 100vh;
   }
@@ -192,6 +191,7 @@
   .loginWrapper {
     text-align: start;
     padding-left: 115px;
+    padding-top: 10px;
     background-image: none;
   }
 
@@ -203,7 +203,6 @@
 
   .entry {
     font-size: 13px;
-    margin-top: 210px;
     padding-bottom: 35px;
     color: grey;
     text-align: start;
