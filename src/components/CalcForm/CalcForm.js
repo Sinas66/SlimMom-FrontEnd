@@ -52,7 +52,8 @@ class CalcForm extends Component {
     groupBloodValid: true,
     isOpenModal: false,
     isValidForm: true,
-    isEmptyInput: false
+    isEmptyInput: false,
+    isWeightEqual: false
   };
 
   componentDidUpdate(prevProps) {
@@ -126,18 +127,31 @@ class CalcForm extends Component {
   };
 
   validateForm = () => {
-    const { heightValid, ageValid, currentWeightValid, desiredWeightValid, groupBloodValid } = this.state;
+    const {
+      heightValid,
+      ageValid,
+      currentWeightValid,
+      desiredWeightValid,
+      groupBloodValid,
+      currentWeight,
+      desiredWeight
+    } = this.state;
     this.setState({
       isValidForm: heightValid && ageValid && currentWeightValid && desiredWeightValid && groupBloodValid,
-      isEmptyInput: false
+      isEmptyInput: false,
+      isWeightEqual: currentWeight < desiredWeight
     });
   };
 
   openResult = () => {
-    const { height, age, currentWeight, desiredWeight, groupBlood, isValidForm } = this.state;
+    const { height, age, currentWeight, desiredWeight, groupBlood, isValidForm, isWeightEqual } = this.state;
+
+    this.setState({});
 
     if (height && age && currentWeight && desiredWeight && groupBlood && isValidForm) {
-      this.toggleOpenModal();
+      if (!isWeightEqual) {
+        this.toggleOpenModal();
+      }
     } else {
       this.setState({ isEmptyInput: true });
     }
@@ -159,7 +173,7 @@ class CalcForm extends Component {
       currentWeightValid,
       desiredWeightValid,
       groupBloodValid,
-      isValidForm,
+      isWeightEqual,
       isOpenModal,
       isEmptyInput
     } = this.state;
@@ -234,6 +248,7 @@ class CalcForm extends Component {
                   value={desiredWeight}
                   onChange={this.handleChange}
                 />
+                {isWeightEqual && <ErrorNotification label={'Желаемый вес должен быть меньше текущего'} />}
                 {!desiredWeightValid && <ErrorNotification label={'Введите число от 30 до 199'} />}
               </div>
               <section className={css.radioContainer}>

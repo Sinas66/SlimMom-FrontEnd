@@ -93,7 +93,7 @@ export const fetchAllProducts = (token, input) => {
 
 export const fetchProductsByDay = (token, date) => {
   return axios
-    .get(`${api.url.userEats()}/${date.toISOString()}`, setToken(token))
+    .get(`${api.url.userEats()}/${date}`, setToken(token))
     .then(resp => {
       const { products } = resp.data;
       return products;

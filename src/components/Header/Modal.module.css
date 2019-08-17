@@ -1,13 +1,22 @@
 .container {
-  min-width: 320px;
+  /* min-width: 320px; */
   width: 100%;
   height: 100vh;
   background-color: #284160;
   position: fixed;
   left: 0;
-  top: 66px;
+
   z-index: 10;
 
+
+
+}
+
+.cross {
+  position: relative;
+  fill: #dddddd;
+  left: 90%;
+  top: 30px;
 }
 
 .linkBox a {
