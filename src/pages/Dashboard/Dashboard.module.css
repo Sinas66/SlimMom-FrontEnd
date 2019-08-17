@@ -36,7 +36,6 @@
       "dashboard summary";
     grid-template-columns: 8fr 5fr;
     grid-template-rows: auto;
-    height: 100%;
     margin: 0 auto;
   }
 
@@ -54,6 +53,5 @@
   .summaryBlock_container {
     grid-row: 2/1;
     position: absolute;
-    height: 100vh;
   }
 }
