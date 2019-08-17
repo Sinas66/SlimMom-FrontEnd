@@ -5,6 +5,7 @@ import DiaryBlock from '../../components/DiaryBlock/DiaryBlock';
 import { Route } from 'react-router-dom';
 import styles from './Dashboard.module.css';
 import { getUserData } from '../../redux/actions/auth';
+import { getProductsByDayAction } from '../../redux/actions/productActions';
 import { connect } from 'react-redux';
 import windowSize from 'react-window-size';
 import CalcForm from '../../components/CalcForm/CalcForm';
@@ -16,9 +17,11 @@ class Dashboard extends Component {
   };
 
   state = {};
+
   componentDidMount = () => {
     const token = localStorage.getItem('userToken');
-
+    const { date } = this.props;
+    this.props.getProductsByDay(token, date);
     if (!!token) {
       this.props.userData(token);
     }
@@ -57,12 +60,14 @@ class Dashboard extends Component {
 }
 
 const mapStateToProp = state => ({
-  user: state.session
+  user: state.session,
+  date: state.datePicker.date
 });
 
-const mapDispatchToProps = {
-  userData: getUserData
-};
+const mapDispatchToProps = dispatch => ({
+  userData: token => dispatch(getUserData(token)),
+  getProductsByDay: (token, data) => dispatch(getProductsByDayAction(token, data))
+});
 
 export default connect(
   mapStateToProp,
