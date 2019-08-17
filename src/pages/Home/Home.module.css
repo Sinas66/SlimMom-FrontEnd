@@ -3,7 +3,7 @@
   margin: 0 auto;
 }
 .calcForm {
-  padding: 45px 25px 50px;
+  padding: 40px 25px 50px 25px;
 }
 
 @media(min-width: 768px){
@@ -14,9 +14,10 @@
     background-image: url(../../assets/images/home_tablet.png);
     background-repeat: no-repeat;
     background-position: bottom right;
+    height: 100vh;
   }
    .calcForm {
-    padding: 115px 90px 430px;
+    padding: 90px 90px 20px 90px;
    }
 }
 @media(min-width: 1024px){
@@ -26,10 +27,10 @@
   .homeContainer{
     padding: 0 25px;
     background-image: url(../../assets/images/home_descktop.png);
-    background-size: contain;
+    background-size: 750px auto;
   }
     .calcForm {
-      padding: 150px 115px 110px;
+      padding: 90px 115px 110px 115px;
       max-width: 1100px;
      }
   .homeGroup{
