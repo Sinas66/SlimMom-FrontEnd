@@ -1,5 +1,9 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/state-in-constructor */
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { memorizedUserData } from './selectors';
 import Header from '../../components/Header/Header';
 import style from './Login.module.css';
@@ -7,6 +11,10 @@ import style from './Login.module.css';
 import { sendRegisterData, sendLoginData } from '../../redux/actions/auth';
 
 class Login extends Component {
+  // static propTypes = {
+  //   history: PropTypes.string.isRequired
+  // };
+
   state = {
     login: '',
     password: '',
@@ -29,26 +37,31 @@ class Login extends Component {
         this.setState({
           error: 'Логин не может начинаться с цифры'
         });
-      }
-      else if (!regLatin.test(this.state.login || this.state.login.length > 0)) {
+      } else if (
+        !regLatin.test(this.state.login || this.state.login.length > 0)
+      ) {
         this.setState({
           error: 'Логин не может содержать кириллицу и спец символы'
         });
-      }
-      else if ((this.state.login.length > 0) & (this.state.login.length < 5)) {
+      } else if (this.state.login.length > 0 && this.state.login.length < 5) {
         this.setState({
           error: 'Логин должен состоять минимум из 5 знаков'
         });
-      } else if ((this.state.password.length > 0) & (this.state.password.length < 5)) {
+      } else if (
+        this.state.password.length > 0 &&
+        this.state.password.length < 5
+      ) {
         this.setState({
           error: 'Пароль должен состоять минимум из 5 знаков'
         });
-      } else if ((this.state.login.length > 0) & (this.state.login.length > 16)) {
+      } else if (this.state.login.length > 0 && this.state.login.length > 16) {
         this.setState({
           error: 'Логин должен состоять максимум из 16 символов'
-        })
-      }
-      else if ((this.state.password.length > 0) & (this.state.password.length > 16)) {
+        });
+      } else if (
+        this.state.password.length > 0 &&
+        this.state.password.length > 16
+      ) {
         this.setState({
           error: 'Пароль должен состоять максимум из 16 символов'
         });
@@ -62,12 +75,13 @@ class Login extends Component {
   };
 
   redirectUser = data => {
+    const { history } = this.props;
     localStorage.setItem('userToken', data.token);
 
     if (!data.userData) {
-      this.props.history.push('/dashboard');
+      history.push('/dashboard');
     } else {
-      this.props.history.push('/dashboard/diary');
+      history.push('/dashboard/diary');
     }
   };
 
@@ -76,8 +90,10 @@ class Login extends Component {
       this.redirectUser(data.user);
     }
     if (status >= 400) {
-      let errorResponse = data.err === 'User doesnt exist' && 'Неправильный пароль или логин';
-      errorResponse = data.err === 'Password is invalid' && 'Неправильный пароль или логин';
+      let errorResponse =
+        data.err === 'User doesnt exist' && 'Неправильный пароль или логин';
+      errorResponse =
+        data.err === 'Password is invalid' && 'Неправильный пароль или логин';
       this.setState({
         error: errorResponse
       });
@@ -91,7 +107,8 @@ class Login extends Component {
     }
 
     if (status >= 400) {
-      let errorResponse = data.message === 'nickname already exist' && 'Логин уже занят';
+      const errorResponse =
+        data.message === 'nickname already exist' && 'Логин уже занят';
       this.setState({
         error: errorResponse
       });
@@ -100,6 +117,7 @@ class Login extends Component {
   };
 
   handleLogin = e => {
+    const { loginUser } = this.props;
     e.preventDefault();
     const { login, password } = this.state;
 
@@ -109,39 +127,45 @@ class Login extends Component {
 
     const dataToLogin = {
       nickname: login,
-      password: password
+      password
     };
 
-    this.props.loginUser(JSON.stringify(dataToLogin)).then(({ data, status }) => this.handleErrorLogin(data, status));
+    loginUser(JSON.stringify(dataToLogin))
+      .then(({ data, status }) => this.handleErrorLogin(data, status))
+      .catch(err => err);
   };
 
   handleRegister = e => {
     e.preventDefault();
-
+    const { userData, registerUser } = this.props;
     const { error, login, password } = this.state;
 
-    if (error !== "") {
+    if (error !== '') {
       return;
     }
 
     let dataToRegister = {
       nickname: login,
-      password: password
+      password
     };
 
-    if (!!this.props.userData) {
+    if (userData) {
       dataToRegister = {
         ...dataToRegister,
-        userData: this.props.userData
+        userData
       };
     }
 
-    this.props.registerUser(JSON.stringify(dataToRegister)).then(({ data, status }) => {
-      this.handleErrorRegister(data, status);
-    });
+    registerUser(JSON.stringify(dataToRegister))
+      .then(({ data, status }) => {
+        this.handleErrorRegister(data, status);
+      })
+      .catch(err => err);
   };
 
   render() {
+    const { error } = this.state;
+
     return (
       <>
         <div className={style.pageWrapper}>
@@ -174,13 +198,21 @@ class Login extends Component {
                 />
               </div>
               <div className={style.error}>
-                <p>{this.state.error}</p>
+                <p>{error}</p>
               </div>
               <div className={style.butModule}>
-                <button onClick={this.handleLogin} className={style.button}>
+                <button
+                  type="button"
+                  onClick={this.handleLogin}
+                  className={style.button}
+                >
                   Вход
                 </button>
-                <button onClick={this.handleRegister} className={style.button}>
+                <button
+                  type="button"
+                  onClick={this.handleRegister}
+                  className={style.button}
+                >
                   Регистрация
                 </button>
               </div>
@@ -191,6 +223,13 @@ class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  history: PropTypes.string.isRequired,
+  loginUser: PropTypes.func.isRequired,
+  userData: PropTypes.shape({}).isRequired,
+  registerUser: PropTypes.func.isRequired
+};
 
 const mstp = state => ({
   userData: memorizedUserData(state)

@@ -35,6 +35,7 @@ const EatedProductItem = ({ productItem, deleteProduct }) => {
 
 EatedProductItem.propTypes = {
   productItem: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
     title: PropTypes.shape({
       ru: PropTypes.string.isRequired,
       ua: PropTypes.string.isRequired

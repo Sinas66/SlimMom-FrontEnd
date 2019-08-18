@@ -8,14 +8,21 @@ import styles from './EatedProductsList.module.css';
 
 const EatedProductsList = () => {
   const dispatch = useDispatch();
-  const deleteProduct = (token, id) => dispatch(deleteProductFromProductListFunc(token, id));
+  const deleteProduct = (token, id) =>
+    dispatch(deleteProductFromProductListFunc(token, id));
   const productsByDay = useSelector(state => state.dailyBlock.productsByDay);
-  const isProductsByDayLoader = useSelector(state => state.dailyBlock.isProductsByDayLoader);
+  const isProductsByDayLoader = useSelector(
+    state => state.dailyBlock.isProductsByDayLoader
+  );
 
   return (
     <>
-      {productsByDay.length === 0 && <p className={styles.noProducts_p}>Здесь будет отображаться Ваш рацион</p>}
-      {/* {isProductsByDayLoader && (
+      {productsByDay.length === 0 && (
+        <p className={styles.noProducts_p}>
+          Здесь будет отображаться Ваш рацион
+        </p>
+      )}
+      {isProductsByDayLoader && (
         <div className={styles.fetch_loader}>
           <Spinner
             name="pacman"
@@ -27,14 +34,20 @@ const EatedProductsList = () => {
             }}
           />
         </div>
-      )} */}
+      )}
 
       {productsByDay.length > 0 && (
         <div className={styles.tBodyTable}>
           <Table className={styles.firstBlock}>
             <Tbody>
               {productsByDay.map(el => {
-                return <EatedProductItem productItem={el} key={el._id} deleteProduct={deleteProduct} />;
+                return (
+                  <EatedProductItem
+                    productItem={el}
+                    key={el._id}
+                    deleteProduct={deleteProduct}
+                  />
+                );
               })}
             </Tbody>
           </Table>
@@ -45,4 +58,3 @@ const EatedProductsList = () => {
 };
 
 export default EatedProductsList;
-

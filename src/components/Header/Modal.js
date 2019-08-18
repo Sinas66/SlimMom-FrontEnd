@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './Modal.module.css';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import styles from './Modal.module.css';
 import Icon from '../../assets/icons/Icon/Icon';
 
 const Modal = ({ toogleModal }) => {
@@ -17,6 +18,10 @@ const Modal = ({ toogleModal }) => {
       </div>
     </div>
   );
+};
+
+Modal.propTypes = {
+  toogleModal: PropTypes.func.isRequired
 };
 
 export default Modal;

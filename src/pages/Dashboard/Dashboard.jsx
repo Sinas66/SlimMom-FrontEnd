@@ -1,35 +1,37 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/state-in-constructor */
 import React, { Component } from 'react';
-import Header from '../../components/Header/Header';
 import PropTypes from 'prop-types';
-import DiaryBlock from '../../components/DiaryBlock/DiaryBlock';
 import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import windowSize from 'react-window-size';
+import Header from '../../components/Header/Header';
+import DiaryBlock from '../../components/DiaryBlock/DiaryBlock';
 import styles from './Dashboard.module.css';
 import { getUserData } from '../../redux/actions/auth';
 import { getProductsByDayAction } from '../../redux/actions/productActions';
-import { connect } from 'react-redux';
-import windowSize from 'react-window-size';
 import CalcForm from '../../components/CalcForm/CalcForm';
 import Summary from '../../components/Summary/Summary';
 
 class Dashboard extends Component {
-  static propTypes = {
-    token: PropTypes.string.isRequired
-  };
+  // static propTypes = {
+  //   token: PropTypes.string.isRequired
+  // };
 
   state = {};
 
   componentDidMount = () => {
+    const { userData } = this.props;
     const token = localStorage.getItem('userToken');
-    const { date } = this.props;
-    this.props.getProductsByDay(token, date);
-    if (!!token) {
-      this.props.userData(token);
+    const { date, getProductsByDay } = this.props;
+    getProductsByDay(token, date);
+    if (token) {
+      userData(token);
     }
   };
 
   render() {
-    const { windowWidth, location, token, user } = this.props;
-    // console.log(this.props.user);
+    const { windowWidth, token, location } = this.props;
     return (
       <section className={styles.grid}>
         <div className={styles.headerBlock_container}>
@@ -59,6 +61,16 @@ class Dashboard extends Component {
   }
 }
 
+Dashboard.propTypes = {
+  token: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  getProductsByDay: PropTypes.func.isRequired,
+  userData: PropTypes.func.isRequired,
+  windowWidth: PropTypes.number.isRequired,
+  location: PropTypes.shape({ pathname: PropTypes.string.isRequired })
+    .isRequired
+};
+
 const mapStateToProp = state => ({
   user: state.session,
   date: state.datePicker.date
@@ -66,7 +78,8 @@ const mapStateToProp = state => ({
 
 const mapDispatchToProps = dispatch => ({
   userData: token => dispatch(getUserData(token)),
-  getProductsByDay: (token, data) => dispatch(getProductsByDayAction(token, data))
+  getProductsByDay: (token, data) =>
+    dispatch(getProductsByDayAction(token, data))
 });
 
 export default connect(

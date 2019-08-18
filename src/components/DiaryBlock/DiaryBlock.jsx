@@ -10,7 +10,9 @@ import ShowModalButton from './ShowModalButton/ShowModalButton';
 import styles from './DiaryBlock.module.css';
 
 const DiaryBlock = () => {
-  const isModalShowed = useSelector(state => state.dailyBlock.isModalProductShowed);
+  const isModalShowed = useSelector(
+    state => state.dailyBlock.isModalProductShowed
+  );
   const { width, height } = useWindowSize();
   const isLandscape = width > height;
 

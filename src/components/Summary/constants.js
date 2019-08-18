@@ -7,6 +7,10 @@ const notAllowedProject = {
 
 const getProductsByGroupBlood = groupBlood => notAllowedProject[groupBlood];
 
-const getCcalSumm = products => products.reduce((accumulator, currentValue) => accumulator + currentValue.calories, 0);
+const getCcalSumm = products =>
+  products.reduce(
+    (accumulator, currentValue) => accumulator + currentValue.calories,
+    0
+  );
 
 export { getProductsByGroupBlood, getCcalSumm };

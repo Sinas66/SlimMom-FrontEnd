@@ -1,10 +1,14 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
-import { useWindowSize } from '../../../utils/hooks';
 import { useDispatch, useSelector } from 'react-redux';
+import { useWindowSize } from '../../../utils/hooks';
 import Selector from './ProductSelector/ProductSelector';
 import styles from './AddNewProduct.module.css';
 import Icon from '../../../assets/icons/Icon/Icon';
-import { addProductByDayAction, closeModalProductsAction } from '../../../redux/actions/productActions';
+import {
+  addProductByDayAction,
+  closeModalProductsAction
+} from '../../../redux/actions/productActions';
 
 const AddNewProduct = () => {
   const { width, height } = useWindowSize();
@@ -15,20 +19,16 @@ const AddNewProduct = () => {
   const [isNotAllowedAddProd, setIsNotAllowedAddProd] = useState(false);
 
   const dispatch = useDispatch();
-  const [inputWeightClasses, setInputWeightClasses] = useState([styles.inputWeight_label]);
+  const [inputWeightClasses, setInputWeightClasses] = useState([
+    styles.inputWeight_label
+  ]);
   const date = useSelector(state => state.datePicker.date);
-  const countProductsByDay = useSelector(state => state.dailyBlock.productsByDay.length);
+  const countProductsByDay = useSelector(
+    state => state.dailyBlock.productsByDay.length
+  );
 
-
-  const validateInputWeight = (e) => {
-    const invalidChars = [
-      "-",
-      "+",
-      "e",
-      "E",
-      ",",
-      "."
-    ];
+  const validateInputWeight = e => {
+    const invalidChars = ['-', '+', 'e', 'E', ',', '.'];
 
     if (invalidChars.includes(e.key)) {
       e.preventDefault();
@@ -68,7 +68,8 @@ const AddNewProduct = () => {
     }
 
     if (productWeight !== '' && productId !== '') {
-      const addUserEatedProduct = (token, id, weight) => dispatch(addProductByDayAction(token, id, weight));
+      const addUserEatedProduct = (token, id, weight) =>
+        dispatch(addProductByDayAction(token, id, weight));
       const closeModal = () => dispatch(closeModalProductsAction());
       const eatedProd = {
         date: date.toISOString(),
@@ -110,12 +111,22 @@ const AddNewProduct = () => {
 
       {isNotAllowedAddProd && (
         <div className={styles.notAllowed_Wrapper}>
-          <p className={styles.notAllowed}>Нельзя добавить более 30 продуктов</p>
+          <p className={styles.notAllowed}>
+            Нельзя добавить более 30 продуктов
+          </p>
         </div>
       )}
 
-      <button onClick={handlerAddButton} type="button" className={styles.add_btn}>
-        {width < 767 && !isLandscape ? 'Добавить' : <Icon icon="Add" className={styles.addBtn_icon} />}
+      <button
+        onClick={handlerAddButton}
+        type="button"
+        className={styles.add_btn}
+      >
+        {width < 767 && !isLandscape ? (
+          'Добавить'
+        ) : (
+          <Icon icon="Add" className={styles.addBtn_icon} />
+        )}
       </button>
     </form>
   );

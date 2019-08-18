@@ -1,8 +1,8 @@
 import React from 'react';
 import chroma from 'chroma-js';
 import AsyncSelect from 'react-select/async';
-import { useWindowSize } from '../../../../utils/hooks'
 import PropTypes from 'prop-types';
+import { useWindowSize } from '../../../../utils/hooks';
 
 import { fetchAllProducts } from '../../../../utils/requests';
 
@@ -13,7 +13,7 @@ const colourStyles = (width, height) => {
       ...styles,
       margin: width < 768 && !isLandscape ? '0 0 24px' : '0 7px 7px 0',
       width: width < 768 && !isLandscape ? '100%' : '260px',
-      borderBottom: "1px solid var(--input-line-color)",
+      borderBottom: '1px solid var(--input-line-color)',
       paddingBottom: width < 768 && !isLandscape ? '1px' : '8px',
       ':focus': {
         outline: 'none'
@@ -28,19 +28,26 @@ const colourStyles = (width, height) => {
       const color = data.color ? chroma(data.color) : '#800';
       return {
         ...styles,
-        backgroundColor: isDisabled ? null : isSelected ? data.color : isFocused ? color.alpha(0.1).css() : null,
+        backgroundColor: isDisabled
+          ? null
+          : isSelected
+          ? data.color
+          : isFocused
+          ? color.alpha(0.1).css()
+          : null,
         color: isDisabled
           ? '#ccc'
           : isSelected
-            ? chroma.contrast(color, 'white') > 2
-              ? 'white'
-              : 'black'
-            : data.color,
+          ? chroma.contrast(color, 'white') > 2
+            ? 'white'
+            : 'black'
+          : data.color,
         cursor: isDisabled ? 'not-allowed' : 'default',
 
         ':active': {
           ...styles[':active'],
-          backgroundColor: !isDisabled && (isSelected ? data.color : color.alpha(0.3).css())
+          backgroundColor:
+            !isDisabled && (isSelected ? data.color : color.alpha(0.3).css())
         }
       };
     },
@@ -108,11 +115,10 @@ const SelectWrapper = ({
   const handlerSelectChange = e => {
     handlerProductSelect(e);
     setProductLabel({ label: e.label });
-    if (productWeight === "") {
-      handlerInputWeight("100");
+    if (productWeight === '') {
+      handlerInputWeight('100');
     }
-  }
-
+  };
 
   return (
     <AsyncSelect

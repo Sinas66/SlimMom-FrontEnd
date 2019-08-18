@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import CalcForm from '../../components/CalcForm/CalcForm';
 import Header from '../../components/Header/Header';

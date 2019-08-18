@@ -14,8 +14,10 @@ export const actionTypes = {
   FETCH_ERROR: 'FETCH ERROR',
   ADD_PRODUCT_BY_DAY: 'ADD PRODUCT BY DAY',
   ADD_ALL_DATA: 'ADD: ALL_DATA',
-  //Date
+  // Date
   SET_DATE: 'SET DATE',
-  //Session
+  // Session
   CLEAR_SESSION: 'CLEAR_SESSION'
 };
+
+export const test = {};

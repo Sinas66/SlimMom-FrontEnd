@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/no-did-update-set-state */
+/* eslint-disable react/state-in-constructor */
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -13,32 +17,6 @@ const GroupBlood = {
 };
 
 class CalcForm extends Component {
-  static propTypes = {
-    data: PropTypes.shape({
-      height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      age: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      currentWeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      desiredWeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      groupBlood: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    }),
-    session: PropTypes.shape({
-      token: PropTypes.string
-    })
-  };
-
-  static defaultProps = {
-    data: {
-      height: '',
-      age: '',
-      currentWeight: '',
-      desiredWeight: '',
-      groupBlood: ''
-    },
-    session: {
-      token: ''
-    }
-  };
-
   state = {
     height: this.props.data.height,
     age: this.props.data.age,
@@ -57,13 +35,15 @@ class CalcForm extends Component {
   };
 
   componentDidUpdate(prevProps) {
+    const { data } = this.props;
+
     if (prevProps !== this.props) {
       this.setState({
-        height: this.props.data.height,
-        age: this.props.data.age,
-        currentWeight: this.props.data.currentWeight,
-        desiredWeight: this.props.data.desiredWeight,
-        groupBlood: this.props.data.groupBlood
+        height: data.height,
+        age: data.age,
+        currentWeight: data.currentWeight,
+        desiredWeight: data.desiredWeight,
+        groupBlood: data.groupBlood
       });
     }
   }
@@ -75,7 +55,7 @@ class CalcForm extends Component {
       {
         [name]:
           name === 'currentWeight' || name === 'desiredWeight'
-            ? value.replace(/[^.\d]+/g, '').replace(/^([^\.]*\.)|\./g, '$1')
+            ? value.replace(/[^.\d]+/g, '').replace(/^([^.]*\.)|\./g, '$1')
             : name !== 'groupBlood'
             ? value.replace(/[^\d]+/g, '')
             : value
@@ -137,18 +117,38 @@ class CalcForm extends Component {
       desiredWeight
     } = this.state;
     this.setState({
-      isValidForm: heightValid && ageValid && currentWeightValid && desiredWeightValid && groupBloodValid,
+      isValidForm:
+        heightValid &&
+        ageValid &&
+        currentWeightValid &&
+        desiredWeightValid &&
+        groupBloodValid,
       isEmptyInput: false,
       isWeightEqual: currentWeight < desiredWeight
     });
   };
 
   openResult = () => {
-    const { height, age, currentWeight, desiredWeight, groupBlood, isValidForm, isWeightEqual } = this.state;
+    const {
+      height,
+      age,
+      currentWeight,
+      desiredWeight,
+      groupBlood,
+      isValidForm,
+      isWeightEqual
+    } = this.state;
 
     this.setState({});
 
-    if (height && age && currentWeight && desiredWeight && groupBlood && isValidForm) {
+    if (
+      height &&
+      age &&
+      currentWeight &&
+      desiredWeight &&
+      groupBlood &&
+      isValidForm
+    ) {
       if (!isWeightEqual) {
         this.toggleOpenModal();
       }
@@ -185,15 +185,18 @@ class CalcForm extends Component {
           <div className={css.titleContainer}>
             <p className={css.title}>Узнай свою суточную </p>
             <p className={css.title}>
-норму калорий
-{' '}
-{!session.token && 'прямо сейчас'}
-</p>
+              норму калорий
+              {!session.token && 'прямо сейчас'}
+            </p>
           </div>
           <form>
             <div className={css.leftInputs}>
               <div className={css.input_wrapper}>
-                <label htmlFor="height" className={`${css.input_label} ${height && css.inputHasValue}`}>
+                <label
+                  htmlFor="height"
+                  className={`${css.input_label} ${height &&
+                    css.inputHasValue}`}
+                >
                   Рост, см *
                 </label>
                 <input
@@ -205,10 +208,15 @@ class CalcForm extends Component {
                   value={height}
                   onChange={this.handleChange}
                 />
-                {!heightValid && <ErrorNotification label="Введите целое число от 50 до 230" />}
+                {!heightValid && (
+                  <ErrorNotification label="Введите целое число от 50 до 230" />
+                )}
               </div>
               <div className={css.input_wrapper}>
-                <label htmlFor="age" className={`${css.input_label} ${age && css.inputHasValue}`}>
+                <label
+                  htmlFor="age"
+                  className={`${css.input_label} ${age && css.inputHasValue}`}
+                >
                   Возраст *
                 </label>
                 <input
@@ -220,10 +228,16 @@ class CalcForm extends Component {
                   value={age}
                   onChange={this.handleChange}
                 />
-                {!ageValid && <ErrorNotification label="Введите целое число от 1 до 99" />}
+                {!ageValid && (
+                  <ErrorNotification label="Введите целое число от 1 до 99" />
+                )}
               </div>
               <div className={css.input_wrapper}>
-                <label htmlFor="currentWeight" className={`${css.input_label} ${currentWeight && css.inputHasValue}`}>
+                <label
+                  htmlFor="currentWeight"
+                  className={`${css.input_label} ${currentWeight &&
+                    css.inputHasValue}`}
+                >
                   Текущий вес, кг *
                 </label>
                 <input
@@ -235,12 +249,18 @@ class CalcForm extends Component {
                   value={currentWeight}
                   onChange={this.handleChange}
                 />
-                {!currentWeightValid && <ErrorNotification label="Введите число от 30 до 199" />}
+                {!currentWeightValid && (
+                  <ErrorNotification label="Введите число от 30 до 199" />
+                )}
               </div>
             </div>
             <div className={css.rightInputs}>
               <div className={css.input_wrapper}>
-                <label htmlFor="desiredWeight" className={`${css.input_label} ${desiredWeight && css.inputHasValue}`}>
+                <label
+                  htmlFor="desiredWeight"
+                  className={`${css.input_label} ${desiredWeight &&
+                    css.inputHasValue}`}
+                >
                   Желаемый вес, кг *
                 </label>
                 <input
@@ -252,8 +272,12 @@ class CalcForm extends Component {
                   value={desiredWeight}
                   onChange={this.handleChange}
                 />
-                {(!desiredWeightValid && <ErrorNotification label="Введите число от 30 до 199" />) ||
-                  (isWeightEqual && <ErrorNotification label="Желаемый вес должен быть меньше текущего" />)}
+                {(!desiredWeightValid && (
+                  <ErrorNotification label="Введите число от 30 до 199" />
+                )) ||
+                  (isWeightEqual && (
+                    <ErrorNotification label="Желаемый вес должен быть меньше текущего" />
+                  ))}
               </div>
               <section className={css.radioContainer}>
                 <h3>Группа крови *</h3>
@@ -295,14 +319,16 @@ class CalcForm extends Component {
                     4
                     <input
                       id="groupBlood_4"
-                      checked={groupBlood == GroupBlood.FOURTH_GROUP}
+                      checked={groupBlood === GroupBlood.FOURTH_GROUP}
                       type="radio"
                       name="groupBlood"
                       value={GroupBlood.FOURTH_GROUP}
                       onChange={this.handleChange}
                     />
                   </label>
-                  {!groupBloodValid && <ErrorNotification label="Укажите группу крови" />}
+                  {!groupBloodValid && (
+                    <ErrorNotification label="Укажите группу крови" />
+                  )}
                 </div>
               </section>
             </div>
@@ -312,15 +338,48 @@ class CalcForm extends Component {
               <ErrorNotification label="Заполните все поля калькулятора" />
             </p>
           )}
-          <button type="button" id="submit" className={css.btn} onClick={this.openResult}>
+          <button
+            type="button"
+            id="submit"
+            className={css.btn}
+            onClick={this.openResult}
+          >
             {!data.groupBlood ? 'Похудеть' : 'Пересчитать'}
           </button>
         </div>
-        {isOpenModal && <Result {...this.state} onClose={this.toggleOpenModal} />}
+        {isOpenModal && (
+          <Result {...this.state} onClose={this.toggleOpenModal} />
+        )}
       </div>
     );
   }
 }
+
+CalcForm.propTypes = {
+  data: PropTypes.shape({
+    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    age: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    currentWeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    desiredWeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    groupBlood: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  }),
+  session: PropTypes.shape({
+    token: PropTypes.string
+  })
+};
+
+CalcForm.defaultProps = {
+  data: {
+    height: '',
+    age: '',
+    currentWeight: '',
+    desiredWeight: '',
+    groupBlood: ''
+  },
+  session: {
+    token: ''
+  }
+};
 
 const mapStateToProps = state => ({
   session: state.session,
