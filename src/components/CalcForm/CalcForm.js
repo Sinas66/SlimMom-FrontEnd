@@ -69,8 +69,8 @@ class CalcForm extends Component {
   }
 
   handleChange = e => {
-    const name = e.target.name;
-    const value = e.target.value;
+    const { name } = e.target;
+    const { value } = e.target;
     this.setState(
       {
         [name]:
@@ -88,11 +88,11 @@ class CalcForm extends Component {
 
   validateInput = (inputName, value) => {
     const val = Number(value);
-    let heightValid = this.state.heightValid,
-      ageValid = this.state.ageValid,
-      currentWeightValid = this.state.currentWeightValid,
-      desiredWeightValid = this.state.desiredWeightValid,
-      groupBloodValid = this.state.groupBloodValid;
+    let { heightValid } = this.state;
+    let { ageValid } = this.state;
+    let { currentWeightValid } = this.state;
+    let { desiredWeightValid } = this.state;
+    let { groupBloodValid } = this.state;
 
     switch (inputName) {
       case 'height':
@@ -116,11 +116,11 @@ class CalcForm extends Component {
 
     this.setState(
       {
-        heightValid: heightValid,
-        ageValid: ageValid,
-        currentWeightValid: currentWeightValid,
-        desiredWeightValid: desiredWeightValid,
-        groupBloodValid: groupBloodValid
+        heightValid,
+        ageValid,
+        currentWeightValid,
+        desiredWeightValid,
+        groupBloodValid
       },
       this.validateForm
     );
@@ -184,7 +184,11 @@ class CalcForm extends Component {
         <div className={css.container}>
           <div className={css.titleContainer}>
             <p className={css.title}>Узнай свою суточную </p>
-            <p className={css.title}>норму калорий {!session.token && 'прямо сейчас'}</p>
+            <p className={css.title}>
+норму калорий
+{' '}
+{!session.token && 'прямо сейчас'}
+</p>
           </div>
           <form>
             <div className={css.leftInputs}>
@@ -201,7 +205,7 @@ class CalcForm extends Component {
                   value={height}
                   onChange={this.handleChange}
                 />
-                {!heightValid && <ErrorNotification label={'Введите целое число от 50 до 230'} />}
+                {!heightValid && <ErrorNotification label="Введите целое число от 50 до 230" />}
               </div>
               <div className={css.input_wrapper}>
                 <label htmlFor="age" className={`${css.input_label} ${age && css.inputHasValue}`}>
@@ -216,7 +220,7 @@ class CalcForm extends Component {
                   value={age}
                   onChange={this.handleChange}
                 />
-                {!ageValid && <ErrorNotification label={'Введите целое число от 1 до 99'} />}
+                {!ageValid && <ErrorNotification label="Введите целое число от 1 до 99" />}
               </div>
               <div className={css.input_wrapper}>
                 <label htmlFor="currentWeight" className={`${css.input_label} ${currentWeight && css.inputHasValue}`}>
@@ -231,7 +235,7 @@ class CalcForm extends Component {
                   value={currentWeight}
                   onChange={this.handleChange}
                 />
-                {!currentWeightValid && <ErrorNotification label={'Введите число от 30 до 199'} />}
+                {!currentWeightValid && <ErrorNotification label="Введите число от 30 до 199" />}
               </div>
             </div>
             <div className={css.rightInputs}>
@@ -248,8 +252,8 @@ class CalcForm extends Component {
                   value={desiredWeight}
                   onChange={this.handleChange}
                 />
-                {(!desiredWeightValid && <ErrorNotification label={'Введите число от 30 до 199'} />) ||
-                  (isWeightEqual && <ErrorNotification label={'Желаемый вес должен быть меньше текущего'} />)}
+                {(!desiredWeightValid && <ErrorNotification label="Введите число от 30 до 199" />) ||
+                  (isWeightEqual && <ErrorNotification label="Желаемый вес должен быть меньше текущего" />)}
               </div>
               <section className={css.radioContainer}>
                 <h3>Группа крови *</h3>
@@ -261,7 +265,7 @@ class CalcForm extends Component {
                       type="radio"
                       name="groupBlood"
                       value={GroupBlood.FIRST_GROUP}
-                      checked={groupBlood == GroupBlood.FIRST_GROUP}
+                      checked={groupBlood === GroupBlood.FIRST_GROUP}
                       onChange={this.handleChange}
                     />
                   </label>
@@ -269,7 +273,7 @@ class CalcForm extends Component {
                     2
                     <input
                       id="groupBlood_2"
-                      checked={groupBlood == GroupBlood.SECOND_GROUP}
+                      checked={groupBlood === GroupBlood.SECOND_GROUP}
                       type="radio"
                       name="groupBlood"
                       value={GroupBlood.SECOND_GROUP}
@@ -280,7 +284,7 @@ class CalcForm extends Component {
                     3
                     <input
                       id="groupBlood_3"
-                      checked={groupBlood == GroupBlood.THIRD_GROUP}
+                      checked={groupBlood === GroupBlood.THIRD_GROUP}
                       type="radio"
                       name="groupBlood"
                       value={GroupBlood.THIRD_GROUP}
@@ -298,14 +302,14 @@ class CalcForm extends Component {
                       onChange={this.handleChange}
                     />
                   </label>
-                  {!groupBloodValid && <ErrorNotification label={'Укажите группу крови'} />}
+                  {!groupBloodValid && <ErrorNotification label="Укажите группу крови" />}
                 </div>
               </section>
             </div>
           </form>
           {isEmptyInput && (
             <p className={css.errorForm}>
-              <ErrorNotification label={'Заполните все поля калькулятора'} />
+              <ErrorNotification label="Заполните все поля калькулятора" />
             </p>
           )}
           <button type="button" id="submit" className={css.btn} onClick={this.openResult}>
