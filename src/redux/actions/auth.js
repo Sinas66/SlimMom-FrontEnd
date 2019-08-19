@@ -22,7 +22,7 @@ export const sendRegisterData = data => dispatch => {
       }
       return response;
     })
-    .catch(error => console.log(error));
+    .catch(err => err);
 };
 
 export const sendLoginData = data => dispatch => {
@@ -37,7 +37,7 @@ export const sendLoginData = data => dispatch => {
       }
       return response;
     })
-    .catch(error => console.log(error));
+    .catch(err => err);
 };
 
 export const getUserData = token => dispatch =>

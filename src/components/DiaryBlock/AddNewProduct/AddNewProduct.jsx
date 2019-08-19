@@ -27,6 +27,8 @@ const AddNewProduct = () => {
     state => state.dailyBlock.productsByDay.length
   );
 
+  const session = useSelector(state => state.session);
+
   const validateInputWeight = e => {
     const invalidChars = ['-', '+', 'e', 'E', ',', '.'];
 
@@ -73,7 +75,8 @@ const AddNewProduct = () => {
       const closeModal = () => dispatch(closeModalProductsAction());
       const eatedProd = {
         date: date.toISOString(),
-        weight: Number(productWeight)
+        weight: Number(productWeight),
+        dailyRate: session.userData && session.userData.dailyRate
       };
       const token = localStorage.getItem('userToken');
       addUserEatedProduct(token, productId, eatedProd);

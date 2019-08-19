@@ -36,7 +36,9 @@ export const putNewData = (token, data) => {
 };
 // Example
 export const fetchCompleteTask = (token, task) => {
-  return axios.post(api.url.updateTask(), { ...task, isDone: true }, setToken(token)).catch(err => console.log(err));
+  return axios
+    .post(api.url.updateTask(), { ...task, isDone: true }, setToken(token))
+    .catch(err => console.log(err));
 };
 
 export const deleteProdByDay = (token, id) => {
@@ -109,6 +111,18 @@ export const fetchUserEated = (token, productId, eatedProduct) => {
         throw new Error(resp.data);
       }
       return resp.data.products;
+    })
+    .catch(({ error }) => error);
+};
+
+export const fetchUserAchevement = (token, date) => {
+  return axios
+    .get(`${api.url.userAchievement(date)}`, setToken(token))
+    .then(resp => {
+      if (resp.data.status !== 'success') {
+        throw new Error(resp.data);
+      }
+      return resp.data.graphData;
     })
     .catch(({ error }) => error);
 };

@@ -96,6 +96,15 @@ class Header extends Component {
                 >
                   КАЛЬКУЛЯТОР
                 </NavLink>
+                <NavLink
+                  activeStyle={activeStyles}
+                  onClick={navigationToogle}
+                  className={styles.navigationLink}
+                  exact
+                  to="/dashboard/achievement"
+                >
+                  ДОСТИЖЕНИЯ
+                </NavLink>
               </div>
             )}
           </div>

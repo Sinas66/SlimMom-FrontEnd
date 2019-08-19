@@ -18,9 +18,7 @@ class Login extends Component {
   state = {
     login: '',
     password: '',
-    error: '',
-    errorLog: '',
-    errorPass: ''
+    error: ''
   };
 
   handleInputs = e => {
@@ -97,7 +95,7 @@ class Login extends Component {
       this.setState({
         error: errorResponse
       });
-      console.log('STATE-fetch,', this.state);
+      // console.log('STATE-fetch,', this.state);
     }
   };
 
@@ -112,7 +110,7 @@ class Login extends Component {
       this.setState({
         error: errorResponse
       });
-      console.log('STATE-fetch,', this.state);
+      // console.log('STATE-fetch,', this.state);
     }
   };
 

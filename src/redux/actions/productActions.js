@@ -20,9 +20,7 @@ export const updateData = (token, data) => dispatch => {
       dispatch(addNewData(answ.data.userData));
       return true;
     })
-    .catch(err => {
-      console.log('Trouble', err);
-    });
+    .catch(err => err);
 };
 
 export const getProductByDate = (date, token) => dispatch =>

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import windowSize from 'react-window-size';
 import Header from '../../components/Header/Header';
 import DiaryBlock from '../../components/DiaryBlock/DiaryBlock';
+import Achievement from '../../components/Achievement/Achievement';
 import styles from './Dashboard.module.css';
 import { getUserData } from '../../redux/actions/auth';
 import { getProductsByDayAction } from '../../redux/actions/productActions';
@@ -38,6 +39,7 @@ class Dashboard extends Component {
         <div className={styles.calcDairyBlock_container}>
           <Route path="/dashboard" exact component={CalcForm} />
           <Route path="/dashboard/diary" component={DiaryBlock} />
+          <Route path="/dashboard/achievement" component={Achievement} />
         </div>
         {token ? (
           location.pathname === '/dashboard' ? (

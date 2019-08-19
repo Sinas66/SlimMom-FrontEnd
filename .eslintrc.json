@@ -34,12 +34,13 @@
         "ignoreClassFields": true
       }
     ],
-    "no-underscore-dangle": "warn",
     "import/no-named-as-default": "warn",
     "linebreak-style":"off",
     "no-nested-ternary" :"off",
     "react/state-in-constructor" :"off",
-    "react/jsx-props-no-spreading" : "off"
+    "react/jsx-props-no-spreading" : "off",
+    "import/no-cycle": "off",
+    "no-underscore-dangle": "off"
     },
   "globals": {
     "window": true,

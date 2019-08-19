@@ -12,7 +12,7 @@ const INITIAL_STATE = {
   }
 };
 
-export const sessionReducer = (state = {}, { type, payload }) => {
+const sessionReducer = (state = {}, { type, payload }) => {
   switch (type) {
     case actionTypes.ADD_FETCH_SUCCESS:
       return {
@@ -31,4 +31,5 @@ export const sessionReducer = (state = {}, { type, payload }) => {
       return state;
   }
 };
+
 export default sessionReducer;

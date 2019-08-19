@@ -1,5 +1,5 @@
-const baseUrl = 'https://slim-moms.goit.co.ua/api/v1/';
-// const baseUrl = 'http://localhost:8081/api/v1/';
+// const baseUrl = 'https://slim-moms.goit.co.ua/api/v1/';
+const baseUrl = 'http://localhost:8081/api/v1/';
 
 export const url = {
   products: () => `${baseUrl}products/`,
@@ -11,5 +11,6 @@ export const url = {
   productsByDate: date => `${baseUrl}user/eats/${date}`,
   userData: () => `${baseUrl}user`,
   products: input => `${baseUrl}products?search=${input}`,
-  userEats: () => `${baseUrl}user/eats`
+  userEats: () => `${baseUrl}user/eats`,
+  userAchievement: date => `${baseUrl}user/eats/achievement/${date}`
 };
