@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/state-in-constructor */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
@@ -63,7 +61,7 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
   token: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
+  date: PropTypes.instanceOf(Date).isRequired,
   getProductsByDay: PropTypes.func.isRequired,
   userData: PropTypes.func.isRequired,
   windowWidth: PropTypes.number.isRequired,

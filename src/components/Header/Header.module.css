@@ -3,8 +3,7 @@
   flex-direction: column;
   margin: 0 auto;
   height: 80px;
-
-
+  width: 98%;
 }
 
 .container,
@@ -122,10 +121,6 @@
 }
 
 @media (min-width: 768px) {
-  .header {
-    min-width: 768px;
-  }
-
   .container,
   .loggedContainer {
     width: 100%;
@@ -199,7 +194,7 @@
 @media (min-width: 1024px) {
 
   .header {
-    min-width: 1024px;
+    width: 100%;
     height: 140px;
 
   }

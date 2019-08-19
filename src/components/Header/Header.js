@@ -108,7 +108,7 @@ class Header extends Component {
                   <p>|</p>
                   <button
                     type="button"
-                    className={['styles.slash', 'styles.logoutText']}
+                    className={(styles.slash, styles.logoutText)}
                     onClick={() => logOut(token)}
                     // className={styles.logoutText}
                   >
