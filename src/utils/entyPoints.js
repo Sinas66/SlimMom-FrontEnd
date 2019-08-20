@@ -11,6 +11,8 @@ export const url = {
   productsByDate: date => `${baseUrl}user/eats/${date}`,
   userData: () => `${baseUrl}user`,
   products: input => `${baseUrl}products?search=${input}`,
-  userEats: () => `${baseUrl}user/eats`,
-  userAchievement: date => `${baseUrl}user/eats/achievement/${date}`
+  userEats: date => `${baseUrl}user/eats/${date}`,
+  addUserEats: productId => `${baseUrl}user/eats/${productId}`,
+  userAchievement: date => `${baseUrl}user/eats/achievement/${date}`,
+  quotes: () => `${baseUrl}quotes`
 };

@@ -95,7 +95,7 @@ export const fetchAllProducts = (token, input) => {
 
 export const fetchProductsByDay = (token, date) => {
   return axios
-    .get(`${api.url.userEats()}/${date}`, setToken(token))
+    .get(`${api.url.userEats(date)}`, setToken(token))
     .then(resp => {
       const { products } = resp.data;
       return products;
@@ -105,7 +105,7 @@ export const fetchProductsByDay = (token, date) => {
 
 export const fetchUserEated = (token, productId, eatedProduct) => {
   return axios
-    .post(`${api.url.userEats()}/${productId}`, eatedProduct, setToken(token))
+    .post(`${api.url.addUserEats(productId)}`, eatedProduct, setToken(token))
     .then(resp => {
       if (resp.data.status !== 'success') {
         throw new Error(resp.data);
@@ -123,6 +123,18 @@ export const fetchUserAchevement = (token, date) => {
         throw new Error(resp.data);
       }
       return resp.data.graphData;
+    })
+    .catch(({ error }) => error);
+};
+
+export const fetchQuote = (token, date) => {
+  return axios
+    .get(`${api.url.quotes()}`, setToken(token))
+    .then(resp => {
+      if (resp.data.status !== 'success') {
+        throw new Error(resp.data);
+      }
+      return resp.data.quotes;
     })
     .catch(({ error }) => error);
 };

@@ -23,7 +23,7 @@ class Dashboard extends Component {
     const { userData } = this.props;
     const token = localStorage.getItem('userToken');
     const { date, getProductsByDay } = this.props;
-    getProductsByDay(token, date);
+    getProductsByDay(token, date.toISOString());
     if (token) {
       userData(token);
     }
@@ -41,8 +41,8 @@ class Dashboard extends Component {
           <Route path="/dashboard/diary" component={DiaryBlock} />
           <Route path="/dashboard/achievement" component={Achievement} />
         </div>
-        {token ? (
-          location.pathname === '/dashboard' ? (
+        {token &&
+          (location.pathname === '/dashboard' ? (
             windowWidth > 767 && (
               <div className={styles.summaryBlock_container}>
                 <Summary />
@@ -52,10 +52,7 @@ class Dashboard extends Component {
             <div className={styles.summaryBlock_container}>
               <Summary />
             </div>
-          )
-        ) : (
-          ''
-        )}
+          ))}
       </section>
     );
   }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
-import { fetchUserAchevement } from '../../utils/requests';
+import { fetchUserAchevement, fetchQuote } from '../../utils/requests';
 import styles from './Achievement.module.css';
 
 const initialData = {
@@ -20,8 +20,8 @@ const initialData = {
       pointBorderColor: '#284060',
       pointBackgroundColor: '#284060',
       pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: '#fc842c',
+      pointHoverRadius: 6,
+      pointHoverBackgroundColor: '#284060',
       pointHoverBorderColor: 'rgba(220,220,220,1)',
       pointHoverBorderWidth: 2,
       pointRadius: 3,
@@ -65,6 +65,7 @@ const initialData = {
 
 const Achievement = () => {
   const [data, setData] = useState(initialData);
+  const [quote, setQuote] = useState('');
 
   useEffect(() => {
     const token = localStorage.getItem('userToken');
@@ -90,7 +91,7 @@ const Achievement = () => {
               label: 'Daily Rate',
               fill: false,
               lineTension: 0.6,
-              backgroundColor: 'rgba(75,192,192,0.4)',
+              backgroundColor: '#fc842c',
               borderColor: '#fc842c',
               borderCapStyle: 'butt',
               borderDash: [],
@@ -99,8 +100,8 @@ const Achievement = () => {
               pointBorderColor: '#fc842c',
               pointBackgroundColor: '#fc842c',
               pointBorderWidth: 1,
-              pointHoverRadius: 5,
-              pointHoverBackgroundColor: '#284060',
+              pointHoverRadius: 6,
+              pointHoverBackgroundColor: '#fc842c',
               pointHoverBorderColor: 'rgba(220,220,220,1)',
               pointHoverBorderWidth: 2,
               pointRadius: 3,
@@ -113,10 +114,17 @@ const Achievement = () => {
         });
       })
       .catch(err => err);
+
+    fetchQuote(token)
+      .then(quoteFromServ => {
+        setQuote(quoteFromServ.title.ru);
+      })
+      .catch(err => err);
   }, []);
 
   return (
     <>
+      <p>{quote}</p>
       <h1 className={styles.achievement_h1}>
         Динамика употребления калорий за месяц
       </h1>

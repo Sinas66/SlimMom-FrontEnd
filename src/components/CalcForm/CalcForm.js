@@ -116,6 +116,7 @@ class CalcForm extends Component {
       currentWeight,
       desiredWeight
     } = this.state;
+
     this.setState({
       isValidForm:
         heightValid &&
@@ -124,7 +125,7 @@ class CalcForm extends Component {
         desiredWeightValid &&
         groupBloodValid,
       isEmptyInput: false,
-      isWeightEqual: currentWeight < desiredWeight
+      isWeightEqual: Number(currentWeight) <= Number(desiredWeight)
     });
   };
 
