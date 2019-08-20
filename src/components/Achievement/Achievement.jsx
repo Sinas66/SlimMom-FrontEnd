@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
 import { fetchUserAchevement, fetchQuote } from '../../utils/requests';
+import { useWindowSize } from '../../utils/hooks';
 import styles from './Achievement.module.css';
 
 const initialData = {
@@ -67,6 +68,13 @@ const Achievement = () => {
   const [data, setData] = useState(initialData);
   const [quote, setQuote] = useState('');
 
+  const { width } = useWindowSize();
+
+  const graphWidth = width < 767 ? 270 : 600;
+  const grapHeight = 333;
+  console.log({ graphWidth });
+  console.log(grapHeight);
+
   useEffect(() => {
     const token = localStorage.getItem('userToken');
     fetchUserAchevement(token, Date.now())
@@ -124,19 +132,29 @@ const Achievement = () => {
 
   return (
     <>
-      <p>{quote}</p>
+      {width > 767 && <p className={styles.quote}>{quote}</p>}
+
       <h1 className={styles.achievement_h1}>
         Динамика употребления калорий за месяц
       </h1>
-      <div className={styles.graph_wrapper}>
+
+      <div
+        style={{
+          maxWidth: graphWidth,
+          height: grapHeight
+        }}
+      >
         <Line
-          data={() => data}
+          data={data}
+          // width="100%"
+          // height={grapHeight}
           options={{
             tooltips: {
               mode: 'label'
             },
             label: false,
             responsive: true,
+            maintainAspectRatio: true,
             scales: {
               xAxes: [{ gridLines: { display: false } }],
               yAxes: [
