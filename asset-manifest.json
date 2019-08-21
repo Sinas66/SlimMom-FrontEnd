@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "./static/css/main.204ac1e6.chunk.css",
+    "main.js": "./static/js/main.c878b610.chunk.js",
+    "main.js.map": "./static/js/main.c878b610.chunk.js.map",
+    "runtime~main.js": "./static/js/runtime~main.d653cc00.js",
+    "runtime~main.js.map": "./static/js/runtime~main.d653cc00.js.map",
+    "static/css/2.bffbeb91.chunk.css": "./static/css/2.bffbeb91.chunk.css",
+    "static/js/2.ca93471a.chunk.js": "./static/js/2.ca93471a.chunk.js",
+    "static/js/2.ca93471a.chunk.js.map": "./static/js/2.ca93471a.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.df8f4b127f340cdfaa8dcbe536d7fe0a.js": "./precache-manifest.df8f4b127f340cdfaa8dcbe536d7fe0a.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/2.bffbeb91.chunk.css.map": "./static/css/2.bffbeb91.chunk.css.map",
+    "static/css/main.204ac1e6.chunk.css.map": "./static/css/main.204ac1e6.chunk.css.map",
+    "static/media/main.css": "./static/media/GothamProLight.792e5785.ttf",
+    "static/media/add-24px.96481502.svg": "./static/media/add-24px.96481502.svg",
+    "static/media/arrow_back.3be5736b.svg": "./static/media/arrow_back.3be5736b.svg",
+    "static/media/arrow_down-24px.5633ea06.svg": "./static/media/arrow_down-24px.5633ea06.svg",
+    "static/media/clear-24px.73617752.svg": "./static/media/clear-24px.73617752.svg",
+    "static/media/DatePicker.module.css": "./static/media/date_range_black_24px.db3fe99e.svg",
+    "static/media/delete.777b93c6.svg": "./static/media/delete.777b93c6.svg",
+    "static/media/Login.module.css": "./static/media/tablet-bg-register.b12335dc.jpg",
+    "static/media/Summery.module.css": "./static/media/greenleaves.a6c33e9b.png",
+    "static/media/Home.module.css": "./static/media/home_tablet.24167c21.png",
+    "static/media/logo-png.png": "./static/media/logo-png.5186b228.png",
+    "static/media/logout.4bcd805a.svg": "./static/media/logout.4bcd805a.svg",
+    "static/media/menu-24px.4e796dac.svg": "./static/media/menu-24px.4e796dac.svg",
+    "static/media/russia.f8e95c0c.svg": "./static/media/russia.f8e95c0c.svg",
+    "static/media/ukraine.2427465f.svg": "./static/media/ukraine.2427465f.svg"
+  }
+}
