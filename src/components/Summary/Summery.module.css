@@ -46,8 +46,8 @@
 }
 
 .summarySection div {
-  width: 275px;
-  padding: 25px 0;
+  width: 100%;
+  padding: 25px;
   margin: auto;
 
 }

@@ -15,6 +15,9 @@ const Modal = ({ toogleModal }) => {
         <NavLink onClick={toogleModal} exact to="/dashboard">
           Калькулятор
         </NavLink>
+        <NavLink onClick={toogleModal} exact to="/dashboard/achievement">
+          Достижения
+        </NavLink>
       </div>
     </div>
   );
