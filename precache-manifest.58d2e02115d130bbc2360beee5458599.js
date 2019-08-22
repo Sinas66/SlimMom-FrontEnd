@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "71a116d9668c5974e68067fad14b0f15",
+    "revision": "afa2994aa405316573e4a7e065bad8f6",
     "url": "./index.html"
   },
   {
@@ -8,15 +8,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/css/2.bffbeb91.chunk.css"
   },
   {
-    "revision": "ab0e0bb3d079ef39ce42",
-    "url": "./static/css/main.6f24cae0.chunk.css"
+    "revision": "0bcb6eba09607197bc95",
+    "url": "./static/css/main.71d8f265.chunk.css"
   },
   {
     "revision": "feee4007ff2b71a75653",
     "url": "./static/js/2.81871c62.chunk.js"
   },
   {
-    "revision": "ab0e0bb3d079ef39ce42",
+    "revision": "0bcb6eba09607197bc95",
     "url": "./static/js/main.fa1e2d3d.chunk.js"
   },
   {
@@ -90,6 +90,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "bcf4f1bb76c7df511e43bfda8f8f96a2",
     "url": "./static/media/greenleaves-tablet.bcf4f1bb.png"
+  },
+  {
+    "revision": "a6c33e9b6724cb2e13fafd0b246db2d7",
+    "url": "./static/media/greenleaves.a6c33e9b.png"
   },
   {
     "revision": "9008e6cc0866993e4f61b719a13bbe9a",
