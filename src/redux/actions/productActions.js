@@ -102,7 +102,7 @@ export const deleteProductFromProductListAC = id => ({
 export const deleteProductFromProductListFunc = (token, id) => dispatch => {
   deleteProdByDay(token, id)
     .then(resp => {
-      if (resp.data.status !== 'success') {
+      if (resp.status !== 'success') {
         throw new Error(resp.data);
       }
       dispatch(deleteProductFromProductListAC(id));

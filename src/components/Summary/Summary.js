@@ -20,8 +20,8 @@ function Summary({ products, date, groupBlood, dailyRate }) {
     <div className={style.summarySection}>
       <div>
         <h3>
-          Сводка за
-          {moment(date).format('MM.DD.Y')}
+          {`Сводка за
+          ${moment(date).format('MM.DD.Y')}`}
         </h3>
         <ul className={style.listSummery}>
           <li>

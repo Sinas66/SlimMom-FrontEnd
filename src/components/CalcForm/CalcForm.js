@@ -187,7 +187,7 @@ class CalcForm extends Component {
             <p className={css.title}>Узнай свою суточную </p>
             <p className={css.title}>
               норму калорий
-              {!session.token && 'прямо сейчас'}
+              {!session.token && ' прямо сейчас'}
             </p>
           </div>
           <form>
