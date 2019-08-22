@@ -75,7 +75,6 @@
     justify-content: center;
     background-repeat: no-repeat;
     background-position: right bottom;
-    /* background-image: url(../../assets/images/greenleaves-tablet.png), linear-gradient(#eff1f3, #eff1f3); */
     height: 100vh;
   }
 
@@ -109,11 +108,10 @@
 
   .summarySection::after{
     top: -141px;
-    background-image: url(/static/media/greenleaves.a6c33e9b.png), linear-gradient(#eff1f3, #eff1f3);
-    background-position: unset;
-    background-repeat: round;
+    background-image: url(../../assets//images/greenleaves.png), linear-gradient(#eff1f3, #eff1f3);
+    background-position: center;
+    background-repeat: no-repeat;
     height: 100vh;
-    padding-bottom: 70px;
 }
 
 }
