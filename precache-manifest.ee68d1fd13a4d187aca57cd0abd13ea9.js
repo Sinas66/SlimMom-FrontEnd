@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b98be50998df2d0b0dd32c9bcea30598",
+    "revision": "e65f454a075fa231731f13ab4c450648",
     "url": "./index.html"
   },
   {
-    "revision": "dbef204ccf825f5c783d",
+    "revision": "531e086bcb533dd1866a",
     "url": "./static/css/2.bffbeb91.chunk.css"
   },
   {
-    "revision": "cbdbca4b010033ed9581",
-    "url": "./static/css/main.b534d8e3.chunk.css"
+    "revision": "02e2084f63221fd54478",
+    "url": "./static/css/main.99cee029.chunk.css"
   },
   {
-    "revision": "dbef204ccf825f5c783d",
-    "url": "./static/js/2.351541b3.chunk.js"
+    "revision": "531e086bcb533dd1866a",
+    "url": "./static/js/2.55cfb5d9.chunk.js"
   },
   {
-    "revision": "cbdbca4b010033ed9581",
-    "url": "./static/js/main.5f820cd5.chunk.js"
+    "revision": "02e2084f63221fd54478",
+    "url": "./static/js/main.921609f8.chunk.js"
   },
   {
     "revision": "8c97409f0ee389fe75da",
@@ -90,10 +90,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "bcf4f1bb76c7df511e43bfda8f8f96a2",
     "url": "./static/media/greenleaves-tablet.bcf4f1bb.png"
-  },
-  {
-    "revision": "a6c33e9b6724cb2e13fafd0b246db2d7",
-    "url": "./static/media/greenleaves.a6c33e9b.png"
   },
   {
     "revision": "9008e6cc0866993e4f61b719a13bbe9a",
