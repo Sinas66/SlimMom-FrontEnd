@@ -16,12 +16,11 @@ export const fetchLogOut = token => {
   return axios
     .post(api.url.logOut(), {}, setToken(token))
     .then(resp => {
-      console.log(resp);
       if (resp.data.status !== 'success') {
         throw new Error('albfkjabflasflk');
       }
     })
-    .catch(error => console.log(error));
+    .catch(error => error);
 };
 
 export const putNewData = (token, data) => {
@@ -32,31 +31,25 @@ export const putNewData = (token, data) => {
         return response;
       }
     })
-    .catch(err => console.log(err));
+    .catch(error => error);
 };
 // Example
 export const fetchCompleteTask = (token, task) => {
   return axios
     .post(api.url.updateTask(), { ...task, isDone: true }, setToken(token))
-    .catch(err => console.log(err));
+    .catch(error => error);
 };
 
 export const deleteProdByDay = (token, id) => {
   return axios
     .delete(api.url.deleteProductsByDay() + id, setToken(token))
     .then(resp => {
-      console.log({ resp });
       if (resp.data.status !== 'success') {
-        throw new Error('sdasDDDDDDda');
+        throw new Error(resp.data);
       }
       return resp.data;
     })
-    .catch(err => {
-      console.log('ANSWER ERROR');
-      console.log(err);
-      console.log(err.message);
-      return err;
-    });
+    .catch(error => error);
 };
 
 export const requestRegister = cred =>

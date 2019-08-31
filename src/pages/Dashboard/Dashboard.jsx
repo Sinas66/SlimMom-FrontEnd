@@ -13,10 +13,6 @@ import CalcForm from '../../components/CalcForm/CalcForm';
 import Summary from '../../components/Summary/Summary';
 
 class Dashboard extends Component {
-  // static propTypes = {
-  //   token: PropTypes.string.isRequired
-  // };
-
   state = {};
 
   componentDidMount = () => {

@@ -121,6 +121,9 @@ const Achievement = () => {
 
     fetchQuote(token)
       .then(quoteFromServ => {
+        if (quoteFromServ.length > 60) {
+          return;
+        }
         setQuote(quoteFromServ.title.ru);
       })
       .catch(err => err);
@@ -157,11 +160,12 @@ const Achievement = () => {
     <>
       {width > 767 && <p className={styles.quote}>{quote}</p>}
 
-      <h1 className={styles.achievement_h1}>
-        Динамика употребления калорий за месяц
-      </h1>
-
-      <Line data={data} options={options} />
+      <div className={styles.graphWrapper}>
+        <h1 className={styles.achievement_h1}>
+          Динамика употребления калорий за месяц
+        </h1>
+        <Line data={data} options={options} />
+      </div>
     </>
   );
 };

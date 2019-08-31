@@ -68,7 +68,6 @@ class Login extends Component {
           error: ''
         });
       }
-      // console.log(this.state);
     }, 10);
   };
 
@@ -95,7 +94,6 @@ class Login extends Component {
       this.setState({
         error: errorResponse
       });
-      // console.log('STATE-fetch,', this.state);
     }
   };
 
@@ -110,7 +108,6 @@ class Login extends Component {
       this.setState({
         error: errorResponse
       });
-      // console.log('STATE-fetch,', this.state);
     }
   };
 

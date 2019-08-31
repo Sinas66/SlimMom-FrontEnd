@@ -6,9 +6,7 @@ const UserBar = () => {
   return (
     <div className={styles.container}>
       <NavLink exact to="/login" className={styles.link}>
-        Вход
-        <span className={styles.spanLine}>|</span>
-        Регистрация
+        <p>Вход | Регистрация</p>
       </NavLink>
     </div>
   );
